@@ -1,18 +1,17 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 const app = express();
+const staticDirUrl = './backend/static';
 
 app.use(cookieParser());
-app.use(express.static('./static'));
+app.use(express.static(staticDirUrl));
 
 app.get('/api/', function (req, res) {
     res.json({test: 'HelloWorld!!!'});
 });
 
 app.get('/*', function (req, res) {
-    console.log('__dirname:', __dirname);
-    res.sendFile(path.join(process.cwd() + '/backend/static/index.html'));
+	res.sendfile('index.html', {root: staticDirUrl});
 });
 
 module.exports = app;
