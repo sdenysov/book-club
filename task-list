@@ -1,0 +1,5 @@
+
+[ ] Создать таблицу кник с колонками id, title, description (db-migrate)
+[ ] Приготовить ORM модель Sequalize для книги
+[ ] Создать endpoint /search?q=abc
+[ ] Создать endpoint /search-typeahead?q=abc
