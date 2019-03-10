@@ -4,6 +4,4 @@ import {Component} from '@angular/core';
   selector: 'app-book-component',
   templateUrl: './book.component.html',
 })
-export class AppBookComponent {
-
-}
+export class AppBookComponent {}

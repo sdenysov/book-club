@@ -1,17 +1,19 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from '@@app/app.component';
-import {AppNavbarComponent} from '@@app/components/navbar/navbar.component';
-import {AppBookComponent} from '@@app/components/book/book.component';
+import {AppRoutingModule} from '@@app/app-routing.module';
+import {ShareModule} from '@@share-module/share.module';
+import {AppMainPageModule} from '@@main-page/main-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AppNavbarComponent,
-    AppBookComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    ShareModule,
+    BrowserModule,
+    AppMainPageModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

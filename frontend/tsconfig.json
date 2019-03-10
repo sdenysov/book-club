@@ -15,7 +15,11 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@@app/*": ["src/app/*"]
+      "@@app/*": ["src/app/*"],
+      "@@share-module/*": ["src/app/share-module/*"],
+      "@@core-module/*": ["src/app/core-module/*"],
+      "@@books-page/*": ["src/app/books-page/*"],
+      "@@main-page/*": ["src/app/main-page/*"]
     },
     "lib": [
       "es2018",
