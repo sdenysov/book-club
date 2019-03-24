@@ -1,10 +1,10 @@
-<div class="thumbnail clearfix">
-  <img src="assets/cover-page.jpg"/>
+<div class="thumbnail clearfix" *ngFor="let book of books">
+  <img src="assets/images/cover-page.jpg"/>
   <div>
-    <h4 class="h3">Java. Kompendium programisty. Wydanie X</h4>
-    <p>Java. Kompendium programisty. Wydanie X. Cudowna książka.jhhjjjhjhjhjhjhjhjhhjhjhjhjhjhjhjhjhjhjhjhjhfhjfghj</p>
-    <div class="lead"><a href="">Herbert Schildt</a></div>
-    <p>Rating</p>
+    <h4 class="h3">{{book.title}}</h4>
+    <p>{{book.description}}</p>
+    <div class="lead"><a href="">{{book.author}}</a></div>
+    <p>Rating: {{book.rating}}</p>
     <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
   </div>
 </div>

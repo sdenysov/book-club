@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {AppNavbarComponent} from '@@share-module/components/navbar/navbar.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 
@@ -11,7 +10,7 @@ import {RouterModule} from '@angular/router';
  */
 
 const SHARE_DECLARATIONS = [
-  AppNavbarComponent
+
 ];
 
 @NgModule({

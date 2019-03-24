@@ -1,0 +1,39 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Java. Kompendium programisty. Wydanie X",
+      "description": "Java. Kompendium programisty. Wydanie X. Cudowna książka.",
+      "author": "Herbert Schildt",
+      "rating": 3
+    },
+    {
+      "id": 2,
+      "title": "Java. Kompendium programisty. Wydanie XXI",
+      "description": "Java. Kompendium programisty. Wydanie XXI. Bardzo dobra książka.",
+      "author": "Herbert Schildter",
+      "rating": 4
+    },
+    {
+      "id": 3,
+      "title": "Java. Kompendium programisty. Wydanie XXI",
+      "description": "Java. Kompendium programisty. Wydanie XXI. Bardzo dobra książka.",
+      "author": "Herbert Schildter",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "title": "Java. Kompendium programisty. Wydanie XXI",
+      "description": "Java. Kompendium programisty. Wydanie XXI. Bardzo dobra książka.",
+      "author": "Herbert Schildter",
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "title": "Java. Kompendium programisty. Wydanie XXI",
+      "description": "Java. Kompendium programisty. Wydanie XXI. Bardzo dobra książka.",
+      "author": "Herbert Schildter",
+      "rating": 4
+    }
+  ]
+}

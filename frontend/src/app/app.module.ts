@@ -4,6 +4,9 @@ import {AppComponent} from '@@app/app.component';
 import {AppRoutingModule} from '@@app/app-routing.module';
 import {ShareModule} from '@@share-module/share.module';
 import {AppMainPageModule} from '@@main-page/main-page.module';
+import {HttpClientModule} from '@angular/common/http';
+import {environment} from '../environments/environment';
+import {AppNavbar} from '@@app/nav-bar/components/navbar/navbar.module';
 
 @NgModule({
   declarations: [
@@ -12,10 +15,19 @@ import {AppMainPageModule} from '@@main-page/main-page.module';
   imports: [
     ShareModule,
     BrowserModule,
+    HttpClientModule,
     AppMainPageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppNavbar
   ],
-  providers: [],
+  providers: [
+    {provide: 'api', useValue: 'api'}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor() {
+    console.log('environment', environment);
+  }
+}
