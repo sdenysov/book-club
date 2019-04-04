@@ -7,6 +7,7 @@ import {AppMainPageModule} from '@@main-page/main-page.module';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {AppNavbar} from '@@app/nav-bar/components/navbar/navbar.module';
+import {StoreModule} from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {AppNavbar} from '@@app/nav-bar/components/navbar/navbar.module';
     HttpClientModule,
     AppMainPageModule,
     AppRoutingModule,
-    AppNavbar
+    AppNavbar,
+    StoreModule.forRoot({})
   ],
   providers: [
     {provide: 'api', useValue: 'api'}

@@ -4,15 +4,14 @@ import {AppBookComponent} from '@@books-page/components/book/book.component';
 import {AppBooksPageComponent} from '@@books-page/components/book-page/books-page.component';
 import {BooksService} from '@@books-page/services/books.service';
 import {CommonModule} from '@angular/common';
-import {BooksDataService} from '@@books-page/services/books-data.service';
-import {environment} from '../../environments/environment.mock';
-import {BooksDataServiceMock} from '@@books-page/services/books-data.service.mock';
-import {BooksDataServiceImpl} from '@@books-page/services/books-data.service.impl';
+import {StoreModule} from '@ngrx/store';
+import {booksReducer} from '@@books-page/store/books.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
-    AppBooksPageRoutingModule
+    AppBooksPageRoutingModule,
+    StoreModule.forFeature('books', booksReducer)
   ],
   declarations: [
     AppBooksPageComponent,
