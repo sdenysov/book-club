@@ -1,17 +1,39 @@
-import {Component} from '@angular/core';
-import {BooksDataService} from '@@books-page/services/books-data.service';
-import {BookModel} from '@@books-page/models/book.model';
-import {Store} from '@ngrx/store';
-import {BooksStateModel} from '@@books-page/models/books-state.model';
-import {FetchBooksSucceed} from '@@books-page/store/books.actions';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {BooksService} from '@@books-page/services/books.service';
+import {BooksReduxService} from '@@books-page/services/books-redux.service';
+import {BookModel} from '@@books-page/models/book.model';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-book-component',
   templateUrl: './book.component.html',
 })
-export class AppBookComponent {
-  constructor(private booksService: BooksService, private store: Store<{books: BooksStateModel}>) {
-    const books = [];
-    store.dispatch(new FetchBooksSucceed(books));
-}}
+export class AppBookComponent implements OnChanges, OnInit, OnDestroy {
+
+  @Input() book: BookModel;
+
+  books: BookModel[];
+  subsription: Subscription;
+
+  constructor(private booksService: BooksService,
+              private booksReduxService: BooksReduxService) {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges', changes);
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit');
+    this.booksReduxService.fetchBooks();
+    this.subsription = this.booksReduxService.books$.subscribe(books => {
+      console.log('AppBookComponent', books);
+      this.books = books;
+    });
+  }
+
+  ngOnDestroy() {
+    console.log('ngOnDestroy');
+    this.subsription.unsubscribe();
+  }
+}

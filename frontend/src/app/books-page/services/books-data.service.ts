@@ -10,6 +10,6 @@ import {BooksDataServiceImpl} from '@@books-page/services/books-data.service.imp
 })
 export abstract class BooksDataService {
 
-  abstract get(): Observable<BookModel[]>;
-  abstract suggest(query: string): Observable<any>;
+  abstract get$(): Observable<BookModel[]>;
+  abstract suggest$(query: string): Observable<any>;
 }

@@ -13,11 +13,11 @@ export class BooksDataServiceImpl implements BooksDataService {
     console.log('BooksDataServiceImpl created');
   }
 
-  get(): Observable<BookModel[]> {
+  get$(): Observable<BookModel[]> {
     return this.http.get<BookModel[]>(this.baseUrl);
   }
 
-  suggest(query: string): Observable<any> {
+  suggest$(query: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/?suggest=${query}`);
   }
 }

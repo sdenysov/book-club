@@ -19,9 +19,11 @@ export class FetchBooksSucceed implements Action {
 
 export class FetchBooksFailed implements Action {
   readonly type = BooksActions.FetchBooksFailed;
+  constructor(public error: Error) {}
 }
 
 export type BooksActionTypes =
+  | FetchBooks
   | FetchBooksSucceed
   | FetchBooksFailed
   ;

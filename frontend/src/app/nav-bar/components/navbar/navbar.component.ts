@@ -18,7 +18,7 @@ export class AppNavbarComponent implements OnInit {
       debounceTime(1000),
       distinctUntilChanged()
     ).subscribe(query => {
-      this.booksDataService.suggest(query);
+      this.booksDataService.suggest$(query);
     });
   }
 }

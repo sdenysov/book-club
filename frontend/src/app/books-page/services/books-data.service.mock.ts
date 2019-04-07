@@ -14,11 +14,11 @@ export class BooksDataServiceMock implements BooksDataService {
     console.log('BooksDataServiceMock created');
   }
 
-  get(): Observable<BookModel[]> {
+  get$(): Observable<BookModel[]> {
     return this.http.get<BookModel[]>(this.baseUrl);
   }
 
-  suggest(query: string): Observable<any> {
+  suggest$(query: string): Observable<any> {
     console.log('test suggestions query:', query);
     switch (query) {
       case 'a': return of(SuggestionsMock.suggestion1);

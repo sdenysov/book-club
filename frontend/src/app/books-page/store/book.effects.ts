@@ -1,27 +1,26 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {map, mergeMap} from 'rxjs/operators';
 import {BooksDataService} from '@@books-page/services/books-data.service';
-import {BooksActions, FetchBooksSucceed} from '@@books-page/store/books.actions';
-import {catchError} from 'rxjs/internal/operators';
+import {BooksActions, FetchBooksFailed, FetchBooksSucceed} from '@@books-page/store/books.actions';
+import {catchError, tap} from 'rxjs/internal/operators';
+import {Action} from '@ngrx/store';
 
 @Injectable()
 export class BookEffects {
 
-  @Effect()
-  loadBooks$ = this.actions$
-    .pipe(
-      ofType(BooksActions.FetchBooks),
-      mergeMap(() => this.booksDataService.get()
-        .pipe(
-          map(books => new FetchBooksSucceed(books)),
-          catchError(() => EMPTY)
-        ))
-    );
+  constructor(private actions$: Actions,
+              private booksDataService: BooksDataService) {
+  }
 
-constructor(
-    private actions$: Actions,
-    private booksDataService: BooksDataService
-  ) {}
+  @Effect()
+  loadBooks$: Observable<Action> = this.actions$.pipe(
+    ofType(BooksActions.FetchBooks),
+    tap(() => console.log('before request')),
+    mergeMap(() => this.booksDataService.get$()),
+    tap(() => console.log('after request')),
+    map(books => new FetchBooksSucceed(books)),
+    catchError(err => of(new FetchBooksFailed(err)))
+  );
 }

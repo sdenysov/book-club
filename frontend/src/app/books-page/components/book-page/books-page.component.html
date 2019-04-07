@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
-      <app-book-component></app-book-component>
+    <div class="col-lg-4" *ngFor="let book of chunckedBooks">
+      <app-book-component [book]="book"></app-book-component>
     </div>
   </div>
 </div>
