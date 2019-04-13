@@ -8,6 +8,7 @@ import {StoreModule} from '@ngrx/store';
 import {booksReducer} from '@@books-page/store/books.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {BookEffects} from '@@books-page/store/book.effects';
+import {AppBookDetailComponent} from '@@books-page/components/book-detail/book-detail.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {BookEffects} from '@@books-page/store/book.effects';
   ],
   declarations: [
     AppBooksPageComponent,
-    AppBookComponent
+    AppBookComponent,
+    AppBookDetailComponent
   ],
   exports: []
 })

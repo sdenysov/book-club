@@ -5,6 +5,6 @@
     <p>{{book.description}}</p>
     <div class="lead"><a href="">{{book.author}}</a></div>
     <p>Rating: {{book.rating}}</p>
-    <p><a class="btn btn-primary" role="button" routerLink="{{book.id}}" routerLinkActive="active" href="" (click)="$event.preventDefault()">View details »</a></p>
+    <p><a class="btn btn-primary" (click)="goBack()" role="button">Back to Books »</a></p>
   </div>
 </div>
