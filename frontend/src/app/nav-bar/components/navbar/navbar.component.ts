@@ -1,14 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {Subject} from 'rxjs/index';
+import {Router} from '@angular/router';
+import {Observable, Subject} from 'rxjs/index';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/internal/operators';
-import {BooksDataService} from '@@books-page/services/books-data.service';
+import {BooksRestService} from '@@core/services/books/books-rest.service';
+import {UserReduxService} from '@@user/services/user-redux.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 })
 export class AppNavbarComponent implements OnInit {
-  constructor(private booksDataService: BooksDataService) {}
+
+  currentUserExists$: Observable<boolean> = this.userReduxService.currentUserExists$;
+
+  constructor(private booksRestService: BooksRestService,
+              private userReduxService: UserReduxService,
+              private router: Router) {
+  }
 
   inputChange$: Subject<string> = new Subject<string>();
 
@@ -18,7 +26,7 @@ export class AppNavbarComponent implements OnInit {
       debounceTime(1000),
       distinctUntilChanged()
     ).subscribe(query => {
-      this.booksDataService.suggest$(query);
+      this.booksRestService.suggest$(query);
     });
   }
 }
