@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -17,7 +17,8 @@ const SHARE_DECLARATIONS = [
 const SHARE_IMPORTS = [
   CommonModule,
   RouterModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  FormsModule
 ];
 
 @NgModule({

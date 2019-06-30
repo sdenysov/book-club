@@ -9,6 +9,7 @@ import {StoreModule} from '@ngrx/store';
 import {userBooksReducer} from '@@app/profile/store/user-books.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {UserBooksEffects} from '@@app/profile/store/user-books.effects';
+import {AppEditBookComponent} from '@@app/profile/components/edit-book/edit-book.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {UserBooksEffects} from '@@app/profile/store/user-books.effects';
     AppMyBooksComponent,
     AppNewBookComponent,
     AppMyBookComponent,
-    AppProfileComponent
+    AppProfileComponent,
+    AppEditBookComponent
   ]
 })
 export class AppProfileModule {}

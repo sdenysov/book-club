@@ -9,7 +9,7 @@
     <div class="lead"><a href="">{{book.author}}</a></div>
     <p>Rating: {{book.rating}}</p>
     <p>
-      <a class="btn btn-success" role="button" (click)="$event.preventDefault()">Edit details</a>
+      <a class="btn btn-success" role="button" [routerLink]="['edit/', book.id]" (click)="$event.preventDefault()">Edit details</a>
       <a class="btn btn-success" role="button" (click)="$event.preventDefault()">Change image</a>
       <a class="btn btn-danger" role="button" (click)="$event.preventDefault()">Delete book</a></p>
   </div>

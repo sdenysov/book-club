@@ -17,6 +17,6 @@ export class RouterReduxService {
     this.routerStateParams$.pipe(first()).subscribe(stateParams => {
       bookId = stateParams.id;
     });
-    return bookId ? +bookId : undefined;
+    return bookId;
   }
 }

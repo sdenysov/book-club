@@ -1,19 +1,27 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {AppComponent} from '@@app/app.component';
 import {AppRoutingModule} from '@@app/app-routing.module';
 import {ShareModule} from '@@share/share.module';
 import {AppMainPageModule} from '@@main/main-page.module';
-import {HttpClientModule} from '@angular/common/http';
-import {environment} from '../environments/environment';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppNavbar} from '@@app/nav-bar/navbar.module';
 import {AppReduxModule} from '@@app/app-redux.module';
 import {AppRouterStoreModule} from '@@router/router.module';
 import {AppUserModule} from '@@user/user.module';
 import {CoreModule} from '@@core/core.module';
 import {AppLogInModule} from '@@app/login/login.module';
+import {AppRegisterModule} from '@@app/register/register.module';
+import {ErrorModule} from '@@app/errors/error.module';
+import {GlobalErrorHandler} from '@@app/errors/services/global-error-handler';
+import {ErrorHandlerInterceptor} from '@@app/errors/interceptors/error-handler-interceptor';
+
+export const HTTP_INTERCEPTOR_PROVIDERS = [
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true}
+];
 
 @NgModule({
+
   declarations: [
     AppComponent
   ],
@@ -28,16 +36,15 @@ import {AppLogInModule} from '@@app/login/login.module';
     AppRoutingModule,
     AppRouterStoreModule,
     AppNavbar,
-    AppLogInModule
+    ErrorModule,
+    AppLogInModule,
+    AppRegisterModule,
   ],
   providers: [
-    {provide: 'api', useValue: 'api'}
+    ...HTTP_INTERCEPTOR_PROVIDERS,
+    {provide: 'api', useValue: 'api'},
+    {provide: ErrorHandler, useClass: GlobalErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-  constructor() {
-    console.log('environment', environment);
-  }
-}
+export class AppModule {}

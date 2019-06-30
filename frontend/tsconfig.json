@@ -19,6 +19,7 @@
       "@@share/*": ["src/app/share/*"],
       "@@core/*": ["src/app/core/*"],
       "@@books/*": ["src/app/books/*"],
+      "@@errors/*": ["src/app/errors/*"],
       "@@main/*": ["src/app/main/*"],
       "@@router/*": ["src/app/router/*"],
       "@@user/*": ["src/app/user/*"],

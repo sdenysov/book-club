@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BookModel} from '@@share/models/book.model';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 
 @Component({
@@ -11,13 +11,15 @@ export class AppNewBookComponent implements OnInit {
 
   newBookForm: FormGroup;
 
-  constructor(private booksRestService: BooksRestService) {}
+  constructor(private booksRestService: BooksRestService,
+              private builder: FormBuilder) {
+  }
 
   ngOnInit() {
-    this.newBookForm = new FormGroup({
-      title: new FormControl(''),
-      author: new FormControl(''),
-      description: new FormControl('')
+    this.newBookForm = this.builder.group({
+      title: '',
+      author: '',
+      description: ''
     });
   }
 

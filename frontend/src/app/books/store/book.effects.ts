@@ -6,19 +6,24 @@ import {BooksActions, FetchBooksFailed, FetchBooksSucceed} from '@@books/store/b
 import {catchError} from 'rxjs/internal/operators';
 import {Action} from '@ngrx/store';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
+import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
 
 @Injectable()
 export class BookEffects {
 
   constructor(private actions$: Actions,
+              private httpErrorHandlerService: HttpErrorHandlerService,
               private booksRestService: BooksRestService) {
   }
 
-  @Effect()
+  @Effect({dispatch: false})
   loadBooks$: Observable<Action> = this.actions$.pipe(
     ofType(BooksActions.FetchBooks),
     mergeMap(() => this.booksRestService.get$()),
     map(books => new FetchBooksSucceed(books)),
-    catchError(err => of(new FetchBooksFailed(err)))
+    catchError(error => {
+      this.httpErrorHandlerService.handleErrorResponse(error);
+      return of(new FetchBooksFailed(error));
+    })
   );
 }
