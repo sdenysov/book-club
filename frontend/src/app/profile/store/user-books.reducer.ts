@@ -4,7 +4,8 @@ import {UserBooksActionTypes, TUserBooksAction} from '@@app/profile/store/user-b
 const initialState: ProfileStateModel = {
   loaded: false,
   loading: false,
-  books: []
+  books: [],
+  editingBook: null
 };
 
 export function userBooksReducer(state: ProfileStateModel = initialState, action: TUserBooksAction): ProfileStateModel {
@@ -17,6 +18,9 @@ export function userBooksReducer(state: ProfileStateModel = initialState, action
     }
     case UserBooksActionTypes.FetchUserBooksFailed: {
       return {...state, loading: false, loaded: false};
+    }
+    case UserBooksActionTypes.FetchEditingBookSucceed: {
+      return {...state, editingBook: action.book};
     }
     default: {
       return state;

@@ -1,8 +1,10 @@
+import {UserModel} from '@@user/models/user.model';
+
 export interface BookModel {
-  id: number;
+  id: string;
   title: string;
   description: string;
   author: string;
   rating: number;
-  owner_id: number;
+  owner: UserModel;
 }

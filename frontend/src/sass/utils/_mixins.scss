@@ -1,0 +1,13 @@
+@import "variables";
+
+@mixin clearfix() {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}

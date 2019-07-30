@@ -14,27 +14,27 @@ app.get('/api/books/', function (req, res) {
         res.json([
             {
                 id: 1,
-                title: '[owner_id 3] Java. Kompendium programisty. Wydanie X',
+                title: '[owner 3] Java. Kompendium programisty. Wydanie X',
                 description: 'Java. Kompendium programisty. Wydanie X. Cudowna książka.',
                 author: 'Herbert Schildt',
                 rating: 0,
-                owner_id: 3
+                owner: 3
             },
             {
                 id: 2,
-                title: '[owner_id 3] Java. Kompendium programisty. Wydanie X',
+                title: '[owner 3] Java. Kompendium programisty. Wydanie X',
                 description: 'Java. Kompendium programisty. Wydanie X. Cudowna książka.',
                 author: 'Herbert Schildt',
                 rating: 0,
-                owner_id: 3
+                owner: 3
             },
             {
                 id: 3,
-                title: '[owner_id 3] Java. Kompendium programisty. Wydanie X',
+                title: '[owner 3] Java. Kompendium programisty. Wydanie X',
                 description: 'Java. Kompendium programisty. Wydanie X. Cudowna książka.',
                 author: 'Herbert Schildt',
                 rating: 0,
-                owner_id: 3
+                owner: 3
             }
         ]);
     }

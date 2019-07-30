@@ -6,6 +6,7 @@
     "start": "ng serve --open --proxy-config proxy.conf.json",
     "start:dev": "concurrently --kill-others \"npm run mock:server\" \"npm run start:mock-proxy\"",
     "start:mock": "ng serve --open --configuration=mock",
+    "start:dpd": "ng serve --proxy-config proxy-dpd.conf.json --configuration=dpd",
     "start:mock-proxy": "ng serve --proxy-config proxy-mock.conf.json --configuration=mock",
     "mock:server": "json-server --watch src/db-mocks/db.json",
     "build": "ng build",

@@ -12,7 +12,7 @@ export class RouterReduxService {
 
   routerStateParams$ = this.store.pipe(select(RouterStateSelectors.getRouterStateParams));
 
-  getBookId(): number {
+  getBookId(): string {
     let bookId;
     this.routerStateParams$.pipe(first()).subscribe(stateParams => {
       bookId = stateParams.id;

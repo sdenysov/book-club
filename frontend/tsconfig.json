@@ -17,11 +17,13 @@
     "paths": {
       "@@app/*": ["src/app/*"],
       "@@share/*": ["src/app/share/*"],
+      "@@sass/*": ["src/sass/*"],
       "@@core/*": ["src/app/core/*"],
       "@@books/*": ["src/app/books/*"],
       "@@errors/*": ["src/app/errors/*"],
       "@@main/*": ["src/app/main/*"],
       "@@router/*": ["src/app/router/*"],
+      "@@screen-lock/*": ["src/app/screen-lock/*"],
       "@@user/*": ["src/app/user/*"],
       "@@env/*": ["src/environments/*"]
     },

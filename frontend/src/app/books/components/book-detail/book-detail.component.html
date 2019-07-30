@@ -3,7 +3,7 @@
     <div class="col-lg-4">
       <img src="assets/images/cover-page.jpg"/>
     </div>
-    <div *ngIf="(book$ | async) as book" class="col-lg-8">
+    <div *ngIf="book" class="col-lg-8">
       <h4 class="h3">{{book.title}}</h4>
       <p>{{book.description}}</p>
       <div class="lead"><a href="">{{book.author}}</a></div>

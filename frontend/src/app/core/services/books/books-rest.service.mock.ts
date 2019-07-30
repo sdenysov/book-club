@@ -34,7 +34,11 @@ export class BooksRestServiceMock implements BooksRestService {
     return of({} as HttpResponse<any>);
   }
 
-  getByUserId$(userId: number): Observable<BookModel[]> {
+  getByUserId$(userId: string): Observable<BookModel[]> {
     return of(userBooksMock[userId] || []).pipe(delay(2000));
+  }
+
+  getBookById$(bookId: string): Observable<BookModel> {
+    return of(booksListMock.find(book => book.id === bookId)).pipe(delay(2000));
   }
 }

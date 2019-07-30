@@ -1,14 +1,10 @@
 import {Observable} from 'rxjs/index';
 import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
-import {environment} from '@@env/environment';
-import {BooksRestServiceMock} from '@@core/services/books/books-rest.service.mock';
-import {BooksRestServiceImpl} from '@@core/services/books/books-rest.service.impl';
 import {BookModel} from '@@share/models/book.model';
+import {EnvUtils} from '@@core/utils/env.utils';
 
-@Injectable({
-  providedIn: 'root', useExisting: environment.mock ? BooksRestServiceMock : BooksRestServiceImpl
-})
+@Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('BooksRestService')})
 export abstract class BooksRestService {
 
   abstract get$(): Observable<BookModel[]>;
@@ -17,5 +13,7 @@ export abstract class BooksRestService {
 
   abstract addBook$(book: BookModel): Observable<HttpResponse<any>>;
 
-  abstract getByUserId$(userId: number): Observable<BookModel[]>;
+  abstract getByUserId$(userId: string): Observable<BookModel[]>;
+
+  abstract getBookById$(bookId: string): Observable<BookModel>;
 }

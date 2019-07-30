@@ -1,8 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
-import {Observable} from 'rxjs/index';
+import {Observable, of} from 'rxjs/index';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {BookModel} from '@@share/models/book.model';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
+import {booksListMock} from '@@share/mocks/books-list.mock';
+import {delay} from 'rxjs/internal/operators';
 
 @Injectable({providedIn: 'root'})
 export class BooksRestServiceImpl implements BooksRestService {
@@ -12,7 +14,7 @@ export class BooksRestServiceImpl implements BooksRestService {
   constructor(@Inject('api') private api: string, private http: HttpClient) {}
 
   get$(): Observable<BookModel[]> {
-    return this.http.get<BookModel[]>(this.baseUrl);
+    return this.http.get<BookModel[]>('/books');
   }
 
   suggest$(query: string): Observable<any> {
@@ -24,7 +26,11 @@ export class BooksRestServiceImpl implements BooksRestService {
     return this.http.post<HttpResponse<any>>(this.baseUrl, book, {headers: {'Content-Type': 'application/json'}});
   }
 
-  getByUserId$(userId: number): Observable<BookModel[]> {
+  getByUserId$(userId: string): Observable<BookModel[]> {
     return this.http.get<BookModel[]>(`${this.baseUrl}/?user-id=${userId}`);
+  }
+
+  getBookById$(bookId: string): Observable<BookModel> {
+    return this.http.get<BookModel>(`${this.baseUrl}/?book-id=${bookId}`);
   }
 }

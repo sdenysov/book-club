@@ -10,7 +10,7 @@ export class UserRestServicesMock implements UserRestService {
 
   getCurrentUser$(): Observable<UserModel> {
     return of({
-      id: 2,
+      id: 'd7acedf2ed2d4bdb',
       username: 'vasya',
       password: 'angular'
     });

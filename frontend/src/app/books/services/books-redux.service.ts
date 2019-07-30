@@ -1,8 +1,8 @@
 import {select, Store} from '@ngrx/store';
 import {BooksStateModel} from '@@books/models/books-state.model';
 import {Injectable} from '@angular/core';
-import {FetchBooks} from '@@books/store/books.actions';
-import {getBookById, getBooks, getBooksByOwnerId} from '@@books/store/books.selectors';
+import {FetchBookDetail, FetchBooks} from '@@books/store/books.actions';
+import {BooksSelectors} from '@@books/store/books.selectors';
 import {Observable} from 'rxjs/index';
 import {BookModel} from '@@share/models/book.model';
 
@@ -13,18 +13,19 @@ export class BooksReduxService {
 
   constructor(private store: Store<{ books: BooksStateModel }>) {}
 
-  books$: Observable<BookModel[]> = this.store.pipe(select(getBooks));
-
+  books$: Observable<BookModel[]> = this.store.pipe(select(BooksSelectors.getBooks));
+  bookDetail$: Observable<BookModel> = this.store.pipe(select(BooksSelectors.getBookDetail));
   fetchBooks() {
     this.store.dispatch(new FetchBooks());
   }
 
-  getBookById$(id: number): Observable<BookModel> {
-    return this.store.pipe(select(getBookById(id)));
+  getBookById(id: string) {
+    this.store.dispatch(new FetchBookDetail(id));
+    // return this.store.pipe(select(getBookById(id)));
   }
 
-  getBooksByOwnerId$(id: number): Observable<BookModel[]> {
+  getBooksByOwnerId$(id: string): Observable<BookModel[]> {
     //TODO What if id is null?
-    return this.store.pipe(select(getBooksByOwnerId(id)));
+    return this.store.pipe(select(BooksSelectors.getBooksByOwnerId(id)));
   }
 }

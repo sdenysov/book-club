@@ -6,7 +6,7 @@
 - Dependency injection (+)
 - Global error handling (+)
 - Interceptors (+)
-- Decorators
+- Decorators (+)
 - Pipes
 - Components vs Directives
 - angular decorators and work with templates
