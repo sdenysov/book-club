@@ -25,10 +25,11 @@ export class UserBooksReduxService {
     this.store.dispatch(new UserBooksActions.FetchEditingBook(bookId));
   }
 
-  /*getUserBookById(id: string): BookModel {
-    return StoreUtils.getSync(this.store, ProfileSelectors.getUserBookById(id));
-  }*/
   getUserBookById$(id: string): Observable<BookModel> {
     return this.store.pipe(select(ProfileSelectors.getUserBookById(id)));
+  }
+
+  editBook(book: BookModel) {
+    return this.store.dispatch(new UserBooksActions.EditBook(book));
   }
 }

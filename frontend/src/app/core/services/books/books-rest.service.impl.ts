@@ -14,7 +14,7 @@ export class BooksRestServiceImpl implements BooksRestService {
   constructor(@Inject('api') private api: string, private http: HttpClient) {}
 
   get$(): Observable<BookModel[]> {
-    return this.http.get<BookModel[]>('/books');
+    return this.http.get<BookModel[]>(this.baseUrl);
   }
 
   suggest$(query: string): Observable<any> {

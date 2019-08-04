@@ -26,7 +26,6 @@ export class AppNewBookComponent implements OnInit {
   addBook() {
     const book: BookModel = this.newBookForm.value;
     book.rating = 3;
-    console.log(book);
     this.booksRestService.addBook$(book);
   }
 }

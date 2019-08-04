@@ -15,13 +15,13 @@ export class BooksReduxService {
 
   books$: Observable<BookModel[]> = this.store.pipe(select(BooksSelectors.getBooks));
   bookDetail$: Observable<BookModel> = this.store.pipe(select(BooksSelectors.getBookDetail));
+
   fetchBooks() {
     this.store.dispatch(new FetchBooks());
   }
 
-  getBookById(id: string) {
+  fetchBookById(id: string) {
     this.store.dispatch(new FetchBookDetail(id));
-    // return this.store.pipe(select(getBookById(id)));
   }
 
   getBooksByOwnerId$(id: string): Observable<BookModel[]> {

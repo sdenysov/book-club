@@ -30,11 +30,15 @@ export class BookEffects {
       return of(new FetchBooksFailed(error));
     })
   );
+
   @Effect()
   fetchBookDetail$: Observable<Action> = this.actions$.pipe(
     ofType<FetchBookDetail>(BooksActionTypes.FetchBookDetail),
     mergeMap((action: FetchBookDetail) => this.booksRestService.getBookById$(action.bookId)),
     map(book => new BooksActions.FetchBookDetailSucceed(book)),
-    catchError(err => of(new BooksActions.FetchBookDetailFailed(err)))
+    catchError(error => {
+      this.httpErrorHandlerService.handleErrorResponse(error);
+      return of(new BooksActions.FetchBookDetailFailed(error));
+    })
   );
 }

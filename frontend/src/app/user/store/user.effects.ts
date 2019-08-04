@@ -5,12 +5,14 @@ import {Observable, of} from 'rxjs/index';
 import {Action} from '@ngrx/store';
 import {UserActions, UserActionTypes} from '@@user/store/user.actions';
 import {catchError, exhaustMap, map} from 'rxjs/internal/operators';
+import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
 
 @Injectable()
 export class UserEffects {
 
   constructor(private actions$: Actions,
-              private userRestService: UserRestService) {
+              private userRestService: UserRestService,
+              private httpErrorHandlerService: HttpErrorHandlerService) {
   }
 
   @Effect()
@@ -18,6 +20,9 @@ export class UserEffects {
     ofType(UserActionTypes.FetchCurrentUser),
     exhaustMap(() => this.userRestService.getCurrentUser$()),
     map(user => new UserActions.FetchCurrentUserSucceed(user)),
-    catchError(err => of(new UserActions.FetchCurrentUserFailed(err)))
+    catchError(error => {
+      this.httpErrorHandlerService.handleErrorResponse(error);
+      return of(new UserActions.FetchCurrentUserFailed(error));
+    })
   );
 }

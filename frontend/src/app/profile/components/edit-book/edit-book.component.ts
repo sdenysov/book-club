@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {RouterReduxService} from '@@router/services/router-redux.service';
 import {UserBooksReduxService} from '@@app/profile/services/user-books-redux.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {first} from 'rxjs/internal/operators';
 import {UserBooksService} from '@@app/profile/services/user-books.servcie';
+import {BookModel} from '@@share/models/book.model';
+import {RouterReduxService} from '@@router/services/router-redux.service';
 
 @Component({
   selector: 'app-edit-book-component',
@@ -29,5 +30,11 @@ export class AppEditBookComponent implements OnInit {
         this.editBookForm = this.builder.group(book);
         this.cdr.detectChanges();
       });
+  }
+
+  save() {
+    const book: BookModel = this.editBookForm.value;
+    book.id = this.routerReduxService.getBookId();
+    this.userBooksService.editBook(book);
   }
 }

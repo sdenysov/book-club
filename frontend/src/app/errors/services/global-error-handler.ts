@@ -15,6 +15,7 @@ export class GlobalErrorHandler implements ErrorHandler {
   }
 
   get errorReduxService() {
+    // TODO where we can find ErrorReduxService if we don't have errors in store?
     // return this.injector.get(ErrorReduxService);
     return {
       addException: (exception) => {
@@ -25,11 +26,6 @@ export class GlobalErrorHandler implements ErrorHandler {
 
   get screenLockReduxService() {
     return this.injector.get(ScreenLockReduxService);
-    /*return {
-      unlockScreen: () => {
-        console.log('unlock screen');
-      }
-    };*/
   }
 
   handleError(error: Error | HttpErrorData) {

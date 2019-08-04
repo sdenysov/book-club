@@ -1,0 +1,42 @@
+Site map:
+Main:
+  bc.com/
+
+Books:
+  bc.com/books - view all books
+
+Profile:
+  bc.com/:login - profile
+  bc.com/:login/edit - edit profile
+  bc.com/:login/books - all user books
+  bc.com/:login/books/:id - view one book
+  bc.com/:login/books/add - all user books
+  bc.com/:login/books/edit/:id - edit one book (fake url?)
+
+Authentication:
+  bc.com/login
+  bc.com/register
+_________________________________________________________________
+
+
+
+[P] Profile
+  [ ] Подготовить модуль для profile
+       - поправить названия файлов
+       - распределить user по модулям share и core
+       - проверить конфигурацию url
+  [ ] Создать разделов описания книги
+    [ ] Создать раздел с категориями
+    [ ] Создать раздел с жанрами
+  [ ] Просмотр одной книги с возможностью редактирования
+    [ ] Вывод книги для просмотра (url: bc.com/:login/books/:id)
+      [ ] Подготовить url и компонент для вывода данных одной книги (без guard для проверки login)
+      [ ] Получение книги для редактирования на основе login и id из url
+      [ ] Вывести данные книги для просмотра
+      [ ] Стили согласно макетам
+      [ ] Добавление кнопки для перехода в режим редактирования (url: bc.com/:login/books/edit/:id)
+    [ ] Редактирвание книги
+      [ ] Создать компонент для выбора и добавления новых подкатегорий
+      [ ] Вывести данные книги в полях для редактирования
+      [ ] Реализовать запись изменений
+           - после записи изменений перенаправлять на страницу просмотра (url: bc.com/:login/books/:id)

@@ -11,14 +11,13 @@ import {first} from 'rxjs/internal/operators';
 })
 export class AppBookDetailComponent implements OnInit {
 
-  book: BookModel;
+  book$: Observable<BookModel> = this.booksReduxService.bookDetail$;
 
   constructor(private booksReduxService: BooksReduxService,
               private routerReduxService: RouterReduxService) {}
 
   ngOnInit() {
     const id: string = this.routerReduxService.getBookId();
-    this.booksReduxService.getBookById(id);
-    this.booksReduxService.bookDetail$.pipe(first(Boolean)).subscribe(book => this.book = book);
+    this.booksReduxService.fetchBookById(id);
   }
 }

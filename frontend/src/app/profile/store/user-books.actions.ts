@@ -8,7 +8,10 @@ export enum UserBooksActionTypes {
   FetchUserBooksFailed = '[Profile] Fetch user books failed',
   FetchEditingBook = '[Profile] Fetch edit book',
   FetchEditingBookSucceed = '[Profile] Fetch edit book succeed',
-  FetchEditingBookFailed = '[Profile] Fetch edit book failed'
+  FetchEditingBookFailed = '[Profile] Fetch edit book failed',
+  EditBook = '[Profile] Edit book',
+  EditBookSucceed = '[Profile] Edit book succeed',
+  EditBookFailed = '[Profile] Edit book failed'
 }
 
 export class FetchUserBooks implements Action {
@@ -47,6 +50,23 @@ export class FetchEditingBookFailed implements Action {
   constructor(public error: Error) {}
 }
 
+export class EditBook implements Action {
+  readonly type = UserBooksActionTypes.EditBook;
+
+  constructor(public book: BookModel) {}
+}
+
+export class EditBookSucceed implements Action {
+  readonly type = UserBooksActionTypes.EditBookSucceed;
+
+  constructor(public book: BookModel) {}
+}
+
+export class EditBookFailed implements Action {
+  readonly type = UserBooksActionTypes.EditBookFailed;
+
+  constructor(public error: Error) {}
+}
 
 export const UserBooksActions = {
   FetchUserBooks,
@@ -54,7 +74,10 @@ export const UserBooksActions = {
   FetchUserBooksFailed,
   FetchEditingBook,
   FetchEditingBookSucceed,
-  FetchEditingBookFailed
+  FetchEditingBookFailed,
+  EditBook,
+  EditBookSucceed,
+  EditBookFailed
 };
 
 export type TUserBooksAction =
@@ -64,4 +87,7 @@ export type TUserBooksAction =
   | FetchEditingBook
   | FetchEditingBookSucceed
   | FetchEditingBookFailed
+  | EditBook
+  | EditBookSucceed
+  | EditBookFailed
   ;
