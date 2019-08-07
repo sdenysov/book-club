@@ -4,15 +4,15 @@ import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {Observable, of} from 'rxjs/index';
 import {Action} from '@ngrx/store';
 import {
-  EditBook,
-  FetchEditingBook, FetchUserBooks, UserBooksActions,
-  UserBooksActionTypes
-} from '@@app/profile/store/user-books.actions';
+  EditBook, EditBookSucceed,
+  FetchEditingBook, FetchProfileBooks, ProfileBooksActions,
+  ProfileBooksActionTypes
+} from '@@app/profile/store/profile-books.actions';
 import {catchError, map, mergeMap} from 'rxjs/internal/operators';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
 
 @Injectable()
-export class UserBooksEffects {
+export class ProfileBooksEffects {
 
   constructor(private actions$: Actions,
               private booksRestService: BooksRestService,
@@ -20,35 +20,35 @@ export class UserBooksEffects {
   }
 
   @Effect()
-  fetchUserBooks$: Observable<Action> = this.actions$.pipe(
-    ofType<FetchUserBooks>(UserBooksActionTypes.FetchUserBooks),
-    mergeMap((action: FetchUserBooks) => this.booksRestService.getByUserId$(action.user.id)),
-    map(userBooks => new UserBooksActions.FetchUserBooksSucceed(userBooks)),
+  fetchProfileBooks$: Observable<Action> = this.actions$.pipe(
+    ofType<FetchProfileBooks>(ProfileBooksActionTypes.FetchProfileBooks),
+    mergeMap((action: FetchProfileBooks) => this.booksRestService.getByUserId$(action.user.id)),
+    map(ProfileBooks => new ProfileBooksActions.FetchProfileBooksSucceed(ProfileBooks)),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.FetchUserBooksFailed(error));
+      return of(new ProfileBooksActions.FetchProfileBooksFailed(error));
     })
   );
 
   @Effect()
   fetchEditingBook$: Observable<Action> = this.actions$.pipe(
-    ofType<FetchEditingBook>(UserBooksActionTypes.FetchEditingBook),
+    ofType<FetchEditingBook>(ProfileBooksActionTypes.FetchEditingBook),
     mergeMap((action: FetchEditingBook) => this.booksRestService.getBookById$(action.bookId)),
-    map(book => new UserBooksActions.FetchEditingBookSucceed(book)),
+    map(book => new ProfileBooksActions.FetchEditingBookSucceed(book)),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.FetchEditingBookFailed(error));
+      return of(new ProfileBooksActions.FetchEditingBookFailed(error));
     })
   );
 
   @Effect()
   editBook$: Observable<Action> = this.actions$.pipe(
-    ofType<EditBook>(UserBooksActionTypes.EditBook),
+    ofType<EditBook>(ProfileBooksActionTypes.EditBook),
     mergeMap((action: EditBook) => this.booksRestService.editBook$(action.book)),
-    map(book => new UserBooksActions.EditBookSucceed(book)),
+    map(book => new ProfileBooksActions.EditBookSucceed(book)),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.EditBookFailed(error));
+      return of(new ProfileBooksActions.EditBookFailed(error));
     })
   );
 }

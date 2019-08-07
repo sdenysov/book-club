@@ -10,7 +10,6 @@ import {catchError} from 'rxjs/internal/operators';
 import {Action} from '@ngrx/store';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
-import {FetchEditingBook, UserBooksActions, UserBooksActionTypes} from '@@app/profile/store/user-books.actions';
 
 @Injectable()
 export class BookEffects {

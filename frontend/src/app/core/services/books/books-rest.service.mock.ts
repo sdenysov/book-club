@@ -3,7 +3,7 @@ import {Observable, of} from 'rxjs/index';
 import {HttpResponse} from '@angular/common/http';
 import {BookModel} from '@@share/models/book.model';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {userBooksMock} from '@@share/mocks/user-books-list.mock';
+import {profileBooksMock} from '@@share/mocks/user-books-list.mock';
 import {delay} from 'rxjs/internal/operators';
 import {SuggestionsMock} from '@@share/mocks/books-suggestion.mock';
 import {booksListMock} from '@@share/mocks/books-list.mock';
@@ -35,10 +35,14 @@ export class BooksRestServiceMock implements BooksRestService {
   }
 
   getByUserId$(userId: string): Observable<BookModel[]> {
-    return of(userBooksMock[userId] || []).pipe(delay(2000));
+    return of(profileBooksMock[userId] || []).pipe(delay(2000));
   }
 
   getBookById$(bookId: string): Observable<BookModel> {
     return of(booksListMock.find(book => book.id === bookId)).pipe(delay(2000));
+  }
+
+  editBook$(book: BookModel) {
+    return of({} as HttpResponse<any>);
   }
 }

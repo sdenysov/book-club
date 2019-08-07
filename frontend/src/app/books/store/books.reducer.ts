@@ -1,6 +1,5 @@
 import {BooksStateModel} from '@@books/models/books-state.model';
-import {BooksActions, BooksActionTypes, TBooksAction} from '@@books/store/books.actions';
-import {UserBooksActionTypes} from '@@app/profile/store/user-books.actions';
+import {BooksActionTypes, TBooksAction} from '@@books/store/books.actions';
 
 const initialState: BooksStateModel = {
   loading: false,
@@ -14,7 +13,6 @@ export function booksReducer(state: BooksStateModel = initialState, action: TBoo
       return {...state, loading: true};
     }
     case BooksActionTypes.FetchBooksSucceed: {
-      console.log(action.books);
       return {...state, loading: false, entries: action.books};
     }
     case BooksActionTypes.FetchBooksFailed: {

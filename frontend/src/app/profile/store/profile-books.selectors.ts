@@ -6,7 +6,7 @@ const getBooks = createSelector(getState, s => s.books);
 const getEditingBook = createSelector(getState, s => s.editingBook);
 const isLoading = createSelector(getState, s => s.loading);
 const isLoaded = createSelector(getState, s => s.loaded);
-const getUserBookById = function (id: string) {
+const getProfileBookById = function (id: string) {
   return createSelector(getBooks, books => books.find(book => book.id === id));
 };
 
@@ -16,5 +16,5 @@ export const ProfileSelectors = {
   getEditingBook,
   isLoading,
   isLoaded,
-  getUserBookById
+  getProfileBookById
 };

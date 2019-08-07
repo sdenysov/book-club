@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'books', loadChildren: './books/books.module#AppBooksModule'},
   {path: 'login', component: AppLogInComponent},
   {path: 'register', component: AppRegisterComponent},
-  {path: 'user', loadChildren: './profile/profile.module#AppProfileModule', canLoad: [UserGuard]},
+  {path: ':login', loadChildren: './profile/profile.module#AppProfileModule', canLoad: [UserGuard]},
   {path: '**',  redirectTo: '', pathMatch: 'full'}
 ];
 

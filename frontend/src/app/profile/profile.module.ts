@@ -6,16 +6,16 @@ import {ShareModule} from '@@share/share.module';
 import {AppUserRoutingModule} from '@@app/profile/profile-routing.module';
 import {AppProfileComponent} from '@@app/profile/components/profile/profile.component';
 import {StoreModule} from '@ngrx/store';
-import {userBooksReducer} from '@@app/profile/store/user-books.reducer';
+import {ProfileBooksReducer} from '@@app/profile/store/profile-books.reducer';
 import {EffectsModule} from '@ngrx/effects';
-import {UserBooksEffects} from '@@app/profile/store/user-books.effects';
+import {ProfileBooksEffects} from '@@app/profile/store/profile-books.effects';
 import {AppEditBookComponent} from '@@app/profile/components/edit-book/edit-book.component';
 
 @NgModule({
   imports: [
     ShareModule,
-    StoreModule.forFeature('profile', userBooksReducer),
-    EffectsModule.forFeature([UserBooksEffects]),
+    StoreModule.forFeature('profile', ProfileBooksReducer),
+    EffectsModule.forFeature([ProfileBooksEffects]),
     AppUserRoutingModule
   ],
   declarations: [

@@ -1,5 +1,5 @@
 import {ProfileStateModel} from '@@app/profile/models/profile-state.model';
-import {UserBooksActionTypes, TUserBooksAction} from '@@app/profile/store/user-books.actions';
+import {ProfileBooksActionTypes, TProfileBooksAction} from '@@app/profile/store/profile-books.actions';
 
 const initialState: ProfileStateModel = {
   loaded: false,
@@ -8,18 +8,18 @@ const initialState: ProfileStateModel = {
   editingBook: null
 };
 
-export function userBooksReducer(state: ProfileStateModel = initialState, action: TUserBooksAction): ProfileStateModel {
+export function ProfileBooksReducer(state: ProfileStateModel = initialState, action: TProfileBooksAction): ProfileStateModel {
   switch (action.type) {
-    case UserBooksActionTypes.FetchUserBooks: {
+    case ProfileBooksActionTypes.FetchProfileBooks: {
       return {...state, loading: true, loaded: false};
     }
-    case UserBooksActionTypes.FetchUserBooksSucceed: {
+    case ProfileBooksActionTypes.FetchProfileBooksSucceed: {
       return {...state, loading: false, loaded: true, books: action.books};
     }
-    case UserBooksActionTypes.FetchUserBooksFailed: {
+    case ProfileBooksActionTypes.FetchProfileBooksFailed: {
       return {...state, loading: false, loaded: false};
     }
-    case UserBooksActionTypes.FetchEditingBookSucceed: {
+    case ProfileBooksActionTypes.FetchEditingBookSucceed: {
       return {...state, editingBook: action.book};
     }
     default: {

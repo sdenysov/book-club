@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {UserBooksReduxService} from '@@app/profile/services/user-books-redux.service';
+import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-redux.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {first} from 'rxjs/internal/operators';
-import {UserBooksService} from '@@app/profile/services/user-books.servcie';
+import {ProfileBooksService} from '@@app/profile/services/profile-books.service';
 import {BookModel} from '@@share/models/book.model';
 import {RouterReduxService} from '@@router/services/router-redux.service';
 
@@ -15,16 +15,16 @@ export class AppEditBookComponent implements OnInit {
 
   editBookForm: FormGroup;
 
-  constructor(private userBooksService: UserBooksService,
-              private userBooksReduxService: UserBooksReduxService,
+  constructor(private profileBooksService: ProfileBooksService,
+              private profileBooksReduxService: ProfileBooksReduxService,
               private routerReduxService: RouterReduxService,
               private builder: FormBuilder,
               private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.userBooksService.fetchEditingBook();
-    this.userBooksReduxService.editingBook$
+    this.profileBooksService.fetchEditingBook();
+    this.profileBooksReduxService.editingBook$
       .pipe(first(Boolean))
       .subscribe(book => {
         this.editBookForm = this.builder.group(book);
@@ -35,6 +35,6 @@ export class AppEditBookComponent implements OnInit {
   save() {
     const book: BookModel = this.editBookForm.value;
     book.id = this.routerReduxService.getBookId();
-    this.userBooksService.editBook(book);
+    this.profileBooksService.editBook(book);
   }
 }

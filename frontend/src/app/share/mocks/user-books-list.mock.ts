@@ -66,7 +66,7 @@ const owner3BookList = [
   }
 ];
 
-export const userBooksMock: { [key: string]: BookModel[] } = {
+export const profileBooksMock: { [key: string]: BookModel[] } = {
   '2': owner2BookList,
   '3': owner3BookList
 };

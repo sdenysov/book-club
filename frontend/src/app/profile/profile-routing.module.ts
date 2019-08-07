@@ -7,9 +7,9 @@ import {AppEditBookComponent} from '@@app/profile/components/edit-book/edit-book
 
 const routes: Routes = [
   {path: 'profile', component: AppProfileComponent},
-  {path: 'my-books', component: AppMyBooksComponent},
-  {path: 'my-books/edit/:id', component: AppEditBookComponent},
-  {path: 'new-book', component: AppNewBookComponent},
+  {path: 'books', component: AppMyBooksComponent},
+  {path: 'books/edit/:id', component: AppEditBookComponent},
+  {path: 'books/add', component: AppNewBookComponent},
   {path: '**', redirectTo: '/profile', pathMatch: 'full'}
 ];
 

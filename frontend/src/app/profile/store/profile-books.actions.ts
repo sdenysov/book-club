@@ -1,11 +1,11 @@
 import {BookModel} from '@@share/models/book.model';
 import {Action} from '@ngrx/store';
-import {UserModel} from '@@user/models/user.model';
+import {UserModel} from '@@share/models/user.model';
 
-export enum UserBooksActionTypes {
-  FetchUserBooks = '[Profile] Fetch user books',
-  FetchUserBooksSucceed = '[Profile] Fetch user books succeed',
-  FetchUserBooksFailed = '[Profile] Fetch user books failed',
+export enum ProfileBooksActionTypes {
+  FetchProfileBooks = '[Profile] Fetch user books',
+  FetchProfileBooksSucceed = '[Profile] Fetch user books succeed',
+  FetchProfileBooksFailed = '[Profile] Fetch user books failed',
   FetchEditingBook = '[Profile] Fetch edit book',
   FetchEditingBookSucceed = '[Profile] Fetch edit book succeed',
   FetchEditingBookFailed = '[Profile] Fetch edit book failed',
@@ -14,64 +14,64 @@ export enum UserBooksActionTypes {
   EditBookFailed = '[Profile] Edit book failed'
 }
 
-export class FetchUserBooks implements Action {
-  readonly type = UserBooksActionTypes.FetchUserBooks;
+export class FetchProfileBooks implements Action {
+  readonly type = ProfileBooksActionTypes.FetchProfileBooks;
 
   constructor(public user: UserModel) {}
 }
 
-export class FetchUserBooksSucceed implements Action {
-  readonly type = UserBooksActionTypes.FetchUserBooksSucceed;
+export class FetchProfileBooksSucceed implements Action {
+  readonly type = ProfileBooksActionTypes.FetchProfileBooksSucceed;
 
   constructor(public books: BookModel[]) {}
 }
 
-export class FetchUserBooksFailed implements Action {
-  readonly type = UserBooksActionTypes.FetchUserBooksFailed;
+export class FetchProfileBooksFailed implements Action {
+  readonly type = ProfileBooksActionTypes.FetchProfileBooksFailed;
 
   constructor(public error: Error) {}
 }
 
 export class FetchEditingBook implements Action {
-  readonly type = UserBooksActionTypes.FetchEditingBook;
+  readonly type = ProfileBooksActionTypes.FetchEditingBook;
 
   constructor(public bookId: string) {}
 }
 
 export class FetchEditingBookSucceed implements Action {
-  readonly type = UserBooksActionTypes.FetchEditingBookSucceed;
+  readonly type = ProfileBooksActionTypes.FetchEditingBookSucceed;
 
   constructor(public book: BookModel) {}
 }
 
 export class FetchEditingBookFailed implements Action {
-  readonly type = UserBooksActionTypes.FetchEditingBookFailed;
+  readonly type = ProfileBooksActionTypes.FetchEditingBookFailed;
 
   constructor(public error: Error) {}
 }
 
 export class EditBook implements Action {
-  readonly type = UserBooksActionTypes.EditBook;
+  readonly type = ProfileBooksActionTypes.EditBook;
 
   constructor(public book: BookModel) {}
 }
 
 export class EditBookSucceed implements Action {
-  readonly type = UserBooksActionTypes.EditBookSucceed;
+  readonly type = ProfileBooksActionTypes.EditBookSucceed;
 
   constructor(public book: BookModel) {}
 }
 
 export class EditBookFailed implements Action {
-  readonly type = UserBooksActionTypes.EditBookFailed;
+  readonly type = ProfileBooksActionTypes.EditBookFailed;
 
   constructor(public error: Error) {}
 }
 
-export const UserBooksActions = {
-  FetchUserBooks,
-  FetchUserBooksSucceed,
-  FetchUserBooksFailed,
+export const ProfileBooksActions = {
+  FetchProfileBooks,
+  FetchProfileBooksSucceed,
+  FetchProfileBooksFailed,
   FetchEditingBook,
   FetchEditingBookSucceed,
   FetchEditingBookFailed,
@@ -80,10 +80,10 @@ export const UserBooksActions = {
   EditBookFailed
 };
 
-export type TUserBooksAction =
-  | FetchUserBooks
-  | FetchUserBooksSucceed
-  | FetchUserBooksFailed
+export type TProfileBooksAction =
+  | FetchProfileBooks
+  | FetchProfileBooksSucceed
+  | FetchProfileBooksFailed
   | FetchEditingBook
   | FetchEditingBookSucceed
   | FetchEditingBookFailed
