@@ -4,5 +4,4 @@ export interface ProfileStateModel {
   loaded: boolean;
   loading: boolean;
   books: BookModel[];
-  editingBook: BookModel;
 }

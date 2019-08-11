@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {UserRestService} from '@@user/services/user-rest.service';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs/index';
 import {Action} from '@ngrx/store';
 import {UserActions, UserActionTypes} from '@@user/store/user.actions';
 import {catchError, exhaustMap, map} from 'rxjs/internal/operators';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
+import {UserRestService} from '@@core/services/user/user-rest.service';
 
 @Injectable()
 export class UserEffects {

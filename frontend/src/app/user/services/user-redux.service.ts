@@ -3,10 +3,10 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/index';
 import {UserStateModel} from '@@user/models/user-state.model';
 import {FetchCurrentUser} from '@@user/store/user.actions';
-import {UserModel} from '@@user/models/user.model';
 import {getUser} from '@@user/store/user.selectors';
 import {StoreUtils} from '@@share/utils/store.utils';
 import {map} from 'rxjs/internal/operators';
+import {UserModel} from '@@share/models/user.model';
 
 @Injectable({providedIn: 'root'})
 export class UserReduxService {

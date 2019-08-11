@@ -4,8 +4,7 @@ import {ProfileBooksActionTypes, TProfileBooksAction} from '@@app/profile/store/
 const initialState: ProfileStateModel = {
   loaded: false,
   loading: false,
-  books: [],
-  editingBook: null
+  books: []
 };
 
 export function ProfileBooksReducer(state: ProfileStateModel = initialState, action: TProfileBooksAction): ProfileStateModel {
@@ -18,9 +17,6 @@ export function ProfileBooksReducer(state: ProfileStateModel = initialState, act
     }
     case ProfileBooksActionTypes.FetchProfileBooksFailed: {
       return {...state, loading: false, loaded: false};
-    }
-    case ProfileBooksActionTypes.FetchEditingBookSucceed: {
-      return {...state, editingBook: action.book};
     }
     default: {
       return state;

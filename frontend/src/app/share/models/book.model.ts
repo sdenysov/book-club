@@ -1,4 +1,4 @@
-import {UserModel} from '@@user/models/user.model';
+import {UserModel} from '@@share/models/user.model';
 
 export interface BookModel {
   id: string;

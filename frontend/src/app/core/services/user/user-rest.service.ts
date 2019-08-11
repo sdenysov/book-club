@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/index';
-import {UserModel} from '@@user/models/user.model';
 import {Injectable} from '@angular/core';
-import {UserRestServicesMock} from '@@user/services/user-rest.services.mock';
+import {UserRestServicesMock} from '@@core/services/user/user-rest.services.mock';
+import {UserModel} from '@@share/models/user.model';
 
 @Injectable({providedIn: 'root', useExisting: UserRestServicesMock})
 export abstract class UserRestService {

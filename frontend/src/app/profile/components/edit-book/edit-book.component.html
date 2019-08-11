@@ -3,7 +3,7 @@
     <div class="col-md-2">
       <img src="assets/images/cover-page.jpg"/>
     </div>
-    <form *ngIf="editBookForm" [formGroup]="editBookForm" (ngSubmit)="save()" class="form-horizontal col-md-10" novalidate>
+    <form *ngIf="bookForm" [formGroup]="bookForm" (ngSubmit)="save()" class="form-horizontal col-md-10" novalidate>
       <h2 class="col-md-offset-2">Edit Book</h2>
       <div class="form-group">
         <label for="title" class="col-sm-2 control-label">Title</label>

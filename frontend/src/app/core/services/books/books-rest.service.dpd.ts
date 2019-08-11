@@ -38,7 +38,7 @@ export class BooksRestServiceDpd implements BooksRestService {
     return this.http.get<BookModel>(`${this.baseUrl}?include=owners&id=${bookId}`);
   }
 
-  editBook$(book: BookModel) {
-    return this.http.put<BookModel>(`${this.baseUrl}/${book.id}`, book);
+  editBook$(book: BookModel): Observable<HttpResponse<any>> {
+    return this.http.put<HttpResponse<any>>(`${this.baseUrl}/${book.id}`, book);
   }
 }

@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {UserModel} from '@@user/models/user.model';
+import {UserModel} from '@@share/models/user.model';
 
 export enum UserActionTypes {
   FetchCurrentUser = '[User] Fetch current user',

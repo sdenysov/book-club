@@ -3,7 +3,6 @@ import {ProfileStateModel} from '@@app/profile/models/profile-state.model';
 
 const getState = createFeatureSelector<ProfileStateModel>('profile');
 const getBooks = createSelector(getState, s => s.books);
-const getEditingBook = createSelector(getState, s => s.editingBook);
 const isLoading = createSelector(getState, s => s.loading);
 const isLoaded = createSelector(getState, s => s.loaded);
 const getProfileBookById = function (id: string) {
@@ -13,7 +12,6 @@ const getProfileBookById = function (id: string) {
 export const ProfileSelectors = {
   getState,
   getBooks,
-  getEditingBook,
   isLoading,
   isLoaded,
   getProfileBookById

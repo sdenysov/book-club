@@ -33,4 +33,8 @@ export class BooksRestServiceImpl implements BooksRestService {
   getBookById$(bookId: string): Observable<BookModel> {
     return this.http.get<BookModel>(`${this.baseUrl}/?book-id=${bookId}`);
   }
+
+  editBook$(book: BookModel): Observable<HttpResponse<any>> {
+    return of(new HttpResponse());
+  }
 }
