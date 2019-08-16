@@ -1,0 +1,75 @@
+@import "utils/colors";
+@import "utils/mixins";
+@import "variables";
+
+.navbar {
+  background-color: $color-primary;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+  & .navbar-brand {
+    font-family: 'Yesteryear', cursive;
+    color: $color-text-lightest;
+    font-size: 3rem;
+  }
+
+  .navbar-nav > li > a {
+    color: $color-text-lightest;
+  }
+}
+
+.navbar-nav {
+  & > li {
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+
+    &.active {
+      a {
+        background-color: $color-primary-active;
+      }
+    }
+  }
+
+  & .open {
+    & > a {
+      background-color: $color-primary-active;
+
+      &:focus {
+        background-color: $color-primary-active;
+      }
+
+      &:hover {
+        background-color: $color-primary-active;
+      }
+    }
+  }
+}
+
+.navbar-form {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search {
+  border: none;
+  height: 3rem;
+  min-width: 40rem;
+  background-color: $color-theme-dark;
+  border-radius: $border-radius-round;
+  color: $color-text-lightest;
+  padding-left: 3rem;
+  @include placeholder {
+    color: $color-text-light;
+  }
+}
+
+.search-ico {
+  position: absolute;
+  top: 0.9rem;
+  left: 2.5rem;
+  color: $color-text-lightest;
+}

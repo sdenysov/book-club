@@ -1,4 +1,11 @@
-$color-gray: #ccc;
+/*MAIN THEM*/
 $color-main-bg: #fff;
-$color-theme-base: #4a76a8;
+$color-primary: #4a76a8;
+$color-primary-hover: #3d6898;
+$color-primary-active: $color-primary-hover;
+$color-theme-dark: #224b7a;
 
+/*TEXT*/
+$color-text: #7a7a7a;
+$color-text-light: #ccc;
+$color-text-lightest: #fff;
