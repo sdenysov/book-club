@@ -1,1 +1,1 @@
-export class UserRestServicesImpl {};
+export class UserRestServicesImpl {}

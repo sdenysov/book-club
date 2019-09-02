@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="raw">
+    <div class="col-sm-3">
+      <app-section>
+        <app-section-main></app-section-main>
+      </app-section>
+    </div>
+    <div class="col-sm-9">
+      <app-section>
+        <app-section-header title="{{'profile.title' | translate}}" icon="icon-user">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="icon-option-horizontal"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a (click)="$event.preventDefault()" translate>profile.edit_avatar</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a (click)="$event.preventDefault()" translate>profile.edit_profile</a></li>
+          </ul>
+        </app-section-header>
+        <app-section-main>
+          <span>Some text</span>
+        </app-section-main>
+      </app-section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+@import "utils/colors";
+@import "utils/mixins";
+
+.navbar {
+  font-family: 'Lato', sans-serif;
+  background-color: $color-theme-base;
+  border-radius: 0;
+
+  .navbar-brand {
+    color: $color-nav-text;
+    font-family: "Yesteryear", cursive;
+    font-size: 3rem;
+  }
+
+  .nav.navbar-nav {
+    & > li {
+      &:hover {
+        background-color: $color-theme-base-hover;
+      }
+
+      &.active {
+        a {
+          background-color: $color-theme-base-hover;
+        }
+      }
+
+      a {
+        &:hover,
+        &:focus {
+          background-color: $color-theme-base-hover;
+        }
+      }
+    }
+  }
+
+  .nav-login-text {
+    color: $color-nav-text;
+    font-size: 1.6rem;
+    padding-right: 1rem;
+  }
+
+  .user-icon-dot {
+    border-radius: 50%;
+    display: inline-block;
+    height: 25px;
+    position: relative;
+    text-align: center;
+    background-color: $color-main-bg;
+    width: 25px;
+  }
+
+  .user-icon-dot > span {
+    top: calc(50% - 10px);
+  }
+
+  .input-group-append {
+    display: inline-block;
+  }
+}
+

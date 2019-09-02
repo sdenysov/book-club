@@ -1,3 +1,10 @@
 $z-index: (
 
 );
+
+/* Custom */
+$font-path: '/assets/fonts/';
+$border-default-radius: 5px;
+
+/* Bootstrap override */
+$icon-font-path: "#{$font-path}bootstrap/";

@@ -9,8 +9,7 @@
 - Decorators (+)
 - Pipes
 - Components vs Directives
-- angular decorators and work with templates
+- angular decorators and work with templates (+)
 - Promise vs Observable
 - Tests TDD, DDD
 - Modals
-- Toster

@@ -1,1 +1,10 @@
 @import "variables";
+
+/* Vendors */
+@import "vendors/bootstrap";
+
+/* Custom */
+@import "components/icons";
+@import "components/section";
+@import "base/fonts";
+@import "base/global";

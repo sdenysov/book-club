@@ -25,7 +25,7 @@ export class BooksReduxService {
   }
 
   getBooksByOwnerId$(id: string): Observable<BookModel[]> {
-    //TODO What if id is null?
+    // TODO What if id is null?
     return this.store.pipe(select(BooksSelectors.getBooksByOwnerId(id)));
   }
 }

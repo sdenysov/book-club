@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-profile',
-  template: '<h1>Profile</h1>'
+  templateUrl: 'profile.component.html'
 })
 
 export class AppProfileComponent implements OnInit {
@@ -10,4 +10,5 @@ export class AppProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
 }

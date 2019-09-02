@@ -6,11 +6,11 @@ import {AppNewBookComponent} from '@@app/profile/components/new-book/new-book.co
 import {AppEditBookComponent} from '@@app/profile/components/edit-book/edit-book.component';
 
 const routes: Routes = [
-  {path: 'profile', component: AppProfileComponent},
+  {path: '', component: AppProfileComponent},
   {path: 'books', component: AppMyBooksComponent},
   {path: 'books/edit/:id', component: AppEditBookComponent},
   {path: 'books/add', component: AppNewBookComponent},
-  {path: '**', redirectTo: '/profile', pathMatch: 'full'}
+  {path: '**', redirectTo: '/', pathMatch: 'full'}
 ];
 
 @NgModule({

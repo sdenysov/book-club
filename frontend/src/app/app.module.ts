@@ -16,6 +16,7 @@ import {ErrorModule} from '@@app/errors/error.module';
 import {GlobalErrorHandler} from '@@app/errors/services/global-error-handler';
 import {ErrorHandlerInterceptor} from '@@app/errors/interceptors/error-handler-interceptor';
 import {AppScreenLockModule} from '@@app/screen-lock/screen-lock.module';
+import {AppTranslationModule} from '@@app/app-translation.module';
 
 export const HTTP_INTERCEPTOR_PROVIDERS = [
   {provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true}
@@ -37,6 +38,7 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     AppRoutingModule,
     AppRouterStoreModule,
     AppScreenLockModule,
+    AppTranslationModule,
     AppNavbar,
     ErrorModule,
     AppLogInModule,

@@ -1,44 +1,41 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar">
+  <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()" href="">Main Page</a>
+      <a class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()" href="">Book Club</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input #searchInput type="text" class="form-control" placeholder="Search" (input)="inputChange$.next(searchInput.value)">
+          <span class="glyphicon glyphicon-search search-ico"></span>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav">
-        <li routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li routerLink="/register" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Register</a></li>
-      </ul>
-      <ul *ngIf="currentUserExists$ | async" class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
-            <li role="separator" class="divider"></li>
-            <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
-            <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
+      <div  class="nav navbar-nav navbar-right">
+        <ul *ngIf="currentUserExists$ | async; else unauthorizedMenu" class="nav navbar-nav navbar-right">
+          <li  class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="nav-login-text">Serhii Denysov</span>
+              <div class="user-icon-dot"><span class="glyphicon glyphicon-user"></span></div>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
+              <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ng-template #unauthorizedMenu>
+          <ul  class="nav navbar-nav navbar-right">
+            <li routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>
+            <li routerLink="/register" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Register</a></li>
           </ul>
-        </li>
-      </ul>
+        </ng-template>
+      </div>
     </div>
   </div>
 </nav>

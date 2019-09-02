@@ -1,0 +1,9 @@
+{
+  "yes": "yes",
+  "no": "no",
+  "profile":  {
+    "title": "profile",
+    "edit_avatar": "Edit profile picture",
+    "edit_profile": "Edit profile information"
+  }
+}

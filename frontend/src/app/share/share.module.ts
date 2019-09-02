@@ -2,6 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SectionComponent} from '@@share/components/section/section.component';
+import {SectionHeaderComponent} from '@@share/components/section/section-header.component';
+import {SectionMainComponent} from '@@share/components/section/section-main.component';
+import {TranslateModule} from '@ngx-translate/core';
+import {CapitalizePipe} from '@@share/pipes/cupitalize.pipe';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -11,14 +16,18 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
  */
 
 const SHARE_DECLARATIONS = [
-
+  SectionComponent,
+  SectionHeaderComponent,
+  SectionMainComponent,
+  CapitalizePipe
 ];
 
 const SHARE_IMPORTS = [
   CommonModule,
   RouterModule,
   ReactiveFormsModule,
-  FormsModule
+  FormsModule,
+  TranslateModule
 ];
 
 @NgModule({
