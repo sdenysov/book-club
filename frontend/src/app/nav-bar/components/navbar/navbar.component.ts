@@ -12,6 +12,12 @@ import {UserReduxService} from '@@user/services/user-redux.service';
 })
 export class AppNavbarComponent implements OnInit {
 
+  items: string[] = [
+    'The first choice!',
+    'And another choice for you.',
+    'but wait! A third!'
+  ];
+
   currentUserExists$: Observable<boolean> = this.userReduxService.currentUserExists$;
 
   constructor(private booksRestService: BooksRestService,

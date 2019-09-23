@@ -2,12 +2,14 @@ import {NgModule} from '@angular/core';
 import {AppNavbarComponent} from '@@app/nav-bar/components/navbar/navbar.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import {ShareModule} from '@@share/share.module';
 
 @NgModule(
   {
     imports: [
       CommonModule,
-      RouterModule
+      RouterModule,
+      ShareModule
     ],
     declarations: [
       AppNavbarComponent
@@ -17,6 +19,4 @@ import {RouterModule} from '@angular/router';
     ]
   }
 )
-export class AppNavbar {
-
-}
+export class AppNavbar {}

@@ -8,3 +8,18 @@
   @extend .glyphicon;
   @extend .glyphicon-option-horizontal;
 }
+
+.icon-search {
+  @extend .glyphicon;
+  @extend .glyphicon-search;
+}
+
+.icon-location {
+  @extend .glyphicon;
+  @extend .glyphicon-map-marker;
+}
+
+.icon-book {
+  @extend .glyphicon;
+  @extend .glyphicon-book;
+}

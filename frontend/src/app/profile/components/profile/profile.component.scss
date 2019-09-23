@@ -1,0 +1,16 @@
+@import "utils/colors";
+@import "utils/mixins";
+
+.profile-section {
+  padding-right: 0;
+}
+
+.profile-dropdown-menu {
+  float: right;
+  left: 79%;
+  top: 3.5rem;
+}
+
+.icon-option-horizontal {
+  margin-right: 1.5rem;
+}

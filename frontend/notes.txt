@@ -2,7 +2,7 @@
 == Темы
 
 - SideEffects (+)
-- i18n
+- i18n (+)
 - Dependency injection (+)
 - Global error handling (+)
 - Interceptors (+)
@@ -13,3 +13,4 @@
 - Promise vs Observable
 - Tests TDD, DDD
 - Modals
+

@@ -7,6 +7,7 @@ import {SectionHeaderComponent} from '@@share/components/section/section-header.
 import {SectionMainComponent} from '@@share/components/section/section-main.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {CapitalizePipe} from '@@share/pipes/cupitalize.pipe';
+import {BsDropdownModule} from 'ngx-bootstrap';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -27,7 +28,8 @@ const SHARE_IMPORTS = [
   RouterModule,
   ReactiveFormsModule,
   FormsModule,
-  TranslateModule
+  TranslateModule,
+  BsDropdownModule
 ];
 
 @NgModule({

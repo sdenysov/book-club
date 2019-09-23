@@ -5,5 +5,8 @@
     "title": "profile",
     "edit_avatar": "Edit profile picture",
     "edit_profile": "Edit profile information"
+  },
+  "books":  {
+    "title": "books"
   }
 }
