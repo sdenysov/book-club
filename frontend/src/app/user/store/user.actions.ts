@@ -1,36 +1,9 @@
-import {Action} from '@ngrx/store';
-import {UserModel} from '@@share/models/user.model';
+import {createAction, props} from '@ngrx/store';
 
 export enum UserActionTypes {
-  FetchCurrentUser = '[User] Fetch current user',
-  FetchCurrentUserSucceed = '[User] Fetch current user succeed',
-  FetchCurrentUserFailed = '[User] Fetch current user failed'
-}
-
-export class FetchCurrentUser implements Action {
-  readonly type = UserActionTypes.FetchCurrentUser;
-}
-
-export class FetchCurrentUserSucceed implements Action {
-  readonly type = UserActionTypes.FetchCurrentUserSucceed;
-
-  constructor(public currentUser: UserModel) {}
-}
-
-export class FetchCurrentUserFailed implements Action {
-  readonly type = UserActionTypes.FetchCurrentUserFailed;
-
-  constructor(public error: Error) {}
+  SET_OBSERVING_USERNAME = '[User] set observing username'
 }
 
 export const UserActions = {
-  FetchCurrentUser,
-  FetchCurrentUserSucceed,
-  FetchCurrentUserFailed
+  setObservingUsername: createAction(UserActionTypes.SET_OBSERVING_USERNAME, props<{ username: string }>())
 };
-
-export type TUserAction =
-  | FetchCurrentUser
-  | FetchCurrentUserSucceed
-  | FetchCurrentUserFailed
-  ;

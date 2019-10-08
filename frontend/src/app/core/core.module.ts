@@ -1,5 +1,5 @@
+import {AppShareModule} from '@@share/app-share.module';
 import {NgModule} from '@angular/core';
-import {ShareModule} from '@@share/share.module';
 
 /**
  * All services which have to have one instance per application should be implemented here.
@@ -7,7 +7,7 @@ import {ShareModule} from '@@share/share.module';
 
 @NgModule({
   imports: [
-    ShareModule
+    AppShareModule
   ],
   declarations: [],
   exports: []

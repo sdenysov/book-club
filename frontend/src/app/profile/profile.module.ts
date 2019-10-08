@@ -1,29 +1,26 @@
-import {NgModule} from '@angular/core';
-import {AppMyBooksComponent} from '@@app/profile/components/my-books/my-books.component';
-import {AppNewBookComponent} from '@@app/profile/components/new-book/new-book.component';
-import {AppMyBookComponent} from '@@app/profile/components/my-book/my-book.component';
-import {ShareModule} from '@@share/share.module';
-import {AppUserRoutingModule} from '@@app/profile/profile-routing.module';
-import {AppProfileComponent} from '@@app/profile/components/profile/profile.component';
-import {StoreModule} from '@ngrx/store';
-import {ProfileBooksReducer} from '@@app/profile/store/profile-books.reducer';
-import {EffectsModule} from '@ngrx/effects';
+import {EditProfilePageComponent} from '@@app/profile/pages/edit/edit-profile-page.component';
+import {ProfilePageComponent} from '@@app/profile/pages/profile/profile-page.component';
+import {ProfileSettingsPageComponent} from '@@app/profile/pages/settings/profile-settings-page.component';
 import {ProfileBooksEffects} from '@@app/profile/store/profile-books.effects';
-import {AppEditBookComponent} from '@@app/profile/components/edit-book/edit-book.component';
+import {profileBooksReducer} from '@@app/profile/store/profile-books.reducer';
+import {AppShareModule} from '@@share/app-share.module';
+import {NgModule} from '@angular/core';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreModule} from '@ngrx/store';
+
+const SHARED_DECLARATIONS = [
+  ProfilePageComponent,
+  EditProfilePageComponent,
+  ProfileSettingsPageComponent
+];
 
 @NgModule({
   imports: [
-    ShareModule,
-    StoreModule.forFeature('profile', ProfileBooksReducer),
+    AppShareModule,
+    StoreModule.forFeature('profile', profileBooksReducer),
     EffectsModule.forFeature([ProfileBooksEffects]),
-    AppUserRoutingModule
   ],
-  declarations: [
-    AppMyBooksComponent,
-    AppNewBookComponent,
-    AppMyBookComponent,
-    AppProfileComponent,
-    AppEditBookComponent
-  ]
+  declarations: SHARED_DECLARATIONS,
+  exports: SHARED_DECLARATIONS
 })
 export class AppProfileModule {}

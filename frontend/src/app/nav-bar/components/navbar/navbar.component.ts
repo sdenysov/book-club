@@ -1,8 +1,9 @@
+import {AuthService} from '@@auth/services/auth.service';
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {UserReduxService} from '@@user/services/user-redux.service';
 import {Component, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter} from 'rxjs/internal/operators';
+import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +12,11 @@ import {debounceTime, distinctUntilChanged, filter} from 'rxjs/internal/operator
 })
 export class AppNavbarComponent implements OnInit {
 
-  currentUserExists$: Observable<boolean> = this.userReduxService.currentUserExists$;
+  loggedIn$: Observable<boolean> = this.authService.isLoggedIn$();
 
   constructor(private booksRestService: BooksRestService,
-              private userReduxService: UserReduxService) {
+              private authReduxFacade: AuthReduxFacade,
+              private authService: AuthService) {
   }
 
   inputChange$: Subject<string> = new Subject<string>();

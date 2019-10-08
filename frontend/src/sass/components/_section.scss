@@ -1,0 +1,22 @@
+@import "utils/colors";
+@import "utils/mixins";
+@import "variables";
+
+$section-base-padding: 0.8rem;
+
+app-section {
+  section {
+    border-radius: $border-radius-default;
+    background-color: $color-main-bg;
+
+    header {
+      @include clearfix;
+      padding: $section-base-padding;
+      border-bottom: 1px solid $color-gray-light;
+    }
+
+    main {
+      padding: $section-base-padding;
+    }
+  }
+}

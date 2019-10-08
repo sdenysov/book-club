@@ -5,6 +5,7 @@ import {RouterStateSerializer} from '@ngrx/router-store';
 export class CustomRouterStateSerializer implements RouterStateSerializer<RouterStateModel> {
 
   serialize(routerState: RouterStateSnapshot): RouterStateModel {
+    console.log('serialize router called');
     let state: ActivatedRouteSnapshot = routerState.root;
     while (state.firstChild) {
       state = state.firstChild;

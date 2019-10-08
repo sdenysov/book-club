@@ -1,4 +1,7 @@
 /*MAIN THEM*/
+$color-gray: #7a7a7a;
+$color-gray-light: #ccc;
+$color-gray-lightest: #fff;
 $color-main-bg: #fff;
 $color-primary: #4a76a8;
 $color-primary-hover: #3d6898;
@@ -6,6 +9,6 @@ $color-primary-active: $color-primary-hover;
 $color-theme-dark: #224b7a;
 
 /*TEXT*/
-$color-text: #7a7a7a;
-$color-text-light: #ccc;
-$color-text-lightest: #fff;
+$color-text: $color-gray;
+$color-text-light: $color-gray-light;
+$color-text-lightest: $color-gray-lightest;

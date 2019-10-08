@@ -1,21 +1,17 @@
-import {Inject, Injectable} from '@angular/core';
-import {Observable} from 'rxjs/index';
-import {HttpClient, HttpResponse} from '@angular/common/http';
-import {BookModel} from '@@share/models/book.model';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {ScreenLockReduxService} from '@@app/screen-lock/services/screen-lock-redux.service';
-import {finalize, map, tap} from 'rxjs/internal/operators';
 import {ScreenLocking} from '@@screen-lock/decorators/screen-locking.decorator';
+import {BookModel} from '@@share/models/book.model';
+import {UrlProperties} from '@@share/properties/url.properties';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class BooksRestServiceDpd implements BooksRestService {
 
-  private baseUrl = `${this.api}/books`;
+  private baseUrl = `${UrlProperties.api}/books`;
 
-  constructor(@Inject('api') private api: string,
-              private http: HttpClient,
-              private screenLockReduxService: ScreenLockReduxService) {
-  }
+  constructor(private http: HttpClient) {}
 
   @ScreenLocking()
   get$(): Observable<BookModel[]> {

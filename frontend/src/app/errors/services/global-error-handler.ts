@@ -1,9 +1,8 @@
+import {ScreenLockReduxFacade} from '@@screen-lock/services/screen-lock-redux.facade';
 import {ErrorHandler, Injectable, Injector} from '@angular/core';
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
 import {ErrorsConverter} from '@@errors/converters/errors-converter';
-import {ExceptionData} from '@@app/errors/models/exception-data.model';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
-import {ScreenLockReduxService} from '@@screen-lock/services/screen-lock-redux.service';
 
 @Injectable({providedIn: 'root'})
 export class GlobalErrorHandler implements ErrorHandler {
@@ -25,7 +24,7 @@ export class GlobalErrorHandler implements ErrorHandler {
   }
 
   get screenLockReduxService() {
-    return this.injector.get(ScreenLockReduxService);
+    return this.injector.get(ScreenLockReduxFacade);
   }
 
   handleError(error: Error | HttpErrorData) {

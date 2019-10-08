@@ -3,8 +3,6 @@ import {Observable, of} from 'rxjs/index';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {BookModel} from '@@share/models/book.model';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {booksListMock} from '@@share/mocks/books-list.mock';
-import {delay} from 'rxjs/internal/operators';
 
 @Injectable({providedIn: 'root'})
 export class BooksRestServiceImpl implements BooksRestService {

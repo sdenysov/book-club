@@ -1,24 +1,20 @@
-import {UserStateModel} from '@@user/models/user-state.model';
-import {TUserAction, UserActionTypes} from '@@user/store/user.actions';
+import {PageAccessLevel} from '@@user/models/page-access-level';
+import {UserState} from '@@user/models/user-state';
+import {UserActions} from '@@user/store/user.actions';
+import {Action, createReducer, on} from '@ngrx/store';
 
-const initialState: UserStateModel = {
-  loading: false,
-  entry: null
+const initialState: UserState = {
+  observingUsername: null,
+  pageAccessLevel: PageAccessLevel.READ_ONLY
 };
 
-export function userReducer(state: UserStateModel = initialState, action: TUserAction): UserStateModel {
-  switch (action.type) {
-    case UserActionTypes.FetchCurrentUser: {
-      return {...state, loading: true};
-    }
-    case UserActionTypes.FetchCurrentUserSucceed: {
-      return {...state, loading: false, entry: action.currentUser};
-    }
-    case UserActionTypes.FetchCurrentUserFailed: {
-      return {...state, loading: false};
-    }
-    default: {
-      return state;
-    }
-  }
+const _userReducer = createReducer(initialState,
+  on(
+    UserActions.setObservingUsername,
+    (state, {username}) => ({...state, observingUsername: username})
+  )
+);
+
+export function userReducer(state: UserState = initialState, action: Action) {
+  return _userReducer(state, action);
 }

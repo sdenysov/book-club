@@ -10,17 +10,24 @@
       <a class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()" href="">Book Club</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
       <ul class="nav navbar-nav">
         <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
       </ul>
+
+
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input #searchInput type="text" class="form-control search" placeholder="Search" (input)="inputChange$.next(searchInput.value)">
           <span class="glyphicon glyphicon-search search-ico"></span>
         </div>
       </form>
+
+
+
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="currentUserExists$ | async" class="dropdown">
+        <li *ngIf="loggedIn$ | async" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
