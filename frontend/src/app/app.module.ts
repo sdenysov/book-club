@@ -19,9 +19,6 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     CoreModule,
     BrowserModule,
@@ -34,6 +31,9 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     AppRoutingModule,
     AppScreenLockModule,
     AppRouterStoreModule
+  ],
+  declarations: [
+    AppComponent
   ],
   providers: [
     ...HTTP_INTERCEPTOR_PROVIDERS,

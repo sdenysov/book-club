@@ -1,7 +1,7 @@
-import {RouterStateService} from '@@router/services/router-state.service';
+import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 import {UserActions} from '@@user/store/user.actions';
 import {Injectable} from '@angular/core';
-import {Actions, ofType} from '@ngrx/effects';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {ROUTER_NAVIGATED} from '@ngrx/router-store';
 import {map} from 'rxjs/operators';
 
@@ -9,12 +9,12 @@ import {map} from 'rxjs/operators';
 export class UserEffects {
 
   constructor(private actions$: Actions,
-              private routerStateService: RouterStateService) {
+              private routerReduxFacade: RouterReduxFacade) {
   }
 
-  catchObservingUsername$ = this.actions$.pipe(
+  catchObservingUsername$ = createEffect(() => this.actions$.pipe(
     ofType(ROUTER_NAVIGATED),
-    map(() => this.routerStateService.getUsername()),
+    map(() => this.routerReduxFacade.getUsername()),
     map((username: string) => UserActions.setObservingUsername({username}))
-  );
+  ));
 }

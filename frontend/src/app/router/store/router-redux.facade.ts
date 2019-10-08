@@ -1,22 +1,23 @@
 import {RouterStateModel} from '@@router/models/router-state.model';
-import {RouterStateSelectors} from '@@router/store/router-state.selectors';
+import {RouterSelectors} from '@@router/store/router-state.selectors';
 import {StoreUtils} from '@@share/utils/store.utils';
 import {Injectable} from '@angular/core';
-import {Params} from '@angular/router';
-import {RouterReducerState} from '@ngrx/router-store';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class RouterReduxFacade {
 
-  routerStateParams$: Observable<Params> = this.store.pipe(select(RouterStateSelectors.getRouterStateParams));
-  routingInProgress$: Observable<boolean> = this.store.pipe(select(RouterStateSelectors.isRoutingInProgress));
+  routingInProgress$: Observable<boolean> = this.store.pipe(select(RouterSelectors.isRoutingInProgress));
 
-  constructor(private store: Store<RouterReducerState<RouterStateModel>>) {}
+  constructor(private store: Store<RouterStateModel>) {}
 
   getBookId(): string {
-    const stateParams = StoreUtils.getSync(this.store, RouterStateSelectors.getRouterStateParams);
-    return stateParams.id;
+    return StoreUtils.getSync(this.store, RouterSelectors.selectRouteParam('id'));
+  }
+
+  getUsername(): string {
+    console.log('getUsername called');
+    return StoreUtils.getSync(this.store, RouterSelectors.selectRouteParam('username'));
   }
 }

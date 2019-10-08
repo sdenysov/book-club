@@ -1,8 +1,5 @@
-import {Data, Params} from '@angular/router';
+import * as routerStore from '@ngrx/router-store';
 
 export interface RouterStateModel {
-  url: string;
-  queryParams: Params;
-  params: Params;
-  data: Data;
+  router: routerStore.RouterReducerState<any>;
 }
