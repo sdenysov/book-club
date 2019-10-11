@@ -17,7 +17,7 @@ export class AuthGuard implements CanLoad {
     return this.authService.isLoggedIn$().pipe(
       tap(loggedIn => {
         if (!loggedIn) {
-          this.authService.requestedUrlBeforeRedirectToLoginPage = `/${route.path}`;
+          this.authService.redirectUrl = `/${route.path}`;
           this.routerService.goToLoginPage();
         }
       })

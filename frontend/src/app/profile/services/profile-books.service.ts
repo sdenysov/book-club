@@ -2,7 +2,7 @@ import {AuthReduxFacade} from '@@app/auth/store/auth-redux.facade';
 import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-redux.service';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
@@ -22,7 +22,7 @@ export class ProfileBooksService {
     this.profileBooksReduxService.fetchProfileBooks(user);
   }
 
-  getBookById$(id: string): Observable<BookModel> {
+  getBookById$(id: string): Observable<Book> {
     return this.booksRestService.getBookById$(id).pipe(
       catchError(error => {
         this.httpErrorHandlerService.handleErrorResponse(error);

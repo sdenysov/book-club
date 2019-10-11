@@ -6,6 +6,14 @@ export class RouterService {
 
   constructor(private router: Router) {}
 
+  goTo(url: string) {
+    this.router.navigate([url]);
+  }
+
+  goToMainPage() {
+    this.router.navigate(['/']);
+  }
+
   goToLoginPage() {
     this.router.navigate(['/login']);
   }

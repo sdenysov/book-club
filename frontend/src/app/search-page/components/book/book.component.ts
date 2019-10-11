@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
 @Component({
   selector: 'app-book-component',
@@ -8,5 +8,5 @@ import {BookModel} from '@@share/models/book.model';
 })
 export class BookComponent {
 
-  @Input() book: BookModel;
+  @Input() book: Book;
 }

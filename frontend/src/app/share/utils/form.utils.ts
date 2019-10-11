@@ -1,21 +1,25 @@
-import {HttpErrorResponse} from '@angular/common/http';
-import {FormGroup} from '@angular/forms';
+import {FormErrors} from '@@share/models/form-errors';
+import {ValidationError} from '@@share/models/validation-error';
+import {AbstractControl, FormGroup} from '@angular/forms';
 
 export class FormUtils {
 
-  static parseErrorFromResponseToForm(errorResponse: HttpErrorResponse, form: FormGroup) {
-    // TODO test it
-    const responseBody = errorResponse.error;
-    if (typeof responseBody === 'string') {
-      form.setErrors({'$async': responseBody});
+  static setErrorsToForm(formErrors: FormErrors, form: FormGroup) {
+    if (!formErrors) {
+      return;
     }
-    if (typeof responseBody === 'object') {
-      Object.keys(responseBody).forEach(fieldKey => {
-        if (responseBody[fieldKey]) {
-          const {type, params} = responseBody[fieldKey];
-          form.get(fieldKey).setErrors({[type]: params});
-        }
+    FormUtils.setValidationError(form, formErrors['$form']);
+    Object.entries(form.controls)
+      .filter(([name]) => name in formErrors)
+      .forEach(([name, control]) => {
+        FormUtils.setValidationError(control, formErrors[name]);
       });
+  }
+
+  private static setValidationError(control: AbstractControl, validationError: ValidationError) {
+    const {type, params} = validationError;
+    if (type) {
+      control.setErrors({[type]: params || true});
     }
   }
 }

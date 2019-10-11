@@ -1,7 +1,7 @@
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
 export interface ProfileState {
   loaded: boolean;
   loading: boolean;
-  books: BookModel[];
+  books: Book[];
 }

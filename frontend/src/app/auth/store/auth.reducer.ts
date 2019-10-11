@@ -10,7 +10,7 @@ const initialState: AuthState = {
 const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserSucceed,
-    AuthActions.setLoggedInUser,
+    AuthActions.loginSuccess,
     (state, {user}) => ({...state, loggedInUser: user, loggedInUserLoaded: true})
   ),
   on(

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 
@@ -24,7 +24,7 @@ export class AppNewBookComponent implements OnInit {
   }
 
   addBook() {
-    const book: BookModel = this.newBookForm.value;
+    const book: Book = this.newBookForm.value;
     book.rating = 3;
     this.booksRestService.addBook$(book);
   }

@@ -1,6 +1,6 @@
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
-export const SuggestionsMock: {[key: string]: BookModel[]} = {
+export const SuggestionsMock: {[key: string]: Book[]} = {
   suggestion1: [
     {
       'id': '1',

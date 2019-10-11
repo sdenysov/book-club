@@ -16,8 +16,8 @@ export class AuthReduxFacade {
 
   constructor(private store: Store<{ [AUTH_STORE_KEY]: User }>) {}
 
-  setLoggedInUser(user: User) {
-    this.store.dispatch(AuthActions.setLoggedInUser({user}));
+  loginSuccess(user: User) {
+    this.store.dispatch(AuthActions.loginSuccess({user}));
   }
 
   getLoggedInUser(): User {

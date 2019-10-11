@@ -1,6 +1,6 @@
 import {UserBooksReduxFacade} from '@@app/user-books/store/user-books-redux.facade';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class BookDetailsPageComponent implements OnInit {
 
-  book$: Observable<BookModel> = this.userBooksReduxFacade.bookDetail$;
+  book$: Observable<Book> = this.userBooksReduxFacade.bookDetail$;
 
   constructor(private userBooksReduxFacade: UserBooksReduxFacade,
               private routerReduxFacade: RouterReduxFacade) {

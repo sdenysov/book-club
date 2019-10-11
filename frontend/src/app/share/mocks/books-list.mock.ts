@@ -1,6 +1,6 @@
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
-export const booksListMock: BookModel[] = [
+export const booksListMock: Book[] = [
   {
     'id': '1',
     'title': 'Java. Kompendium programisty. Wydanie X',

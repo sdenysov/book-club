@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/index';
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 import {ProfileBooksService} from '@@app/profile/services/profile-books.service';
 import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-redux.service';
 
@@ -10,7 +10,7 @@ import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-red
 })
 export class AppMyBooksComponent implements OnInit {
 
-  books$: Observable<BookModel[]> = this.profileBooksReduxService.books$;
+  books$: Observable<Book[]> = this.profileBooksReduxService.books$;
 
   constructor(private profileBooksReduxService: ProfileBooksReduxService,
               private profileBooksService: ProfileBooksService) {
@@ -20,7 +20,7 @@ export class AppMyBooksComponent implements OnInit {
     this.profileBooksService.fetchProfileBooks();
   }
 
-  trackByBooks(index: number, book: BookModel) {
+  trackByBooks(index: number, book: Book) {
     return book.id;
   }
 }

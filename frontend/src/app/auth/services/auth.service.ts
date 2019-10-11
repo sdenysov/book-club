@@ -10,7 +10,7 @@ import {filter, map} from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-  requestedUrlBeforeRedirectToLoginPage: string;
+  redirectUrl: string;
 
   constructor(private authReduxFacade: AuthReduxFacade,
               private authRestService: AuthRestService) {
