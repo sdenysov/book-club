@@ -26,17 +26,17 @@
           </span>
         </app-section-header>
         <app-section-main>
-          <table>
+          <table class="profile-table">
             <tr>
-              <th>Date of birth: </th>
-              <th>1992-06-21</th>
+              <th>Date of birth:</th>
+              <td>1992-06-21</td>
             </tr>
             <tr>
-              <th>Location: </th>
-              <th>
+              <th>Location:</th>
+              <td>
                 <span>Warsaw</span>
                 <span class="icon-location"></span>
-              </th>
+              </td>
             </tr>
           </table>
           <app-section-header title="About me:"></app-section-header>
@@ -45,7 +45,7 @@
       </app-section>
       <app-section>
         <app-section-header title="{{'books.title' | translate}}" icon="icon-book"></app-section-header>
-        <app-section-main>Some books</app-section-main>
+        <app-section-main><app-my-books-component></app-my-books-component></app-section-main>
       </app-section>
     </div>
   </div>

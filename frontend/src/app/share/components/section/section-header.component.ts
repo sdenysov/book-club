@@ -10,7 +10,8 @@ import {Component, Input} from '@angular/core';
         <ng-content></ng-content>
       </div>
     </header>
-  `
+  `,
+  styleUrls: ['section-header.component.scss']
 })
 export class SectionHeaderComponent {
 
