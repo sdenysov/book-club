@@ -1,4 +1,5 @@
 import {AuthState} from '@@auth/models/auth.state';
+import {Credentials} from '@@auth/models/credentials';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {AuthSelectors} from '@@auth/store/auth.selectors';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
@@ -15,6 +16,10 @@ export class AuthReduxFacade {
   loggedInUser$: Observable<User> = this.store.pipe(select(AuthSelectors.getLoggedInUser));
 
   constructor(private store: Store<{ [AUTH_STORE_KEY]: User }>) {}
+
+  login(credentials: Credentials) {
+    this.store.dispatch(AuthActions.login({credentials}));
+  }
 
   loginSuccess(user: User) {
     this.store.dispatch(AuthActions.loginSuccess({user}));

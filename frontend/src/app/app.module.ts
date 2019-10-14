@@ -3,8 +3,9 @@ import {AppRoutingModule} from '@@app/app-routing.module';
 import {AppComponent} from '@@app/app.component';
 import {ErrorHandlerInterceptor} from '@@app/errors/interceptors/error-handler-interceptor';
 import {GlobalErrorHandler} from '@@app/errors/services/global-error-handler';
-import {AppNavbar} from '@@app/nav-bar/navbar.module';
+import {AppNavBar} from '@@app/nav-bar/navbar.module';
 import {AppScreenLockModule} from '@@app/screen-lock/screen-lock.module';
+import {AppAuthModule} from '@@auth/auth.module';
 import {CoreModule} from '@@core/core.module';
 import {AppErrorModule} from '@@errors/app-error.module';
 import {AppRouterStoreModule} from '@@router/router.module';
@@ -24,10 +25,11 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     BrowserModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
-    AppNavbar,
+    AppNavBar,
     AppErrorModule,
     AppShareModule,
     AppReduxModule,
+    AppAuthModule,
     AppRoutingModule,
     AppScreenLockModule,
     AppRouterStoreModule

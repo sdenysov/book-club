@@ -1,6 +1,7 @@
 import {Credentials} from '@@auth/models/credentials';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
+import {RouterService} from '@@router/services/router.service';
 import {User} from '@@share/models/user';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
@@ -12,7 +13,8 @@ export class AuthService {
 
   redirectUrl: string;
 
-  constructor(private authReduxFacade: AuthReduxFacade,
+  constructor(private routerService: RouterService,
+              private authReduxFacade: AuthReduxFacade,
               private authRestService: AuthRestService) {
   }
 
@@ -38,6 +40,14 @@ export class AuthService {
     return of(new HttpResponse({
       body: {id: 'd7acedf2ed2d4bdb', username: 'john'}
     }));
+  }
+
+  redirectOnSuccessLogin() {
+    if (this.redirectUrl) {
+      this.routerService.goTo(this.redirectUrl);
+    } else {
+      this.routerService.goToMainPage();
+    }
   }
 }
 

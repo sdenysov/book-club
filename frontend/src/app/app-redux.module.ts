@@ -16,7 +16,10 @@ const reducers: ActionReducerMap<AppState> = {
   imports: [
     StoreModule.forRoot(reducers, {
       metaReducers,
-      runtimeChecks: {strictStateImmutability: true, strictActionImmutability: true}
+      runtimeChecks: {
+        strictStateImmutability: !environment.production,
+        strictActionImmutability: !environment.production
+      }
     }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
