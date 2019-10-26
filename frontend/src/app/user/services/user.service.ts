@@ -14,7 +14,7 @@ export class UserService {
 
   pageAccessLevel$(): Observable<PageAccessLevel> {
     return combineLatest([
-      this.authService.getLoggedInUser$(),
+      this.authService.loggedInUser$,
       this.userReduxFacade.observingUsername$
     ]).pipe(
       map(([loggedInUser, observingUsername]) => {

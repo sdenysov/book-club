@@ -12,23 +12,18 @@ import {filter, map} from 'rxjs/operators';
 export class AuthService {
 
   redirectUrl: string;
+  loggedInUser$: Observable<User>;
+  isLoggedIn$: Observable<boolean>;
 
   constructor(private routerService: RouterService,
               private authReduxFacade: AuthReduxFacade,
               private authRestService: AuthRestService) {
-  }
-
-  getLoggedInUser$(): Observable<User> {
-    return this.authReduxFacade.authState$.pipe(
+    this.loggedInUser$ = authReduxFacade.authState$.pipe(
       filter(userData => userData.loggedInUserLoaded),
       map(userData => userData.loggedInUser)
     );
-  }
-
-  isLoggedIn$(): Observable<boolean> {
-    return this.authReduxFacade.authState$.pipe(
-      filter(userData => userData.loggedInUserLoaded),
-      map(userData => Boolean(userData.loggedInUser))
+    this.isLoggedIn$ = this.loggedInUser$.pipe(
+      map(loggedInUser => Boolean(loggedInUser))
     );
   }
 
@@ -37,6 +32,7 @@ export class AuthService {
   }
 
   logout(): Observable<HttpResponse<any>> {
+    // TODO handle logout event
     return of(new HttpResponse({
       body: {id: 'd7acedf2ed2d4bdb', username: 'john'}
     }));

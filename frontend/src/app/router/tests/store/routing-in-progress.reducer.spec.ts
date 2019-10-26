@@ -1,19 +1,23 @@
-import {RouterStoreKey} from '@@router/store';
-import {ROUTING_IN_PROGRESS} from '@@router/store/router-store.properties';
-import {routingInProgressReducer} from '@@router/store/routing-in-progress.reducer';
+import {StoreTestUtils} from '@@core/tests/utils/store-test.utils';
+import {RouterState} from '@@router/models/router.state';
+import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {TestBed} from '@angular/core/testing';
-import {ROUTER_NAVIGATED, ROUTER_REQUEST} from '@ngrx/router-store';
-import {select, Store, StoreModule} from '@ngrx/store';
+import {ROUTER_NAVIGATED, ROUTER_REQUEST, routerReducer} from '@ngrx/router-store';
+import {ActionReducerMap, select, Store, StoreModule} from '@ngrx/store';
 import {cold} from 'jasmine-marbles';
 
 describe('RoutingInProgressReducerSpec', function () {
 
-  let store: Store<{ [ROUTING_IN_PROGRESS]: boolean }>;
+  const reducers: ActionReducerMap<RouterState> = {
+    state: routerReducer,
+    pending: routingStateReducer
+  };
+  let store: Store<RouterState>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        StoreModule.forRoot({[RouterStoreKey.ROUTING_IN_PROGRESS]: routingInProgressReducer})
+        StoreModule.forRoot(reducers, StoreTestUtils.DEFAULT_ROOT_STORE_CONFIG)
       ]
     });
     store = TestBed.get(Store);
@@ -24,7 +28,7 @@ describe('RoutingInProgressReducerSpec', function () {
       a: {type: ROUTER_REQUEST},
       b: {type: ROUTER_NAVIGATED}
     }).subscribe(action => store.dispatch(action));
-    const stream$ = store.pipe(select(state => state.routingInProgress));
+    const stream$ = store.pipe(select(state => state.pending));
     const expected$ = cold('a--b--c', {a: false, b: true, c: false});
     expect(stream$).toBeObservable(expected$);
   });

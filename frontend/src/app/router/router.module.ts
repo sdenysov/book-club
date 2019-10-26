@@ -1,14 +1,19 @@
-import {ROUTER, ROUTING_IN_PROGRESS} from '@@router/store/router-store.properties';
-import {routingInProgressReducer} from '@@router/store/routing-in-progress.reducer';
+import {RouterState} from '@@router/models/router.state';
+import {ROUTER} from '@@router/store/router-store.properties';
+import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {NgModule, Optional, Self} from '@angular/core';
 import {Router} from '@angular/router';
 import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
-import {StoreModule} from '@ngrx/store';
+import {ActionReducerMap, StoreModule} from '@ngrx/store';
+
+const reducers: ActionReducerMap<RouterState> = {
+  state: routerReducer,
+  pending: routingStateReducer
+};
 
 @NgModule({
   imports: [
-    StoreModule.forFeature(ROUTER, routerReducer),
-    StoreModule.forFeature(ROUTING_IN_PROGRESS, routingInProgressReducer),
+    StoreModule.forFeature(ROUTER, reducers),
     StoreRouterConnectingModule.forRoot()
   ]
 })

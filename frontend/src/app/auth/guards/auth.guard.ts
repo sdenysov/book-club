@@ -11,10 +11,11 @@ export class AuthGuard implements CanLoad {
 
   constructor(private userReduxFacade: AuthReduxFacade,
               private routerService: RouterService,
-              private authService: AuthService) {}
+              private authService: AuthService) {
+  }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.authService.isLoggedIn$().pipe(
+    return this.authService.isLoggedIn$.pipe(
       tap(loggedIn => {
         if (!loggedIn) {
           this.authService.redirectUrl = `/${route.path}`;

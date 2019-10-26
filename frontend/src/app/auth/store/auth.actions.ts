@@ -3,29 +3,12 @@ import {HttpErrorData} from '@@errors/models/http-error-data.model';
 import {User} from '@@share/models/user';
 import {createAction, props} from '@ngrx/store';
 
-export enum AuthActionTypes {
-  LOGIN = '[Auth] login',
-  LOGIN_SUCCESS = '[Auth] login success',
-  LOGIN_FAILED = '[Auth] login failed',
+export namespace AuthActions {
 
-  FETCH_LOGGED_IN = '[Auth] fetch logged in user',
-  FETCH_LOGGED_IN_SUCCEED = '[Auth] fetch logged in user succeed',
-  FETCH_LOGGED_IN_FAILED = '[Auth] fetch logged in user failed'
+  export const login = createAction('[Auth] login', props<{ credentials: Credentials }>());
+  export const loginSuccess = createAction('[Auth] login success', props<{ user: User }>());
+  export const loginFailed = createAction('[Auth] login failed', props<{ error: Error | HttpErrorData }>());
+  export const fetchLoggedInUser = createAction('[Auth] fetch logged in user');
+  export const fetchLoggedInUserSucceed = createAction('[Auth] fetch logged in user succeed', props<{ user: User }>());
+  export const fetchLoggedInUserFailed = createAction('[Auth] fetch logged in user failed');
 }
-
-const login = createAction(AuthActionTypes.LOGIN, props<{ credentials: Credentials }>());
-const loginSuccess = createAction(AuthActionTypes.LOGIN_SUCCESS, props<{ user: User }>());
-const loginFailed = createAction(AuthActionTypes.LOGIN_FAILED, props<{ error: Error | HttpErrorData }>());
-
-const fetchLoggedInUser = createAction(AuthActionTypes.FETCH_LOGGED_IN);
-const fetchLoggedInUserSucceed = createAction(AuthActionTypes.FETCH_LOGGED_IN_SUCCEED, props<{ user: User }>());
-const fetchLoggedInUserFailed = createAction(AuthActionTypes.FETCH_LOGGED_IN_FAILED);
-
-export const AuthActions = {
-  login,
-  loginSuccess,
-  loginFailed,
-  fetchLoggedInUser,
-  fetchLoggedInUserSucceed,
-  fetchLoggedInUserFailed
-};

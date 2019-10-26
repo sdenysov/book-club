@@ -1,7 +1,7 @@
 import {ROUTER_NAVIGATED, ROUTER_REQUEST} from '@ngrx/router-store';
 import {Action} from '@ngrx/store';
 
-export function routingInProgressReducer(state = false, action: Action) {
+export function routingStateReducer(state = false, action: Action) {
   switch (action.type) {
     case ROUTER_REQUEST: {
       return true;

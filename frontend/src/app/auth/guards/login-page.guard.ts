@@ -14,7 +14,7 @@ export class LoginPageGuard implements CanLoad {
               private authService: AuthService) {}
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.authService.isLoggedIn$().pipe(
+    return this.authService.isLoggedIn$.pipe(
       tap(loggedIn => {
         if (loggedIn) {
           this.routerService.goToMainPage();

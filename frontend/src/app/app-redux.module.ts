@@ -1,5 +1,5 @@
 import {environment} from '@@env/environment';
-import {routingInProgressReducer} from '@@router/store/routing-in-progress.reducer';
+import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {AppState} from '@@share/models/app-state';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
@@ -9,7 +9,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 export const metaReducers: MetaReducer<{}>[] = !environment.production ? [] : [];
 
 const reducers: ActionReducerMap<AppState> = {
-  routingInProgress: routingInProgressReducer
+  routingInProgress: routingStateReducer
 };
 
 @NgModule({
