@@ -1,4 +1,4 @@
-import {IAuthState} from '@@auth/models/IAuthState';
+import {IAuthState} from '@@auth/models/auth-state.model';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {Action, createReducer, on} from '@ngrx/store';
 

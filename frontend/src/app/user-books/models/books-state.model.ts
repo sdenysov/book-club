@@ -1,4 +1,4 @@
-import {IBook} from '@@share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 
 export interface IBooksState {
   loading: boolean;

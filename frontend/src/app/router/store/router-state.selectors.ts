@@ -1,4 +1,4 @@
-import {IRouterState} from '@@router/models/IRouterState';
+import {IRouterState} from '@@router/models/router-state.model';
 import {ROUTER} from '@@router/store/router-store.properties';
 import * as routerStore from '@ngrx/router-store';
 import {RouterStateSelectors} from '@ngrx/router-store/src/models';

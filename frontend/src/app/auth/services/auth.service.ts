@@ -1,8 +1,8 @@
-import {ICredentials} from '@@auth/models/ICredentials';
+import {ICredentials} from '@@auth/models/credentials.model';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {RouterService} from '@@router/services/router.service';
-import {IUser} from '@@share/models/IUser';
+import {IUser} from '@@share/models/user.model';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';

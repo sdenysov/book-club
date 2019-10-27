@@ -1,9 +1,9 @@
-import {IAuthState} from '@@auth/models/IAuthState';
-import {ICredentials} from '@@auth/models/ICredentials';
+import {IAuthState} from '@@auth/models/auth-state.model';
+import {ICredentials} from '@@auth/models/credentials.model';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {AuthSelectors} from '@@auth/store/auth.selectors';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
-import {IUser} from '@@share/models/IUser';
+import {IUser} from '@@share/models/user.model';
 import {StoreUtils} from '@@share/utils/store.utils';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';

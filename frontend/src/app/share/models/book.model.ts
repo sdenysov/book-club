@@ -1,4 +1,4 @@
-import {IUser} from '@@share/models/IUser';
+import {IUser} from '@@share/models/user.model';
 
 export interface IBook {
   id: string;

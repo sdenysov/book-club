@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 
 @Component({
   selector: 'app-my-book-component',

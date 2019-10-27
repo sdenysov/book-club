@@ -1,4 +1,4 @@
-import {IBook} from '../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {Action} from '@ngrx/store';
 
 export enum BooksActionTypes {

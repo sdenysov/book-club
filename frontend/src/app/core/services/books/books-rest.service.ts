@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/index';
 import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {EnvUtils} from '@@core/utils/env.utils';
 
 @Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('BooksRestService')})

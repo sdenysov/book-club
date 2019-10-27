@@ -1,4 +1,4 @@
-import {IUserState} from '@@user/models/i-user-state';
+import {IUserState} from '@@user/models/user-state.model';
 import {USER_STORE_KEY} from '@@user/store/user-store.properties';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 

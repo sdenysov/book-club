@@ -1,4 +1,4 @@
-import {IProfileState} from '@@app/profile/models/profile.state.model';
+import {IProfileState} from '@@app/profile/models/profile-state.model';
 import {ProfileBooksActionTypes, TProfileBooksAction} from '@@app/profile/store/profile-books.actions';
 
 const initialState: IProfileState = {

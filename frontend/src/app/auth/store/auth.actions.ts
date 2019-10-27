@@ -1,6 +1,6 @@
-import {ICredentials} from '@@auth/models/ICredentials';
+import {ICredentials} from '@@auth/models/credentials.model';
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
-import {IUser} from '@@share/models/IUser';
+import {IUser} from '@@share/models/user.model';
 import {createAction, props} from '@ngrx/store';
 
 export namespace AuthActions {

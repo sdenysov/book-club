@@ -1,4 +1,4 @@
-import {IAuthState} from '@@auth/models/IAuthState';
+import {IAuthState} from '@@auth/models/auth-state.model';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 

@@ -1,4 +1,4 @@
-import {IScreenLockState} from '@@screen-lock/models/i-screen-lock.state';
+import {IScreenLockState} from '@@screen-lock/models/screen-lock-state.model';
 import {ScreenLockActions} from '@@screen-lock/store/screen-lock.action';
 import {ScreenLockSelectors} from '@@screen-lock/store/screen-lock.selectors';
 import {Injectable} from '@angular/core';

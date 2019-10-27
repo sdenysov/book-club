@@ -1,5 +1,5 @@
 import {PageAccessLevel} from '@@user/models/page-access-level';
-import {IUserState} from '@@user/models/i-user-state';
+import {IUserState} from '@@user/models/user-state.model';
 import {UserSelectors} from '@@user/store/user.selectors';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';

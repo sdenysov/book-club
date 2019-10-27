@@ -1,4 +1,4 @@
-import {IRouterState} from '@@router/models/IRouterState';
+import {IRouterState} from '@@router/models/router-state.model';
 import {RouterSelectors} from '@@router/store/router-state.selectors';
 import {StoreUtils} from '@@share/utils/store.utils';
 import {Injectable} from '@angular/core';

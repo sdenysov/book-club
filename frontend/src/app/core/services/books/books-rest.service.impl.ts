@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs/index';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 
 @Injectable({providedIn: 'root'})

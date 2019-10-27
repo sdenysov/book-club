@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-section',
   template: `
-    <section>
+    <section class="data-section">
       <ng-content select="app-section-header"></ng-content>
       <ng-content select="app-section-main"></ng-content>
     </section>

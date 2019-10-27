@@ -1,4 +1,4 @@
-import {IScreenLockState} from '@@screen-lock/models/i-screen-lock.state';
+import {IScreenLockState} from '@@screen-lock/models/screen-lock-state.model';
 import {ScreenLockAction, ScreenLockActionTypes} from '@@screen-lock/store/screen-lock.action';
 
 export const initialState: IScreenLockState = {

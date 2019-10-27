@@ -1,4 +1,4 @@
-import {IBook} from '../models/IBook';
+import {IBook} from '../models/book.model';
 
 export const SuggestionsMock: {[key: string]: IBook[]} = {
   suggestion1: [

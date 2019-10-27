@@ -1,5 +1,5 @@
-import {IFormErrors} from '@@share/models/i-form-errors';
-import {IValidationError} from '@@share/models/i-validation-error';
+import {IFormErrors} from '@@share/models/form-errors.model';
+import {IValidationError} from '@@share/models/validation-error.model';
 import {AbstractControl, FormGroup} from '@angular/forms';
 
 export class FormUtils {

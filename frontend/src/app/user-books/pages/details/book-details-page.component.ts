@@ -1,6 +1,6 @@
 import {UserBooksReduxFacade} from '@@app/user-books/store/user-books-redux.facade';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 

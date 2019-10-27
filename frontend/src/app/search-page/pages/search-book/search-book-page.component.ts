@@ -1,5 +1,5 @@
 import {SearchBooksService} from '@@app/search-page/services/search-books.service';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({

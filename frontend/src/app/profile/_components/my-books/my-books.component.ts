@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/index';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {ProfileBooksService} from '@@app/profile/services/profile-books.service';
 import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-redux.service';
 

@@ -1,5 +1,5 @@
 import {StoreTestUtils} from '@@core/tests/utils/store-test.utils';
-import {IRouterState} from '@@router/models/IRouterState';
+import {IRouterState} from '@@router/models/router-state.model';
 import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {TestBed} from '@angular/core/testing';
 import {ROUTER_NAVIGATED, ROUTER_REQUEST, routerReducer} from '@ngrx/router-store';

@@ -1,5 +1,5 @@
 import {PageAccessLevel} from '@@user/models/page-access-level';
-import {IUserState} from '@@user/models/i-user-state';
+import {IUserState} from '@@user/models/user-state.model';
 import {UserActions} from '@@user/store/user.actions';
 import {Action, createReducer, on} from '@ngrx/store';
 

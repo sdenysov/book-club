@@ -1,8 +1,8 @@
-import {IProfileState} from '@@app/profile/models/profile.state.model';
+import {IProfileState} from '@@app/profile/models/profile-state.model';
 import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {ProfileSelectors} from '@@app/profile/store/profile-books.selectors';
-import {IBook} from '../../share/models/IBook';
-import {IUser} from '@@share/models/IUser';
+import {IBook} from '@@share/models/book.model';
+import {IUser} from '@@share/models/user.model';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';

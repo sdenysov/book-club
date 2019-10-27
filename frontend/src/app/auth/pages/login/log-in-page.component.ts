@@ -1,4 +1,4 @@
-import {ICredentials} from '@@auth/models/ICredentials';
+import {ICredentials} from '@@auth/models/credentials.model';
 import {AuthService} from '@@auth/services/auth.service';
 import {LoginFormService} from '@@auth/services/login-form.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';

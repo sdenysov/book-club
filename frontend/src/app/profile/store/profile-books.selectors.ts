@@ -1,4 +1,4 @@
-import {IProfileState} from '@@app/profile/models/profile.state.model';
+import {IProfileState} from '@@app/profile/models/profile-state.model';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 const getState = createFeatureSelector<IProfileState>('profile');

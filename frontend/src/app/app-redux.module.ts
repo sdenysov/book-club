@@ -1,6 +1,6 @@
 import {environment} from '@@env/environment';
 import {routingStateReducer} from '@@router/store/routing-state.reducer';
-import {IAppState} from '@@share/models/i-app-state';
+import {IAppState} from '@@share/models/app-state.model';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {ActionReducerMap, MetaReducer, StoreModule} from '@ngrx/store';

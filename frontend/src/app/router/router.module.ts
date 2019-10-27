@@ -1,4 +1,4 @@
-import {IRouterState} from '@@router/models/IRouterState';
+import {IRouterState} from '@@router/models/router-state.model';
 import {ROUTER} from '@@router/store/router-store.properties';
 import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {NgModule, Optional, Self} from '@angular/core';

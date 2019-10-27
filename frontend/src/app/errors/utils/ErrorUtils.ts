@@ -1,4 +1,4 @@
-import {IErrorPayload} from '@@errors/models/i-error.payload';
+import {IErrorPayload} from '@@errors/models/error-payload.model';
 import {ExceptionData} from '@@errors/models/exception-data.model';
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
 import {CollectionUtils} from '@@share/utils/collection.utils';

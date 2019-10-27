@@ -1,5 +1,5 @@
-import {IBook} from '../../share/models/IBook';
-import {IUser} from '@@share/models/IUser';
+import {IBook} from '@@share/models/book.model';
+import {IUser} from '@@share/models/user.model';
 import {Action} from '@ngrx/store';
 
 export enum ProfileBooksActionTypes {

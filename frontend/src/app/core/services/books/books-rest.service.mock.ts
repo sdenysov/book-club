@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs/index';
 import {HttpResponse} from '@angular/common/http';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {profileBooksMock} from '@@share/mocks/user-books-list.mock';
 import {delay} from 'rxjs/internal/operators';

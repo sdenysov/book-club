@@ -1,6 +1,6 @@
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {ScreenLocking} from '@@screen-lock/decorators/screen-locking.decorator';
-import {IBook} from '../../../share/models/IBook';
+import {IBook} from '@@share/models/book.model';
 import {UrlProperties} from '@@share/properties/url.properties';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';

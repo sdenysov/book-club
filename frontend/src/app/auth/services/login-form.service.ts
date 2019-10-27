@@ -1,6 +1,6 @@
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
-import {IFormErrors} from '@@share/models/i-form-errors';
-import {IValidationError} from '@@share/models/i-validation-error';
+import {IFormErrors} from '@@share/models/form-errors.model';
+import {IValidationError} from '@@share/models/validation-error.model';
 import {FormUtils} from '@@share/utils/form.utils';
 import {Injectable} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
