@@ -52,7 +52,7 @@ describe('NavigationEffectsSpec', () => {
 
   it('should emit action with page appropriated current url', () => {
     actions$ = hot('-a-', {a: {type: ROUTER_NAVIGATED}});
-    spyOn(pageService, 'getCurrentPage').and.returnValue(Page.MAIN);
+    spyOn(pageService, 'getPageByUrl').and.returnValue(Page.MAIN);
     const expected = hot('-a', {
       a: {type: NavigationActions.CURRENT_PAGE_CHANGED, page: Page.MAIN}
     });

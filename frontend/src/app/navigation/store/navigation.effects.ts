@@ -29,7 +29,7 @@ export class NavigationEffects {
 
   updateCurrentPage$ = createEffect(() => this.actions$.pipe(
     ofType(ROUTER_NAVIGATED),
-    map(() => this.pageService.getCurrentPage(this.router.url)),
+    map(() => this.pageService.getPageByUrl(this.router.url)),
     map(page => NavigationActions.currentPageChanged({page}))
   ));
 
