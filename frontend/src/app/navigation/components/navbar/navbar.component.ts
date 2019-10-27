@@ -1,4 +1,4 @@
-import {Navbar} from '@@navigation/models/navbar.model';
+import {INavbar} from '@@navigation/models/navbar.model';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class NavBarComponent {
 
-  navbar$: Observable<Navbar> = this.navigationReduxFacade.navbar$;
+  navbar$: Observable<INavbar> = this.navigationReduxFacade.navbar$;
 
   constructor(private navigationReduxFacade: NavigationReduxFacade) {}
 }

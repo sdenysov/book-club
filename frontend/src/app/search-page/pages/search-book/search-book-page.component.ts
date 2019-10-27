@@ -1,5 +1,5 @@
 import {SearchBooksService} from '@@app/search-page/services/search-books.service';
-import {Book} from '@@share/models/book';
+import {IBook} from '../../../share/models/IBook';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class SearchBookPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  trackByBooks(index: number, book: Book) {
+  trackByBooks(index: number, book: IBook) {
     return book.id;
   }
 }

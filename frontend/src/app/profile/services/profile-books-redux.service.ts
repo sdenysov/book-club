@@ -1,8 +1,8 @@
-import {ProfileState} from '@@app/profile/models/profile.state.model';
+import {IProfileState} from '@@app/profile/models/profile.state.model';
 import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {ProfileSelectors} from '@@app/profile/store/profile-books.selectors';
-import {Book} from '@@share/models/book';
-import {User} from '@@share/models/user';
+import {IBook} from '../../share/models/IBook';
+import {IUser} from '@@share/models/IUser';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -10,17 +10,17 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class ProfileBooksReduxService {
 
-  constructor(private store: Store<{ profile: ProfileState }>) {}
+  constructor(private store: Store<{ profile: IProfileState }>) {}
 
-  books$: Observable<Book[]> = this.store.pipe(select(ProfileSelectors.getBooks));
+  books$: Observable<IBook[]> = this.store.pipe(select(ProfileSelectors.getBooks));
   loading$: Observable<boolean> = this.store.pipe(select(ProfileSelectors.isLoading));
   loaded$: Observable<boolean> = this.store.pipe(select(ProfileSelectors.isLoaded));
 
-  fetchProfileBooks(user: User) {
+  fetchProfileBooks(user: IUser) {
     this.store.dispatch(new ProfileBooksActions.FetchProfileBooks(user));
   }
 
-  getProfileBookById$(id: string): Observable<Book> {
+  getProfileBookById$(id: string): Observable<IBook> {
     return this.store.pipe(select(ProfileSelectors.getProfileBookById(id)));
   }
 }

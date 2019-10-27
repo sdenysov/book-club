@@ -1,7 +1,7 @@
 import {Page} from '@@app/navigation/models/page';
 import {Injectable} from '@angular/core';
 
-interface PageUrlPattern {
+interface IPageUrlPattern {
   page: Page;
   regexp: RegExp;
 }
@@ -9,7 +9,7 @@ interface PageUrlPattern {
 @Injectable({providedIn: 'root'})
 export class PageService {
 
-  readonly pageUrlPatterns: PageUrlPattern[] = [
+  readonly pageUrlPatterns: IPageUrlPattern[] = [
     {page: Page.MAIN, regexp: /^\/?$/},
     {page: Page.SEARCH_BOOK, regexp: /^\/search-book\/?$/},
     {page: Page.REGISTER, regexp: /^\/register\/?$/},

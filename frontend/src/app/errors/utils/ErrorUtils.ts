@@ -1,4 +1,4 @@
-import {ErrorPayloadModel} from '@@errors/models/error-payload.model';
+import {IErrorPayload} from '@@errors/models/i-error.payload';
 import {ExceptionData} from '@@errors/models/exception-data.model';
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
 import {CollectionUtils} from '@@share/utils/collection.utils';
@@ -9,7 +9,7 @@ export class ErrorUtils {
     if (!httpError) {
       return null;
     }
-    const errorPayload: ErrorPayloadModel = httpError.response.error;
+    const errorPayload: IErrorPayload = httpError.response.error;
     return CollectionUtils.getFirstItem(errorPayload.errors);
   }
 

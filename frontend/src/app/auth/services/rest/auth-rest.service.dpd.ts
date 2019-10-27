@@ -1,6 +1,6 @@
-import {Credentials} from '@@auth/models/credentials';
+import {ICredentials} from '@@auth/models/ICredentials';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
-import {User} from '@@share/models/user';
+import {IUser} from '@@share/models/IUser';
 import {UrlProperties} from '@@share/properties/url.properties';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
@@ -13,12 +13,12 @@ export class AuthRestServiceDpd implements AuthRestService {
 
   constructor(private http: HttpClient) {}
 
-  me(): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}/me`);
+  me(): Observable<IUser> {
+    return this.http.get<IUser>(`${this.baseUrl}/me`);
   }
 
-  login$(credentials: Credentials): Observable<User> {
-    return this.http.post<User>(`${this.baseUrl}/login`, credentials);
+  login$(credentials: ICredentials): Observable<IUser> {
+    return this.http.post<IUser>(`${this.baseUrl}/login`, credentials);
   }
 
   logout(): Observable<HttpResponse<any>> {

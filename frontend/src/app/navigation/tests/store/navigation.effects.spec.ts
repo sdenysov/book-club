@@ -1,5 +1,5 @@
 import {AuthService} from '@@auth/services/auth.service';
-import {Navbar} from '@@navigation/models/navbar.model';
+import {INavbar} from '@@navigation/models/navbar.model';
 import {Page} from '@@navigation/models/page';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
@@ -60,7 +60,7 @@ describe('NavigationEffectsSpec', () => {
   });
 
   it('should emit action with new navbar state after current page or user login status changed', () => {
-    const navbar: Navbar = {
+    const navbar: INavbar = {
       loginBtnVisible: false,
       registerBtnVisible: false,
       searchFieldVisible: true,

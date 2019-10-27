@@ -1,4 +1,4 @@
-export interface ValidationError {
+export interface IValidationError {
   type: string;
   params?: { [key: string]: any };
 }

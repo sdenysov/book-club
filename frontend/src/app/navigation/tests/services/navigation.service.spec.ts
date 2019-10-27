@@ -1,44 +1,44 @@
-import {Navbar} from '@@navigation/models/navbar.model';
+import {INavbar} from '@@navigation/models/navbar.model';
 import {Page} from '@@navigation/models/page';
 import {NavigationService} from '@@navigation/services/navigation.service';
 
-interface TestCase {
+interface ITestCase {
   page: Page;
   loggedIn: boolean;
-  expected: Navbar;
+  expected: INavbar;
 }
 
 describe('NavigationServiceSpec', () => {
 
-  const defaultNavbarForLoggedIn: Navbar = {
+  const defaultNavbarForLoggedIn: INavbar = {
     loginBtnVisible: false,
     registerBtnVisible: false,
     searchFieldVisible: true,
     userBtnVisible: true
   };
 
-  const defaultNavbarForNotLoggedIn: Navbar = {
+  const defaultNavbarForNotLoggedIn: INavbar = {
     loginBtnVisible: true,
     registerBtnVisible: true,
     searchFieldVisible: true,
     userBtnVisible: false
   };
 
-  const navbarForLoginPage: Navbar = {
+  const navbarForLoginPage: INavbar = {
     loginBtnVisible: false,
     registerBtnVisible: true,
     searchFieldVisible: false,
     userBtnVisible: false
   };
 
-  const navbarForRegisterPage: Navbar = {
+  const navbarForRegisterPage: INavbar = {
     loginBtnVisible: true,
     registerBtnVisible: false,
     searchFieldVisible: false,
     userBtnVisible: false
   };
 
-  const testCases: TestCase[] = [
+  const testCases: ITestCase[] = [
     {page: Page.MAIN, loggedIn: true, expected: defaultNavbarForLoggedIn},
     {page: Page.MAIN, loggedIn: false, expected: defaultNavbarForNotLoggedIn},
     {page: Page.SEARCH_BOOK, loggedIn: true, expected: defaultNavbarForLoggedIn},

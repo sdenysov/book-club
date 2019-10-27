@@ -1,4 +1,4 @@
-import {Book} from '@@share/models/book';
+import {IBook} from '../../share/models/IBook';
 import {Action} from '@ngrx/store';
 
 export enum BooksActionTypes {
@@ -17,7 +17,7 @@ export class FetchBooks implements Action {
 export class FetchBooksSucceed implements Action {
   readonly type = BooksActionTypes.FetchBooksSucceed;
 
-  constructor(public books: Book[]) {}
+  constructor(public books: IBook[]) {}
 }
 
 export class FetchBooksFailed implements Action {
@@ -35,7 +35,7 @@ export class FetchBookDetail implements Action {
 export class FetchBookDetailSucceed implements Action {
   readonly type = BooksActionTypes.FetchBookDetailSucceed;
 
-  constructor(public book: Book) {}
+  constructor(public book: IBook) {}
 }
 
 export class FetchBookDetailFailed implements Action {

@@ -1,8 +1,8 @@
-import {NavigationState} from '@@app/navigation/models/navigation.model';
+import {INavigationState} from '@@app/navigation/models/navigation.model';
 import {NavigationActions} from '@@app/navigation/store/navigation.actions';
 import {Action, createReducer, on} from '@ngrx/store';
 
-export const navigationInitialState: NavigationState = {
+export const navigationInitialState: INavigationState = {
   navbar: {
     searchFieldVisible: false,
     loginBtnVisible: false,
@@ -17,6 +17,6 @@ const reducer = createReducer(navigationInitialState,
   on(NavigationActions.navbarStateChanged, (state, {navbar}) => ({...state, navbar})),
 );
 
-export function navigationReducer(state: NavigationState = navigationInitialState, actions: Action) {
+export function navigationReducer(state: INavigationState = navigationInitialState, actions: Action) {
   return reducer(state, actions);
 }

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Book} from '@@share/models/book';
+import {IBook} from '../../../share/models/IBook';
 
 @Component({
   selector: 'app-my-book-component',
@@ -8,7 +8,7 @@ import {Book} from '@@share/models/book';
 })
 export class AppMyBookComponent {
 
-  @Input() book: Book;
+  @Input() book: IBook;
 
   // ngOnChanges(changes: SimpleChanges): void {
   //   console.log('ngOnChanges:', changes);

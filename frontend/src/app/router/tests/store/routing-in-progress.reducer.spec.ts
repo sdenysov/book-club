@@ -1,5 +1,5 @@
 import {StoreTestUtils} from '@@core/tests/utils/store-test.utils';
-import {RouterState} from '@@router/models/router.state';
+import {IRouterState} from '@@router/models/IRouterState';
 import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {TestBed} from '@angular/core/testing';
 import {ROUTER_NAVIGATED, ROUTER_REQUEST, routerReducer} from '@ngrx/router-store';
@@ -8,11 +8,11 @@ import {cold} from 'jasmine-marbles';
 
 describe('RoutingInProgressReducerSpec', function () {
 
-  const reducers: ActionReducerMap<RouterState> = {
+  const reducers: ActionReducerMap<IRouterState> = {
     state: routerReducer,
     pending: routingStateReducer
   };
-  let store: Store<RouterState>;
+  let store: Store<IRouterState>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

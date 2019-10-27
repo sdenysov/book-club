@@ -1,12 +1,12 @@
-import {ScreenLockStateModel} from '@@screen-lock/models/screen-lock-state.model';
+import {IScreenLockState} from '@@screen-lock/models/i-screen-lock.state';
 import {ScreenLockAction, ScreenLockActionTypes} from '@@screen-lock/store/screen-lock.action';
 
-export const initialState: ScreenLockStateModel = {
+export const initialState: IScreenLockState = {
   pendingRequestsCount: 0,
   screenLocked: false
 };
 
-export function screenLockReducer(state = initialState, action: ScreenLockAction): ScreenLockStateModel {
+export function screenLockReducer(state = initialState, action: ScreenLockAction): IScreenLockState {
   switch (action.type) {
     case ScreenLockActionTypes.IncrementPendingRequestsCounter: {
       const pendingRequestsCount = state.pendingRequestsCount + 1;

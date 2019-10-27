@@ -1,7 +1,7 @@
 import {Page} from '@@navigation/models/page';
 import {PageService} from '@@navigation/services/page.service';
 
-interface PageDefineTestCase {
+interface IPageDefineTestCase {
   urls: string[];
   page: Page;
 }
@@ -9,7 +9,7 @@ interface PageDefineTestCase {
 describe('PageServiceSpec', () => {
 
   const pageService: PageService = new PageService();
-  const testCases: PageDefineTestCase[] = [
+  const testCases: IPageDefineTestCase[] = [
     {page: Page.MAIN, urls: ['', '/']},
     {page: Page.SEARCH_BOOK, urls: ['/search-book', '/search-book/']},
     {page: Page.LOGIN, urls: ['/login', '/login']},

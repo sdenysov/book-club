@@ -1,21 +1,21 @@
 import {Observable} from 'rxjs/index';
 import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
-import {Book} from '@@share/models/book';
+import {IBook} from '../../../share/models/IBook';
 import {EnvUtils} from '@@core/utils/env.utils';
 
 @Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('BooksRestService')})
 export abstract class BooksRestService {
 
-  abstract get$(): Observable<Book[]>;
+  abstract get$(): Observable<IBook[]>;
 
   abstract suggest$(query: string): Observable<any>;
 
-  abstract addBook$(book: Book): Observable<HttpResponse<any>>;
+  abstract addBook$(book: IBook): Observable<HttpResponse<any>>;
 
-  abstract getByUserId$(userId: string): Observable<Book[]>;
+  abstract getByUserId$(userId: string): Observable<IBook[]>;
 
-  abstract getBookById$(bookId: string): Observable<Book>;
+  abstract getBookById$(bookId: string): Observable<IBook>;
 
-  abstract editBook$(book: Book): Observable<HttpResponse<any>>;
+  abstract editBook$(book: IBook): Observable<HttpResponse<any>>;
 }

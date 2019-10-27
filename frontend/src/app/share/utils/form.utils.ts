@@ -1,10 +1,10 @@
-import {FormErrors} from '@@share/models/form-errors';
-import {ValidationError} from '@@share/models/validation-error';
+import {IFormErrors} from '@@share/models/i-form-errors';
+import {IValidationError} from '@@share/models/i-validation-error';
 import {AbstractControl, FormGroup} from '@angular/forms';
 
 export class FormUtils {
 
-  static setErrorsToForm(formErrors: FormErrors, form: FormGroup) {
+  static setErrorsToForm(formErrors: IFormErrors, form: FormGroup) {
     if (!formErrors) {
       return;
     }
@@ -16,7 +16,7 @@ export class FormUtils {
       });
   }
 
-  private static setValidationError(control: AbstractControl, validationError: ValidationError) {
+  private static setValidationError(control: AbstractControl, validationError: IValidationError) {
     const {type, params} = validationError;
     if (type) {
       control.setErrors({[type]: params || true});

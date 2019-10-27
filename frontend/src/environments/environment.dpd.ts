@@ -1,7 +1,6 @@
-// TODO Why it doesn't work with Env?
-// import {Env} from '@@env/environment';
+import {IEnv} from '@@env/environment';
 
-export const environment = {
+export const environment: IEnv = {
   dev: false,
   mock: false,
   dpd: true,

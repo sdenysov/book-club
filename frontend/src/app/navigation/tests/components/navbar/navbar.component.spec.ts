@@ -1,32 +1,32 @@
 import {NavBarComponent} from '@@navigation/components/navbar/navbar.component';
-import {Navbar} from '@@navigation/models/navbar.model';
+import {INavbar} from '@@navigation/models/navbar.model';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {cold, hot} from 'jasmine-marbles';
 import {map} from 'rxjs/operators';
 
-const defaultNavbarForLoggedIn: Navbar = {
+const defaultNavbarForLoggedIn: INavbar = {
   loginBtnVisible: false,
   registerBtnVisible: false,
   searchFieldVisible: true,
   userBtnVisible: true
 };
 
-const defaultNavbarForNotLoggedIn: Navbar = {
+const defaultNavbarForNotLoggedIn: INavbar = {
   loginBtnVisible: true,
   registerBtnVisible: true,
   searchFieldVisible: true,
   userBtnVisible: false
 };
 
-const navbarForLoginPage: Navbar = {
+const navbarForLoginPage: INavbar = {
   loginBtnVisible: false,
   registerBtnVisible: true,
   searchFieldVisible: false,
   userBtnVisible: false
 };
 
-const navbarForRegisterPage: Navbar = {
+const navbarForRegisterPage: INavbar = {
   loginBtnVisible: true,
   registerBtnVisible: false,
   searchFieldVisible: false,

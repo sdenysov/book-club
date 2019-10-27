@@ -1,4 +1,4 @@
-export interface ErrorPayloadModel {
+export interface IErrorPayload {
   value: Object;
   errors: string[];
 }

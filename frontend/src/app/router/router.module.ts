@@ -1,4 +1,4 @@
-import {RouterState} from '@@router/models/router.state';
+import {IRouterState} from '@@router/models/IRouterState';
 import {ROUTER} from '@@router/store/router-store.properties';
 import {routingStateReducer} from '@@router/store/routing-state.reducer';
 import {NgModule, Optional, Self} from '@angular/core';
@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {ActionReducerMap, StoreModule} from '@ngrx/store';
 
-const reducers: ActionReducerMap<RouterState> = {
+const reducers: ActionReducerMap<IRouterState> = {
   state: routerReducer,
   pending: routingStateReducer
 };

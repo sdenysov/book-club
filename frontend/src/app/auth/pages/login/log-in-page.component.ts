@@ -1,4 +1,4 @@
-import {Credentials} from '@@auth/models/credentials';
+import {ICredentials} from '@@auth/models/ICredentials';
 import {AuthService} from '@@auth/services/auth.service';
 import {LoginFormService} from '@@auth/services/login-form.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
@@ -29,7 +29,7 @@ export class LogInPageComponent {
       return;
     }
     if (!this.loginForm.pending) {
-      const credentials: Credentials = this.loginForm.value;
+      const credentials: ICredentials = this.loginForm.value;
       this.authReduxFacade.login(credentials);
     }
   }

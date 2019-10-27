@@ -1,6 +1,6 @@
 import {ProfileBooksService} from '@@app/profile/services/profile-books.service';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
-import {Book} from '@@share/models/book';
+import {IBook} from '../../../share/models/IBook';
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
@@ -30,7 +30,7 @@ export class AppEditBookComponent implements OnInit {
   }
 
   save() {
-    const book: Book = this.bookForm.value;
+    const book: IBook = this.bookForm.value;
     book.id = this.bookId;
     this.profileBooksService.editBook$(book).subscribe();
   }

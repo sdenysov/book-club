@@ -1,5 +1,5 @@
 import {AuthService} from '@@auth/services/auth.service';
-import {Navbar} from '@@navigation/models/navbar.model';
+import {INavbar} from '@@navigation/models/navbar.model';
 import {NavigationService} from '@@navigation/services/navigation.service';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
@@ -35,7 +35,7 @@ export class NavigationEffects {
 
   navigationState$ = createEffect(() => this.pageAndLoggedIn$.pipe(
     map(([page, loggedIn]) => this.navigationService.getNavbarState(page, loggedIn)),
-    map((navbar: Navbar) => NavigationActions.navbarStateChanged({navbar}))
+    map((navbar: INavbar) => NavigationActions.navbarStateChanged({navbar}))
   ));
 }
 

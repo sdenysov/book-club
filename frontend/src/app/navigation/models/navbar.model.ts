@@ -1,4 +1,4 @@
-export interface Navbar {
+export interface INavbar {
   searchFieldVisible: boolean;
   loginBtnVisible: boolean;
   registerBtnVisible: boolean;

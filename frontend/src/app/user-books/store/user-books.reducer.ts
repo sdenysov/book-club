@@ -1,13 +1,13 @@
-import {BooksState} from '@@app/user-books/models/books-state.model';
+import {IBooksState} from '@@app/user-books/models/books-state.model';
 import {BooksAction, BooksActionTypes} from '@@app/user-books/store/user-books.actions';
 
-const initialState: BooksState = {
+const initialState: IBooksState = {
   loading: false,
   entries: [],
   bookDetail: null
 };
 
-export function userBooksReducer(state: BooksState = initialState, action: BooksAction): BooksState {
+export function userBooksReducer(state: IBooksState = initialState, action: BooksAction): IBooksState {
   switch (action.type) {
     case BooksActionTypes.FetchBooks: {
       return {...state, loading: true};

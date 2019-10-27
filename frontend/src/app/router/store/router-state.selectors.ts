@@ -1,13 +1,13 @@
-import {RouterState} from '@@router/models/router.state';
+import {IRouterState} from '@@router/models/IRouterState';
 import {ROUTER} from '@@router/store/router-store.properties';
 import * as routerStore from '@ngrx/router-store';
 import {RouterStateSelectors} from '@ngrx/router-store/src/models';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 export namespace RouterSelectors {
-  export const router = createFeatureSelector<RouterState>(ROUTER);
-  export const pending = createSelector(router, (state: RouterState) => state.pending);
-  export const routerState = createSelector(router, (state: RouterState) => state.state);
+  export const router = createFeatureSelector<IRouterState>(ROUTER);
+  export const pending = createSelector(router, (state: IRouterState) => state.pending);
+  export const routerState = createSelector(router, (state: IRouterState) => state.state);
   export const {
     selectUrl,
     selectCurrentRoute,
@@ -16,6 +16,6 @@ export namespace RouterSelectors {
     selectQueryParams,
     selectRouteParam,
     selectRouteParams
-  } = routerStore.getSelectors(routerState) as RouterStateSelectors<RouterState>;
+  } = routerStore.getSelectors(routerState) as RouterStateSelectors<IRouterState>;
 }
 

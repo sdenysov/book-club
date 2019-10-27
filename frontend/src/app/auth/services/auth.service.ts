@@ -1,8 +1,8 @@
-import {Credentials} from '@@auth/models/credentials';
+import {ICredentials} from '@@auth/models/ICredentials';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {RouterService} from '@@router/services/router.service';
-import {User} from '@@share/models/user';
+import {IUser} from '@@share/models/IUser';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
@@ -12,7 +12,7 @@ import {filter, map} from 'rxjs/operators';
 export class AuthService {
 
   redirectUrl: string;
-  loggedInUser$: Observable<User>;
+  loggedInUser$: Observable<IUser>;
   isLoggedIn$: Observable<boolean>;
 
   constructor(private routerService: RouterService,
@@ -27,7 +27,7 @@ export class AuthService {
     );
   }
 
-  login$(credentials: Credentials): Observable<User> {
+  login$(credentials: ICredentials): Observable<IUser> {
     return this.authRestService.login$(credentials);
   }
 

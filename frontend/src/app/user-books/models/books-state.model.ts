@@ -1,7 +1,7 @@
-import {Book} from '@@share/models/book';
+import {IBook} from '@@share/models/IBook';
 
-export interface BooksState {
+export interface IBooksState {
   loading: boolean;
-  entries: Book[];
-  bookDetail: Book;
+  entries: IBook[];
+  bookDetail: IBook;
 }

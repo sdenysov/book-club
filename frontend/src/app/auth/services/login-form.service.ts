@@ -1,6 +1,6 @@
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
-import {FormErrors} from '@@share/models/form-errors';
-import {ValidationError} from '@@share/models/validation-error';
+import {IFormErrors} from '@@share/models/i-form-errors';
+import {IValidationError} from '@@share/models/i-validation-error';
 import {FormUtils} from '@@share/utils/form.utils';
 import {Injectable} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -26,8 +26,8 @@ export class LoginFormService {
 
   handleLoginFailedResponse(error: Error | HttpErrorData) {
     if (error instanceof HttpErrorData && error.response.status === UNAUTHORIZED) {
-      const validationError: ValidationError = {type: 'bad_credentials'};
-      const formErrors: FormErrors = {$form: validationError, ...error.response.error};
+      const validationError: IValidationError = {type: 'bad_credentials'};
+      const formErrors: IFormErrors = {$form: validationError, ...error.response.error};
       FormUtils.setErrorsToForm(formErrors, this.form);
       return EMPTY;
     }

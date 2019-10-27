@@ -2,15 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-//TODO got error on this
-/*export interface Env {
+export interface IEnv {
   dev: boolean;
   mock: boolean;
   dpd: boolean;
   production: boolean;
-}*/
+}
 
-export const environment = {
+export const environment: IEnv = {
   dev: true,
   mock: false,
   dpd: false,
