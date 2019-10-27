@@ -1,31 +1,28 @@
-import {Injectable} from '@angular/core';
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-redux.service';
-import {UserReduxService} from '@@user/services/user-redux.service';
-import {RouterReduxService} from '@@router/services/router-redux.service';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
-import {Observable, of} from 'rxjs/index';
-import {catchError} from 'rxjs/internal/operators';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 import {HttpResponse} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/internal/operators';
 
 @Injectable({providedIn: 'root'})
 export class ProfileBooksService {
 
-  constructor(private userReduxService: UserReduxService,
+  constructor(private userReduxFacade: AuthReduxFacade,
               private booksRestService: BooksRestService,
               private profileBooksReduxService: ProfileBooksReduxService,
-              private httpErrorHandlerService: HttpErrorHandlerService,
-              private routerReduxService: RouterReduxService) {
+              private httpErrorHandlerService: HttpErrorHandlerService) {
   }
 
   fetchProfileBooks() {
-    const user = this.userReduxService.getCurrentUser();
+    const user = this.userReduxFacade.getLoggedInUser();
     this.profileBooksReduxService.fetchProfileBooks(user);
   }
 
-  getBookById$(id: string): Observable<BookModel> {
+  getBookById$(id: string): Observable<Book> {
     return this.booksRestService.getBookById$(id).pipe(
       catchError(error => {
         this.httpErrorHandlerService.handleErrorResponse(error);

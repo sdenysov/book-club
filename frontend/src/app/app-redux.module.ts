@@ -1,15 +1,26 @@
 import {environment} from '@@env/environment';
+import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
+import {AppState} from '@@share/models/app-state';
 import {NgModule} from '@angular/core';
-import {MetaReducer, StoreModule} from '@ngrx/store';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {storeFreeze} from 'ngrx-store-freeze';
 import {EffectsModule} from '@ngrx/effects';
+import {ActionReducerMap, MetaReducer, StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
-export const metaReducers: MetaReducer<{}>[] = !environment.production ? [storeFreeze] : [];
+export const metaReducers: MetaReducer<{}>[] = !environment.production ? [] : [];
+
+const reducers: ActionReducerMap<AppState> = {
+  routingInProgress: routerInProgressReducer
+};
 
 @NgModule({
   imports: [
-    StoreModule.forRoot({}, {metaReducers}),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: !environment.production,
+        strictActionImmutability: !environment.production
+      }
+    }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'book-club',

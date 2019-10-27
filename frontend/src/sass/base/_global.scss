@@ -1,10 +1,19 @@
-@import "../utils/colors";
+@import "utils/colors";
 
 html {
   font-size: 10px;
-  font-family: 'Lato', sans-serif;
 }
 
 body {
   background-color: $color-gray-light;
+}
+
+.container {
+  width: 970px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }

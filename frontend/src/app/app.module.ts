@@ -1,22 +1,18 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {ErrorHandler, NgModule} from '@angular/core';
-import {AppComponent} from '@@app/app.component';
-import {AppRoutingModule} from '@@app/app-routing.module';
-import {ShareModule} from '@@share/share.module';
-import {AppMainPageModule} from '@@main/main-page.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AppNavbar} from '@@app/nav-bar/navbar.module';
 import {AppReduxModule} from '@@app/app-redux.module';
-import {AppRouterStoreModule} from '@@router/router.module';
-import {AppUserModule} from '@@user/user.module';
-import {CoreModule} from '@@core/core.module';
-import {AppLogInModule} from '@@app/login/login.module';
-import {AppRegisterModule} from '@@app/register/register.module';
-import {ErrorModule} from '@@app/errors/error.module';
-import {GlobalErrorHandler} from '@@app/errors/services/global-error-handler';
+import {AppRoutingModule} from '@@app/app-routing.module';
+import {AppComponent} from '@@app/app.component';
 import {ErrorHandlerInterceptor} from '@@app/errors/interceptors/error-handler-interceptor';
+import {GlobalErrorHandler} from '@@app/errors/services/global-error-handler';
+import {AppNavigationModule} from '@@app/navigation/navigation.module';
 import {AppScreenLockModule} from '@@app/screen-lock/screen-lock.module';
-import {AppTranslationModule} from '@@app/app-translation.module';
+import {AppAuthModule} from '@@auth/auth.module';
+import {CoreModule} from '@@core/core.module';
+import {AppErrorModule} from '@@errors/app-error.module';
+import {AppRouterStoreModule} from '@@router/router.module';
+import {AppShareModule} from '@@share/app-share.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 export const HTTP_INTERCEPTOR_PROVIDERS = [
@@ -24,31 +20,25 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
 ];
 
 @NgModule({
-
+  imports: [
+    CoreModule,
+    BrowserModule,
+    HttpClientModule,
+    BsDropdownModule.forRoot(),
+    AppNavigationModule,
+    AppErrorModule,
+    AppShareModule,
+    AppReduxModule,
+    AppAuthModule,
+    AppRoutingModule,
+    AppScreenLockModule,
+    AppRouterStoreModule
+  ],
   declarations: [
     AppComponent
   ],
-  imports: [
-    CoreModule,
-    ShareModule,
-    BrowserModule,
-    HttpClientModule,
-    AppUserModule,
-    AppReduxModule,
-    AppMainPageModule,
-    AppRoutingModule,
-    AppRouterStoreModule,
-    AppScreenLockModule,
-    AppTranslationModule,
-    AppNavbar,
-    ErrorModule,
-    AppLogInModule,
-    AppRegisterModule,
-    BsDropdownModule.forRoot(),
-  ],
   providers: [
     ...HTTP_INTERCEPTOR_PROVIDERS,
-    {provide: 'api', useValue: 'api'},
     {provide: ErrorHandler, useClass: GlobalErrorHandler}
   ],
   bootstrap: [AppComponent]

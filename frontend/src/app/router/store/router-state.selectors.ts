@@ -1,19 +1,20 @@
-import {RouterStateModel} from '@@router/models/router-state.model';
-import {RouterReducerState} from '@ngrx/router-store';
+import {ROUTER} from '@@router/store/router-store.properties';
+import * as routerStore from '@ngrx/router-store';
+import {RouterStateSelectors} from '@ngrx/router-store/src/models';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {RouterState} from '@@router/models/router-state.model';
 
-const getRouterReducerState = createFeatureSelector<RouterReducerState<RouterStateModel>>('router');
-const getRouterState = createSelector(getRouterReducerState, s => s.state);
-const getRouterStateUrl = createSelector(getRouterState, s => s.url);
-const getRouterStateData = createSelector(getRouterState, s => s.data);
-const getRouterStateParams = createSelector(getRouterState, s => s.params);
-const getRouterStateQueryParams = createSelector(getRouterState, s => s.queryParams);
-
-export const RouterStateSelectors = {
-  getRouterReducerState,
-  getRouterState,
-  getRouterStateUrl,
-  getRouterStateData,
-  getRouterStateParams,
-  getRouterStateQueryParams
-};
+export namespace RouterSelectors {
+  export const selectRouter = createFeatureSelector<RouterState>(ROUTER);
+  export const selectRouterState = createSelector(selectRouter, s => s.state);
+  export const isRoutingInProgress = createSelector(selectRouter, s => s.routerInProgress);
+  export const {
+    selectCurrentRoute,
+    selectQueryParam,
+    selectQueryParams,
+    selectRouteData,
+    selectRouteParam,
+    selectRouteParams,
+    selectUrl
+  }: RouterStateSelectors<RouterState> = routerStore.getSelectors(selectRouterState);
+}

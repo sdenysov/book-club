@@ -1,10 +1,6 @@
 $z-index: (
- 'fullscreen-overlay': 10000
+
 );
 
-/* Custom */
-$font-path: '/assets/fonts/';
-$border-default-radius: 5px;
-
-/* Bootstrap override */
-$icon-font-path: "#{$font-path}bootstrap/";
+$border-radius-default: 5px;
+$border-radius-round: 14px;

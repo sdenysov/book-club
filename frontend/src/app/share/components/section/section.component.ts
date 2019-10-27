@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-section',
@@ -9,13 +9,4 @@ import {Component, Input, OnInit} from '@angular/core';
     </section>
   `
 })
-
-export class SectionComponent implements OnInit {
-
-  @Input() header: string;
-  @Input() icon: string;
-
-  constructor() { }
-
-  ngOnInit() { }
-}
+export class SectionComponent {}

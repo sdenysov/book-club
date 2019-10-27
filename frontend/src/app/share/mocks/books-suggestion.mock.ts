@@ -1,6 +1,6 @@
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
-export const SuggestionsMock: {[key: string]: BookModel[]} = {
+export const SuggestionsMock: {[key: string]: Book[]} = {
   suggestion1: [
     {
       'id': '1',
@@ -10,8 +10,7 @@ export const SuggestionsMock: {[key: string]: BookModel[]} = {
       'rating': 3,
       'owner': {
         'id': '1233',
-        'username': 'Volodya',
-        'password': 'Pupkin'
+        'username': 'Volodya'
       }
     }
   ],
@@ -24,8 +23,7 @@ export const SuggestionsMock: {[key: string]: BookModel[]} = {
       'rating': 4,
       'owner': {
         'id': '1233',
-        'username': 'Volodya',
-        'password': 'Pupkin'
+        'username': 'Volodya'
       }
     },
     {
@@ -36,8 +34,7 @@ export const SuggestionsMock: {[key: string]: BookModel[]} = {
       'rating': 4,
       'owner': {
         'id': '123',
-        'username': 'Vasya',
-        'password': 'Pupkin'
+        'username': 'Vasya'
       }
     }
   ],
@@ -50,8 +47,7 @@ export const SuggestionsMock: {[key: string]: BookModel[]} = {
       'rating': 4,
       'owner': {
         'id': '123',
-        'username': 'Vasya',
-        'password': 'Pupkin'
+        'username': 'Vasya'
       }
     }
   ]

@@ -1,3 +1,4 @@
 <app-screen-overlay></app-screen-overlay>
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
+<app-big-load-spinner *ngIf="routingInProgress$ | async"></app-big-load-spinner>

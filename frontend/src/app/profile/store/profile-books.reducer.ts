@@ -1,13 +1,13 @@
-import {ProfileStateModel} from '@@app/profile/models/profile-state.model';
+import {ProfileState} from '@@app/profile/models/profile.state.model';
 import {ProfileBooksActionTypes, TProfileBooksAction} from '@@app/profile/store/profile-books.actions';
 
-const initialState: ProfileStateModel = {
+const initialState: ProfileState = {
   loaded: false,
   loading: false,
   books: []
 };
 
-export function ProfileBooksReducer(state: ProfileStateModel = initialState, action: TProfileBooksAction): ProfileStateModel {
+export function profileBooksReducer(state: ProfileState = initialState, action: TProfileBooksAction): ProfileState {
   switch (action.type) {
     case ProfileBooksActionTypes.FetchProfileBooks: {
       return {...state, loading: true, loaded: false};

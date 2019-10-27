@@ -27,13 +27,18 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/sass/main.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/sass"
               ]
-            }
+            },
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -91,7 +96,8 @@
               "browserTarget": "book-club:build:mock"
             },
             "dpd": {
-              "browserTarget": "book-club:build:dpd"
+              "browserTarget": "book-club:build:dpd",
+              "proxyConfig": "proxy-dpd.conf.json"
             }
           }
         },

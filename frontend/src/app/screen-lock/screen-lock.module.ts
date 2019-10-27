@@ -1,4 +1,5 @@
 import {ScreenOverlayComponent} from '@@screen-lock/components/screen-overlay/screen-overlay.component';
+import {SCREEN_LOCK_STORE_KEY} from '@@screen-lock/store/screen-lock-store.properties';
 import {screenLockReducer} from '@@screen-lock/store/screen-lock.reducer';
 import {CommonModule} from '@angular/common';
 import {Injector, NgModule, Optional, SkipSelf} from '@angular/core';
@@ -9,7 +10,7 @@ const SHARED_DECLARATIONS = [ScreenOverlayComponent];
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('screenLock', screenLockReducer)
+    StoreModule.forFeature(SCREEN_LOCK_STORE_KEY, screenLockReducer)
   ],
   declarations: SHARED_DECLARATIONS,
   exports: SHARED_DECLARATIONS

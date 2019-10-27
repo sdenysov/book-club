@@ -2,15 +2,15 @@
 == Темы
 
 - SideEffects (+)
-- i18n (+)
+- i18n
 - Dependency injection (+)
 - Global error handling (+)
 - Interceptors (+)
 - Decorators (+)
 - Pipes
 - Components vs Directives
-- angular decorators and work with templates (+)
+- angular decorators and work with templates
 - Promise vs Observable
 - Tests TDD, DDD
 - Modals
-
+- Toster

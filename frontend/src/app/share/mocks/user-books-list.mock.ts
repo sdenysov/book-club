@@ -1,4 +1,4 @@
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
 const owner2BookList = [
   {
@@ -66,7 +66,7 @@ const owner3BookList = [
   }
 ];
 
-export const profileBooksMock: { [key: string]: BookModel[] } = {
+export const profileBooksMock: { [key: string]: Book[] } = {
   '2': owner2BookList,
   '3': owner3BookList
 };

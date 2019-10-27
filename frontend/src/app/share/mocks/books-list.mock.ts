@@ -1,6 +1,6 @@
-import {BookModel} from '@@share/models/book.model';
+import {Book} from '@@share/models/book';
 
-export const booksListMock: BookModel[] = [
+export const booksListMock: Book[] = [
   {
     'id': '1',
     'title': 'Java. Kompendium programisty. Wydanie X',
@@ -9,8 +9,7 @@ export const booksListMock: BookModel[] = [
     'rating': 3,
     'owner': {
       'id': '123',
-      'username': 'Vasya',
-      'password': 'Pupkin'
+      'username': 'Vasya'
     }
   },
   {
@@ -21,8 +20,7 @@ export const booksListMock: BookModel[] = [
     'rating': 0,
     'owner': {
       'id': '1234',
-      'username': 'Petya',
-      'password': 'Pupkin'
+      'username': 'Petya'
     }
   },
   {
@@ -33,8 +31,7 @@ export const booksListMock: BookModel[] = [
     'rating': 1,
     'owner': {
       'id': '123',
-      'username': 'Vasya',
-      'password': 'Pupkin'
+      'username': 'Vasya'
     }
   }
 ];

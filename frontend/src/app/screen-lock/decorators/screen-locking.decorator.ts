@@ -1,5 +1,5 @@
 import {AppScreenLockModule} from '@@screen-lock/screen-lock.module';
-import {ScreenLockReduxService} from '@@screen-lock/services/screen-lock-redux.service';
+import {ScreenLockReduxFacade} from '@@screen-lock/services/screen-lock-redux.facade';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
@@ -7,7 +7,7 @@ export function ScreenLocking(): MethodDecorator {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalFunction = target[propertyKey];
     descriptor.value = function (...args) {
-      const screenLockReduxService = AppScreenLockModule.injector.get(ScreenLockReduxService);
+      const screenLockReduxService = AppScreenLockModule.injector.get(ScreenLockReduxFacade);
       screenLockReduxService.incrementPendingRequestsCounter();
       const result = originalFunction.apply(this, args);
       if (result instanceof Observable) {

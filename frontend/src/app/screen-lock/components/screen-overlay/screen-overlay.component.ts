@@ -1,5 +1,5 @@
+import {ScreenLockReduxFacade} from '@@screen-lock/services/screen-lock-redux.facade';
 import {Component} from '@angular/core';
-import {ScreenLockReduxService} from '@@screen-lock/services/screen-lock-redux.service';
 
 @Component({
   selector: 'app-screen-overlay',
@@ -24,5 +24,5 @@ export class ScreenOverlayComponent {
 
   visible$ = this.screenLockReduxService.isScreenLocked$;
 
-  constructor(private screenLockReduxService: ScreenLockReduxService) { }
+  constructor(private screenLockReduxService: ScreenLockReduxFacade) { }
 }
