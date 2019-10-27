@@ -1,19 +1,23 @@
-import {ROUTER} from '@@router/store/router-store.properties';
-import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
 import {TestBed} from '@angular/core/testing';
-import {ROUTER_NAVIGATED, ROUTER_REQUEST} from '@ngrx/router-store';
-import {select, Store, StoreModule} from '@ngrx/store';
+import {ROUTER_NAVIGATED, ROUTER_REQUEST, routerReducer} from '@ngrx/router-store';
+import {ActionReducerMap, select, Store, StoreModule} from '@ngrx/store';
 import {cold} from 'jasmine-marbles';
-import {RouterState} from '@@router/models/router-state.model';
+import {IRouterState} from '@@router/models/router-state.model';
+import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
+import {StoreTestUtils} from '@@share/tests/utils/store-test.utils';
 
 describe('RoutingInProgressReducerSpec', function () {
 
-  let store: Store<RouterState>;
+  const reducers: ActionReducerMap<IRouterState> = {
+    state: routerReducer,
+    routerInProgress: routerInProgressReducer
+  };
+  let store: Store<IRouterState>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        StoreModule.forRoot({[ROUTER]: routerInProgressReducer})
+        StoreModule.forRoot(reducers, StoreTestUtils.DEFAULT_ROOT_STORE_CONFIG)
       ]
     });
     store = TestBed.get(Store);

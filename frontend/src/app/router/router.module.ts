@@ -3,10 +3,10 @@ import {NgModule, Optional, Self} from '@angular/core';
 import {Router} from '@angular/router';
 import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {ActionReducerMap, StoreModule} from '@ngrx/store';
-import {RouterState} from '@@router/models/router-state.model';
+import {IRouterState} from '@@router/models/router-state.model';
 import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
 
-const reducers: ActionReducerMap<RouterState> = {
+const reducers: ActionReducerMap<IRouterState> = {
   state: routerReducer,
   routerInProgress: routerInProgressReducer
 };

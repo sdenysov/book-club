@@ -1,4 +1,4 @@
-import {RouterState} from '@@router/models/router-state.model';
+import {IRouterState} from '@@router/models/router-state.model';
 import {RouterSelectors} from '@@router/store/router-state.selectors';
 import {StoreUtils} from '@@share/utils/store.utils';
 import {Injectable} from '@angular/core';
@@ -11,7 +11,7 @@ export class RouterReduxFacade {
   routingInProgress$: Observable<boolean> = this.store.pipe(select(RouterSelectors.isRoutingInProgress));
   currentUrl$: Observable<string> = this.store.pipe(select(RouterSelectors.selectCurrentRoute));
 
-  constructor(private store: Store<RouterState>) {}
+  constructor(private store: Store<IRouterState>) {}
 
   getBookId(): string {
     return StoreUtils.getSync(this.store, RouterSelectors.selectRouteParam('id'));
