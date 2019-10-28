@@ -13,6 +13,11 @@ export class AuthService {
 
   loginSuccessRedirectUrl: string;
 
+  isLoggedIn$: Observable<boolean> = this.authReduxFacade.authState$.pipe(
+    filter(authState => !authState.pending),
+    map(authState => Boolean(authState.loggedInUser))
+  );
+
   constructor(private routerService: RouterService,
               private authReduxFacade: AuthReduxFacade,
               private authRestService: AuthRestService) {
@@ -22,13 +27,6 @@ export class AuthService {
     return this.authReduxFacade.authState$.pipe(
       filter(userData => userData.pending),
       map(userData => userData.loggedInUser)
-    );
-  }
-
-  isLoggedIn$(): Observable<boolean> {
-    return this.authReduxFacade.authState$.pipe(
-      filter(authState => !authState.pending),
-      map(authState => Boolean(authState.loggedInUser))
     );
   }
 

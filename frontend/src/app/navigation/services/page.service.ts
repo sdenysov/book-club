@@ -1,31 +1,31 @@
 import {Injectable} from '@angular/core';
 import {Page} from '@@navigation/models/page';
-import {Observable} from 'rxjs';
-import {RouterReduxFacade} from '@@router/store/router-redux.facade';
-import {map, tap} from 'rxjs/operators';
+
+interface IPageUrlPattern {
+  page: Page;
+  regexp: RegExp;
+}
 
 @Injectable({providedIn: 'root'})
 export class PageService {
 
-  readonly pageToUrlPattern: Map<Page, RegExp> = new Map([
-    [Page.MAIN, /^\/$/],
-    [Page.SEARCH_BOOK, /^\/search-book/],
-    [Page.LOGIN, /^\/login/],
-    [Page.REGISTER, /^\/register/],
-    [Page.SETTING, /^\/setting/],
-    [Page.EDIT, /^\/edit/],
-    [Page.BOOKS, /^\/books/],
-  ]);
+  readonly pageUrlPatterns: IPageUrlPattern[] = [
+    {page: Page.MAIN, regexp: /^\/?$/},
+    {page: Page.SEARCH_BOOK, regexp: /^\/search-book\/?$/},
+    {page: Page.REGISTER, regexp: /^\/register\/?$/},
+    {page: Page.LOGIN, regexp: /^\/login\/?$/},
+    {page: Page.BOOKS, regexp: /^\/[a-z]+\/books\/?$/},
+    {page: Page.EDIT_BOOK, regexp: /^\/[a-z]+\/books\/[a-z0-9]+\/edit\/?$/},
+    {page: Page.NEW_BOOK, regexp: /^\/[a-z]+\/books\/new\/?$/},
+    {page: Page.BOOK_DETAILS, regexp: /^\/[a-z]+\/books\/[a-z0-9]+\/?$/},
+    {page: Page.EDIT_PROFILE, regexp: /^\/[a-z]+\/edit\/?$/},
+    {page: Page.PROFILE_SETTING, regexp: /^\/[a-z]+\/settings\/?$/},
+    {page: Page.NOT_FOUND, regexp: /^\/404\/?$/},
+    {page: Page.PROFILE, regexp: /^\/[a-z]+\/?$/}
+  ];
 
-  currentPage$: Observable<Page> = this.routerReduxFacade.currentUrl$.pipe(
-    tap((currentUrl) => console.log('currentUrl:', currentUrl)),
-    map((currentUrl: string) => this.findPage(currentUrl))
-  );
-
-  constructor(private routerReduxFacade: RouterReduxFacade) { }
-
-  private findPage(url: string): Page {
-    const pages = Array.from(this.pageToUrlPattern.keys());
-    return pages.find(page => this.pageToUrlPattern.get(page).test(url));
+  getCurrentPage(url: string): Page {
+    const description = this.pageUrlPatterns.find(item => item.regexp.test(url));
+    return description && description.page;
   }
 }

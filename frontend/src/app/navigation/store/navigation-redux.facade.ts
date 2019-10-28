@@ -8,9 +8,4 @@ export class NavigationReduxFacade {
 
   constructor(private pageService: PageService,
               private authService: AuthService) {}
-
-  pageAndLoggedIn$ = combineLatest([
-    this.pageService.currentPage$,
-    this.authService.isLoggedIn$
-  ]);
 }

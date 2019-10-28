@@ -4,6 +4,8 @@ import {AppShareModule} from '@@share/app-share.module';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {NavigationEffects} from '@@navigation/store/navigation.effects';
 
 const SHARED_DECLARATIONS = [
   AppNavbarComponent
@@ -13,6 +15,7 @@ const SHARED_DECLARATIONS = [
   imports: [
     AppShareModule,
     StoreModule.forFeature(NAVIGATION_STORE_KEY, {}),
+    EffectsModule.forFeature([NavigationEffects]),
     RouterModule
   ],
   declarations: SHARED_DECLARATIONS,
