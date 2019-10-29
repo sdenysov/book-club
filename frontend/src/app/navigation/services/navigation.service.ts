@@ -5,7 +5,7 @@ import {Page} from '@@navigation/models/page';
 @Injectable({providedIn: 'root'})
 export class NavigationService {
 
-  defaultNavigationState: INavbar = {
+  private readonly defaultNavigationState: INavbar = {
     loginBtnVisible: false,
     registerBtnVisible: false,
     searchFieldVisible: true,
@@ -22,7 +22,14 @@ export class NavigationService {
           userBtnVisible: userLoggedIn
         };
       }
-      default: {
+      default: if (!userLoggedIn) {
+        return {
+          ...this.defaultNavigationState,
+          loginBtnVisible: !userLoggedIn,
+          registerBtnVisible: !userLoggedIn,
+          userBtnVisible: userLoggedIn
+        };
+      } else {
         return this.defaultNavigationState;
       }
     }
