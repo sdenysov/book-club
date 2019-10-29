@@ -1,4 +1,5 @@
 import {BigLoadSpinnerComponent} from '@@share/components/big-load-spinner/big-load-spinner.component';
+import {IconComponent} from '@@share/components/icon/icon.component';
 import {PageNotFoundComponent} from '@@share/components/page-not-found/page-not-found.component';
 import {SectionHeaderComponent} from '@@share/components/section/section-header.component';
 import {SectionMainComponent} from '@@share/components/section/section-main.component';
@@ -8,6 +9,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 /**
@@ -23,7 +25,8 @@ const SHARE_DECLARATIONS = [
   SectionMainComponent,
   ImageDirective,
   BigLoadSpinnerComponent,
-  PageNotFoundComponent
+  PageNotFoundComponent,
+  IconComponent
 ];
 
 const SHARE_IMPORTS = [
@@ -31,7 +34,8 @@ const SHARE_IMPORTS = [
   RouterModule,
   ReactiveFormsModule,
   FormsModule,
-  BsDropdownModule
+  BsDropdownModule,
+  FontAwesomeModule
 ];
 
 @NgModule({

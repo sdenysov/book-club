@@ -4,7 +4,7 @@ import {Component, Input} from '@angular/core';
   selector: 'app-section-header',
   template: `
     <header>
-      <span class="glyphicon glyphicon-{{icon}} pR-1"></span>
+      <app-icon [name]="icon" class="pR-1"></app-icon>
       <span>{{title}}</span>
       <div class="pull-right">
         <ng-content></ng-content>

@@ -13,6 +13,8 @@ import {AppShareModule} from '@@share/app-share.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {faIdCard} from '@fortawesome/free-solid-svg-icons';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 export const HTTP_INTERCEPTOR_PROVIDERS = [
@@ -25,6 +27,7 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     BrowserModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
+    FontAwesomeModule,
     AppNavbarModule,
     AppErrorModule,
     AppShareModule,
@@ -43,4 +46,9 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(private faIconLibrary: FaIconLibrary) {
+    faIconLibrary.addIcons(faIdCard);
+  }
+}
