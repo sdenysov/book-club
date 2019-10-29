@@ -2,12 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export interface IEnv {
-  dev: boolean;
-  mock: boolean;
-  dpd: boolean;
-  production: boolean;
-}
+import {IEnv} from '@@env/impl-dependencies';
 
 export const environment: IEnv = {
   dev: true,
