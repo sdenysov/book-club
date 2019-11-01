@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" *ngIf="navbar$ | async as navbar">
+<nav class="navbar navbar-default" *ngIf="vm$ | async as vm">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -15,7 +15,7 @@
       <ul class="nav navbar-nav">
         <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
       </ul>
-      <form *ngIf="navbar.searchFieldVisible" class="navbar-form navbar-left">
+      <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
         <div class="form-group">
           <input #searchInput type="text" class="form-control search" placeholder="Search">
           <span class="glyphicon glyphicon-search search-ico"></span>
@@ -23,7 +23,7 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="navbar.userBtnVisible" class="dropdown logged-in-user-dropdown">
+        <li *ngIf="vm.navbar.userBtnVisible" class="dropdown logged-in-user-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
@@ -32,10 +32,10 @@
             <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
           </ul>
         </li>
-        <li *ngIf="navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active" class="login-btn">
+        <li *ngIf="vm.navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active" class="login-btn">
           <a (click)="$event.preventDefault()" href="">Log In</a>
         </li>
-        <li *ngIf="navbar.registerBtnVisible" routerLink="/register" routerLinkActive="active" class="register-btn">
+        <li *ngIf="vm.navbar.registerBtnVisible" routerLink="/register" routerLinkActive="active" class="register-btn">
           <a (click)="$event.preventDefault()" href="">Register</a>
         </li>
       </ul>

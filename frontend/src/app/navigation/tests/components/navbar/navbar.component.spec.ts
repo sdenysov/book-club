@@ -76,7 +76,7 @@ describe('NavbarComponentSpec', () => {
           loginBtnVisible: Boolean(navbarElement.querySelector('.login-btn')),
           registerBtnVisible: Boolean(navbarElement.querySelector('.register-btn')),
           searchFieldVisible: Boolean(navbarElement.querySelector('.navbar-form')),
-          userBtnVisible: Boolean(navbarElement.querySelector('.logged-in-user-dropdown')),
+          userBtnVisible: Boolean(navbarElement.querySelector('.profile-dropdown')),
         };
       })
     );
