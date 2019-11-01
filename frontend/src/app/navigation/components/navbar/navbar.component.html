@@ -24,7 +24,11 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="vm.navbar.userBtnVisible" class="dropdown logged-in-user-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle profile-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="profile-name">{{vm.user.username}}</span>
+            <img class="profile-image" src="assets/images/avatar-circle.jpg">
+            <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
             <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
             <li role="separator" class="divider"></li>
