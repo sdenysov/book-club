@@ -1,8 +1,8 @@
 import {IAuthState} from '@@auth/models/auth-state.model';
 import {ICredentials} from '@@auth/models/credentials.model';
+import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {AuthSelectors} from '@@auth/store/auth.selectors';
-import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {IUser} from '@@share/models/user.model';
 import {StoreUtils} from '@@share/utils/store.utils';
 import {Injectable} from '@angular/core';
@@ -21,8 +21,8 @@ export class AuthReduxFacade {
     this.store.dispatch(AuthActions.login({credentials}));
   }
 
-  loginSuccess(user: IUser) {
-    this.store.dispatch(AuthActions.loginSuccess({user}));
+  logout() {
+    this.store.dispatch(AuthActions.logout());
   }
 
   getLoggedInUser(): IUser {

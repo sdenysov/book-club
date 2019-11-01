@@ -1,3 +1,4 @@
+import {ISessionDataModel} from '@@auth/models/session-data.model';
 import {EnvUtils} from '@@core/utils/env.utils';
 import {ICredentials} from '@@auth/models/credentials.model';
 import {IUser} from '@@share/models/user.model';
@@ -10,7 +11,7 @@ export abstract class AuthRestService {
 
   abstract me(): Observable<IUser>;
 
-  abstract login$(credentials: ICredentials): Observable<IUser>;
+  abstract login$(credentials: ICredentials): Observable<ISessionDataModel>;
 
   abstract logout(): Observable<HttpResponse<any>>;
 }

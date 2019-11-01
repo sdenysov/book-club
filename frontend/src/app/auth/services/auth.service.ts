@@ -1,12 +1,11 @@
-import {ICredentials} from '@@auth/models/credentials.model';
-import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
+import {Page} from '@@navigation/models/page';
+import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {RouterService} from '@@router/services/router.service';
 import {IUser} from '@@share/models/user.model';
-import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {filter, first, map} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -14,10 +13,16 @@ export class AuthService {
   redirectUrl: string;
   loggedInUser$: Observable<IUser>;
   isLoggedIn$: Observable<boolean>;
+  private readonly authOnlyAccessPages = new Set<Page>([
+    Page.BOOKS,
+    Page.EDIT_PROFILE,
+    Page.BOOK_DETAILS,
+    Page.PROFILE_SETTING
+  ]);
 
   constructor(private routerService: RouterService,
               private authReduxFacade: AuthReduxFacade,
-              private authRestService: AuthRestService) {
+              private navigationReduxFacade: NavigationReduxFacade) {
     this.loggedInUser$ = authReduxFacade.authState$.pipe(
       filter(userData => userData.loggedInUserLoaded),
       map(userData => userData.loggedInUser)
@@ -27,23 +32,20 @@ export class AuthService {
     );
   }
 
-  login$(credentials: ICredentials): Observable<IUser> {
-    return this.authRestService.login$(credentials);
-  }
-
-  logout(): Observable<HttpResponse<any>> {
-    // TODO handle logout event
-    return of(new HttpResponse({
-      body: {id: 'd7acedf2ed2d4bdb', username: 'john'}
-    }));
-  }
-
   redirectOnSuccessLogin() {
     if (this.redirectUrl) {
       this.routerService.goTo(this.redirectUrl);
     } else {
       this.routerService.goToMainPage();
     }
+  }
+
+  redirectOnSuccessLogout() {
+    this.navigationReduxFacade.currentPage$.pipe(first()).subscribe(currentPage => {
+      if (this.authOnlyAccessPages.has(currentPage)) {
+        this.routerService.goToMainPage();
+      }
+    });
   }
 }
 

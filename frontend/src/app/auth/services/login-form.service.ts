@@ -24,6 +24,11 @@ export class LoginFormService {
     });
   }
 
+  reset() {
+    this.submitted = false;
+    this.form.reset();
+  }
+
   handleLoginFailedResponse(error: Error | HttpErrorData) {
     if (error instanceof HttpErrorData && error.response.status === UNAUTHORIZED) {
       const validationError: IValidationError = {type: 'bad_credentials'};
@@ -31,7 +36,7 @@ export class LoginFormService {
       FormUtils.setErrorsToForm(formErrors, this.form);
       return EMPTY;
     }
-    this.form.reset();
+    this.reset();
     return throwError(error);
   }
 }

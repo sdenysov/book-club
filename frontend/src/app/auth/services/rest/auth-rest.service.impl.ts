@@ -1,4 +1,5 @@
 import {ICredentials} from '@@auth/models/credentials.model';
+import {ISessionDataModel} from '@@auth/models/session-data.model';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {IUser} from '@@share/models/user.model';
 import {HttpClient, HttpResponse} from '@angular/common/http';
@@ -16,8 +17,8 @@ export class AuthRestServiceImpl implements AuthRestService {
     return this.http.get<IUser>(`${this.baseUrl}/me`);
   }
 
-  login$(credentials: ICredentials): Observable<IUser> {
-    return this.http.post<IUser>(`${this.baseUrl}/login`, credentials);
+  login$(credentials: ICredentials): Observable<ISessionDataModel> {
+    return this.http.post<ISessionDataModel>(`${this.baseUrl}/login`, credentials);
   }
 
   logout(): Observable<HttpResponse<any>> {

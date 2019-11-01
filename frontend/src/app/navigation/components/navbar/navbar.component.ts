@@ -19,20 +19,20 @@ interface IViewModel {
 export class NavBarComponent {
 
   vm$: Observable<IViewModel>;
-  navbar$ = this.navigationReduxFacade.navbar$;
-  user$ = this.authReduxFacade.loggedInUser$;
 
   constructor(private navigationReduxFacade: NavigationReduxFacade,
               private authReduxFacade: AuthReduxFacade) {
-    this.initViewModel();
+    this.vm$ = this.getViewModel();
   }
 
-  private initViewModel() {
-    this.vm$ = combineLatest([
+  logout() {
+    this.authReduxFacade.logout();
+  }
+
+  private getViewModel(): Observable<IViewModel> {
+    return combineLatest([
       this.navigationReduxFacade.navbar$,
       this.authReduxFacade.loggedInUser$
-    ]).pipe(
-      map(([navbar, user]) => ({navbar, user}))
-    );
+    ]).pipe(map(([navbar, user]) => ({navbar, user})));
   }
 }

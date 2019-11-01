@@ -10,7 +10,6 @@ const initialState: IAuthState = {
 const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserSucceed,
-    AuthActions.loginSuccess,
     (state, {user}) => ({...state, loggedInUser: user, loggedInUserLoaded: true})
   ),
   on(
@@ -20,7 +19,8 @@ const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserFailed,
     (state) => ({...state, loggedInUser: null, loggedInUserLoaded: true})
-  )
+  ),
+  on(AuthActions.logout, () => ({loggedInUser: null, loggedInUserLoaded: true}))
 );
 
 export function authReducer(state: IAuthState = initialState, action: Action): IAuthState {
