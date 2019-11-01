@@ -7,19 +7,25 @@ import {AppNavbarModule} from '@@app/navigation/navbar.module';
 import {AppScreenLockModule} from '@@app/screen-lock/screen-lock.module';
 import {AppAuthModule} from '@@auth/auth.module';
 import {CoreModule} from '@@core/core.module';
+import {AppInitService} from '@@core/services/app-init.service';
 import {AppErrorModule} from '@@errors/app-error.module';
 import {AppRouterStoreModule} from '@@router/router.module';
 import {AppShareModule} from '@@share/app-share.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ErrorHandler, NgModule} from '@angular/core';
+import {APP_INITIALIZER, ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {faIdCard} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
-export const HTTP_INTERCEPTOR_PROVIDERS = [
+const HTTP_INTERCEPTOR_PROVIDERS = [
   {provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true}
 ];
+
+function initializeApp(initService: AppInitService) {
+  return (): Promise<any> => {
+    return initService.init();
+  };
+}
 
 @NgModule({
   imports: [
@@ -42,13 +48,9 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
   ],
   providers: [
     ...HTTP_INTERCEPTOR_PROVIDERS,
-    {provide: ErrorHandler, useClass: GlobalErrorHandler}
+    {provide: ErrorHandler, useClass: GlobalErrorHandler},
+    {provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppInitService], multi: true}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-  constructor(private faIconLibrary: FaIconLibrary) {
-    faIconLibrary.addIcons(faIdCard);
-  }
-}
+export class AppModule {}
