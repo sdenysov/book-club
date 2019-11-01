@@ -5,34 +5,30 @@ import {Page} from '@@navigation/models/page';
 @Injectable({providedIn: 'root'})
 export class NavigationService {
 
-  private readonly defaultNavigationState: INavbar = {
-    loginBtnVisible: false,
-    registerBtnVisible: false,
-    searchFieldVisible: true,
-    userBtnVisible: true
-  };
-
   getNavbarState(currentPage: Page, userLoggedIn: boolean): INavbar {
+    const navbar: INavbar = {
+      loginBtnVisible: !userLoggedIn,
+      registerBtnVisible: !userLoggedIn,
+      searchFieldVisible: true,
+      userBtnVisible: userLoggedIn
+    };
     switch (currentPage) {
-      case Page.LOGIN || Page.REGISTER: {
-        return {
-          ...this.defaultNavigationState,
-          loginBtnVisible: !userLoggedIn,
-          registerBtnVisible: !userLoggedIn,
-          userBtnVisible: userLoggedIn
-        };
+      case Page.LOGIN: {
+        navbar.loginBtnVisible = false;
+        navbar.registerBtnVisible = true;
+        navbar.searchFieldVisible = false;
+        navbar.userBtnVisible = false;
+        break;
       }
-      default: if (!userLoggedIn) {
-        return {
-          ...this.defaultNavigationState,
-          loginBtnVisible: !userLoggedIn,
-          registerBtnVisible: !userLoggedIn,
-          userBtnVisible: userLoggedIn
-        };
-      } else {
-        return this.defaultNavigationState;
+      case Page.REGISTER: {
+        navbar.loginBtnVisible = true;
+        navbar.registerBtnVisible = false;
+        navbar.searchFieldVisible = false;
+        navbar.userBtnVisible = false;
+        break;
       }
     }
+    return navbar;
   }
 }
 
