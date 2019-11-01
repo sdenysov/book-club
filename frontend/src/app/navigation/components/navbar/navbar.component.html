@@ -1,28 +1,18 @@
 <nav class="navbar navbar-default" *ngIf="vm$ | async as vm">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()" href="">
-        <span class="logo">Book Club</span>
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
-      </ul>
-      <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
-        <div class="form-group">
-          <input #searchInput type="text" class="form-control search" placeholder="Search">
-          <span class="glyphicon glyphicon-search search-ico"></span>
-        </div>
-      </form>
-
-      <ul class="nav navbar-nav navbar-right">
+    <a href="" class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()">
+      <span class="logo">Book Club</span>
+    </a>
+    <ul class="nav navbar-nav">
+      <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
+    </ul>
+    <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
+      <div class="form-group">
+        <input #searchInput type="text" class="form-control search" placeholder="Search">
+        <app-icon name="search" class="search-ico"></app-icon>
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
         <li *ngIf="vm.navbar.userBtnVisible" class="dropdown profile-dropdown">
           <a href="#" class="profile-button dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="profile-name">{{vm.user.username}}</span>
@@ -30,7 +20,7 @@
             <span class="caret"></span>
           </a>
           <ul class="profile-dropdown-menu dropdown-menu">
-            <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
+            <li routerLink="/{{vm.user.username}}"><a (click)="$event.preventDefault()" href="">Profile</a></li>
             <li role="separator" class="divider"></li>
             <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
             <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
@@ -43,6 +33,5 @@
           <a (click)="$event.preventDefault()" href="">Register</a>
         </li>
       </ul>
-    </div>
   </div>
 </nav>

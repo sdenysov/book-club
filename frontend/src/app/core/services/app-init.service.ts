@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FaIconLibrary} from '@fortawesome/angular-fontawesome';
-import {faIdCard, faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import {faIdCard, faSearch, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({providedIn: 'root'})
 export class AppInitService {
@@ -17,5 +17,6 @@ export class AppInitService {
   private static configIcons(faIconLibrary: FaIconLibrary) {
     faIconLibrary.addIcons(faIdCard);
     faIconLibrary.addIcons(faUserCircle);
+    faIconLibrary.addIcons(faSearch);
   }
 }
