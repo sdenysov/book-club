@@ -23,13 +23,13 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="vm.navbar.userBtnVisible" class="dropdown logged-in-user-dropdown">
-          <a href="#" class="dropdown-toggle profile-button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <li *ngIf="vm.navbar.userBtnVisible" class="dropdown profile-dropdown">
+          <a href="#" class="profile-button dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="profile-name">{{vm.user.username}}</span>
             <img class="profile-image" src="assets/images/avatar-circle.jpg">
             <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="profile-dropdown-menu dropdown-menu">
             <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
             <li role="separator" class="divider"></li>
             <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>

@@ -7,13 +7,13 @@ $navbar-height: 5rem;
 .navbar {
   background-color: $color-primary;
   border: none;
-  -webkit-border-radius: 0;
   -moz-border-radius: 0;
+  -webkit-border-radius: 0;
   border-radius: 0;
 
   & .navbar-brand {
-    font-family: 'Yesteryear', cursive;
     color: $color-text-lightest;
+    font-family: 'Yesteryear', cursive;
     font-size: 3rem;
     padding: 1.4rem 1.5rem;
 
@@ -23,34 +23,39 @@ $navbar-height: 5rem;
   }
 
   .navbar-nav {
-
     & > li > a {
-      padding-top: 0;
-      padding-bottom: 0;
+      color: $color-text-lightest;
       height: $navbar-height;
       line-height: $navbar-height;
-      color: $color-text-lightest;
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.profile-dropdown {
+  .profile-button {
+    padding: 0 1rem 0 1rem;
+    white-space: nowrap;
+
+    .profile-name {
+      display: inline-block;
+      height: 2.8rem;
+      padding-right: 0.7rem;
     }
 
-    .profile-button {
-      white-space: nowrap;
-      padding: 0 1rem 0 1rem;
-
-      .profile-name {
-        display: inline-block;
-        height: 2.8rem;
-        padding-right: 0.7rem;
-      }
-
-      .profile-image {
-        display: inline-block;
-        width: 2.6rem;
-        height: 2.6rem;
-        border-radius: 14px;
-        vertical-align: top;
-        margin: 1.2rem 0.5rem 1.2rem 0;
-      }
+    .profile-image {
+      border-radius: 14px;
+      display: inline-block;
+      height: 2.6rem;
+      margin: 1.2rem 0.5rem 1.2rem 0;
+      vertical-align: top;
+      width: 2.6rem;
     }
+  }
+
+  .profile-dropdown-menu {
+    margin-top: 6px;
   }
 }
 
@@ -83,18 +88,18 @@ $navbar-height: 5rem;
 }
 
 .navbar-form {
-  position: relative;
-  margin-top: 10px;
   margin-bottom: 10px;
+  margin-top: 10px;
+  position: relative;
 }
 
 .search {
-  border: none;
-  height: 3rem;
-  min-width: 40rem;
   background-color: $color-theme-dark;
+  border: none;
   border-radius: $border-radius-round;
   color: $color-text-lightest;
+  height: 3rem;
+  min-width: 40rem;
   padding-left: 3rem;
   @include placeholder {
     color: $color-text-light;
@@ -102,8 +107,8 @@ $navbar-height: 5rem;
 }
 
 .search-ico {
+  color: $color-text-lightest;
+  left: 2.5rem;
   position: absolute;
   top: 0.9rem;
-  left: 2.5rem;
-  color: $color-text-lightest;
 }

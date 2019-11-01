@@ -1,0 +1,39 @@
+@import "utils/colors";
+@import "variables";
+
+.dropdown-menu,
+.navbar-nav > li > .dropdown-menu {
+  border: 1px solid $color-gray-light;
+  border-radius: $border-radius-dropdown;
+
+  & > li > a {
+    padding: 0.3rem 1.5rem;
+  }
+
+  &::before, &::after {
+    border: solid transparent;
+    bottom: 100%;
+    content: '';
+    height: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 3.5rem;
+    width: 0;
+  }
+
+  &::before {
+    border-bottom-color: $color-gray-light;
+    border-width: 6px;
+    margin: 0 -6px;
+  }
+
+  &::after {
+    border-bottom-color: $color-lightest;
+    border-width: 5px;
+    margin: 0 -5px;
+  }
+
+  .divider {
+    margin: 0.5rem 0;
+  }
+}
