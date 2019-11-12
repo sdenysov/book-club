@@ -1,4 +1,4 @@
-import {AuthService} from '@@auth/services/auth.service';
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {PageAccessLevel} from '@@user/models/page-access-level';
 import {UserReduxFacade} from '@@user/store/user-redux-facade';
 import {Injectable} from '@angular/core';
@@ -8,13 +8,13 @@ import {map} from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class UserService {
 
-  constructor(private authService: AuthService,
+  constructor(private authReduxFacade: AuthReduxFacade,
               private userReduxFacade: UserReduxFacade) {
   }
 
   pageAccessLevel$(): Observable<PageAccessLevel> {
     return combineLatest([
-      this.authService.loggedInUser$,
+      this.authReduxFacade.loggedInUser$,
       this.userReduxFacade.observingUsername$
     ]).pipe(
       map(([loggedInUser, observingUsername]) => {

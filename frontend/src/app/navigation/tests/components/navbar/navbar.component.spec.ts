@@ -1,9 +1,14 @@
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {NavBarComponent} from '@@navigation/components/navbar/navbar.component';
 import {INavbar} from '@@navigation/models/navbar.model';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {cold, hot} from 'jasmine-marbles';
-import {map} from 'rxjs/operators';
+import {IconComponent} from '@@share/components/icon/icon.component';
+import {IUser} from '@@share/models/user.model';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {cold} from 'jasmine-marbles';
+import {Observable} from 'rxjs';
 
 const defaultNavbarForLoggedIn: INavbar = {
   loginBtnVisible: false,
@@ -33,63 +38,62 @@ const navbarForRegisterPage: INavbar = {
   userBtnVisible: false
 };
 
-class NavigationReduxFacadeMock {
+class AuthReduxFacadeMock {
+  loggedInUser$: Observable<IUser>;
+}
 
-  navbar$ = hot('-a-b-c-d-e-', {
-    a: null,
-    b: defaultNavbarForLoggedIn,
-    c: defaultNavbarForNotLoggedIn,
-    d: navbarForLoginPage,
-    e: navbarForRegisterPage
-  });
+class NavigationReduxFacadeMock {
+  navbar$: Observable<INavbar>;
 }
 
 describe('NavbarComponentSpec', () => {
 
   let navbarComponent: NavBarComponent;
   let navigationReduxFacade: NavigationReduxFacade;
+  let authReduxFacade: AuthReduxFacade;
   let fixture: ComponentFixture<NavBarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavBarComponent],
+      imports: [
+        RouterTestingModule,
+        FontAwesomeModule
+      ],
+      declarations: [NavBarComponent, IconComponent],
       providers: [
+        {provide: AuthReduxFacade, useClass: AuthReduxFacadeMock},
         {provide: NavigationReduxFacade, useClass: NavigationReduxFacadeMock}
       ]
-    }).compileComponents().then(() => {
-      navigationReduxFacade = TestBed.get(NavigationReduxFacade);
-      fixture = TestBed.createComponent(NavBarComponent);
-      navbarComponent = fixture.componentInstance;
-      fixture.detectChanges();
     });
-  }));
+    navigationReduxFacade = TestBed.get(NavigationReduxFacade);
+    authReduxFacade = TestBed.get(AuthReduxFacade);
+    fixture = TestBed.createComponent(NavBarComponent);
+    navbarComponent = fixture.componentInstance;
+  });
 
   it('should create', () => {
     expect(navbarComponent).toBeDefined();
   });
 
   it('should hide/show navbar elements according to navbar state', () => {
-    const navbarTemplateState = navigationReduxFacade.navbar$.pipe(map(() => {
-        fixture.detectChanges();
-        const navbarElement = fixture.nativeElement.querySelector('.navbar');
-        return navbarElement && {
-          loginBtnVisible: Boolean(navbarElement.querySelector('.login-btn')),
-          registerBtnVisible: Boolean(navbarElement.querySelector('.register-btn')),
-          searchFieldVisible: Boolean(navbarElement.querySelector('.navbar-form')),
-          userBtnVisible: Boolean(navbarElement.querySelector('.profile-dropdown')),
-        };
-      })
-    );
-
-    const expected$ = cold('-a-b-c-d-e-', {
+    const user = {id: '12345', username: 'username'};
+    authReduxFacade.loggedInUser$ = cold('-a', {a: user});
+    navigationReduxFacade.navbar$ = cold('-a-b-c-d-e-', {
       a: null,
       b: defaultNavbarForLoggedIn,
       c: defaultNavbarForNotLoggedIn,
       d: navbarForLoginPage,
       e: navbarForRegisterPage
     });
+    fixture.detectChanges(); // ngOnInit
 
-    expect(navbarTemplateState).toBeObservable(expected$);
+    expect(navbarComponent.vm$).toBeObservable(cold('-a-b-c-d-e-', {
+      a: {user, navbar: null},
+      b: {user, navbar: defaultNavbarForLoggedIn},
+      c: {user, navbar: defaultNavbarForNotLoggedIn},
+      d: {user, navbar: navbarForLoginPage},
+      e: {user, navbar: navbarForRegisterPage}
+    }));
   });
 });
 

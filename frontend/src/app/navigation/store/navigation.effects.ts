@@ -1,40 +1,51 @@
-import {AuthService} from '@@auth/services/auth.service';
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
+import {AuthActions} from '@@auth/store/auth.actions';
 import {INavbar} from '@@navigation/models/navbar.model';
 import {NavigationService} from '@@navigation/services/navigation.service';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {NavigationActions} from '@@navigation/store/navigation.actions';
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {ROUTER_NAVIGATED} from '@ngrx/router-store';
-import {combineLatest} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {ROUTER_NAVIGATED, RouterNavigatedAction} from '@ngrx/router-store';
+import {map, withLatestFrom} from 'rxjs/operators';
 
 @Injectable()
 export class NavigationEffects {
-
-  private readonly pageAndLoggedIn$ = combineLatest([
-    this.navigationReduxFacade.currentPage$,
-    this.authService.isLoggedIn$,
-  ]);
 
   constructor(private actions$: Actions,
               private pageService: PageService,
               private navigationService: NavigationService,
               private navigationReduxFacade: NavigationReduxFacade,
-              private authService: AuthService,
-              private router: Router) {
+              private authReduxFacade: AuthReduxFacade) {
   }
 
   updateCurrentPage$ = createEffect(() => this.actions$.pipe(
     ofType(ROUTER_NAVIGATED),
-    map(() => this.pageService.getPageByUrl(this.router.url)),
+    map((action: RouterNavigatedAction) => action.payload.routerState.url),
+    map(currentUrl => this.pageService.getPageByUrl(currentUrl)),
     map(page => NavigationActions.currentPageChanged({page}))
   ));
 
-  navigationState$ = createEffect(() => this.pageAndLoggedIn$.pipe(
-    map(([page, loggedIn]) => this.navigationService.getNavbarState(page, loggedIn)),
+  updateNavStateOnPageChange$ = createEffect(() => this.actions$.pipe(
+    ofType(NavigationActions.currentPageChanged),
+    withLatestFrom(this.authReduxFacade.isLoggedIn$),
+    map(([{page}, loggedIn]) => {
+      console.log('currentPageChanged: page', page);
+      console.log('currentPageChanged: loggedIn', loggedIn);
+      return this.navigationService.getNavbarState(page, loggedIn);
+    }),
+    map((navbar: INavbar) => NavigationActions.navbarStateChanged({navbar}))
+  ));
+
+  updateNavStateOnLoggedInChange$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.setLoggedInStatus),
+    withLatestFrom(this.navigationReduxFacade.currentPage$),
+    map(([{loggedIn}, page]) => {
+      console.log('updateIsLoggedIn: page', page);
+      console.log('updateIsLoggedIn: loggedIn', loggedIn);
+      return this.navigationService.getNavbarState(page, loggedIn);
+    }),
     map((navbar: INavbar) => NavigationActions.navbarStateChanged({navbar}))
   ));
 }

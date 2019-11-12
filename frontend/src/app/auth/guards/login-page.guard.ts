@@ -1,4 +1,3 @@
-import {AuthService} from '@@auth/services/auth.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {RouterService} from '@@router/services/router.service';
 import {Injectable} from '@angular/core';
@@ -11,10 +10,11 @@ export class LoginPageGuard implements CanLoad {
 
   constructor(private userReduxFacade: AuthReduxFacade,
               private routerService: RouterService,
-              private authService: AuthService) {}
+              private authReduxFacade: AuthReduxFacade) {
+  }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.authService.isLoggedIn$.pipe(
+    return this.authReduxFacade.isLoggedIn$.pipe(
       tap(loggedIn => {
         if (loggedIn) {
           this.routerService.goToMainPage();

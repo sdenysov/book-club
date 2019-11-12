@@ -1,5 +1,6 @@
 import {IAuthState} from '@@auth/models/auth-state.model';
 import {ICredentials} from '@@auth/models/credentials.model';
+import {AuthService} from '@@auth/services/auth.service';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {AuthSelectors} from '@@auth/store/auth.selectors';
@@ -14,6 +15,7 @@ export class AuthReduxFacade {
 
   authState$: Observable<IAuthState> = this.store.pipe(select(AuthSelectors.getState));
   loggedInUser$: Observable<IUser> = this.store.pipe(select(AuthSelectors.getLoggedInUser));
+  isLoggedIn$: Observable<boolean> = this.store.pipe(select(AuthSelectors.isLoggedIn));
 
   constructor(private store: Store<{ [AUTH_STORE_KEY]: IUser }>) {}
 

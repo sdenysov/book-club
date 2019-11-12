@@ -4,23 +4,24 @@ import {Action, createReducer, on} from '@ngrx/store';
 
 const initialState: IAuthState = {
   loggedInUser: null,
-  loggedInUserLoaded: false
+  loggedIn: false,
+  pending: true
 };
 
 const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserSucceed,
-    (state, {user}) => ({...state, loggedInUser: user, loggedInUserLoaded: true})
+    (state, {user}) => ({...state, loggedInUser: user})
   ),
   on(
+    AuthActions.logout,
     AuthActions.fetchLoggedInUserFailed,
-    (state) => ({...state, loggedInUser: null, loggedInUserLoaded: true})
+    (state) => ({...state, loggedInUser: null})
   ),
   on(
-    AuthActions.fetchLoggedInUserFailed,
-    (state) => ({...state, loggedInUser: null, loggedInUserLoaded: true})
-  ),
-  on(AuthActions.logout, () => ({loggedInUser: null, loggedInUserLoaded: true}))
+    AuthActions.setLoggedInStatus,
+    (state, {loggedIn}) => ({...state, loggedIn, pending: false})
+  )
 );
 
 export function authReducer(state: IAuthState = initialState, action: Action): IAuthState {
