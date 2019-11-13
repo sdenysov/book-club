@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
-import {PageService} from '@@navigation/services/page.service';
-import {AuthService} from '@@auth/services/auth.service';
-import {combineLatest} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {Page} from '@@navigation/models/page';
+import {NavigationSelectors} from '@@navigation/store/navigation.selectors';
+import {select, Store} from '@ngrx/store';
+import {INavigationState} from '@@navigation/models/navigation-state.model';
 
 @Injectable({providedIn: 'root'})
 export class NavigationReduxFacade {
 
-  constructor(private pageService: PageService,
-              private authService: AuthService) {}
+  currentPage$: Observable<Page> = this.store.pipe(select(NavigationSelectors.selectCurrentPage));
+
+  constructor(private store: Store<INavigationState>) {}
 }

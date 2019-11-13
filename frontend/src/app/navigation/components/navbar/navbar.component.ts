@@ -12,7 +12,7 @@ import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/internal/ope
 })
 export class AppNavbarComponent implements OnInit {
 
-  loggedIn$: Observable<boolean> = this.authService.isLoggedIn$();
+  loggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
 
   constructor(private booksRestService: BooksRestService,
               private authReduxFacade: AuthReduxFacade,

@@ -24,7 +24,7 @@ export class PageService {
     {page: Page.PROFILE, regexp: /^\/[a-z]+\/?$/}
   ];
 
-  getCurrentPage(url: string): Page {
+  getPageByUrl(url: string): Page {
     const description = this.pageUrlPatterns.find(item => item.regexp.test(url));
     return description && description.page;
   }

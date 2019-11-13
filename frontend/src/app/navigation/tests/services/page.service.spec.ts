@@ -27,7 +27,7 @@ describe('PageServiceSpec', () => {
   it('should recognize current page by url', () => {
     testCases.forEach(testCase => {
       testCase.urls.forEach(url => {
-        const currentPage = pageService.getCurrentPage(url);
+        const currentPage = pageService.getPageByUrl(url);
         expect(currentPage).toBe(testCase.page);
       });
     });

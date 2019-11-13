@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 export class AppComponent {
 
   routingInProgress$: Observable<boolean> = this.routerReduxFacade.routingInProgress$;
-  isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$();
+  isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
 
   constructor(private routerReduxFacade: RouterReduxFacade,
               private authService: AuthService) {
