@@ -1,4 +1,7 @@
 import {AuthService} from '@@auth/services/auth.service';
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
+import {AuthActions} from '@@auth/store/auth.actions';
+import {AuthSelectors} from '@@auth/store/auth.selectors';
 import {INavbar} from '@@navigation/models/navbar.model';
 import {Page} from '@@navigation/models/page';
 import {PageService} from '@@navigation/services/page.service';
@@ -23,9 +26,9 @@ class AuthServiceMock {
   isLoggedIn$: Observable<boolean> = hot('---a', {a: true});
 }
 
-describe('NavigationEffectsSpec', () => {
+fdescribe('NavigationEffectsSpec', () => {
 
-  let actions$: ReplaySubject<Action>;
+  let actions$: Observable<Action>;
   let pageService: PageService;
   let effects: NavigationEffects;
 
@@ -35,9 +38,14 @@ describe('NavigationEffectsSpec', () => {
         HttpClientTestingModule,
       ],
       providers: [
-        provideMockStore({}),
+        provideMockStore({
+          selectors: [
+            {selector: AuthSelectors.isLoggedIn, value: true}
+          ],
+        }),
         provideMockActions(() => actions$),
         PageService,
+        AuthReduxFacade,
         {provide: NavigationReduxFacade, useClass: NavigationReduxFacadeMock},
         {provide: AuthService, useClass: AuthServiceMock},
         NavigationEffects
@@ -53,7 +61,7 @@ describe('NavigationEffectsSpec', () => {
       type: ROUTER_NAVIGATED,
       payload: {routerState: {url: '/some-url'}}
     };
-    actions$.next(routerNavigatedAction);
+    (actions$ as ReplaySubject<Action>).next(routerNavigatedAction);
     spyOn(pageService, 'getPageByUrl').and.returnValue(Page.MAIN);
     effects.updateCurrentPage$.subscribe(resultAction => {
       expect(resultAction.type).toBe(NavigationActions.CURRENT_PAGE_CHANGED);
@@ -61,17 +69,31 @@ describe('NavigationEffectsSpec', () => {
     });
   });
 
-  it('should emit action with new navbar state after current page or user login status changed', () => {
-    // TODO fix test
-    // const navbar: INavbar = {
-    //   loginBtnVisible: false,
-    //   registerBtnVisible: false,
-    //   searchFieldVisible: true,
-    //   userBtnVisible: true
-    // };
-    // effects.navigationState$.subscribe(resultActions => {
-    //   expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
-    //   expect(resultActions.navbar).toEqual(navbar);
-    // });
+  it('should emit action with new navbar state after current page changed', () => {
+    actions$ = hot('--a-', {a: NavigationActions.currentPageChanged({page: Page.LOGIN})});
+    const navbar: INavbar = {
+      loginBtnVisible: false,
+      registerBtnVisible: true,
+      searchFieldVisible: false,
+      userBtnVisible: false
+    };
+    effects.updateNavStateOnPageChange$.subscribe(resultActions => {
+      expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
+      expect(resultActions.navbar).toEqual(navbar);
+    });
+  });
+
+  it('should emit action with new navbar state after loggedIn status changed', () => {
+    actions$ = hot('--a-', {a: AuthActions.setLoggedInStatus({loggedIn: true})});
+    const navbar: INavbar = {
+      loginBtnVisible: false,
+      registerBtnVisible: false,
+      searchFieldVisible: true,
+      userBtnVisible: true
+    };
+    effects.updateNavStateOnLoggedInChange$.subscribe(resultActions => {
+      expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
+      expect(resultActions.navbar).toEqual(navbar);
+    });
   });
 });

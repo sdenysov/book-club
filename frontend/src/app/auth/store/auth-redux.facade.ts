@@ -1,6 +1,5 @@
 import {IAuthState} from '@@auth/models/auth-state.model';
 import {ICredentials} from '@@auth/models/credentials.model';
-import {AuthService} from '@@auth/services/auth.service';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {AuthSelectors} from '@@auth/store/auth.selectors';
