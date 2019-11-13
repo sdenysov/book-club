@@ -13,7 +13,7 @@
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="vm.navbar.userBtnVisible" class="dropdown profile-dropdown">
+        <li *ngIf="vm.navbar.userBtnVisible && vm.user" class="dropdown profile-dropdown">
           <a href="#" class="profile-button dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="profile-name">{{vm.user.username}}</span>
             <img class="profile-image" src="assets/images/avatar-circle.jpg">
