@@ -1,36 +1,42 @@
-import {AuthService} from '@@auth/services/auth.service';
+import {IAuthState} from '@@auth/models/auth-state.model';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
+import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {AuthActions} from '@@auth/store/auth.actions';
-import {AuthSelectors} from '@@auth/store/auth.selectors';
 import {INavbar} from '@@navigation/models/navbar.model';
+import {INavigationState} from '@@navigation/models/navigation.model';
 import {Page} from '@@navigation/models/page';
+import {NavigationService} from '@@navigation/services/navigation.service';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
+import {NAVIGATION_STORE_KEY} from '@@navigation/store/navigation-store.properties';
 import {NavigationActions} from '@@navigation/store/navigation.actions';
 import {NavigationEffects} from '@@navigation/store/navigation.effects';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
 import {provideMockActions} from '@ngrx/effects/testing';
 import {ROUTER_NAVIGATED} from '@ngrx/router-store';
-import {Action} from '@ngrx/store';
-import {provideMockStore} from '@ngrx/store/testing';
-import {hot} from 'jasmine-marbles';
-import {Observable, ReplaySubject} from 'rxjs';
+import {Action, Store} from '@ngrx/store';
+import {MockStore, provideMockStore} from '@ngrx/store/testing';
+import {Observable, of} from 'rxjs';
 import NAVBAR_STATE_CHANGED = NavigationActions.NAVBAR_STATE_CHANGED;
 
-class NavigationReduxFacadeMock {
-  currentPage$: Observable<Page> = hot('-a', {a: Page.MAIN});
-}
-
-class AuthServiceMock {
-  isLoggedIn$: Observable<boolean> = hot('---a', {a: true});
-}
-
-fdescribe('NavigationEffectsSpec', () => {
+describe('NavigationEffectsSpec', () => {
 
   let actions$: Observable<Action>;
   let pageService: PageService;
   let effects: NavigationEffects;
+  let navigationService: NavigationService;
+  let navigationReduxFacade: NavigationReduxFacade;
+  let authReduxFacade: AuthReduxFacade;
+  let store: MockStore<{
+    [AUTH_STORE_KEY]: IAuthState
+    [NAVIGATION_STORE_KEY]: INavigationState
+  }>;
+
+  const initialState = {
+    [AUTH_STORE_KEY]: {} as IAuthState,
+    [NAVIGATION_STORE_KEY]: {} as INavigationState
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -38,60 +44,73 @@ fdescribe('NavigationEffectsSpec', () => {
         HttpClientTestingModule,
       ],
       providers: [
-        provideMockStore({
-          selectors: [
-            {selector: AuthSelectors.isLoggedIn, value: true}
-          ],
-        }),
-        provideMockActions(() => actions$),
-        PageService,
+        NavigationEffects,
+        NavigationService,
+        NavigationReduxFacade,
         AuthReduxFacade,
-        {provide: NavigationReduxFacade, useClass: NavigationReduxFacadeMock},
-        {provide: AuthService, useClass: AuthServiceMock},
-        NavigationEffects
+        PageService,
+        provideMockStore({initialState}),
+        provideMockActions(() => actions$),
       ],
     });
-    pageService = TestBed.get(PageService);
+    store = TestBed.get(Store);
     effects = TestBed.get(NavigationEffects);
+    pageService = TestBed.get(PageService);
+    navigationService = TestBed.get(NavigationService);
+    navigationReduxFacade = TestBed.get(NavigationReduxFacade);
+    authReduxFacade = TestBed.get(AuthReduxFacade);
   });
 
   it('should emit action with page appropriated current url', () => {
-    actions$ = new ReplaySubject(1);
-    const routerNavigatedAction = {
-      type: ROUTER_NAVIGATED,
-      payload: {routerState: {url: '/some-url'}}
-    };
-    (actions$ as ReplaySubject<Action>).next(routerNavigatedAction);
-    spyOn(pageService, 'getPageByUrl').and.returnValue(Page.MAIN);
+    const url = '/url';
+    actions$ = of({type: ROUTER_NAVIGATED, payload: {routerState: {url}}});
+    const getPageByUrlSpy = spyOn(pageService, 'getPageByUrl').and.returnValue(Page.MAIN);
     effects.updateCurrentPage$.subscribe(resultAction => {
+      expect(getPageByUrlSpy).toHaveBeenCalledWith(url);
       expect(resultAction.type).toBe(NavigationActions.CURRENT_PAGE_CHANGED);
       expect(resultAction.page).toBe(Page.MAIN);
     });
   });
 
   it('should emit action with new navbar state after current page changed', () => {
-    actions$ = hot('--a-', {a: NavigationActions.currentPageChanged({page: Page.LOGIN})});
+    const page = Page.LOGIN;
+    const loggedIn = false;
+    actions$ = of(NavigationActions.currentPageChanged({page}));
+    store.setState({
+      ...initialState,
+      [AUTH_STORE_KEY]: {loggedIn} as IAuthState
+    });
     const navbar: INavbar = {
       loginBtnVisible: false,
       registerBtnVisible: true,
       searchFieldVisible: false,
       userBtnVisible: false
     };
+    const getNavbarStateSpy = spyOn(navigationService, 'getNavbarState').and.returnValue(navbar);
     effects.updateNavStateOnPageChange$.subscribe(resultActions => {
+      expect(getNavbarStateSpy).toHaveBeenCalledWith(page, loggedIn);
       expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
       expect(resultActions.navbar).toEqual(navbar);
     });
   });
 
   it('should emit action with new navbar state after loggedIn status changed', () => {
-    actions$ = hot('--a-', {a: AuthActions.setLoggedInStatus({loggedIn: true})});
+    const loggedIn = true;
+    const currentPage = Page.LOGIN;
+    actions$ = of(AuthActions.setLoggedInStatus({loggedIn}));
     const navbar: INavbar = {
       loginBtnVisible: false,
       registerBtnVisible: false,
       searchFieldVisible: true,
       userBtnVisible: true
     };
+    store.setState({
+      ...initialState,
+      [NAVIGATION_STORE_KEY]: {currentPage} as INavigationState
+    });
+    const getNavbarStateSpy = spyOn(navigationService, 'getNavbarState').and.returnValue(navbar);
     effects.updateNavStateOnLoggedInChange$.subscribe(resultActions => {
+      expect(getNavbarStateSpy).toHaveBeenCalledWith(currentPage, loggedIn);
       expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
       expect(resultActions.navbar).toEqual(navbar);
     });
