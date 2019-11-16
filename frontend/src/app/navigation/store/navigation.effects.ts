@@ -40,8 +40,6 @@ export class NavigationEffects {
     ofType(AuthActions.setLoggedInStatus),
     withLatestFrom(this.navigationReduxFacade.currentPage$),
     map(([{loggedIn}, page]) => {
-      console.log('loggedIn', loggedIn);
-      console.log('page', page);
       return this.navigationService.getNavbarState(page, loggedIn);
     }),
     map((navbar: INavbar) => NavigationActions.navbarStateChanged({navbar}))

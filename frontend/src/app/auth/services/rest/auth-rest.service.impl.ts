@@ -13,7 +13,7 @@ export class AuthRestServiceImpl implements AuthRestService {
 
   constructor(private http: HttpClient) {}
 
-  me(): Observable<IUser> {
+  me$(): Observable<IUser> {
     return this.http.get<IUser>(`${this.baseUrl}/me`);
   }
 
@@ -21,7 +21,7 @@ export class AuthRestServiceImpl implements AuthRestService {
     return this.http.post<ISessionDataModel>(`${this.baseUrl}/login`, credentials);
   }
 
-  logout(): Observable<HttpResponse<any>> {
+  logout$(): Observable<HttpResponse<any>> {
     return this.http.post<HttpResponse<any>>(`${this.baseUrl}/logout`, null);
   }
 }

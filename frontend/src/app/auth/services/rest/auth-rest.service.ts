@@ -9,9 +9,9 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('AuthRestService')})
 export abstract class AuthRestService {
 
-  abstract me(): Observable<IUser>;
+  abstract me$(): Observable<IUser>;
 
   abstract login$(credentials: ICredentials): Observable<ISessionDataModel>;
 
-  abstract logout(): Observable<HttpResponse<any>>;
+  abstract logout$(): Observable<HttpResponse<any>>;
 }

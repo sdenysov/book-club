@@ -9,7 +9,7 @@ import {Observable, of} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthRestServiceMock implements AuthRestService {
 
-  me(): Observable<IUser> {
+  me$(): Observable<IUser> {
     return of({id: 'd7acedf2ed2d4bdb', username: 'john'});
   }
 
@@ -17,7 +17,7 @@ export class AuthRestServiceMock implements AuthRestService {
     return of({id: 'ecabz52264dc74j4', path: '/users', uid: '0ad9460afb318b96'});
   }
 
-  logout(): Observable<HttpResponse<any>> {
+  logout$(): Observable<HttpResponse<any>> {
     return of(new HttpResponse({
       body: {id: 'd7acedf2ed2d4bdb', username: 'john'}
     }));

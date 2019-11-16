@@ -26,11 +26,11 @@ export class AuthEffects implements OnInitEffects {
 
   loginSuccess$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.loginSuccess),
-    map(() => AuthActions.fetchLoggedInUser()),
-    tap(() => {
+    map(() => {
       this.loginFormService.reset();
       this.authService.redirectOnSuccessLogin();
-    }),
+      return AuthActions.fetchLoggedInUser();
+    })
   ));
 
   loginFailed$ = createEffect(() => this.actions$.pipe(
@@ -40,7 +40,7 @@ export class AuthEffects implements OnInitEffects {
 
   fetchLoggedInUser$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.fetchLoggedInUser),
-    switchMap(() => this.authRestService.me()),
+    switchMap(() => this.authRestService.me$()),
     map(user => AuthActions.fetchLoggedInUserSucceed({user})),
     catchError(() => of(AuthActions.fetchLoggedInUserFailed()))
   ));
@@ -57,7 +57,7 @@ export class AuthEffects implements OnInitEffects {
 
   logout$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logout),
-    exhaustMap(() => this.authRestService.logout()),
+    exhaustMap(() => this.authRestService.logout$()),
     map(() => {
       this.authService.redirectOnSuccessLogout();
       return AuthActions.setLoggedInStatus({loggedIn: false});
