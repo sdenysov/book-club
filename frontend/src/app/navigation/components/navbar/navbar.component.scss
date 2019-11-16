@@ -4,7 +4,7 @@
 
 $navbar-height: 4.2rem;
 $search-field-height: 3rem;
-$profile-image-size: 2.8rem;
+$profile-image-size: 2.6rem;
 $search-form-top-margin: (($navbar-height - $search-field-height) / 2);
 $profile-image-top-margin: (($navbar-height - $profile-image-size) / 2);
 
@@ -50,7 +50,7 @@ $profile-image-top-margin: (($navbar-height - $profile-image-size) / 2);
     .profile-name {
       display: inline-block;
       height: $navbar-height;
-      padding-right: 0.7rem;
+      padding-right: 0.8rem;
     }
 
     .profile-image {
