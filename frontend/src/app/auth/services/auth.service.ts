@@ -9,10 +9,10 @@ export class AuthService {
 
   redirectUrl: string;
   private readonly authOnlyAccessPages = new Set<Page>([
-    Page.BOOKS,
     Page.EDIT_PROFILE,
-    Page.BOOK_DETAILS,
-    Page.PROFILE_SETTING
+    Page.PROFILE_SETTINGS,
+    Page.NEW_BOOK,
+    Page.EDIT_BOOK
   ]);
 
   constructor(private routerService: RouterService,

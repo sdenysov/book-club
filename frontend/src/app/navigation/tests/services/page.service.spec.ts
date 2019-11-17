@@ -20,7 +20,7 @@ describe('PageServiceSpec', () => {
     {page: Page.BOOK_DETAILS, urls: ['/anyusername/books/123', '/anyusername/books/123/']},
     {page: Page.PROFILE, urls: ['/anyusername', '/anyusername/']},
     {page: Page.EDIT_PROFILE, urls: ['/anyusername/edit', '/anyusername/edit/']},
-    {page: Page.PROFILE_SETTING, urls: ['/anyusername/settings', '/anyusername/settings/']},
+    {page: Page.PROFILE_SETTINGS, urls: ['/anyusername/settings', '/anyusername/settings/']},
     {page: Page.NOT_FOUND, urls: ['/404', '/404/']}
   ];
 
