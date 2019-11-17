@@ -1,3 +1,29 @@
 {
-	"type": "UserCollection"
+	"type": "UserCollection",
+	"properties": {
+		"birthDate": {
+			"name": "birthDate",
+			"type": "date",
+			"typeLabel": "date",
+			"required": false,
+			"id": "birthDate",
+			"order": 0
+		},
+		"location": {
+			"name": "location",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "location",
+			"order": 1
+		},
+		"aboutMe": {
+			"name": "aboutMe",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "aboutMe",
+			"order": 2
+		}
+	}
 }

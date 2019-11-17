@@ -11,7 +11,21 @@
       <app-section>
         <app-section-header title="header text" icon="id-card"></app-section-header>
         <app-section-main>
-          <span>some text in main section</span>
+          <div *ngIf="user$ | async as user">
+            <div *ngIf="user.birthDate" class="row">
+              <strong class="col-sm-2">Birth date:</strong>
+              <span class="col-sm-10">{{user.birthDate}}</span>
+            </div>
+            <div *ngIf="user.location" class="row">
+              <strong class="col-sm-2">Location:</strong>
+              <span class="col-sm-10">{{user.location}}</span>
+            </div>
+            <div *ngIf="user.aboutMe">
+              <strong class="">About me:</strong>
+              <hr class="line-delimiter">
+              <span>{{user.aboutMe}}</span>
+            </div>
+          </div>
         </app-section-main>
       </app-section>
     </div>
