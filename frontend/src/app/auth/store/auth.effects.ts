@@ -21,19 +21,19 @@ export class AuthEffects implements OnInitEffects {
 
   login$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.login),
-    map(({credentials}) => credentials),
-    exhaustMap(credentials =>
-      this.authService.login$(credentials).pipe(
-        map(user => AuthActions.loginSuccess({user})),
-        catchError(error => of(AuthActions.loginFailed({error})))
-      )
-    )
+    exhaustMap(({credentials}) => this.authRestService.login$(credentials)),
+    map(() => AuthActions.loginSuccess()),
+    catchError(error => of(AuthActions.loginFailed({error})))
   ));
 
   loginSuccess$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.loginSuccess),
-    tap(() => this.authService.redirectOnSuccessLogin())
-  ), {dispatch: false});
+    map(() => {
+      this.loginFormService.reset();
+      this.authService.redirectOnSuccessLogin();
+      return AuthActions.fetchLoggedInUser();
+    })
+  ));
 
   loginFailed$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.loginFailed),
@@ -45,6 +45,14 @@ export class AuthEffects implements OnInitEffects {
     switchMap(() => this.authRestService.me()),
     map(user => AuthActions.fetchLoggedInUserSucceed({user})),
     catchError(() => of(AuthActions.fetchLoggedInUserFailed()))
+  ));
+
+  logout$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.logout),
+    exhaustMap(() => this.authRestService.logout$()),
+    map(() => {
+      this.authService.redirectOnSuccessLogout();
+      return AuthActions.fetchLoggedOutUser(); })
   ));
 
   ngrxOnInitEffects(): Action {

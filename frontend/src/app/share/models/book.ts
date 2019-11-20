@@ -1,4 +1,4 @@
-import {User} from '@@share/models/user';
+import {IUser} from '@@share/models/user';
 
 export interface Book {
   id: string;
@@ -6,5 +6,5 @@ export interface Book {
   description: string;
   author: string;
   rating: number;
-  owner: User;
+  owner: IUser;
 }

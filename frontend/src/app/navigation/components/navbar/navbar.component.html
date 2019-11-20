@@ -1,38 +1,36 @@
-<nav class="navbar navbar-default">
+<nav *ngIf="vm$ | async as vm" class="navbar navbar-default">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()" href="">Book Club</a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input #searchInput type="text" class="form-control search" placeholder="Search" (input)="inputChange$.next(searchInput.value)">
-          <span class="glyphicon glyphicon-search search-ico"></span>
-        </div>
-      </form>
-
-      <ul *ngIf="loggedIn$ | async" class="nav navbar-nav navbar-right">
-        <li *ngIf="loggedIn$ | async" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li routerLink="/user/profile"><a (click)="$event.preventDefault()" href="">Profile</a></li>
-            <li role="separator" class="divider"></li>
-            <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
-            <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
-          </ul>
-        </li>
-        <li routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>
-        <li routerLink="/register" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Register</a></li>
-      </ul>
-    </div>
+    <a class="navbar-brand" routerLink="" routerLinkActive="active" (click)="$event.preventDefault()" href="">
+      <span class="logo">Book Club</span>
+    </a>
+    <ul class="nav navbar-nav">
+      <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
+    </ul>
+    <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
+      <div class="form-group">
+        <input #searchInput type="text" class="form-control search" placeholder="Search"
+               (input)="inputChange$.next(searchInput.value)">
+        <span class="glyphicon glyphicon-search search-ico"></span>
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="vm.navbar.userBtnVisible" class="dropdown">
+        <a href="#" class="profile-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false">
+          <span class="profile-name">{{vm.user.username}}</span>
+          <img class="profile-image" src="assets/images/avatar-circle.jpg" alt="">
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li routerLink="/{{vm.user.username}}"><a (click)="$event.preventDefault()" href="">Profile</a></li>
+          <li role="separator" class="divider"></li>
+          <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
+          <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
+        </ul>
+      </li>
+      <li *ngIf="vm.navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>
+      <li *ngIf="vm.navbar.registerBtnVisible" routerLink="/register" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Register</a>
+      </li>
+    </ul>
   </div>
 </nav>

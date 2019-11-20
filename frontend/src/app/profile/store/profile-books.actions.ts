@@ -1,5 +1,5 @@
 import {Book} from '@@share/models/book';
-import {User} from '@@share/models/user';
+import {IUser} from '@@share/models/user';
 import {Action} from '@ngrx/store';
 
 export enum ProfileBooksActionTypes {
@@ -11,7 +11,7 @@ export enum ProfileBooksActionTypes {
 export class FetchProfileBooks implements Action {
   readonly type = ProfileBooksActionTypes.FetchProfileBooks;
 
-  constructor(public user: User) {}
+  constructor(public user: IUser) {}
 }
 
 export class FetchProfileBooksSucceed implements Action {

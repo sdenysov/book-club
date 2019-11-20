@@ -2,7 +2,7 @@ import {ProfileState} from '@@app/profile/models/profile.state.model';
 import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {ProfileSelectors} from '@@app/profile/store/profile-books.selectors';
 import {Book} from '@@share/models/book';
-import {User} from '@@share/models/user';
+import {IUser} from '@@share/models/user';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -16,7 +16,7 @@ export class ProfileBooksReduxService {
   loading$: Observable<boolean> = this.store.pipe(select(ProfileSelectors.isLoading));
   loaded$: Observable<boolean> = this.store.pipe(select(ProfileSelectors.isLoaded));
 
-  fetchProfileBooks(user: User) {
+  fetchProfileBooks(user: IUser) {
     this.store.dispatch(new ProfileBooksActions.FetchProfileBooks(user));
   }
 

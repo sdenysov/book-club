@@ -19,7 +19,7 @@ export class PageService {
     {page: Page.NEW_BOOK, regexp: /^\/[a-z]+\/books\/new\/?$/},
     {page: Page.BOOK_DETAILS, regexp: /^\/[a-z]+\/books\/[a-z0-9]+\/?$/},
     {page: Page.EDIT_PROFILE, regexp: /^\/[a-z]+\/edit\/?$/},
-    {page: Page.PROFILE_SETTING, regexp: /^\/[a-z]+\/settings\/?$/},
+    {page: Page.PROFILE_SETTINGS, regexp: /^\/[a-z]+\/settings\/?$/},
     {page: Page.NOT_FOUND, regexp: /^\/404\/?$/},
     {page: Page.PROFILE, regexp: /^\/[a-z]+\/?$/}
   ];

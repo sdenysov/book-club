@@ -1,12 +1,11 @@
-import {Credentials} from '@@auth/models/credentials';
-import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {RouterService} from '@@router/services/router.service';
-import {User} from '@@share/models/user';
-import {HttpResponse} from '@angular/common/http';
+import {IUser} from '@@share/models/user';
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {filter, map} from 'rxjs/operators';
+import {Page} from '@@navigation/models/page';
+import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -20,23 +19,14 @@ export class AuthService {
 
   constructor(private routerService: RouterService,
               private authReduxFacade: AuthReduxFacade,
-              private authRestService: AuthRestService) {
+              private navigationReduxFacade: NavigationReduxFacade) {
   }
 
-  getLoggedInUser$(): Observable<User> {
+  getLoggedInUser$(): Observable<IUser> {
     return this.authReduxFacade.authState$.pipe(
       filter(userData => userData.pending),
       map(userData => userData.loggedInUser)
     );
-  }
-
-  login$(credentials: Credentials): Observable<User> {
-    return this.authRestService.login$(credentials);
-  }
-
-  logout(): Observable<HttpResponse<any>> {
-    // TODO
-    return of(null);
   }
 
   redirectOnSuccessLogin() {
@@ -46,5 +36,21 @@ export class AuthService {
       this.routerService.goToMainPage();
     }
   }
+
+  redirectOnSuccessLogout() {
+    const logoutPages = [
+      Page.EDIT_BOOK,
+      Page.NEW_BOOK,
+      Page.EDIT_PROFILE,
+      Page.PROFILE_SETTINGS
+    ];
+    return this.navigationReduxFacade.currentPage$.pipe(
+      map(currentPage => {
+        if (logoutPages.includes(currentPage)) {
+          this.routerService.goToMainPage();
+        }
+      }));
+  }
+
 }
 

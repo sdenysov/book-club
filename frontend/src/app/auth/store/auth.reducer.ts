@@ -10,7 +10,6 @@ const initialState: AuthState = {
 const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserSucceed,
-    AuthActions.loginSuccess,
     (state, {user}) => ({...state, loggedInUser: user, pending: false})
   ),
   on(
@@ -20,7 +19,11 @@ const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserFailed,
     (state) => ({...state, loggedInUser: null, pending: false})
-  )
+  ),
+  on(
+    AuthActions.fetchLoggedOutUser,
+    (state) => ({...state, loggedInUser: null, pending: false})
+  ),
 );
 
 export function authReducer(state: AuthState = initialState, action: Action): AuthState {
