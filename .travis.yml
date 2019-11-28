@@ -1,0 +1,27 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - "12"
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  directories:
+    - ./node_modules
+
+install:
+  - npm ci
+
+before_install:
+  - cd frontend
+  - npm i node-sass@4.12.0
+
+script:
+  - npm run test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI
