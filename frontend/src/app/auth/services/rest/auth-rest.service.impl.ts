@@ -4,6 +4,7 @@ import {IUser} from '@@share/models/user';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {ISessionData} from '@@auth/models/session-data';
 
 @Injectable({providedIn: 'root'})
 export class AuthRestServiceImpl implements AuthRestService {
@@ -16,11 +17,11 @@ export class AuthRestServiceImpl implements AuthRestService {
     return this.http.get<IUser>(`${this.baseUrl}/me`);
   }
 
-  login$(credentials: Credentials): Observable<IUser> {
-    return this.http.post<IUser>(`${this.baseUrl}/login`, credentials);
+  login$(credentials: Credentials): Observable<ISessionData> {
+    return this.http.post<ISessionData>(`${this.baseUrl}/login`, credentials);
   }
 
-  logout(): Observable<HttpResponse<any>> {
+  logout$(): Observable<HttpResponse<any>> {
     return this.http.post<HttpResponse<any>>(`${this.baseUrl}/logout`, null);
   }
 }

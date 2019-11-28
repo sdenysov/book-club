@@ -11,7 +11,6 @@ export namespace AuthActions {
   const FETCH_LOGGED_IN_SUCCEED = '[Auth] fetch logged in user succeed';
   const FETCH_LOGGED_IN_FAILED = '[Auth] fetch logged in user failed';
   const LOGOUT = '[Auth] logout';
-  const FETCH_LOGGED_OUT = '[Auth] fetch logged out user';
 
   export const login = createAction(LOGIN, props<{ credentials: Credentials }>());
   export const loginSuccess = createAction(LOGIN_SUCCESS);
@@ -20,6 +19,5 @@ export namespace AuthActions {
   export const fetchLoggedInUserSucceed = createAction(FETCH_LOGGED_IN_SUCCEED, props<{ user: IUser }>());
   export const fetchLoggedInUserFailed = createAction(FETCH_LOGGED_IN_FAILED);
   export const logout = createAction(LOGOUT);
-  export const fetchLoggedOutUser = createAction(FETCH_LOGGED_OUT);
 }
 

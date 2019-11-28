@@ -3,7 +3,7 @@ import {RouterService} from '@@router/services/router.service';
 import {IUser} from '@@share/models/user';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {filter, first, map} from 'rxjs/operators';
 import {Page} from '@@navigation/models/page';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 
@@ -16,6 +16,13 @@ export class AuthService {
     filter(authState => !authState.pending),
     map(authState => Boolean(authState.loggedInUser))
   );
+
+  logoutPages: Page[] = [
+    Page.EDIT_BOOK,
+    Page.NEW_BOOK,
+    Page.EDIT_PROFILE,
+    Page.PROFILE_SETTINGS
+  ];
 
   constructor(private routerService: RouterService,
               private authReduxFacade: AuthReduxFacade,
@@ -38,18 +45,10 @@ export class AuthService {
   }
 
   redirectOnSuccessLogout() {
-    const logoutPages = [
-      Page.EDIT_BOOK,
-      Page.NEW_BOOK,
-      Page.EDIT_PROFILE,
-      Page.PROFILE_SETTINGS
-    ];
-    return this.navigationReduxFacade.currentPage$.pipe(
-      map(currentPage => {
-        if (logoutPages.includes(currentPage)) {
+    this.navigationReduxFacade.currentPage$.pipe(first()).subscribe(currentPage => {
+        if (this.logoutPages.includes(currentPage)) {
           this.routerService.goToMainPage();
-        }
-      }));
+        }});
   }
 
 }

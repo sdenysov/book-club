@@ -21,7 +21,7 @@ const _userDataReducer = createReducer(initialState,
     (state) => ({...state, loggedInUser: null, pending: false})
   ),
   on(
-    AuthActions.fetchLoggedOutUser,
+    AuthActions.logout,
     (state) => ({...state, loggedInUser: null, pending: false})
   ),
 );

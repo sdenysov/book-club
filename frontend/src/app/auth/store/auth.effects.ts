@@ -50,10 +50,8 @@ export class AuthEffects implements OnInitEffects {
   logout$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logout),
     exhaustMap(() => this.authRestService.logout$()),
-    map(() => {
-      this.authService.redirectOnSuccessLogout();
-      return AuthActions.fetchLoggedOutUser(); })
-  ));
+    map(() => this.authService.redirectOnSuccessLogout())
+  ), {dispatch: false});
 
   ngrxOnInitEffects(): Action {
     return AuthActions.fetchLoggedInUser();

@@ -34,11 +34,7 @@ export class AppNavbarComponent implements OnInit {
     this.vm$ = combineLatest([
       this.authReduxFacade.loggedInUser$,
       this.navigationReduxFacade.navbar$
-    ]).pipe(map(([user, navbar]) => {
-      console.log('user', user);
-      console.log('navbar', navbar);
-      return {user, navbar};
-    }));
+    ]).pipe(map(([user, navbar]) => ({user, navbar})));
 
     this.inputChange$.pipe(
       filter(query => query.length > 2),
