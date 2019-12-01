@@ -11,12 +11,6 @@ import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade'
 export class AuthService {
 
   loginSuccessRedirectUrl: string;
-
-  isLoggedIn$: Observable<boolean> = this.authReduxFacade.authState$.pipe(
-    filter(authState => !authState.pending),
-    map(authState => Boolean(authState.loggedInUser))
-  );
-
   logoutPages: Page[] = [
     Page.EDIT_BOOK,
     Page.NEW_BOOK,
@@ -45,11 +39,12 @@ export class AuthService {
   }
 
   redirectOnSuccessLogout() {
-    this.navigationReduxFacade.currentPage$.pipe(first()).subscribe(currentPage => {
+    this.navigationReduxFacade.currentPage$.pipe(first())
+      .subscribe(currentPage => {
         if (this.logoutPages.includes(currentPage)) {
           this.routerService.goToMainPage();
-        }});
+        }
+      });
   }
-
 }
 

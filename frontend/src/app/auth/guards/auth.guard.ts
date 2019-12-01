@@ -4,22 +4,26 @@ import {RouterService} from '@@router/services/router.service';
 import {Injectable} from '@angular/core';
 import {CanLoad, Route, UrlSegment} from '@angular/router';
 import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanLoad {
 
   constructor(private userReduxFacade: AuthReduxFacade,
               private routerService: RouterService,
-              private authService: AuthService) {}
+              private authReduxFacade: AuthReduxFacade,
+              private authService: AuthService) {
+  }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.authService.isLoggedIn$.pipe(
-      tap(loggedIn => {
-        if (!loggedIn) {
+    return this.authReduxFacade.authState$.pipe(
+      filter(authState => !authState.pending),
+      map(authState => {
+        if (!authState.isLoggedIn) {
           this.authService.loginSuccessRedirectUrl = `/${route.path}`;
           this.routerService.goToLoginPage();
         }
+        return authState.isLoggedIn;
       })
     );
   }

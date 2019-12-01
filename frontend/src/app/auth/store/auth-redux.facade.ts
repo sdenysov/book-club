@@ -13,6 +13,7 @@ import {Observable} from 'rxjs';
 export class AuthReduxFacade {
 
   authState$: Observable<AuthState> = this.store.pipe(select(AuthSelectors.getState));
+  isLoggedIn$: Observable<boolean> = this.store.pipe(select(AuthSelectors.isLoggedIn));
   loggedInUser$: Observable<IUser> = this.store.pipe(select(AuthSelectors.getLoggedInUser));
 
   constructor(private store: Store<{ [AUTH_STORE_KEY]: IUser }>) {}
