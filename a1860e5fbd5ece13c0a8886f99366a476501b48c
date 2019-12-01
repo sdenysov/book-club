@@ -22,6 +22,29 @@
       "revId": "a1860e5fbd5ece13c0a8886f99366a476501b48c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12376c8d_37c3f57f",
+        "filename": "frontend/src/app/auth/guards/auth.guard.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1017367
+      },
+      "writtenOn": "2019-12-01T10:03:42Z",
+      "side": 1,
+      "message": "Ну и ладно",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "a1860e5fbd5ece13c0a8886f99366a476501b48c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }
