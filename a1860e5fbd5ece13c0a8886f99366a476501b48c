@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35e25445_08f73e09",
+        "filename": "frontend/src/app/auth/guards/auth.guard.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2019-12-01T10:01:03Z",
+      "side": 1,
+      "message": "Все ок",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "a1860e5fbd5ece13c0a8886f99366a476501b48c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
