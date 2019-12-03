@@ -37,11 +37,9 @@ export class NavigationEffects {
   });
 
   updateNavStateOnLoggedInChange$ = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.setLoggedInStatus),
-    withLatestFrom(this.navigationReduxFacade.currentPage$),
-    map(([{loggedIn}, page]) => {
-      return this.navigationService.getNavbarState(page, loggedIn);
-    }),
+    ofType(AuthActions.logout, AuthActions.fetchLoggedInUserSucceed, AuthActions.fetchLoggedInUserFailed),
+    withLatestFrom(this.authReduxFacade.isLoggedIn$, this.navigationReduxFacade.currentPage$),
+    map(([_, loggedIn, page]) => this.navigationService.getNavbarState(page, loggedIn)),
     map((navbar: INavbar) => NavigationActions.navbarStateChanged({navbar}))
   ));
 }

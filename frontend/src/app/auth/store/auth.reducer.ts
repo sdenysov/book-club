@@ -11,16 +11,16 @@ const initialState: IAuthState = {
 const _userDataReducer = createReducer(initialState,
   on(
     AuthActions.fetchLoggedInUserSucceed,
-    (state, {user}) => ({...state, loggedInUser: user})
+    (state, {user}) => ({...state, loggedInUser: user, loggedIn: Boolean(user)})
   ),
   on(
     AuthActions.logout,
     AuthActions.fetchLoggedInUserFailed,
-    (state) => ({...state, loggedInUser: null})
+    (state) => ({...state, pending: false, loggedInUser: null, loggedIn: false})
   ),
   on(
-    AuthActions.setLoggedInStatus,
-    (state, {loggedIn}) => ({...state, loggedIn, pending: false})
+    AuthActions.fetchLoggedInUser,
+    (state) => ({...state, pending: true})
   )
 );
 

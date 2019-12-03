@@ -9,7 +9,7 @@ import {NavigationService} from '@@navigation/services/navigation.service';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {NAVIGATION_STORE_KEY} from '@@navigation/store/navigation-store.properties';
-import {NavigationActions} from '@@navigation/store/navigation.actions';
+import {NavigationActions, NavigationActionTypes} from '@@navigation/store/navigation.actions';
 import {NavigationEffects} from '@@navigation/store/navigation.effects';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
@@ -18,7 +18,6 @@ import {ROUTER_NAVIGATED} from '@ngrx/router-store';
 import {Action, Store} from '@ngrx/store';
 import {MockStore, provideMockStore} from '@ngrx/store/testing';
 import {Observable, of} from 'rxjs';
-import NAVBAR_STATE_CHANGED = NavigationActions.NAVBAR_STATE_CHANGED;
 
 describe('NavigationEffectsSpec', () => {
 
@@ -67,7 +66,7 @@ describe('NavigationEffectsSpec', () => {
     const getPageByUrlSpy = spyOn(pageService, 'getPageByUrl').and.returnValue(Page.MAIN);
     effects.updateCurrentPage$.subscribe(resultAction => {
       expect(getPageByUrlSpy).toHaveBeenCalledWith(url);
-      expect(resultAction.type).toBe(NavigationActions.CURRENT_PAGE_CHANGED);
+      expect(resultAction.type).toBe(NavigationActionTypes.CURRENT_PAGE_CHANGED);
       expect(resultAction.page).toBe(Page.MAIN);
     });
   });
@@ -89,7 +88,7 @@ describe('NavigationEffectsSpec', () => {
     const getNavbarStateSpy = spyOn(navigationService, 'getNavbarState').and.returnValue(navbar);
     effects.updateNavStateOnPageChange$.subscribe(resultActions => {
       expect(getNavbarStateSpy).toHaveBeenCalledWith(page, loggedIn);
-      expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
+      expect(resultActions.type).toBe(NavigationActionTypes.NAVBAR_STATE_CHANGED);
       expect(resultActions.navbar).toEqual(navbar);
     });
   });
@@ -97,7 +96,11 @@ describe('NavigationEffectsSpec', () => {
   it('should emit action with new navbar state after loggedIn status changed', () => {
     const loggedIn = true;
     const currentPage = Page.LOGIN;
-    actions$ = of(AuthActions.setLoggedInStatus({loggedIn}));
+    actions$ = of(
+      AuthActions.logout(),
+      AuthActions.fetchLoggedInUser(),
+      AuthActions.fetchLoggedInUserFailed()
+    );
     const navbar: INavbar = {
       loginBtnVisible: false,
       registerBtnVisible: false,
@@ -106,12 +109,13 @@ describe('NavigationEffectsSpec', () => {
     };
     store.setState({
       ...initialState,
-      [NAVIGATION_STORE_KEY]: {currentPage} as INavigationState
+      [NAVIGATION_STORE_KEY]: {currentPage} as INavigationState,
+      [AUTH_STORE_KEY]: {loggedIn: true} as IAuthState
     });
     const getNavbarStateSpy = spyOn(navigationService, 'getNavbarState').and.returnValue(navbar);
     effects.updateNavStateOnLoggedInChange$.subscribe(resultActions => {
       expect(getNavbarStateSpy).toHaveBeenCalledWith(currentPage, loggedIn);
-      expect(resultActions.type).toBe(NAVBAR_STATE_CHANGED);
+      expect(resultActions.type).toBe(NavigationActionTypes.NAVBAR_STATE_CHANGED);
       expect(resultActions.navbar).toEqual(navbar);
     });
   });

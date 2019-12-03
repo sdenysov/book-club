@@ -45,24 +45,11 @@ export class AuthEffects implements OnInitEffects {
     catchError(() => of(AuthActions.fetchLoggedInUserFailed()))
   ));
 
-  fetchLoggedInUserSucceed$ = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.fetchLoggedInUserSucceed),
-    map(({user}) => AuthActions.setLoggedInStatus({loggedIn: Boolean(user)}))
-  ));
-
-  fetchLoggedInUserFailed$ = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.fetchLoggedInUserFailed),
-    map(() => AuthActions.setLoggedInStatus({loggedIn: false}))
-  ));
-
   logout$ = createEffect(() => this.actions$.pipe(
     ofType(AuthActions.logout),
     exhaustMap(() => this.authRestService.logout$()),
-    map(() => {
-      this.authService.redirectOnSuccessLogout();
-      return AuthActions.setLoggedInStatus({loggedIn: false});
-    })
-  ));
+    map(() => this.authService.redirectOnSuccessLogout())
+  ), {dispatch: false});
 
   ngrxOnInitEffects(): Action {
     return AuthActions.fetchLoggedInUser();

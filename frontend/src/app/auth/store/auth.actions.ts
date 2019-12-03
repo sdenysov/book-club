@@ -11,6 +11,5 @@ export namespace AuthActions {
   export const fetchLoggedInUser = createAction('[Auth] fetch logged in user');
   export const fetchLoggedInUserSucceed = createAction('[Auth] fetch logged in user succeed', props<{ user: IUser }>());
   export const fetchLoggedInUserFailed = createAction('[Auth] fetch logged in user failed');
-  export const setLoggedInStatus = createAction('[Auth] update is logged in', props<{ loggedIn: boolean }>());
   export const logout = createAction('[Auth] logout');
 }
