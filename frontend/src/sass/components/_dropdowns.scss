@@ -10,10 +10,11 @@
     padding: 0.3rem 1.5rem;
   }
 
-  &::before, &::after {
+  &::before,
+  &::after {
     border: solid transparent;
     bottom: 100%;
-    content: '';
+    content: "";
     height: 0;
     pointer-events: none;
     position: absolute;

@@ -6,13 +6,13 @@ $section-base-padding: 0.8rem;
 
 .data-section {
   header {
-    @include clearfix;
-    text-transform: uppercase;
+    @include clearfix();
     background-color: $color-gray-lightest;
     border-bottom: 1px solid $color-gray-light;
     border-top-left-radius: $border-radius-default;
     border-top-right-radius: $border-radius-default;
     padding: $section-base-padding;
+    text-transform: uppercase;
   }
 
   main {

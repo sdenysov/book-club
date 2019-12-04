@@ -1,5 +1,7 @@
 /// https://css-tricks.com/snippets/sass/str-replace-function/
-@function str-replace($string, $search, $replace: '') {
+// sass-lint:disable function-name-format
+
+@function str-replace($string, $search, $replace: "") {
   $string: inspect($string);
   $index: str-index($string, $search);
 
@@ -12,7 +14,7 @@
 
 
 $spacing: 5;
-$spacingStep: 0.5;
+$spacing-step: 0.5;
 $sides: (top, bottom, left, right);
 
 /// Generates spacing (margin & padding) CSS classes with 0.5rem step
@@ -32,14 +34,14 @@ $sides: (top, bottom, left, right);
 ///  .pR-1   -> { padding-right:  1rem   }
 @while $spacing > 0 {
   @each $side in $sides {
-    .m#{to_upper_case(str-slice($side, 0, 1))}-#{str-replace($spacing, '.', '-')} {
+    .m#{to_upper_case(str-slice($side, 0, 1))}-#{str-replace($spacing, ".", "-")} {
       margin-#{$side}: #{$spacing}rem;
     }
 
-    .p#{to_upper_case(str-slice($side, 0, 1))}-#{str-replace($spacing, '.', '-')} {
+    .p#{to_upper_case(str-slice($side, 0, 1))}-#{str-replace($spacing, ".", "-")} {
       padding-#{$side}: #{$spacing}rem;
     }
   }
 
-  $spacing: $spacing - $spacingStep;
+  $spacing: $spacing - $spacing-step;
 }

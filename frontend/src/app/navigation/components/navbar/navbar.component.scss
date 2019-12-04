@@ -9,19 +9,19 @@ $search-form-top-margin: (($navbar-height - $search-field-height) / 2);
 $profile-image-top-margin: (($navbar-height - $profile-image-size) / 2);
 
 .navbar {
-  height: $navbar-height;
   background-color: $color-primary;
-  border: none;
-  min-height: $navbar-height;
+  border: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
+  height: $navbar-height;
+  min-height: $navbar-height;
 
   & .navbar-brand {
     color: $color-text-lightest;
-    font-family: 'Yesteryear', cursive;
-    font-size: 3rem;
     display: inline-block;
+    font-family: "Yesteryear", cursive;
+    font-size: 3rem;
     height: $navbar-height;
     line-height: $navbar-height;
     padding: 0 1.5rem 0 0;
@@ -44,7 +44,7 @@ $profile-image-top-margin: (($navbar-height - $profile-image-size) / 2);
 
 .profile-dropdown {
   .profile-button {
-    padding: 0 1rem 0 1rem;
+    padding: 0 1rem;
     white-space: nowrap;
 
     .profile-name {
@@ -57,15 +57,15 @@ $profile-image-top-margin: (($navbar-height - $profile-image-size) / 2);
       border-radius: 50%;
       display: inline-block;
       height: $profile-image-size;
-      vertical-align: top;
-      margin-top: $profile-image-top-margin;
       margin-right: 0.5rem;
+      margin-top: $profile-image-top-margin;
+      vertical-align: top;
       width: $profile-image-size;
     }
 
     .caret {
-      vertical-align: top;
       margin-top: ($navbar-height / 2);
+      vertical-align: top;
     }
   }
 
@@ -108,22 +108,22 @@ $profile-image-top-margin: (($navbar-height - $profile-image-size) / 2);
   position: relative;
 
   .search {
+    @include placeholder() {
+      color: $color-text-light;
+    }
     background-color: $color-theme-dark;
-    border: none;
+    border: 0;
     border-radius: $border-radius-round;
     color: $color-text-lightest;
     height: $search-field-height;
     min-width: 40rem;
     padding-left: 3rem;
-    @include placeholder {
-      color: $color-text-light;
-    }
   }
 
   .search-ico {
     color: $color-text-lightest;
-    left: 2.5rem;
     font-size: ($search-field-height / 2);
+    left: 2.5rem;
     position: absolute;
     top: 0.5rem;
   }
