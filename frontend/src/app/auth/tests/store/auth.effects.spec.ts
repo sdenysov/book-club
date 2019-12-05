@@ -13,7 +13,7 @@ import {cold} from 'jasmine-marbles';
 import {Observable, of, throwError} from 'rxjs';
 import createSpyObj = jasmine.createSpyObj;
 
-fdescribe('AuthEffectsSpec', () => {
+describe('AuthEffectsSpec', () => {
 
   let actions$: Observable<Action>;
   let effects: AuthEffects;
@@ -104,32 +104,6 @@ fdescribe('AuthEffectsSpec', () => {
     effects.fetchLoggedInUser$.subscribe(resultAction => {
       expect(my$Spy).toHaveBeenCalled();
       expect(resultAction).toEqual(AuthActions.fetchLoggedInUserFailed());
-    });
-  });
-
-  it('should emit setLoggedInStatus on fetchLoggedInUserSucceed action', () => {
-    const user: IUser = {id: '123', username: 'username'};
-    actions$ = of(AuthActions.fetchLoggedInUserSucceed({user}));
-    effects.fetchLoggedInUserSucceed$.subscribe(resultAction => {
-      expect(resultAction).toEqual(AuthActions.setLoggedInStatus({loggedIn: true}));
-    });
-  });
-
-  it('should emit setLoggedInStatus on fetchLoggedInUserFailed action', () => {
-    const user: IUser = {id: '123', username: 'username'};
-    actions$ = of(AuthActions.fetchLoggedInUserSucceed({user}));
-    effects.fetchLoggedInUserFailed$.subscribe(resultAction => {
-      expect(resultAction).toEqual(AuthActions.setLoggedInStatus({loggedIn: false}));
-    });
-  });
-
-  it('should redirect and emit setLoggedInStatus on logout action', () => {
-    actions$ = of(AuthActions.logout());
-    authRestServiceMock.logout$.and.returnValue(of(null));
-    effects.logout$.subscribe(resultAction => {
-      expect(authRestServiceMock.logout$).toHaveBeenCalled();
-      expect(authServiceMock.redirectOnSuccessLogout).toHaveBeenCalled();
-      expect(resultAction).toEqual(AuthActions.setLoggedInStatus({loggedIn: false}));
     });
   });
 });
