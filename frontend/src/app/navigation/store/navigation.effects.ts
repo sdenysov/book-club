@@ -43,4 +43,3 @@ export class NavigationEffects {
     map((navbar: INavbar) => NavigationActions.navbarStateChanged({navbar}))
   ));
 }
-

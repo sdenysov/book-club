@@ -19,22 +19,24 @@ export class UserBookEffects {
   @Effect()
   loadBooks$: Observable<Action> = this.actions$.pipe(
     ofType(BooksActionTypes.FetchBooks),
-    mergeMap(() => this.booksRestService.get$()),
-    map(books => new UserBooksActions.FetchBooksSucceed(books)),
-    catchError(error => {
-      this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.FetchBooksFailed(error));
-    })
+    mergeMap(() => this.booksRestService.get$().pipe(
+      map(books => new UserBooksActions.FetchBooksSucceed(books)),
+      catchError(error => {
+        this.httpErrorHandlerService.handleErrorResponse(error);
+        return of(new UserBooksActions.FetchBooksFailed(error));
+      })
+    ))
   );
 
   @Effect()
   fetchBookDetail$: Observable<Action> = this.actions$.pipe(
     ofType(BooksActionTypes.FetchBookDetail),
-    mergeMap((action: FetchBookDetail) => this.booksRestService.getBookById$(action.bookId)),
-    map(book => new UserBooksActions.FetchBookDetailSucceed(book)),
-    catchError(error => {
-      this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.FetchBookDetailFailed(error));
-    })
+    mergeMap((action: FetchBookDetail) => this.booksRestService.getBookById$(action.bookId).pipe(
+      map(book => new UserBooksActions.FetchBookDetailSucceed(book)),
+      catchError(error => {
+        this.httpErrorHandlerService.handleErrorResponse(error);
+        return of(new UserBooksActions.FetchBookDetailFailed(error));
+      })
+    ))
   );
 }
