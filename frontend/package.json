@@ -15,6 +15,11 @@
     "sass-lint": "sass-lint -q -v",
     "e2e": "ng e2e"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm lint"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.5",
@@ -53,6 +58,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "concurrently": "^4.1.0",
+    "husky": "^3.1.0",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "^0.6.0",
     "jasmine-spec-reporter": "~4.2.1",
