@@ -1,4 +1,4 @@
-import {AuthState} from '@@auth/models/auth.state';
+import {IAuthState} from '@@auth/models/IAuthState';
 import {Credentials} from '@@auth/models/credentials';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {AuthSelectors} from '@@auth/store/auth.selectors';
@@ -12,7 +12,7 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class AuthReduxFacade {
 
-  authState$: Observable<AuthState> = this.store.pipe(select(AuthSelectors.getState));
+  authState$: Observable<IAuthState> = this.store.pipe(select(AuthSelectors.getState));
   isLoggedIn$: Observable<boolean> = this.store.pipe(select(AuthSelectors.isLoggedIn));
   loggedInUser$: Observable<IUser> = this.store.pipe(select(AuthSelectors.getLoggedInUser));
 

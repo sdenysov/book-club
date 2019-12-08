@@ -6,13 +6,13 @@ $section-base-padding: 0.8rem;
 
 app-section {
   section {
-    border-radius: $border-radius-default;
     background-color: $color-main-bg;
+    border-radius: $border-radius-default;
 
     header {
-      @include clearfix;
-      padding: $section-base-padding;
+      @include clearfix();
       border-bottom: 1px solid $color-gray-light;
+      padding: $section-base-padding;
     }
 
     main {
