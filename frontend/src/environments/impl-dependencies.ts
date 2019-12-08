@@ -5,6 +5,13 @@ import {BooksRestServiceDpd} from '@@core/services/books/books-rest.service.dpd'
 import {BooksRestServiceImpl} from '@@core/services/books/books-rest.service.impl';
 import {BooksRestServiceMock} from '@@core/services/books/books-rest.service.mock';
 
+export interface Env {
+  dev: boolean;
+  mock: boolean;
+  dpd: boolean;
+  production: boolean;
+}
+
 export interface ImplDependencies {
   [key: string]: {
     'mock': Object;

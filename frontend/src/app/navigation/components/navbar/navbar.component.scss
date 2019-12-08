@@ -4,14 +4,14 @@
 
 .navbar {
   background-color: $color-primary;
-  border: none;
+  border: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 
   & .navbar-brand {
-    font-family: 'Yesteryear', cursive;
     color: $color-text-lightest;
+    font-family: "Yesteryear", cursive;
     font-size: 3rem;
   }
 
@@ -49,27 +49,27 @@
 }
 
 .navbar-form {
-  position: relative;
-  margin-top: 10px;
   margin-bottom: 10px;
+  margin-top: 10px;
+  position: relative;
 }
 
 .search {
-  border: none;
-  height: 3rem;
-  min-width: 40rem;
-  background-color: $color-theme-dark;
-  border-radius: $border-radius-round;
-  color: $color-text-lightest;
-  padding-left: 3rem;
-  @include placeholder {
+  @include placeholder() {
     color: $color-text-light;
   }
+  background-color: $color-theme-dark;
+  border: 0;
+  border-radius: $border-radius-round;
+  color: $color-text-lightest;
+  height: 3rem;
+  min-width: 40rem;
+  padding-left: 3rem;
 }
 
 .search-ico {
+  color: $color-text-lightest;
+  left: 2.5rem;
   position: absolute;
   top: 0.9rem;
-  left: 2.5rem;
-  color: $color-text-lightest;
 }

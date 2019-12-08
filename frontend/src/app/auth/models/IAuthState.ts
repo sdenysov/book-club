@@ -1,6 +1,6 @@
 import {IUser} from '@@share/models/user';
 
-export interface AuthState {
+export interface IAuthState {
   loggedInUser: IUser;
   isLoggedIn: boolean;
   pending: boolean;

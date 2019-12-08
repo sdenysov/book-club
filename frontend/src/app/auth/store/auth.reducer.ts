@@ -1,8 +1,8 @@
-import {AuthState} from '@@auth/models/auth.state';
+import {IAuthState} from '@@auth/models/IAuthState';
 import {AuthActions} from '@@auth/store/auth.actions';
 import {Action, createReducer, on} from '@ngrx/store';
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   loggedInUser: null,
   isLoggedIn: false,
   pending: true
@@ -24,6 +24,6 @@ const _userDataReducer = createReducer(initialState,
   )
 );
 
-export function authReducer(state: AuthState = initialState, action: Action): AuthState {
+export function authReducer(state: IAuthState = initialState, action: Action): IAuthState {
   return _userDataReducer(state, action);
 }

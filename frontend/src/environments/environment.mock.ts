@@ -1,6 +1,6 @@
-// import {Env} from '@@env/environment';
+import {Env} from '@@env/impl-dependencies';
 
-export const environment = {
+export const environment: Env = {
   dev: false,
   mock: true,
   dpd: false,
