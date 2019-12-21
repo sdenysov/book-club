@@ -20,7 +20,7 @@ export class AuthGuard implements CanLoad {
       filter(authState => !authState.pending),
       map(authState => {
         if (!authState.isLoggedIn) {
-          this.authService.loginSuccessRedirectUrl = `/${route.path}`;
+          this.authService.redirectUrl = `/${route.path}`;
           this.routerService.goToLoginPage();
         }
         return authState.isLoggedIn;

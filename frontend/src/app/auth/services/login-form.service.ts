@@ -17,7 +17,7 @@ export class LoginFormService {
 
   constructor(private builder: FormBuilder) {
     this.usernameCtrl = this.builder.control(null, [Validators.required, Validators.minLength(3)]);
-    this.passwordCtrl = this.builder.control(null, [Validators.required, Validators.minLength(6)]);
+    this.passwordCtrl = this.builder.control(null, [Validators.required, Validators.minLength(5)]);
     this.form = this.builder.group({
       username: this.usernameCtrl,
       password: this.passwordCtrl

@@ -5,9 +5,10 @@
 .navbar {
   background-color: $color-primary;
   border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
-  border-radius: 0;
 
   & .navbar-brand {
     color: $color-text-lightest;
@@ -18,10 +19,55 @@
   .navbar-nav > li > a {
     color: $color-text-lightest;
   }
+
+  .navbar-right {
+    margin-right: -1rem;
+  }
+
+  .dropdown {
+
+    & :first-child &:not(.profile-image) {
+      background-color: $color-primary;
+      color: $color-text-lightest;
+      padding-bottom: 1rem;
+
+      & :hover {
+        background-color: $color-primary-hover;
+      }
+
+      & :focus {
+        background-color: $color-primary;
+      }
+    }
+
+    .user-dropdown {
+
+      li {
+        padding-bottom: 0;
+
+        &:hover {
+          background-color: $color-gray-light;
+        }
+
+        a {
+          background-color: $color-main-bg;
+          color: $color-gray;
+          padding-bottom: 0.3rem;
+
+          &:hover,
+          &:focus {
+            background-color: $color-gray-light;
+          }
+        }
+      }
+    }
+  }
 }
 
 .navbar-nav {
   & > li {
+    padding-bottom: 0;
+
     &:hover {
       background-color: $color-primary-hover;
     }
@@ -29,6 +75,7 @@
     &.active {
       a {
         background-color: $color-primary-active;
+        padding-bottom: 0.3rem;
       }
     }
   }
@@ -72,4 +119,11 @@
   left: 2.5rem;
   position: absolute;
   top: 0.9rem;
+}
+
+.profile-image {
+  border-radius: 50%;
+  height: 2.5rem;
+  margin-right: 0.5rem;
+  width: 2.5rem;
 }

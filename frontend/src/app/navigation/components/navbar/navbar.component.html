@@ -17,11 +17,11 @@
       <li *ngIf="vm.navbar.userBtnVisible" class="dropdown">
         <a href="#" class="profile-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
            aria-expanded="false">
-          <span class="profile-name">{{vm.user.username}}</span>
           <img class="profile-image" src="assets/images/avatar-circle.jpg" alt="">
+          <span class="profile-name">{{vm.user.username}}</span>
           <span class="caret"></span>
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu user-dropdown">
           <li routerLink="/{{vm.user.username}}"><a (click)="$event.preventDefault()" href="">Profile</a></li>
           <li role="separator" class="divider"></li>
           <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>

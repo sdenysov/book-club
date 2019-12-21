@@ -23,7 +23,7 @@
     <div class="form-group" [class.has-error]="hasErrorToShow(passwordCtrl)">
       <label for="password" class="col-sm-2 control-label">Password</label>
       <div class="feedback-container col-sm-7">
-        <input autocomplete="off" name="password" type="text" class="form-control" id="password"
+        <input autocomplete="off" name="password" type="password" class="form-control" id="password"
                [formControl]="passwordCtrl" placeholder="Password">
         <ng-container *ngIf="hasErrorToShow(passwordCtrl)">
           <span *ngIf="passwordCtrl.errors?.required" class="help-block">Required</span>

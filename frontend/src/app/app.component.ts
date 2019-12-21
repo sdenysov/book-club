@@ -1,7 +1,7 @@
-import {AuthService} from '@@auth/services/auth.service';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
+import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,9 @@ import {Observable} from 'rxjs';
 export class AppComponent {
 
   routingInProgress$: Observable<boolean> = this.routerReduxFacade.routingInProgress$;
-  isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
+  isLoggedIn$: Observable<boolean> = this.authReduxFacade.isLoggedIn$;
 
   constructor(private routerReduxFacade: RouterReduxFacade,
-              private authService: AuthService) {
+              private authReduxFacade: AuthReduxFacade) {
   }
 }

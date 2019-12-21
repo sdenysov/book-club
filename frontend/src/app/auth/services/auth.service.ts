@@ -10,7 +10,7 @@ import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade'
 @Injectable({providedIn: 'root'})
 export class AuthService {
 
-  loginSuccessRedirectUrl: string;
+  redirectUrl: string;
   logoutPages: Page[] = [
     Page.EDIT_BOOK,
     Page.NEW_BOOK,
@@ -31,8 +31,8 @@ export class AuthService {
   }
 
   redirectOnSuccessLogin() {
-    if (this.loginSuccessRedirectUrl) {
-      this.routerService.goTo(this.loginSuccessRedirectUrl);
+    if (this.redirectUrl) {
+      this.routerService.goTo(this.redirectUrl);
     } else {
       this.routerService.goToMainPage();
     }
