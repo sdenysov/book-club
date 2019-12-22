@@ -26,6 +26,7 @@
           <li role="separator" class="divider"></li>
           <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
           <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
+          <li routerLink=""><a (click)="$event.preventDefault()" href="">Logout</a></li>
         </ul>
       </li>
       <li *ngIf="vm.navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>
