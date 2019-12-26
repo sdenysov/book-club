@@ -15,7 +15,7 @@
     </form>
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf="vm.navbar.userBtnVisible" class="dropdown">
-        <a href="#" class="profile-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
            aria-expanded="false">
           <img class="profile-image" src="assets/images/avatar-circle.jpg" alt="">
           <span class="profile-name">{{vm.user.username}}</span>
@@ -26,7 +26,7 @@
           <li role="separator" class="divider"></li>
           <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
           <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
-          <li routerLink=""><a (click)="$event.preventDefault()" href="">Logout</a></li>
+          <li routerLink=""><a (click)="logout()" href="">Logout</a></li>
         </ul>
       </li>
       <li *ngIf="vm.navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>

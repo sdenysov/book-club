@@ -44,4 +44,8 @@ export class AppNavbarComponent implements OnInit {
       this.booksRestService.suggest$(query);
     });
   }
+
+  logout() {
+    this.authReduxFacade.logout();
+  }
 }

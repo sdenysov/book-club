@@ -41,7 +41,7 @@ rules:
   extends-before-mixins: 2
   force-attribute-nesting: 1
   force-element-nesting: 2
-  force-pseudo-nesting: 1
+  force-pseudo-nesting: 0
   placeholder-in-extend: 0
   mixins-before-declarations:
     - 2

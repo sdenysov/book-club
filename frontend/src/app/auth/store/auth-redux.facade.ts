@@ -25,4 +25,8 @@ export class AuthReduxFacade {
   getLoggedInUser(): IUser {
     return StoreUtils.getSync(this.store, AuthSelectors.getLoggedInUser);
   }
+
+  logout() {
+      this.store.dispatch(AuthActions.logout());
+  }
 }

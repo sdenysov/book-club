@@ -26,17 +26,13 @@
 
   .dropdown {
 
-    & :first-child &:not(.profile-image) {
-      background-color: $color-primary;
+    & :first-child:not(.profile-image) {
       color: $color-text-lightest;
       padding-bottom: 1rem;
 
-      & :hover {
-        background-color: $color-primary-hover;
-      }
-
+      & :hover,
       & :focus {
-        background-color: $color-primary;
+        background-color: $color-primary-hover;
       }
     }
 
