@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "056de9da_a4fea32c",
+        "filename": "frontend/.sass-lint.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2019-12-28T14:53:17Z",
+      "side": 1,
+      "message": "Не понятно почему тебя не устроил тот пример который я тебе выслал?\nЯ советую как раз не выключить правило force-pseudo-nesting потому как со временем стили будут писаться как попало.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "f62e8e7a4f1d83426592b9e701d8364a4f262eb6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d58de1_7588c569",
+        "filename": "frontend/src/app/navigation/components/navbar/navbar.component.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2019-12-28T14:53:17Z",
+      "side": 1,
+      "message": "Это давай на занятии обсудим. Всегда есть 100500 способов как сделать одно и тоже. Посмотрим более детально уже на примере.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "f62e8e7a4f1d83426592b9e701d8364a4f262eb6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
