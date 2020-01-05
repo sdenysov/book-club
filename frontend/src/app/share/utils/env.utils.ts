@@ -1,5 +1,5 @@
-import {environment} from '@@env/environment';
-import {implDependencies} from '@@env/impl-dependencies';
+import {environment} from '../../../environments/environment';
+import {implDependencies} from '../../../environments/impl-dependencies';
 
 export class EnvUtils {
 

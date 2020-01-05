@@ -32,7 +32,7 @@ export class AppNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.vm$ = combineLatest([
-      this.authReduxFacade.loggedInUser$,
+      this.authReduxFacade.user$,
       this.navigationReduxFacade.navbar$
     ]).pipe(map(([user, navbar]) => ({user, navbar})));
 

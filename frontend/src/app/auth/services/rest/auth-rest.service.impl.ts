@@ -13,7 +13,7 @@ export class AuthRestServiceImpl implements AuthRestService {
 
   constructor(private http: HttpClient) {}
 
-  me(): Observable<IUser> {
+  me$(): Observable<IUser> {
     return this.http.get<IUser>(`${this.baseUrl}/me`);
   }
 

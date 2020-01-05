@@ -2,15 +2,16 @@
 @import "utils/mixins";
 @import "variables";
 
+$profile-image-size: 2.5rem;
+$navbar-height: 5rem;
+
 .navbar {
   background-color: $color-primary;
   border: 0;
   border-radius: 0;
   margin-bottom: 0;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
 
-  & .navbar-brand {
+  .navbar-brand {
     color: $color-text-lightest;
     font-family: "Yesteryear", cursive;
     font-size: 3rem;
@@ -18,26 +19,28 @@
 
   .navbar-nav > li > a {
     color: $color-text-lightest;
+    line-height: $navbar-height;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .navbar-right {
     margin-right: -1rem;
   }
 
-  .dropdown {
-
-    & :first-child:not(.profile-image) {
-      color: $color-text-lightest;
-      padding-bottom: 1rem;
-
-      & :hover,
-      & :focus {
-        background-color: $color-primary-hover;
-      }
+  .profile-dropdown {
+    .profile-image {
+      border-radius: 50%;
+      height: $profile-image-size;
+      margin-right: 0.8rem;
+      width: $profile-image-size;
     }
 
-    .user-dropdown {
+    .profile-name {
+      padding-right: 0.8rem;
+    }
 
+    .profile-dropdown-menu {
       li {
         padding-bottom: 0;
 
@@ -76,14 +79,11 @@
     }
   }
 
-  & .open {
+  .open {
     & > a {
       background-color: $color-primary-active;
 
-      &:focus {
-        background-color: $color-primary-active;
-      }
-
+      &:focus,
       &:hover {
         background-color: $color-primary-active;
       }
@@ -95,31 +95,24 @@
   margin-bottom: 10px;
   margin-top: 10px;
   position: relative;
-}
 
-.search {
-  @include placeholder() {
-    color: $color-text-light;
+  .search {
+    @include placeholder() {
+      color: $color-text-light;
+    }
+    background-color: $color-theme-dark;
+    border: 0;
+    border-radius: $border-radius-round;
+    color: $color-text-lightest;
+    height: 3rem;
+    min-width: 40rem;
+    padding-left: 3rem;
   }
-  background-color: $color-theme-dark;
-  border: 0;
-  border-radius: $border-radius-round;
-  color: $color-text-lightest;
-  height: 3rem;
-  min-width: 40rem;
-  padding-left: 3rem;
-}
 
-.search-ico {
-  color: $color-text-lightest;
-  left: 2.5rem;
-  position: absolute;
-  top: 0.9rem;
-}
-
-.profile-image {
-  border-radius: 50%;
-  height: 2.5rem;
-  margin-right: 0.5rem;
-  width: 2.5rem;
+  .search-ico {
+    color: $color-text-lightest;
+    left: 2.5rem;
+    position: absolute;
+    top: 0.9rem;
+  }
 }

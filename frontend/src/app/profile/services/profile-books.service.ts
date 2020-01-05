@@ -18,7 +18,7 @@ export class ProfileBooksService {
   }
 
   fetchProfileBooks() {
-    const user = this.userReduxFacade.getLoggedInUser();
+    const user = this.userReduxFacade.getUser();
     this.profileBooksReduxService.fetchProfileBooks(user);
   }
 

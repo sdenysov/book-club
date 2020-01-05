@@ -6,6 +6,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ISessionData} from '@@auth/models/session-data';
+import {delay} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class AuthRestServiceDpd implements AuthRestService {
@@ -14,8 +15,8 @@ export class AuthRestServiceDpd implements AuthRestService {
 
   constructor(private http: HttpClient) {}
 
-  me(): Observable<IUser> {
-    return this.http.get<IUser>(`${this.baseUrl}/me`);
+  me$(): Observable<IUser> {
+    return this.http.get<IUser>(`${this.baseUrl}/me`).pipe(delay(2000));
   }
 
   login$(credentials: Credentials): Observable<ISessionData> {

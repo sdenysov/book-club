@@ -1,8 +1,8 @@
-import {Observable} from 'rxjs/index';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpResponse} from '@angular/common/http';
 import {Book} from '@@share/models/book';
-import {EnvUtils} from '@@core/utils/env.utils';
+import {EnvUtils} from '@@share/utils/env.utils';
 
 @Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('BooksRestService')})
 export abstract class BooksRestService {

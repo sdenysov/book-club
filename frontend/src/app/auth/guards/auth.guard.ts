@@ -1,30 +1,27 @@
-import {AuthService} from '@@auth/services/auth.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
-import {RouterService} from '@@router/services/router.service';
 import {Injectable} from '@angular/core';
-import {CanLoad, Route, UrlSegment} from '@angular/router';
-import {Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import {combineLatest, Observable} from 'rxjs';
+import {filter, map, mapTo, tap, withLatestFrom} from 'rxjs/operators';
+import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
+import {CoreReduxFacade} from '@@core/store/core-redux-facade';
 
 @Injectable({providedIn: 'root'})
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanActivate {
 
-  constructor(private userReduxFacade: AuthReduxFacade,
-              private routerService: RouterService,
-              private authReduxFacade: AuthReduxFacade,
-              private authService: AuthService) {
+  constructor(private authReduxFacade: AuthReduxFacade,
+              private navigationReduxFacade: NavigationReduxFacade,
+              private coreReduxFacade: CoreReduxFacade) {
   }
 
-  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.authReduxFacade.authState$.pipe(
-      filter(authState => !authState.pending),
-      map(authState => {
-        if (!authState.isLoggedIn) {
-          this.authService.redirectUrl = `/${route.path}`;
-          this.routerService.goToLoginPage();
-        }
-        return authState.isLoggedIn;
-      })
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return combineLatest([
+      this.authReduxFacade.isLoggedIn$,
+      this.navigationReduxFacade.currentPage$
+    ]).pipe(
+      filter(([isLoggedIn, currentPage]) => isLoggedIn && Boolean(currentPage)),
+      tap(() => this.coreReduxFacade.pageDataFetched()),
+      mapTo(true)
     );
   }
 }

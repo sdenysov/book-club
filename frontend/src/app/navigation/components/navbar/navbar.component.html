@@ -14,14 +14,14 @@
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="vm.navbar.userBtnVisible" class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+      <li *ngIf="vm.navbar.userBtnVisible" class="dropdown profile-dropdown">
+        <a href="#" class="profile-button dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
            aria-expanded="false">
           <img class="profile-image" src="assets/images/avatar-circle.jpg" alt="">
           <span class="profile-name">{{vm.user.username}}</span>
           <span class="caret"></span>
         </a>
-        <ul class="dropdown-menu user-dropdown">
+        <ul class="dropdown-menu profile-dropdown-menu">
           <li routerLink="/{{vm.user.username}}"><a (click)="$event.preventDefault()" href="">Profile</a></li>
           <li role="separator" class="divider"></li>
           <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>

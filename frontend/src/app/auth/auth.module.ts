@@ -1,4 +1,3 @@
-import {AppAuthRoutingModule} from '@@auth/auth-routing.module';
 import {LogInPageComponent} from '@@auth/pages/login/log-in-page.component';
 import {RegisterPageComponent} from '@@auth/pages/register/register-page.component';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
@@ -17,7 +16,6 @@ const SHARED_DECLARATIONS = [
 @NgModule({
   imports: [
     AppShareModule,
-    AppAuthRoutingModule,
     StoreModule.forFeature(AUTH_STORE_KEY, authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],

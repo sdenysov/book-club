@@ -9,7 +9,7 @@ import {ISessionData} from '@@auth/models/session-data';
 @Injectable({providedIn: 'root'})
 export class AuthRestServiceMock implements AuthRestService {
 
-  me(): Observable<IUser> {
+  me$(): Observable<IUser> {
     return of({id: 'd7acedf2ed2d4bdb', username: 'john'});
   }
 

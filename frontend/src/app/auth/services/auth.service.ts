@@ -26,7 +26,7 @@ export class AuthService {
   getLoggedInUser$(): Observable<IUser> {
     return this.authReduxFacade.authState$.pipe(
       filter(userData => userData.pending),
-      map(userData => userData.loggedInUser)
+      map(userData => userData.user)
     );
   }
 

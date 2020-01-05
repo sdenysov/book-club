@@ -17,9 +17,9 @@ export namespace AuthActions {
   export const login = createAction(AuthActionTypes.LOGIN, props<{ credentials: Credentials }>());
   export const loginSuccess = createAction(AuthActionTypes.LOGIN_SUCCESS);
   export const loginFailed = createAction(AuthActionTypes.LOGIN_FAILED, props<{ error: Error | HttpErrorData }>());
-  export const fetchLoggedInUser = createAction(AuthActionTypes.FETCH_LOGGED_IN);
-  export const fetchLoggedInUserSucceed = createAction(AuthActionTypes.FETCH_LOGGED_IN_SUCCEED, props<{ user: IUser }>());
-  export const fetchLoggedInUserFailed = createAction(AuthActionTypes.FETCH_LOGGED_IN_FAILED);
+  export const fetchUser = createAction(AuthActionTypes.FETCH_LOGGED_IN);
+  export const fetchUserSucceed = createAction(AuthActionTypes.FETCH_LOGGED_IN_SUCCEED, props<{ user: IUser }>());
+  export const fetchUserFailed = createAction(AuthActionTypes.FETCH_LOGGED_IN_FAILED);
   export const logout = createAction(AuthActionTypes.LOGOUT);
 }
 

@@ -14,7 +14,7 @@ export class AuthReduxFacade {
 
   authState$: Observable<IAuthState> = this.store.pipe(select(AuthSelectors.getState));
   isLoggedIn$: Observable<boolean> = this.store.pipe(select(AuthSelectors.isLoggedIn));
-  loggedInUser$: Observable<IUser> = this.store.pipe(select(AuthSelectors.getLoggedInUser));
+  user$: Observable<IUser> = this.store.pipe(select(AuthSelectors.getUser));
 
   constructor(private store: Store<{ [AUTH_STORE_KEY]: IUser }>) {}
 
@@ -22,8 +22,12 @@ export class AuthReduxFacade {
     this.store.dispatch(AuthActions.login({credentials}));
   }
 
-  getLoggedInUser(): IUser {
-    return StoreUtils.getSync(this.store, AuthSelectors.getLoggedInUser);
+  getUser(): IUser {
+    return StoreUtils.getSync(this.store, AuthSelectors.getUser);
+  }
+
+  isLoggedIn(): boolean {
+    return StoreUtils.getSync(this.store, AuthSelectors.isLoggedIn);
   }
 
   logout() {

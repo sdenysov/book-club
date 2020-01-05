@@ -8,7 +8,9 @@ import {NewBookPageComponent} from '@@app/user-books/pages/new/new-book-page.com
 import {UserBooksPageComponent} from '@@app/user-books/pages/user-books/user-books-page.component';
 import {AppUserBooksModule} from '@@app/user-books/user-books.module';
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {Route, RouterModule, Routes} from '@angular/router';
+import {AuthGuard} from '@@auth/guards/auth.guard';
+import {RoutingUtils} from '@@router/utils/routing-utils';
 
 const routes: Routes = [
   {path: '', component: ProfilePageComponent},
@@ -18,7 +20,10 @@ const routes: Routes = [
   {path: 'books/new', component: NewBookPageComponent},
   {path: 'books/:id', component: BookDetailsPageComponent},
   {path: 'books/:id/edit', component: EditBookPageComponent}
-];
+].map((route: Route) => {
+  RoutingUtils.addCanActivateGuardToTheFirstPosition(route, AuthGuard);
+  return route;
+});
 
 @NgModule({
   imports: [

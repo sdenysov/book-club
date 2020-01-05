@@ -29,7 +29,6 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     AppErrorModule,
     AppShareModule,
     AppReduxModule,
-    AppAuthModule,
     AppRoutingModule,
     AppScreenLockModule,
     AppRouterStoreModule
