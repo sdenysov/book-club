@@ -21,8 +21,7 @@ const routes: Routes = [
   {path: 'books/:id', component: BookDetailsPageComponent},
   {path: 'books/:id/edit', component: EditBookPageComponent}
 ].map((route: Route) => {
-  RoutingUtils.addCanActivateGuardToTheFirstPosition(route, AuthGuard);
-  return route;
+  return RoutingUtils.addCanActivateGuardToTheFirstPosition(route, AuthGuard);
 });
 
 @NgModule({

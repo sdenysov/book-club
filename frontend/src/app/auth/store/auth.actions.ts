@@ -7,9 +7,9 @@ export enum AuthActionTypes {
   LOGIN = '[Auth] login',
   LOGIN_SUCCESS = '[Auth] login success',
   LOGIN_FAILED = '[Auth] login failed',
-  FETCH_LOGGED_IN = '[Auth] fetch logged in user',
-  FETCH_LOGGED_IN_SUCCEED = '[Auth] fetch logged in user succeed',
-  FETCH_LOGGED_IN_FAILED = '[Auth] fetch logged in user failed',
+  FETCH_LOGGED_IN = '[Auth] fetch user',
+  FETCH_LOGGED_IN_SUCCEED = '[Auth] fetch user succeed',
+  FETCH_LOGGED_IN_FAILED = '[Auth] fetch user failed',
   LOGOUT = '[Auth] logout'
 }
 

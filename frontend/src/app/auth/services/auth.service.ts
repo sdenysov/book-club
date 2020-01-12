@@ -11,7 +11,7 @@ import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade'
 export class AuthService {
 
   redirectUrl: string;
-  logoutPages: Page[] = [
+  restrictedForNonLoggedInUserPages: Page[] = [
     Page.EDIT_BOOK,
     Page.NEW_BOOK,
     Page.EDIT_PROFILE,
@@ -39,12 +39,11 @@ export class AuthService {
   }
 
   redirectOnSuccessLogout() {
-    this.navigationReduxFacade.currentPage$.pipe(first())
-      .subscribe(currentPage => {
-        if (this.logoutPages.includes(currentPage)) {
-          this.routerService.goToMainPage();
-        }
-      });
+    this.navigationReduxFacade.currentPage$.pipe(first()).subscribe(currentPage => {
+      if (this.restrictedForNonLoggedInUserPages.includes(currentPage)) {
+        this.routerService.goToMainPage();
+      }
+    });
   }
 }
 

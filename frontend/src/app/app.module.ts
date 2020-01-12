@@ -25,6 +25,7 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     BrowserModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
+    AppAuthModule,
     AppNavigationModule,
     AppErrorModule,
     AppShareModule,

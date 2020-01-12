@@ -14,6 +14,7 @@ export class AuthReduxFacade {
 
   authState$: Observable<IAuthState> = this.store.pipe(select(AuthSelectors.getState));
   isLoggedIn$: Observable<boolean> = this.store.pipe(select(AuthSelectors.isLoggedIn));
+  isPending$: Observable<boolean> = this.store.pipe(select(AuthSelectors.isPending));
   user$: Observable<IUser> = this.store.pipe(select(AuthSelectors.getUser));
 
   constructor(private store: Store<{ [AUTH_STORE_KEY]: IUser }>) {}

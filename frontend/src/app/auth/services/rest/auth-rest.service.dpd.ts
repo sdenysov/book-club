@@ -16,7 +16,7 @@ export class AuthRestServiceDpd implements AuthRestService {
   constructor(private http: HttpClient) {}
 
   me$(): Observable<IUser> {
-    return this.http.get<IUser>(`${this.baseUrl}/me`).pipe(delay(2000));
+    return this.http.get<IUser>(`${this.baseUrl}/me`).pipe(delay(1000));
   }
 
   login$(credentials: Credentials): Observable<ISessionData> {
