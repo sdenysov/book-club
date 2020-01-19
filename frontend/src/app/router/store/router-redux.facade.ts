@@ -18,7 +18,6 @@ export class RouterReduxFacade {
   }
 
   getUsername(): string {
-    console.log('getUsername called');
     return StoreUtils.getSync(this.store, RouterSelectors.selectRouteParam('username'));
   }
 }

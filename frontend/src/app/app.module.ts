@@ -14,6 +14,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {AbilityModule} from '@casl/angular';
+import {Ability} from '@casl/ability';
+import {AbilityService} from '@@auth/services/ability.service';
 
 export const HTTP_INTERCEPTOR_PROVIDERS = [
   {provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true}
@@ -32,14 +35,16 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     AppReduxModule,
     AppRoutingModule,
     AppScreenLockModule,
-    AppRouterStoreModule
+    AppRouterStoreModule,
+    AbilityModule.forRoot()
   ],
   declarations: [
     AppComponent
   ],
   providers: [
     ...HTTP_INTERCEPTOR_PROVIDERS,
-    {provide: ErrorHandler, useClass: GlobalErrorHandler}
+    {provide: ErrorHandler, useClass: GlobalErrorHandler},
+    {provide: Ability, useValue: AbilityService.guestAbilities}
   ],
   bootstrap: [AppComponent]
 })

@@ -25,15 +25,15 @@ describe('NavigationReducerSpec', () => {
     });
 
     it('should navbar state be updated in store', () => {
-      const navigationState: INavbar = {
+      const navbar: INavbar = {
         loginBtnVisible: true,
         registerBtnVisible: true,
         searchFieldVisible: true,
         userBtnVisible: true
       };
-      const action = NavigationActions.navbarStateChanged({ navigationState });
+      const action = NavigationActions.navbarStateChanged({ navbar });
       const result = navigationReducer(initialState, action);
-      expect(result).toEqual({...initialState, navbar: navigationState});
+      expect(result).toEqual({...initialState, navbar});
     });
   });
 });

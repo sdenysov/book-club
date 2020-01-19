@@ -19,7 +19,7 @@ const reducer = createReducer(initialState,
   ),
   on(
     NavigationActions.navbarStateChanged,
-    (state, {navigationState}) => ({...state, navbar: navigationState})
+    (state, {navbar}) => ({...state, navbar})
   )
 );
 

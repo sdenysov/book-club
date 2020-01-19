@@ -8,6 +8,9 @@ import {Page} from '@@navigation/models/page';
 import {IUser} from '@@share/models/user';
 import {NavigationService} from '@@navigation/services/navigation.service';
 import {NavigationActions} from '@@navigation/store/navigation.actions';
+import {AbilityService} from '@@auth/services/ability.service';
+import {RouterReduxFacade} from '@@router/store/router-redux.facade';
+import {INavbar} from '@@navigation/models/nav-bar.model';
 
 @Injectable()
 export class CoreEffects {
@@ -15,7 +18,9 @@ export class CoreEffects {
   constructor(private actions$: Actions,
               private navigationReduxFacade: NavigationReduxFacade,
               private authReduxFacade: AuthReduxFacade,
-              private navigationService: NavigationService) {
+              private navigationService: NavigationService,
+              private routerReduxFacade: RouterReduxFacade,
+              private abilityService: AbilityService) {
   }
 
   updateUserRolesAndNavigation$ = createEffect(() => this.actions$.pipe(
@@ -23,11 +28,12 @@ export class CoreEffects {
     switchMap(() => {
       const page: Page = this.navigationReduxFacade.getCurrentPage();
       const loggedIn: boolean = this.authReduxFacade.isLoggedIn();
-      const navigationState = this.navigationService.getNavbarState(page, loggedIn);
+      const navbar: INavbar = this.navigationService.getNavbarState(page, loggedIn);
       const user: IUser = this.authReduxFacade.getUser();
-      // TODO define user roles based on user
+      const usernameFromUrl = this.routerReduxFacade.getUsername();
+      this.abilityService.defineAbilities(user, page, usernameFromUrl);
       return [
-        NavigationActions.navbarStateChanged({navigationState})
+        NavigationActions.navbarStateChanged({navbar})
       ];
     })
   ));

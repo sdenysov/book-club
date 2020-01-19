@@ -7,5 +7,5 @@ export enum NavigationActionTypes {
 
 export const NavigationActions = {
   currentPageChanged: createAction(NavigationActionTypes.CURRENT_PAGE_CHANGED, props<{ currentPage }>()),
-  navbarStateChanged: createAction(NavigationActionTypes.NAVBAR_STATE_CHANGED, props<{ navigationState }>())
+  navbarStateChanged: createAction(NavigationActionTypes.NAVBAR_STATE_CHANGED, props<{ navbar }>())
 };
