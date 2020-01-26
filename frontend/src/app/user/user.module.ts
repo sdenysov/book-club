@@ -2,7 +2,6 @@ import {AppShareModule} from '@@share/app-share.module';
 import {USER_STORE_KEY} from '@@user/store/user-store.properties';
 import {UserEffects} from '@@user/store/user.effects';
 import {userReducer} from '@@user/store/user.reducer';
-import {UserRoutingModule} from '@@user/user-routing.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
@@ -10,7 +9,6 @@ import {StoreModule} from '@ngrx/store';
 @NgModule({
   imports: [
     AppShareModule,
-    UserRoutingModule,
     StoreModule.forFeature(USER_STORE_KEY, userReducer),
     EffectsModule.forFeature([UserEffects]),
   ]

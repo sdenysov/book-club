@@ -9,7 +9,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-import {UrlProperties} from '@@share/properties/url.properties';
+import {AbilityModule} from '@casl/angular';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -32,7 +32,8 @@ const SHARE_IMPORTS = [
   RouterModule,
   ReactiveFormsModule,
   FormsModule,
-  BsDropdownModule
+  BsDropdownModule,
+  AbilityModule
 ];
 
 @NgModule({

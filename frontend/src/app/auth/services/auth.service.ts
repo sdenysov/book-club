@@ -1,9 +1,7 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {RouterService} from '@@router/services/router.service';
-import {IUser} from '@@share/models/user';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {filter, first, map} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {Page} from '@@navigation/models/page';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 
@@ -23,11 +21,8 @@ export class AuthService {
               private navigationReduxFacade: NavigationReduxFacade) {
   }
 
-  getLoggedInUser$(): Observable<IUser> {
-    return this.authReduxFacade.authState$.pipe(
-      filter(userData => userData.pending),
-      map(userData => userData.user)
-    );
+  isPageAvailableForCurrentLoggedInStatus(currentPage: Page, loggedIn: boolean) {
+    return loggedIn || !this.restrictedForNonLoggedInUserPages.includes(currentPage);
   }
 
   redirectOnSuccessLogin() {

@@ -30,8 +30,8 @@ export class CoreEffects {
       const loggedIn: boolean = this.authReduxFacade.isLoggedIn();
       const navbar: INavbar = this.navigationService.getNavbarState(page, loggedIn);
       const user: IUser = this.authReduxFacade.getUser();
-      const usernameFromUrl = this.routerReduxFacade.getUsername();
-      this.abilityService.defineAbilities(user, page, usernameFromUrl);
+      const urlUsername = this.routerReduxFacade.getUsername();
+      this.abilityService.defineAbilities(user, page, urlUsername);
       return [
         NavigationActions.navbarStateChanged({navbar})
       ];

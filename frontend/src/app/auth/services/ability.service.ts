@@ -10,7 +10,7 @@ export class AbilityService {
 
   constructor(private ability: Ability) {}
 
-  defineAbilities(user, page, usernameFromUrl) {
+  defineAbilities(user, page, urlUsername) {
     const { rules, can, cannot } = AbilityBuilder.extract();
     // TODO ...
     if (user) {

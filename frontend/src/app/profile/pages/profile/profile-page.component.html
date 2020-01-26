@@ -4,7 +4,7 @@
       <app-section>
         <app-section-main>
           <img appImageSrc="avatar.jpg" class="avatar"/>
-          <button class="btn btn-primary btn-block" translate>Edit profile image</button>
+          <button *ngIf="'User' | can: 'manage'" class="btn btn-primary btn-block mT-1" translate>Edit profile image</button>
         </app-section-main>
       </app-section>
     </div>

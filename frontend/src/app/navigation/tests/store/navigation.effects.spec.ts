@@ -1,12 +1,11 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
-import {AuthActions} from '@@auth/store/auth.actions';
 import {Page} from '@@navigation/models/page';
 import {NavigationService} from '@@navigation/services/navigation.service';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {NAVIGATION_STORE_KEY} from '@@navigation/store/navigation-store.properties';
-import {NavigationActions, NavigationActionTypes} from '@@navigation/store/navigation.actions';
+import {NavigationActionTypes} from '@@navigation/store/navigation.actions';
 import {NavigationEffects} from '@@navigation/store/navigation.effects';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TestBed} from '@angular/core/testing';
@@ -17,7 +16,6 @@ import {MockStore, provideMockStore} from '@ngrx/store/testing';
 import {Observable, of} from 'rxjs';
 import {INavigationState} from '@@navigation/models/navigation-state.model';
 import {IAuthState} from '@@auth/models/IAuthState';
-import {INavbar} from '@@navigation/models/nav-bar.model';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('NavigationEffectsSpec', () => {
