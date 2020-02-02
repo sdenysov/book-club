@@ -4,7 +4,7 @@
       <span class="logo">Book Club</span>
     </a>
     <ul class="nav navbar-nav">
-      <li routerLink="/books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Books</a></li>
+      <li routerLink="/find-books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Find books</a></li>
     </ul>
     <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
       <div class="form-group">
@@ -24,8 +24,8 @@
         <ul class="dropdown-menu profile-dropdown-menu">
           <li routerLink="/{{vm.user?.username}}"><a (click)="$event.preventDefault()" href="">Profile</a></li>
           <li role="separator" class="divider"></li>
-          <li routerLink="/user/my-books"><a (click)="$event.preventDefault()" href="">My books</a></li>
-          <li routerLink="/user/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
+          <li routerLink="/{{vm.user?.username}}/books"><a (click)="$event.preventDefault()" href="">My books</a></li>
+          <li routerLink="/{{vm.user?.username}}/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
           <li><a (click)="logout()" href="">Logout</a></li>
         </ul>
       </li>

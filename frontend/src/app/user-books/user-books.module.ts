@@ -8,8 +8,8 @@ import {AppShareModule} from '@@share/app-share.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
-
-export const USER_BOOKS_STORE_KEY = 'user-books';
+import {UserBookComponent} from '@@app/user-books/components/user-book/user-book.component';
+import {USER_BOOKS_STORE_KEY} from '@@app/user-books/store/user-books-store.properties';
 
 @NgModule({
   imports: [
@@ -18,6 +18,7 @@ export const USER_BOOKS_STORE_KEY = 'user-books';
     EffectsModule.forFeature([UserBookEffects])
   ],
   declarations: [
+    UserBookComponent,
     UserBooksPageComponent,
     EditBookPageComponent,
     BookDetailsPageComponent,

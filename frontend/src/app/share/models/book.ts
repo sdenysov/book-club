@@ -1,6 +1,6 @@
 import {IUser} from '@@share/models/user';
 
-export interface Book {
+export interface IBook {
   id: string;
   title: string;
   description: string;

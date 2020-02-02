@@ -12,9 +12,14 @@
 }
 
 
-$spacing: 5;
-$spacing-step: 0.5;
-$sides: (top, bottom, left, right);
+$spacing: 2;
+$spacing-step: 0.1;
+$sides: (
+  T: top,
+  B: bottom,
+  L: left,
+  R: right
+);
 
 // Generates spacing (margin & padding) CSS classes with 0.5rem step
 // @example
@@ -32,12 +37,12 @@ $sides: (top, bottom, left, right);
 //  .pL-1   -> { padding-left:   1rem   }
 //  .pR-1   -> { padding-right:  1rem   }
 @while $spacing > 0 {
-  @each $side in $sides {
-    .m#{to_upper_case(str-slice($side, 0, 1))}-#{str-replace($spacing, ".", "-")} {
+  @each $key, $side  in $sides {
+    .m#{$key}-#{str-replace($spacing, ".", "-")} {
       margin-#{$side}: #{$spacing}rem;
     }
 
-    .p#{to_upper_case(str-slice($side, 0, 1))}-#{str-replace($spacing, ".", "-")} {
+    .p#{$key}-#{str-replace($spacing, ".", "-")} {
       padding-#{$side}: #{$spacing}rem;
     }
   }

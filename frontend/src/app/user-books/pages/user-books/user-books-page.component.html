@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <app-section>
+      <app-section-header title="{{user.username}} > BOOKS" icon="book">
+        <button *ngIf="'User' | can: 'manage'" class="btn btn-primary btn-block btn-xs" translate>
+          <span class="glyphicon glyphicon-plus pR-0-2"></span> Add new books
+        </button>
+      </app-section-header>
+      <app-section-main>
+        <div class="col-lg-4" *ngFor="let book of (books$ | async); trackBy: trackByBooks">
+          <app-user-book-component [book]="book"></app-user-book-component>
+        </div>
+      </app-section-main>
+    </app-section>
+  </div>
+</div>

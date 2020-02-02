@@ -1,7 +1,8 @@
 import {BooksState} from '@@app/user-books/models/books-state.model';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {USER_BOOKS_STORE_KEY} from '@@app/user-books/store/user-books-store.properties';
 
-const getState = createFeatureSelector<BooksState>('books');
+const getState = createFeatureSelector<BooksState>(USER_BOOKS_STORE_KEY);
 const getBooks = createSelector(getState, s => s.entries);
 const getBookDetail = createSelector(getState, s => s.bookDetail);
 const getBookById = createSelector(

@@ -2,11 +2,11 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {IBook} from '@@share/models/book';
 
 @Component({
-  selector: 'app-my-book-component',
-  templateUrl: './my-book.component.html',
+  selector: 'app-user-book-component',
+  templateUrl: 'user-book.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppMyBookComponent {
+export class UserBookComponent {
 
   @Input() book: IBook;
 }

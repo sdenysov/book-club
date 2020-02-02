@@ -1,4 +1,4 @@
-import {Book} from '@@share/models/book';
+import {IBook} from '@@share/models/book';
 import {IUser} from '@@share/models/user';
 import {Action} from '@ngrx/store';
 
@@ -17,7 +17,7 @@ export class FetchProfileBooks implements Action {
 export class FetchProfileBooksSucceed implements Action {
   readonly type = ProfileBooksActionTypes.FetchProfileBooksSucceed;
 
-  constructor(public books: Book[]) {}
+  constructor(public books: IBook[]) {}
 }
 
 export class FetchProfileBooksFailed implements Action {

@@ -16,6 +16,7 @@ app-section {
     }
 
     main {
+      @include clearfix();
       padding: $section-base-padding;
     }
   }
