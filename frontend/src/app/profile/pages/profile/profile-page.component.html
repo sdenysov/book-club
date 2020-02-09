@@ -1,4 +1,7 @@
-<div class="container">
+<div *ngIf="loaded && !user" class="container">
+  User not found!
+</div>
+<div *ngIf="loaded && user" class="container">
   <div class="row">
     <div class="col-sm-3">
       <app-section>

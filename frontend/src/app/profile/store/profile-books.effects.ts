@@ -22,10 +22,10 @@ export class ProfileBooksEffects {
   fetchProfileBooks$: Observable<Action> = this.actions$.pipe(
     ofType<FetchProfileBooks>(ProfileBooksActionTypes.FetchProfileBooks),
     mergeMap((action: FetchProfileBooks) => this.booksRestService.getByUserId$(action.user.id)),
-    map(ProfileBooks => new ProfileBooksActions.FetchProfileBooksSucceed(ProfileBooks)),
+    map(books => ProfileBooksActions.fetchProfileBooksSucceed({books})),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new ProfileBooksActions.FetchProfileBooksFailed(error));
+      return of(ProfileBooksActions.fetchProfileBooksFailed({error}));
     })
   );
 }

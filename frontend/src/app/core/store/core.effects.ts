@@ -5,11 +5,9 @@ import {CoreActions} from '@@core/store/core.actions';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {Page} from '@@navigation/models/page';
-import {IUser} from '@@share/models/user';
 import {NavigationService} from '@@navigation/services/navigation.service';
 import {NavigationActions} from '@@navigation/store/navigation.actions';
 import {AbilityService} from '@@auth/services/ability.service';
-import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 import {INavbar} from '@@navigation/models/nav-bar.model';
 
 @Injectable()
@@ -19,7 +17,6 @@ export class CoreEffects {
               private navigationReduxFacade: NavigationReduxFacade,
               private authReduxFacade: AuthReduxFacade,
               private navigationService: NavigationService,
-              private routerReduxFacade: RouterReduxFacade,
               private abilityService: AbilityService) {
   }
 
@@ -29,9 +26,7 @@ export class CoreEffects {
       const page: Page = this.navigationReduxFacade.getCurrentPage();
       const loggedIn: boolean = this.authReduxFacade.isLoggedIn();
       const navbar: INavbar = this.navigationService.getNavbarState(page, loggedIn);
-      const user: IUser = this.authReduxFacade.getUser();
-      const urlUsername = this.routerReduxFacade.getUsername();
-      this.abilityService.defineAbilities(user, page, urlUsername);
+      const abilities = this.abilityService.defineAbilities();
       return [
         NavigationActions.navbarStateChanged({navbar})
       ];

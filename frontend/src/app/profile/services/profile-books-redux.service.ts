@@ -17,7 +17,7 @@ export class ProfileBooksReduxService {
   loaded$: Observable<boolean> = this.store.pipe(select(ProfileSelectors.isLoaded));
 
   fetchProfileBooks(user: IUser) {
-    this.store.dispatch(new ProfileBooksActions.FetchProfileBooks(user));
+    this.store.dispatch(ProfileBooksActions.fetchProfileBooks({userId: user.id}));
   }
 
   getProfileBookById$(id: string): Observable<IBook> {

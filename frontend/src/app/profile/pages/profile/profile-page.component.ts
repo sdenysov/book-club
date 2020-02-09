@@ -1,12 +1,21 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 
 @Component({
   templateUrl: 'profile-page.component.html',
-  styleUrls: ['profile-page.component.scss']
+  styleUrls: ['profile-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit {
 
-  constructor() {
-    console.log('ProfilePageComponent');
+  // TODO ...
+  public loaded: true;
+  public user: true;
+
+  constructor(private routerReduxFacade: RouterReduxFacade) {}
+
+  ngOnInit(): void {
+    const urlUsername = this.routerReduxFacade.getUsername();
+
   }
 }

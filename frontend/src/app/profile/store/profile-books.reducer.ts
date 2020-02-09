@@ -4,7 +4,8 @@ import {ProfileBooksActionTypes, TProfileBooksAction} from '@@app/profile/store/
 const initialState: ProfileState = {
   loaded: false,
   loading: false,
-  books: []
+  books: [],
+  user: null,
 };
 
 export function profileBooksReducer(state: ProfileState = initialState, action: TProfileBooksAction): ProfileState {

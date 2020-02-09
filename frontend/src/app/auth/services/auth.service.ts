@@ -21,7 +21,7 @@ export class AuthService {
               private navigationReduxFacade: NavigationReduxFacade) {
   }
 
-  isPageAvailableForCurrentLoggedInStatus(currentPage: Page, loggedIn: boolean) {
+  isPageAvailable(currentPage: Page, loggedIn: boolean) {
     return loggedIn || !this.restrictedForNonLoggedInUserPages.includes(currentPage);
   }
 
