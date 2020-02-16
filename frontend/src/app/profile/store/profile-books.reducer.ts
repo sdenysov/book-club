@@ -1,5 +1,6 @@
 import {ProfileState} from '@@app/profile/models/profile.state.model';
-import {ProfileBooksActionTypes, TProfileBooksAction} from '@@app/profile/store/profile-books.actions';
+import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
+import {Action, createReducer, on} from '@ngrx/store';
 
 const initialState: ProfileState = {
   loaded: false,
@@ -8,19 +9,19 @@ const initialState: ProfileState = {
   user: null,
 };
 
-export function profileBooksReducer(state: ProfileState = initialState, action: TProfileBooksAction): ProfileState {
-  switch (action.type) {
-    case ProfileBooksActionTypes.FetchProfileBooks: {
-      return {...state, loading: true, loaded: false};
-    }
-    case ProfileBooksActionTypes.FetchProfileBooksSucceed: {
-      return {...state, loading: false, loaded: true, books: action.books};
-    }
-    case ProfileBooksActionTypes.FetchProfileBooksFailed: {
-      return {...state, loading: false, loaded: false};
-    }
-    default: {
-      return state;
-    }
-  }
+const _profileBooksReducer = createReducer(initialState,
+  on(ProfileBooksActions.fetchProfileBooks,
+    (state) => ({...state, loading: true, loaded: false})),
+  on(ProfileBooksActions.fetchProfileBooksSucceed,
+    (state, {books}) => ({...state, loading: true, loaded: false, books: books})),
+  on(ProfileBooksActions.fetchProfileBooksFailed,
+    (state) => ({...state, loading: false, loaded: false})),
+  on(ProfileBooksActions.fetchUserProfile,
+    (state) => ({...state, loading: true, loaded: false})),
+  on(ProfileBooksActions.fetchUserProfileSucceed,
+    (state, {userProfile}) => ({...state, loading: false, loaded: true, user: userProfile})),
+);
+
+export function profileBooksReducer(state: ProfileState = initialState, action: Action): ProfileState {
+  return _profileBooksReducer(state, action);
 }

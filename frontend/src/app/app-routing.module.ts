@@ -19,7 +19,7 @@ import {AuthGuard} from '@@auth/guards/auth.guard';
 import {FindBooksPageComponent} from '@@app/search-page/pages/find-books/find-books-page.component';
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
+  {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LogInPageComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterPageComponent, canActivate: [AuthGuard]},
   {path: 'find-books', component: FindBooksPageComponent, canActivate: [AuthGuard]},

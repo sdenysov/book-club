@@ -4,6 +4,7 @@ import {AuthRestServiceMock} from '@@auth/services/rest/auth-rest.service.mock';
 import {BooksRestServiceDpd} from '@@core/services/books/books-rest.service.dpd';
 import {BooksRestServiceImpl} from '@@core/services/books/books-rest.service.impl';
 import {BooksRestServiceMock} from '@@core/services/books/books-rest.service.mock';
+import {UserRestServiceDpd} from '@@user/services/user-rest.service.dpd';
 
 export interface Env {
   dev: boolean;
@@ -32,6 +33,12 @@ export const implDependencies: ImplDependencies = {
     'mock': AuthRestServiceMock,
     'dpd': AuthRestServiceDpd,
     'prod': AuthRestServiceImpl,
+    'default': 'dpd'
+  },
+  UserRestService: {
+    'mock': 'mock',
+    'dpd': UserRestServiceDpd,
+    'prod': 'prod',
     'default': 'dpd'
   }
 };

@@ -1,31 +1,40 @@
 import {Injectable} from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {Observable, of} from 'rxjs/index';
-import {Action} from '@ngrx/store';
-import {
-  FetchProfileBooks, ProfileBooksActions,
-  ProfileBooksActionTypes
-} from '@@app/profile/store/profile-books.actions';
+import {of} from 'rxjs/index';
+import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {catchError, map, mergeMap} from 'rxjs/internal/operators';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
+import {UserRestService} from '@@user/services/user-rest.service';
 
 @Injectable()
 export class ProfileBooksEffects {
 
   constructor(private actions$: Actions,
               private booksRestService: BooksRestService,
-              private httpErrorHandlerService: HttpErrorHandlerService) {
+              private httpErrorHandlerService: HttpErrorHandlerService,
+              private userRestService: UserRestService) {
   }
 
-  @Effect()
-  fetchProfileBooks$: Observable<Action> = this.actions$.pipe(
-    ofType<FetchProfileBooks>(ProfileBooksActionTypes.FetchProfileBooks),
-    mergeMap((action: FetchProfileBooks) => this.booksRestService.getByUserId$(action.user.id)),
+  fetchProfileBooks$ = createEffect(() => this.actions$.pipe(
+    ofType(ProfileBooksActions.fetchProfileBooks),
+    mergeMap(({userId}) => this.booksRestService.getByUserId$(userId)),
     map(books => ProfileBooksActions.fetchProfileBooksSucceed({books})),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
       return of(ProfileBooksActions.fetchProfileBooksFailed({error}));
     })
-  );
+  ));
+
+  fetchUserProfile$ = createEffect(() => this.actions$.pipe(
+    ofType(ProfileBooksActions.fetchUserProfile),
+    mergeMap(({username}) => this.userRestService.getUserProfile$(username).pipe(
+      map(userProfile => ProfileBooksActions.fetchUserProfileSucceed({userProfile})),
+      catchError(error => {
+        this.httpErrorHandlerService.handleErrorResponse(error);
+        return of(ProfileBooksActions.fetchUserProfileFailed({error}));
+      })
+    )),
+  ));
 }
+

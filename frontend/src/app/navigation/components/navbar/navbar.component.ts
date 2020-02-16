@@ -1,4 +1,3 @@
-import {AuthService} from '@@auth/services/auth.service';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';

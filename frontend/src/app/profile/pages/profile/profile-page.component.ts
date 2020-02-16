@@ -1,5 +1,14 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {IUserProfile} from '@@app/profile/models/user-profile';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {ProfileReduxFacade} from '@@app/profile/store/profile-redux.facade';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
+
+interface ViewModel {
+  loaded: boolean;
+  user: IUserProfile;
+}
 
 @Component({
   templateUrl: 'profile-page.component.html',
@@ -8,14 +17,17 @@ import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 })
 export class ProfilePageComponent implements OnInit {
 
-  // TODO ...
-  public loaded: true;
-  public user: true;
+  public vm$: Observable<ViewModel>;
 
-  constructor(private routerReduxFacade: RouterReduxFacade) {}
+  constructor(private profileReduxFacade: ProfileReduxFacade,
+              private routerReduxFacade: RouterReduxFacade) {
+  }
 
   ngOnInit(): void {
     const urlUsername = this.routerReduxFacade.getUsername();
-
+    this.profileReduxFacade.fetchUserProfile(urlUsername);
+    this.vm$ = this.profileReduxFacade.userProfileState$.pipe(
+      map(state => ({...state}))
+    );
   }
 }
