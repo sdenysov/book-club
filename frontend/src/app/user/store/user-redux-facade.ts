@@ -4,6 +4,7 @@ import {UserSelectors} from '@@user/store/user.selectors';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
+import {FetchBooks} from '@@app/user-books/store/user-books.actions';
 
 @Injectable({providedIn: 'root'})
 export class UserReduxFacade {

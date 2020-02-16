@@ -16,6 +16,6 @@ export class NavigationEffects {
     ofType(ROUTER_REQUEST),
     map((action: RouterNavigatedAction) => action.payload.event.url),
     map(currentUrl => this.pageService.getPageByUrl(currentUrl)),
-    map(currentPage => {console.log(currentPage); return NavigationActions.currentPageChanged({currentPage})})
+    map(currentPage => NavigationActions.currentPageChanged({currentPage}))
   ));
 }

@@ -7,6 +7,7 @@ import {AppShareModule} from '@@share/app-share.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
+import {PROFILE_STORE_KEY} from '@@app/profile/store/profile-store.properties';
 
 const SHARED_DECLARATIONS = [
   ProfilePageComponent,
@@ -17,7 +18,7 @@ const SHARED_DECLARATIONS = [
 @NgModule({
   imports: [
     AppShareModule,
-    StoreModule.forFeature('profile', profileBooksReducer),
+    StoreModule.forFeature(PROFILE_STORE_KEY, profileBooksReducer),
     EffectsModule.forFeature([ProfileBooksEffects]),
   ],
   declarations: SHARED_DECLARATIONS,
