@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca1b0e18_9559f1f5",
+        "filename": "frontend/src/app/navigation/components/navbar/navbar.component.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "Тут что-то добавилось но оно не используется.",
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21be87ad_b679710d",
+        "filename": "frontend/src/app/profile/store/profile-books.actions.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "userProfile?",
+      "range": {
+        "startLine": 20,
+        "startChar": 111,
+        "endLine": 20,
+        "endChar": 115
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38594921_569aede6",
+        "filename": "frontend/src/app/profile/store/profile-books.effects.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "ProfileBooksActions.fetchProfileBooks",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447edfbf_b76f6ab1",
+        "filename": "frontend/src/app/profile/store/profile-books.effects.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "ProfileBooksActions.fetchUserProfile",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d32a77_cbca9d27",
+        "filename": "frontend/src/app/profile/store/profile-books.effects.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "Давай сделаем так чтобы username был в акции FetchUserProfile. Тогда можно бдует отправлять акцию FetchUserProfile c разными именами взятых из разныъ мест а не только из FetchUserProfile.\nТоесть будет как то так: ProfileBooksActions.fetchUserProfile({username}) а потом тут в эфекте вытащишь этот username из акции.",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0828512c_fe881ea1",
+        "filename": "frontend/src/app/profile/store/profile-books.effects.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "вот этот map и catchError должны быть на стриме от this.userService.getUserProfile$(urlUsername) там внутри иначе в случае ошибки эфект сваливается с ошибкой и больше не работает.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a5f194_8669e08c",
+        "filename": "frontend/src/app/profile/store/profile-books.effects.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "userProfile",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c7c8db_44267a09",
+        "filename": "frontend/src/app/profile/store/profile-redux.facade.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "пустая строка в предыдущей линии.",
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c10e93f_97b8427a",
+        "filename": "frontend/src/app/profile/store/profile-redux.facade.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "тут будет username: string",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ccae811_07b8dad0",
+        "filename": "frontend/src/app/profile/store/profile-redux.facade.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "({username})",
+      "range": {
+        "startLine": 18,
+        "startChar": 60,
+        "endLine": 18,
+        "endChar": 62
+      },
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b8ea7c_ced4352d",
+        "filename": "frontend/src/app/user/services/user.service.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-02-16T14:42:47Z",
+      "side": 1,
+      "message": "пустая строка перед конструктором и в целом я пока не вижу необходимости в этот вервисе. Ты его используешь только в эфекте и абсолютно норамально просто использовать resetService. Короче можешь пока удалить и пользоваться RestService.",
+      "revId": "5bcbec5145abeaeef88a5064c2f90138591d5219",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
