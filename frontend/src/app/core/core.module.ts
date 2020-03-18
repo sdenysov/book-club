@@ -1,4 +1,4 @@
-import {AppShareModule} from '@@share/app-share.module';
+import {AppSharedModule} from '@@shared/app-shared.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {CoreEffects} from '@@core/store/core.effects';
@@ -9,7 +9,7 @@ import {CoreEffects} from '@@core/store/core.effects';
 
 @NgModule({
   imports: [
-    AppShareModule,
+    AppSharedModule,
     EffectsModule.forFeature([CoreEffects])
   ],
   declarations: [],

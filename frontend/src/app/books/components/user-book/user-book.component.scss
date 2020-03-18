@@ -1,0 +1,62 @@
+@import "../../../../sass/utils/colors";
+
+.books-actions {
+  display: none;
+}
+
+.book-main {
+  margin-bottom: 0;
+
+  &:hover {
+    .books-actions {
+      display: block;
+    }
+  }
+
+  .book-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+
+  .glyphicon {
+    color: $color-text-dark;
+  }
+
+  .book-details {
+    margin-bottom: 0;
+    font-family: cursive;
+    font-size: 1.3rem;
+    color: $color-text;
+
+    a {
+      color: $color-text;
+    }
+  }
+
+  .book-dropdown {
+    list-style: none;
+  }
+
+  .book-dropdown-menu {
+    left: auto;
+
+    li {
+      padding-bottom: 0;
+
+      &:hover {
+        background-color: $color-gray-light;
+      }
+
+      a {
+        background-color: $color-main-bg;
+        color: $color-gray;
+        padding-bottom: 0.3rem;
+
+        &:hover,
+        &:focus {
+          background-color: $color-gray-light;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
-import {FormErrors} from '@@share/models/form-errors';
-import {ValidationError} from '@@share/models/validation-error';
-import {FormUtils} from '@@share/utils/form.utils';
+import {FormErrors} from '@@shared/models/form-errors';
+import {ValidationError} from '@@shared/models/validation-error';
+import {FormUtils} from '@@shared/utils/form.utils';
 import {Injectable} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UNAUTHORIZED} from 'http-status-codes';

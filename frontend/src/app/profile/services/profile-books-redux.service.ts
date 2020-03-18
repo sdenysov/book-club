@@ -1,11 +1,11 @@
 import {ProfileState} from '@@app/profile/models/profile.state.model';
 import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {ProfileSelectors} from '@@app/profile/store/profile-books.selectors';
-import {IBook} from '@@share/models/book';
-import {IUser} from '@@share/models/user';
+import {IUser} from '@@shared/models/user';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
+import {IBook} from '@@books/models/book';
 
 @Injectable({providedIn: 'root'})
 export class ProfileBooksReduxService {

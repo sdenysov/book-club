@@ -4,7 +4,7 @@ import {ActionReducerMap, select, Store, StoreModule} from '@ngrx/store';
 import {cold} from 'jasmine-marbles';
 import {IRouterState} from '@@router/models/router-state.model';
 import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
-import {StoreTestUtils} from '@@share/tests/utils/store-test.utils';
+import {StoreTestUtils} from '@@shared/tests/utils/store-test.utils';
 
 describe('RoutingInProgressReducerSpec', function () {
 

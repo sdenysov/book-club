@@ -3,7 +3,7 @@ import {RegisterPageComponent} from '@@auth/pages/register/register-page.compone
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {AuthEffects} from '@@auth/store/auth.effects';
 import {authReducer} from '@@auth/store/auth.reducer';
-import {AppShareModule} from '@@share/app-share.module';
+import {AppSharedModule} from '@@shared/app-shared.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
@@ -15,7 +15,7 @@ const SHARED_DECLARATIONS = [
 
 @NgModule({
   imports: [
-    AppShareModule,
+    AppSharedModule,
     StoreModule.forFeature(AUTH_STORE_KEY, authReducer),
     EffectsModule.forFeature([AuthEffects]),
   ],

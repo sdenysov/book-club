@@ -1,10 +1,10 @@
 import {Credentials} from '@@auth/models/credentials';
-import {IUser} from '@@share/models/user';
+import {IUser} from '@@shared/models/user';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ISessionData} from '@@auth/models/session-data';
-import {EnvUtils} from '@@share/utils/env.utils';
+import {EnvUtils} from '@@shared/utils/env.utils';
 
 @Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('AuthRestService')})
 export abstract class AuthRestService {

@@ -2,7 +2,7 @@ import {AppNavbarComponent} from '@@app/navigation/components/navbar/navbar.comp
 import {NAVIGATION_STORE_KEY} from '@@app/navigation/store/navigation-store.properties';
 import {NavigationEffects} from '@@navigation/store/navigation.effects';
 import {navigationReducer} from '@@navigation/store/navigation.reducer';
-import {AppShareModule} from '@@share/app-share.module';
+import {AppSharedModule} from '@@shared/app-shared.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
@@ -13,7 +13,7 @@ const SHARED_DECLARATIONS = [
 
 @NgModule({
   imports: [
-    AppShareModule,
+    AppSharedModule,
     StoreModule.forFeature(NAVIGATION_STORE_KEY, navigationReducer),
     EffectsModule.forFeature([NavigationEffects])
   ],

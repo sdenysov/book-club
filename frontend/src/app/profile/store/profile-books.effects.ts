@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {BooksRestService} from '@@core/services/books/books-rest.service';
-import {of} from 'rxjs/index';
+import {of} from 'rxjs';
 import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {catchError, map, mergeMap} from 'rxjs/internal/operators';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
 import {UserRestService} from '@@user/services/user-rest.service';
+import {BooksRestService} from '@@books/services/books-rest.service';
 
 @Injectable()
 export class ProfileBooksEffects {

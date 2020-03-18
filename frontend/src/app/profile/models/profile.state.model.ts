@@ -1,5 +1,5 @@
-import {IBook} from '@@share/models/book';
 import {IUserProfile} from '@@app/profile/models/user-profile';
+import {IBook} from '@@books/models/book';
 
 export interface ProfileState {
   loaded: boolean;

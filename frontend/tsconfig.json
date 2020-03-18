@@ -17,7 +17,7 @@
     "paths": {
       "@@app/*": ["src/app/*"],
       "@@auth/*": ["src/app/auth/*"],
-      "@@share/*": ["src/app/share/*"],
+      "@@shared/*": ["src/app/shared/*"],
       "@@sass/*": ["src/sass/*"],
       "@@core/*": ["src/app/core/*"],
       "@@books/*": ["src/app/books/*"],

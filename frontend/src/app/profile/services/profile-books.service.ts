@@ -1,12 +1,12 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {ProfileBooksReduxService} from '@@app/profile/services/profile-books-redux.service';
-import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {HttpErrorHandlerService} from '@@errors/services/http-error-handler.service';
-import {IBook} from '@@share/models/book';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/internal/operators';
+import {BooksRestService} from '@@books/services/books-rest.service';
+import {IBook} from '@@books/models/book';
 
 @Injectable({providedIn: 'root'})
 export class ProfileBooksService {

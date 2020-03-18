@@ -14,10 +14,29 @@
       </div>
       <div class="col-sm-9">
         <app-section>
-          <app-section-header title="header text" icon="book"></app-section-header>
+          <app-section-header [caption]="'profile.profileSectionTitle' | translate" icon="user"></app-section-header>
           <app-section-main>
             <span>some text in main section</span>
+            <table class="profile-table">
+              <tr>
+                <th>Date of birth:</th>
+                <td>1992-06-21</td>
+              </tr>
+              <tr>
+                <th>Location:</th>
+                <td>
+                  <span>Warsaw</span>
+                  <span class="glyphicon glyphicon-location"></span>
+                </td>
+              </tr>
+            </table>
+            <h1 class="">About me:</h1>
+            <span>some text</span>
           </app-section-main>
+        </app-section>
+        <app-section>
+          <app-section-header [caption]="'profile.booksSectionTitle' | translate" icon="book"></app-section-header>
+          <app-section-main></app-section-main>
         </app-section>
       </div>
     </div>

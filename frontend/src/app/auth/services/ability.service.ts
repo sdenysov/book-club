@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Ability, AbilityBuilder} from '@casl/ability';
-import {IUser} from '@@share/models/user';
+import {IUser} from '@@shared/models/user';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {NavigationService} from '@@navigation/services/navigation.service';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';

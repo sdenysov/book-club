@@ -1,5 +1,5 @@
-import {IBook} from '@@share/models/book';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {IBook} from '@@books/models/book';
 
 @Component({
   templateUrl: 'find-books-page.component.html',

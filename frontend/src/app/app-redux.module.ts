@@ -1,6 +1,6 @@
 import {environment} from '@@env/environment';
 import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
-import {AppState} from '@@share/models/app-state';
+import {AppState} from '@@shared/models/app-state';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {ActionReducerMap, MetaReducer, StoreModule} from '@ngrx/store';

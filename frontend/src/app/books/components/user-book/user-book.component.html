@@ -1,0 +1,14 @@
+<div class="thumbnail clearfix book-main">
+  <img src="assets/images/cover-page.jpg"/>
+  <h1 class="h3 book-title">{{book.title}}</h1>
+  <div class="lead book-details">
+    <span class="glyphicon glyphicon-user pR-1"></span>
+    <a href="">{{book.author}}</a>
+    <rating class="pull-right" [(ngModel)]="book.rating" [max]="5" [readonly]="true"></rating>
+    <div class="book-details">
+      <span class="glyphicon glyphicon-folder-open pR-1"></span>
+      <span>horror|fantasy</span>
+    </div>
+  </div>
+  <app-book-actions class="book-actions"></app-book-actions>
+</div>

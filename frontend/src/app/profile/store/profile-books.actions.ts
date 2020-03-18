@@ -1,6 +1,6 @@
-import {IBook} from '@@share/models/book';
 import {createAction, props} from '@ngrx/store';
 import {IUserProfile} from '@@app/profile/models/user-profile';
+import {IBook} from '@@books/models/book';
 
 export enum ProfileBooksActionTypes {
   FetchProfileBooks = '[Profile] Fetch user books',

@@ -1,6 +1,6 @@
 import {IRouterState} from '@@router/models/router-state.model';
 import {RouterSelectors} from '@@router/store/router-state.selectors';
-import {StoreUtils} from '@@share/utils/store.utils';
+import {StoreUtils} from '@@shared/utils/store.utils';
 import {Injectable} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';

@@ -1,23 +1,22 @@
-@import "utils/colors";
 @import "utils/mixins";
-@import "variables";
 
-$section-base-padding: 0.8rem;
+.panel-heading {
+  display: block;
+}
 
-app-section {
-  section {
-    background-color: $color-main-bg;
-    border-radius: $border-radius-default;
+.panel-title {
+  @include clearfix();
 
-    header {
-      @include clearfix();
-      border-bottom: 1px solid $color-gray-light;
-      padding: $section-base-padding;
-    }
+  .caption {
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 3px;
+  }
 
-    main {
-      @include clearfix();
-      padding: $section-base-padding;
-    }
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
   }
 }

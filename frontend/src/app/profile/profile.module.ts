@@ -3,7 +3,7 @@ import {ProfilePageComponent} from '@@app/profile/pages/profile/profile-page.com
 import {ProfileSettingsPageComponent} from '@@app/profile/pages/settings/profile-settings-page.component';
 import {ProfileBooksEffects} from '@@app/profile/store/profile-books.effects';
 import {profileBooksReducer} from '@@app/profile/store/profile-books.reducer';
-import {AppShareModule} from '@@share/app-share.module';
+import {AppSharedModule} from '@@shared/app-shared.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
@@ -17,9 +17,9 @@ const SHARED_DECLARATIONS = [
 
 @NgModule({
   imports: [
-    AppShareModule,
+    AppSharedModule,
     StoreModule.forFeature(PROFILE_STORE_KEY, profileBooksReducer),
-    EffectsModule.forFeature([ProfileBooksEffects]),
+    EffectsModule.forFeature([ProfileBooksEffects])
   ],
   declarations: SHARED_DECLARATIONS,
   exports: SHARED_DECLARATIONS

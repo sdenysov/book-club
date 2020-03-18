@@ -1,9 +1,9 @@
 import {AuthRestServiceDpd} from '@@auth/services/rest/auth-rest.service.dpd';
 import {AuthRestServiceImpl} from '@@auth/services/rest/auth-rest.service.impl';
 import {AuthRestServiceMock} from '@@auth/services/rest/auth-rest.service.mock';
-import {BooksRestServiceDpd} from '@@core/services/books/books-rest.service.dpd';
-import {BooksRestServiceImpl} from '@@core/services/books/books-rest.service.impl';
-import {BooksRestServiceMock} from '@@core/services/books/books-rest.service.mock';
+import {BooksRestServiceMock} from '@@books/services/books-rest.service.mock';
+import {BooksRestServiceDpd} from '@@books/services/books-rest.service.dpd';
+import {BooksRestServiceImpl} from '@@books/services/books-rest.service.impl';
 import {UserRestServiceDpd} from '@@user/services/user-rest.service.dpd';
 
 export interface Env {

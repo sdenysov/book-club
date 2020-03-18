@@ -6,7 +6,6 @@ import {PROFILE_STORE_KEY} from '@@app/profile/store/profile-store.properties';
 import {ProfileBooksActions} from '@@app/profile/store/profile-books.actions';
 import {ProfileSelectors} from '@@app/profile/store/profile-books.selectors';
 import {ProfileState} from '@@app/profile/models/profile.state.model';
-import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 
 @Injectable({providedIn: 'root'})
 export class ProfileReduxFacade {

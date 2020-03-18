@@ -5,7 +5,7 @@ import {NavigationSelectors} from '@@navigation/store/navigation.selectors';
 import {select, Store} from '@ngrx/store';
 import {INavigationState} from '@@navigation/models/navigation-state.model';
 import {INavbar} from '@@navigation/models/nav-bar.model';
-import {StoreUtils} from '@@share/utils/store.utils';
+import {StoreUtils} from '@@shared/utils/store.utils';
 
 @Injectable({providedIn: 'root'})
 export class NavigationReduxFacade {

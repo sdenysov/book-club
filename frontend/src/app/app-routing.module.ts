@@ -3,20 +3,20 @@ import {AppMainPageModule} from '@@app/main-page/main-page.module';
 import {AppSearchPageModule} from '@@app/search-page/search-page.module';
 import {LogInPageComponent} from '@@auth/pages/login/log-in-page.component';
 import {RegisterPageComponent} from '@@auth/pages/register/register-page.component';
-import {PageNotFoundComponent} from '@@share/components/page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from '@@shared/components/page-not-found/page-not-found.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ProfilePageComponent} from '@@app/profile/pages/profile/profile-page.component';
 import {EditProfilePageComponent} from '@@app/profile/pages/edit/edit-profile-page.component';
 import {ProfileSettingsPageComponent} from '@@app/profile/pages/settings/profile-settings-page.component';
-import {UserBooksPageComponent} from '@@app/user-books/pages/user-books/user-books-page.component';
-import {NewBookPageComponent} from '@@app/user-books/pages/new/new-book-page.component';
-import {BookDetailsPageComponent} from '@@app/user-books/pages/details/book-details-page.component';
-import {EditBookPageComponent} from '@@app/user-books/pages/edit/edit-book-page.component';
 import {AppProfileModule} from '@@app/profile/profile.module';
-import {AppUserBooksModule} from '@@app/user-books/user-books.module';
 import {AuthGuard} from '@@auth/guards/auth.guard';
 import {FindBooksPageComponent} from '@@app/search-page/pages/find-books/find-books-page.component';
+import {UserBooksPageComponent} from '@@user/pages/user-books/user-books-page.component';
+import {NewBookPageComponent} from '@@user/pages/new/new-book-page.component';
+import {BookDetailsPageComponent} from '@@user/pages/details/book-details-page.component';
+import {EditBookPageComponent} from '@@user/pages/edit/edit-book-page.component';
+import {AppUserModule} from '@@user/user-books.module';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
@@ -42,7 +42,7 @@ const routes: Routes = [
     AppMainPageModule,
     AppSearchPageModule,
     AppProfileModule,
-    AppUserBooksModule,
+    AppUserModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]

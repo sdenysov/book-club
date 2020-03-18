@@ -1,6 +1,6 @@
 import {Credentials} from '@@auth/models/credentials';
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
-import {IUser} from '@@share/models/user';
+import {IUser} from '@@shared/models/user';
 import {createAction, props} from '@ngrx/store';
 
 export enum AuthActionTypes {

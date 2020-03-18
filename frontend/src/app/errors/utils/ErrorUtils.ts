@@ -1,7 +1,7 @@
 import {ErrorPayloadModel} from '@@errors/models/error-payload.model';
 import {ExceptionData} from '@@errors/models/exception-data.model';
 import {HttpErrorData} from '@@errors/models/http-error-data.model';
-import {CollectionUtils} from '@@share/utils/collection.utils';
+import {CollectionUtils} from '@@shared/utils/collection.utils';
 
 export class ErrorUtils {
 

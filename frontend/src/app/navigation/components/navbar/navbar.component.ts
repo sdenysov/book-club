@@ -1,11 +1,11 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
-import {BooksRestService} from '@@core/services/books/books-rest.service';
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {combineLatest, Observable, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/internal/operators';
-import {IUser} from '@@share/models/user';
+import {IUser} from '@@shared/models/user';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {INavbar} from '@@navigation/models/nav-bar.model';
+import {BooksRestService} from '@@books/services/books-rest.service';
 
 interface ViewModel {
   user: IUser;

@@ -1,0 +1,13 @@
+{
+  "profile": {
+    "profileSectionTitle": "profil",
+    "booksSectionTitle": "moje książki"
+  },
+
+  "books": {
+    "booksSectionTitle": "książki",
+    "delete": "Usunąć",
+    "download": "Pobrać",
+    "edit": "Redaktować"
+  }
+}

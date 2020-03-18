@@ -1,6 +1,6 @@
 import {Credentials} from '@@auth/models/credentials';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
-import {IUser} from '@@share/models/user';
+import {IUser} from '@@shared/models/user';
 import {HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';

@@ -1,0 +1,26 @@
+<div class="book-dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+     aria-expanded="false">
+    <span class="glyphicon glyphicon-option-horizontal"></span>
+  </a>
+  <ul class="dropdown-menu book-dropdown-menu">
+    <li>
+      <a (click)="$event.preventDefault()" href="">
+        <span class="glyphicon glyphicon-remove-circle pR-1"></span>
+        <span translate>books.delete</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="$event.preventDefault()" href="" translate>
+        <span class="glyphicon glyphicon-download pR-1"></span>
+        <span translate>books.download</span>
+      </a>
+    </li>
+    <li>
+      <a (click)="$event.preventDefault()" href="" translate>
+        <span class="glyphicon glyphicon-pencil pR-1"></span>
+        <span translate>books.edit</span>
+      </a>
+    </li>
+  </ul>
+</div>
