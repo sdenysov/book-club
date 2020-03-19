@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eb69dd4_68252cfa",
+        "filename": "frontend/src/app/books/components/user-book/user-book.component.scss",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-03-19T21:10:40Z",
+      "side": 1,
+      "message": "Что тут не то. Должно вроде заработать просто: \"utils/colors\". Посмотри как в других.",
+      "range": {
+        "startLine": 1,
+        "startChar": 9,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "8e51fff7ecf4d4e89cc8d7ca8faca008685fa13a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d89922_b58fd5d1",
+        "filename": "frontend/src/app/shared/components/big-load-spinner/big-load-spinner.component.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-03-19T21:10:40Z",
+      "side": 1,
+      "message": "Мы тут его не используем поэтому можно этот конструктор удалить.",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "8e51fff7ecf4d4e89cc8d7ca8faca008685fa13a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f4e1be_812a85c2",
+        "filename": "frontend/src/app/shared/components/icon/icon.component.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-03-19T21:10:40Z",
+      "side": 1,
+      "message": "Пустая строка не нужна.",
+      "revId": "8e51fff7ecf4d4e89cc8d7ca8faca008685fa13a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27caea38_3b6e784b",
+        "filename": "frontend/src/app/user/pages/user-books/user-books-page.component.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-03-19T21:10:40Z",
+      "side": 1,
+      "message": "Добавиь в файл notes чтобы не забыть сделать для этого компонент breadcrumbs позже",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 105
+      },
+      "revId": "8e51fff7ecf4d4e89cc8d7ca8faca008685fa13a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67de3082_44a01bf4",
+        "filename": "frontend/src/app/user/store/user-books.actions.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-03-19T21:10:40Z",
+      "side": 1,
+      "message": "Пустая строка не нужна.",
+      "revId": "8e51fff7ecf4d4e89cc8d7ca8faca008685fa13a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a28b2c1_5eb7d4de",
+        "filename": "frontend/src/main.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-03-19T21:10:40Z",
+      "side": 1,
+      "message": "Пустая строка не нужна.",
+      "revId": "8e51fff7ecf4d4e89cc8d7ca8faca008685fa13a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
