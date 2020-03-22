@@ -1,25 +1,31 @@
-@import "../../../../sass/utils/colors";
+@import "utils/colors";
 
-.books-actions {
+.book-actions {
   display: none;
 }
 
-.book-main {
+.book-container {
+  position: relative;
+  height: 33rem;
   margin-bottom: 0;
+}
+
+.book-description {
+  position: absolute;
 
   &:hover {
-    .books-actions {
+    .book-actions {
       display: block;
     }
+  }
+
+  .book-img {
+    text-align: center;
   }
 
   .book-title {
     font-size: 1.7rem;
     font-weight: bold;
-  }
-
-  .glyphicon {
-    color: $color-text-dark;
   }
 
   .book-details {
@@ -31,32 +37,9 @@
     a {
       color: $color-text;
     }
-  }
 
-  .book-dropdown {
-    list-style: none;
-  }
-
-  .book-dropdown-menu {
-    left: auto;
-
-    li {
-      padding-bottom: 0;
-
-      &:hover {
-        background-color: $color-gray-light;
-      }
-
-      a {
-        background-color: $color-main-bg;
-        color: $color-gray;
-        padding-bottom: 0.3rem;
-
-        &:hover,
-        &:focus {
-          background-color: $color-gray-light;
-        }
-      }
+    app-icon {
+      color: $color-text-dark;
     }
   }
 }

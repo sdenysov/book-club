@@ -1,0 +1,30 @@
+@import "utils/colors";
+
+.book-dropdown {
+  list-style: none;
+
+  .book-dropdown-menu {
+    app-icon {
+      color: $color-text-dark;
+    }
+
+    li {
+      padding-bottom: 0;
+
+      &:hover {
+        background-color: $color-gray-light;
+      }
+
+      a {
+        background-color: $color-main-bg;
+        color: $color-gray;
+        padding-bottom: 0.3rem;
+
+        &:hover,
+        &:focus {
+          background-color: $color-gray-light;
+        }
+      }
+    }
+  }
+}

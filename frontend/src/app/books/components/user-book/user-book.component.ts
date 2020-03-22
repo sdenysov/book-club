@@ -7,7 +7,7 @@ import {IBook} from '@@books/models/book';
   styleUrls: ['user-book.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserBookComponent {
 
+export class UserBookComponent {
   @Input() book: IBook;
 }

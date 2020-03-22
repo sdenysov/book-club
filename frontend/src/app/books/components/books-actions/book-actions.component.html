@@ -1,24 +1,24 @@
 <div class="book-dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
      aria-expanded="false">
-    <span class="glyphicon glyphicon-option-horizontal"></span>
+    <app-icon name="option-horizontal"></app-icon>
   </a>
   <ul class="dropdown-menu book-dropdown-menu">
     <li>
       <a (click)="$event.preventDefault()" href="">
-        <span class="glyphicon glyphicon-remove-circle pR-1"></span>
+        <app-icon class="pR-1" name="remove-circle"></app-icon>
         <span translate>books.delete</span>
       </a>
     </li>
     <li>
       <a (click)="$event.preventDefault()" href="" translate>
-        <span class="glyphicon glyphicon-download pR-1"></span>
+        <app-icon class="pR-1" name="download"></app-icon>
         <span translate>books.download</span>
       </a>
     </li>
     <li>
       <a (click)="$event.preventDefault()" href="" translate>
-        <span class="glyphicon glyphicon-pencil pR-1"></span>
+        <app-icon class="pR-1" name="pencil"></app-icon>
         <span translate>books.edit</span>
       </a>
     </li>

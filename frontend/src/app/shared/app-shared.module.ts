@@ -10,9 +10,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {AbilityModule} from '@casl/angular';
-import {TranslateModule} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {RatingModule} from 'ngx-bootstrap';
 import {AppIconComponent} from '@@shared/components/icon/icon.component';
+import {HttpClient} from '@angular/common/http';
+import {httpLoaderFactory} from '@@app/app-translation.module';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -38,13 +40,26 @@ const SHARE_IMPORTS = [
   FormsModule,
   BsDropdownModule,
   AbilityModule,
-  TranslateModule,
   RatingModule
 ];
 
 @NgModule({
-  imports: SHARE_IMPORTS,
+  imports: [
+    ...SHARE_IMPORTS,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient]
+      },
+      isolate: false
+    })
+  ],
   declarations: SHARE_DECLARATIONS,
-  exports: [...SHARE_IMPORTS, ...SHARE_DECLARATIONS]
+  exports: [
+    ...SHARE_IMPORTS,
+    ...SHARE_DECLARATIONS,
+    TranslateModule
+  ]
 })
 export class AppSharedModule {}

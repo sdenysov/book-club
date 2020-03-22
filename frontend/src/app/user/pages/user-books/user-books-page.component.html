@@ -3,7 +3,7 @@
     <app-section>
       <app-section-header [caption]="caption" icon="book">
         <button *ngIf="'User' | can: 'manage'" class="btn btn-primary btn-block btn-xs" translate>
-          <span class="glyphicon glyphicon-plus pR-0-2"></span> Add new books
+          <app-icon class="pR-0-2" name="plus"></app-icon> Add new books
         </button>
       </app-section-header>
       <app-section-main>

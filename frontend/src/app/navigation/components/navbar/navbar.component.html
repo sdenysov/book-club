@@ -10,7 +10,7 @@
       <div class="form-group">
         <input #searchInput type="text" class="form-control search" placeholder="Search"
                (input)="inputChange$.next(searchInput.value)">
-        <span class="glyphicon glyphicon-search search-ico"></span>
+        <app-icon class="search-ico" name="search"></app-icon>
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
