@@ -1,26 +1,6 @@
-<div class="book-dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-     aria-expanded="false">
-    <app-icon name="option-horizontal"></app-icon>
-  </a>
-  <ul class="dropdown-menu book-dropdown-menu">
-    <li>
-      <a (click)="$event.preventDefault()" href="">
-        <app-icon class="pR-1" name="remove-circle"></app-icon>
-        <span translate>books.delete</span>
-      </a>
-    </li>
-    <li>
-      <a (click)="$event.preventDefault()" href="" translate>
-        <app-icon class="pR-1" name="download"></app-icon>
-        <span translate>books.download</span>
-      </a>
-    </li>
-    <li>
-      <a (click)="$event.preventDefault()" href="" translate>
-        <app-icon class="pR-1" name="pencil"></app-icon>
-        <span translate>books.edit</span>
-      </a>
-    </li>
-  </ul>
-</div>
+<app-dropdown align="right" [items]="dropdownItems" (select)="onActionSelect($event)">
+  <button class="btn btn-primary btn-block btn-xs">
+    <span>Book Actions</span>
+    <app-icon name="option-horizontal" class="pull-right"></app-icon>
+  </button>
+</app-dropdown>

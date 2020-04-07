@@ -21,4 +21,16 @@ export class RouterService {
   goTo404Page() {
     this.router.navigate(['/404']);
   }
+
+  goToProfile(userName) {
+    this.router.navigate([`/${userName}`]);
+  }
+
+  goToUserBooks(userName) {
+    this.router.navigate([`/${userName}/books`]);
+  }
+
+  goToUserNewBook(userName) {
+    this.router.navigate([`/${userName}/new-book`]);
+  }
 }

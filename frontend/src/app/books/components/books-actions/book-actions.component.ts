@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding} from '@angular/core';
 
 @Component({
   selector: 'app-book-actions',
@@ -6,9 +6,26 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   styleUrls: ['book-actions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BookActionsComponent implements OnInit {
+export class BookActionsComponent {
 
-  constructor() { }
+  dropdownItems = [
+    {
+      value: 'delete',
+      label: 'delete',
+      iconName: 'remove-circle'
+    },
+    {
+      value: 'download',
+      label: 'download',
+      iconName: 'download'
+    },
+    {
+      value: 'edit',
+      label: 'edit',
+      iconName: 'pencil'
+    }
+  ];
 
-  ngOnInit() { }
+  onActionSelect(actionValue: string) {
+  }
 }

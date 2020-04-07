@@ -9,6 +9,7 @@ import {NavigationService} from '@@navigation/services/navigation.service';
 import {NavigationActions} from '@@navigation/store/navigation.actions';
 import {AbilityService} from '@@auth/services/ability.service';
 import {INavbar} from '@@navigation/models/nav-bar.model';
+import {AuthActions} from '@@auth/store/auth.actions';
 
 @Injectable()
 export class CoreEffects {
@@ -21,7 +22,7 @@ export class CoreEffects {
   }
 
   updateUserRolesAndNavigation$ = createEffect(() => this.actions$.pipe(
-    ofType(CoreActions.pageDataFetched),
+    ofType(CoreActions.pageDataFetched, AuthActions.logoutSuccess),
     switchMap(() => {
       const page: Page = this.navigationReduxFacade.getCurrentPage();
       const loggedIn: boolean = this.authReduxFacade.isLoggedIn();

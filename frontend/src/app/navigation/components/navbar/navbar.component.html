@@ -4,7 +4,7 @@
       <span class="logo">Book Club</span>
     </a>
     <ul class="nav navbar-nav">
-      <li routerLink="/find-books" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Find books</a></li>
+      <li routerLink="/find-books" routerLinkActive="active"><a class="navbar-button" (click)="$event.preventDefault()" href="">Find books</a></li>
     </ul>
     <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
       <div class="form-group">
@@ -14,24 +14,17 @@
       </div>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="vm.navbar.userBtnVisible" class="dropdown profile-dropdown">
-        <a href="#" class="profile-button dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-           aria-expanded="false">
-          <img class="profile-image" src="assets/images/avatar-circle.jpg" alt="">
-          <span class="profile-name">{{vm.user?.username}}</span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu profile-dropdown-menu">
-          <li routerLink="/{{vm.user?.username}}"><a (click)="$event.preventDefault()" href="">Profile</a></li>
-          <li role="separator" class="divider"></li>
-          <li routerLink="/{{vm.user?.username}}/books"><a (click)="$event.preventDefault()" href="">My books</a></li>
-          <li routerLink="/{{vm.user?.username}}/new-book"><a (click)="$event.preventDefault()" href="">New book</a></li>
-          <li><a (click)="logout()" href="">Logout</a></li>
-        </ul>
+      <li *ngIf="vm.navbar.userBtnVisible" class="profile-dropdown">
+        <app-dropdown [items]="userMenuItem" (select)="onActionSelect($event)">
+          <div class="navbar-button profile-button" role="button" aria-haspopup="true" aria-expanded="false">
+            <img class="profile-image" src="assets/images/avatar-circle.jpg" alt="">
+            <span class="profile-name">{{vm.user?.username}}</span>
+            <span class="caret"></span>
+          </div>
+        </app-dropdown>
       </li>
-      <li *ngIf="vm.navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Log In</a></li>
-      <li *ngIf="vm.navbar.registerBtnVisible" routerLink="/register" routerLinkActive="active"><a (click)="$event.preventDefault()" href="">Register</a>
-      </li>
+      <li *ngIf="vm.navbar.loginBtnVisible" routerLink="/login" routerLinkActive="active"><a class="navbar-button" (click)="$event.preventDefault()" href="">Log In</a></li>
+      <li *ngIf="vm.navbar.registerBtnVisible" routerLink="/register" routerLinkActive="active"><a class="navbar-button" (click)="$event.preventDefault()" href="">Register</a></li>
     </ul>
   </div>
 </nav>

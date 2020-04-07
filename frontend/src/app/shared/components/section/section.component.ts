@@ -4,8 +4,7 @@ import {Component} from '@angular/core';
   selector: 'app-section',
   template: `
     <div class="panel panel-default">
-      <ng-content select="app-section-header"></ng-content>
-      <ng-content select="app-section-main"></ng-content>
+      <ng-content></ng-content>
     </div>
   `,
 })

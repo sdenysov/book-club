@@ -6,6 +6,8 @@ import {IUser} from '@@shared/models/user';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {INavbar} from '@@navigation/models/nav-bar.model';
 import {BooksRestService} from '@@books/services/books-rest.service';
+import {RouterService} from '@@router/services/router.service';
+import {IDropdownItem} from '@@shared/models/dropdown-item';
 
 interface ViewModel {
   user: IUser;
@@ -22,9 +24,17 @@ export class AppNavbarComponent implements OnInit {
 
   vm$: Observable<ViewModel>;
 
+  userMenuItem: IDropdownItem[] = [
+    {value: 'profile', label: 'Profile'},
+    {value: 'myBooks', label: 'My books'},
+    {value: 'newBook', label: 'New book'},
+    {value: 'logout', label: 'Logout'},
+  ];
+
   constructor(private booksRestService: BooksRestService,
               private authReduxFacade: AuthReduxFacade,
-              private navigationReduxFacade: NavigationReduxFacade) {
+              private navigationReduxFacade: NavigationReduxFacade,
+              private routerService: RouterService) {
   }
 
   inputChange$: Subject<string> = new Subject<string>();
@@ -46,5 +56,24 @@ export class AppNavbarComponent implements OnInit {
 
   logout() {
     this.authReduxFacade.logout();
+  }
+
+  onActionSelect(actionValue: string) {
+    const user = this.authReduxFacade.getUser();
+    const username = user.username;
+    switch (actionValue) {
+      case 'profile': {
+        return this.routerService.goToProfile(username);
+      }
+      case 'myBooks': {
+        return this.routerService.goToUserBooks(username);
+      }
+      case 'newBook': {
+        return this.routerService.goToUserNewBook(username);
+      }
+      case 'logout': {
+        return this.logout();
+      }
+    }
   }
 }

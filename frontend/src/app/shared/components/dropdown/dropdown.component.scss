@@ -1,0 +1,29 @@
+@import "utils/colors";
+
+.dropdown-menu {
+  cursor: pointer;
+
+  app-icon {
+    color: $color-text-dark;
+  }
+
+  &.align-right {
+    right: 0;
+    left: auto;
+  }
+
+  .dropdown-menu-item {
+    background-color: $color-main-bg;
+    color: $color-gray;
+    padding: 0.3rem 1rem;
+
+    &:hover,
+    &:focus {
+      background-color: $color-gray-light;
+    }
+
+    &:hover {
+      background-color: $color-gray-light;
+    }
+  }
+}

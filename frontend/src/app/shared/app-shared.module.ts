@@ -15,6 +15,7 @@ import {RatingModule} from 'ngx-bootstrap';
 import {AppIconComponent} from '@@shared/components/icon/icon.component';
 import {HttpClient} from '@angular/common/http';
 import {httpLoaderFactory} from '@@app/app-translation.module';
+import {DropdownComponent} from '@@shared/components/dropdown/dropdown.component';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -30,7 +31,8 @@ const SHARE_DECLARATIONS = [
   ImageDirective,
   BigLoadSpinnerComponent,
   PageNotFoundComponent,
-  AppIconComponent
+  AppIconComponent,
+  DropdownComponent
 ];
 
 const SHARE_IMPORTS = [

@@ -1,0 +1,11 @@
+<div dropdown>
+  <div dropdownToggle>
+    <ng-content ></ng-content>
+  </div>
+  <ul *dropdownMenu class="dropdown-menu" [class.align-right]="align === 'right'">
+    <li class="dropdown-menu-item" *ngFor="let item of items" (click)="onSelect(item)">
+      <app-icon *ngIf="item.iconName" class="pR-1" name="{{item.iconName}}"></app-icon>
+      <span>{{item.label}}</span>
+    </li>
+  </ul>
+</div>

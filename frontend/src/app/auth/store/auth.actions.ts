@@ -10,7 +10,8 @@ export enum AuthActionTypes {
   FETCH_LOGGED_IN = '[Auth] fetch user',
   FETCH_LOGGED_IN_SUCCEED = '[Auth] fetch user succeed',
   FETCH_LOGGED_IN_FAILED = '[Auth] fetch user failed',
-  LOGOUT = '[Auth] logout'
+  LOGOUT = '[Auth] logout',
+  LOGOUT_SUCCESS = '[Auth] logout succeed'
 }
 
 export namespace AuthActions {
@@ -21,5 +22,6 @@ export namespace AuthActions {
   export const fetchUserSucceed = createAction(AuthActionTypes.FETCH_LOGGED_IN_SUCCEED, props<{ user: IUser }>());
   export const fetchUserFailed = createAction(AuthActionTypes.FETCH_LOGGED_IN_FAILED);
   export const logout = createAction(AuthActionTypes.LOGOUT);
+  export const logoutSuccess = createAction(AuthActionTypes.LOGOUT_SUCCESS);
 }
 
