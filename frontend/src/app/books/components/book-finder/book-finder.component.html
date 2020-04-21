@@ -1,0 +1,21 @@
+<div class="find-book-container">
+  <div class="clearfix thumbnail find-book-description">
+    <div class="find-book-img">
+      <img src="assets/images/cover-page.jpg"/>
+    </div>
+    <div class="find-book-detail">
+      <h1 class="h3 find-book-title">{{book.title}}</h1>
+      <div class="book-info">
+        <div class="author">
+          <app-icon class="pR-1" name="user"></app-icon>
+          <a href="">{{book.author}}</a>
+          <rating class="pull-right" [(ngModel)]="book.rating" [max]="5" [readonly]="true"></rating>
+        </div>
+        <div>
+          <app-icon class="pR-1" name="folder-open"></app-icon>
+          <span>horror|fantasy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

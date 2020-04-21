@@ -7,6 +7,7 @@ import {IUserProfile} from '@@app/profile/models/user-profile';
 import {UrlProperties} from '@@shared/properties/url.properties';
 import {HttpUtils} from '@@shared/utils/http.utils';
 import {CollectionUtils} from '@@shared/utils/collection.utils';
+import {IUser} from '@@shared/models/user';
 
 @Injectable({providedIn: 'root'})
 export class UserRestServiceDpd implements UserRestService {
@@ -18,6 +19,14 @@ export class UserRestServiceDpd implements UserRestService {
   getUserProfile$(username: string): Observable<IUserProfile> {
     const params: HttpParams = HttpUtils.createQueryParams({username});
     return this.http.get<IUserProfile>(`${this.baseUrl}`, {params}).pipe(
+      delay(1000),
+      map(profiles => CollectionUtils.isEmpty(profiles) ? null : profiles[0])
+    );
+  }
+
+  getUserByUserName$(username: string): Observable<IUser> {
+    const params: HttpParams = HttpUtils.createQueryParams({username});
+    return this.http.get<IUser>(`${this.baseUrl}`, {params}).pipe(
       delay(1000),
       map(profiles => CollectionUtils.isEmpty(profiles) ? null : profiles[0])
     );

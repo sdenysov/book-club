@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpResponse} from '@angular/common/http';
 import {BooksRestService} from 'src/app/books/services/books-rest.service';
@@ -11,8 +11,6 @@ import {IBook} from '@@books/models/book';
 @Injectable({providedIn: 'root'})
 export class BooksRestServiceMock implements BooksRestService {
 
-  constructor(@Inject('api') private api: string) {}
-
   get$(): Observable<IBook[]> {
     return of(booksListMock);
   }
@@ -20,11 +18,11 @@ export class BooksRestServiceMock implements BooksRestService {
   suggest$(query: string): Observable<any> {
     switch (query) {
       case 'a':
-        return of(SuggestionsMock.suggestion1);
+        return of(SuggestionsMock.suggestion1).pipe(delay(1000));
       case 'ab':
-        return of(SuggestionsMock.suggestion2);
+        return of(SuggestionsMock.suggestion2).pipe(delay(2000));
       case 'abc':
-        return of(SuggestionsMock.suggestion3);
+        return of(SuggestionsMock.suggestion3).pipe(delay(3000));
       default:
         return of([]);
     }
@@ -44,5 +42,9 @@ export class BooksRestServiceMock implements BooksRestService {
 
   editBook$(book: IBook) {
     return of({} as HttpResponse<any>);
+  }
+
+  getByUserName$(username: string): Observable<IBook[]> {
+    return undefined;
   }
 }

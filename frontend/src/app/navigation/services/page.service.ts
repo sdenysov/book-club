@@ -11,7 +11,7 @@ export class PageService {
 
   readonly pageUrlPatterns: IPageUrlPattern[] = [
     {page: Page.MAIN, regexp: /^\/?$/},
-    {page: Page.SEARCH_BOOK, regexp: /^\/search-book\/?$/},
+    {page: Page.SEARCH_BOOK, regexp: /^\/find-books\/?$/},
     {page: Page.REGISTER, regexp: /^\/register\/?$/},
     {page: Page.LOGIN, regexp: /^\/login\/?$/},
     {page: Page.BOOKS, regexp: /^\/[a-z]+\/books\/?$/},

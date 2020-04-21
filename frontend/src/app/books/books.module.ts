@@ -7,6 +7,7 @@ import {AppMyBooksComponent} from '@@books/components/my-books/my-books.componen
 import {AppNewBookComponent} from '@@books/components/new-book/new-book.component';
 import {UserBookComponent} from '@@books/components/user-book/user-book.component';
 import {AppSharedModule} from '@@shared/app-shared.module';
+import {BookFinderComponent} from '@@books/components/book-finder/book-finder.component';
 
 const SHARED_DECLARATIONS = [
   BookComponent,
@@ -15,7 +16,8 @@ const SHARED_DECLARATIONS = [
   AppMyBookComponent,
   AppMyBooksComponent,
   AppNewBookComponent,
-  UserBookComponent
+  UserBookComponent,
+  BookFinderComponent
 ];
 
 @NgModule({
