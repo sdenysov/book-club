@@ -1,6 +1,6 @@
 import {MainPageComponent} from '@@app/main-page/components/main-page/main-page.component';
 import {AppMainPageModule} from '@@app/main-page/main-page.module';
-import {AppSearchPageModule} from '@@app/search-page/search-page.module';
+import {AppBooksFinderModule} from '@@app/books-finder/books-finder.module';
 import {LogInPageComponent} from '@@auth/pages/login/log-in-page.component';
 import {RegisterPageComponent} from '@@auth/pages/register/register-page.component';
 import {PageNotFoundComponent} from '@@shared/components/page-not-found/page-not-found.component';
@@ -11,7 +11,7 @@ import {EditProfilePageComponent} from '@@app/profile/pages/edit/edit-profile-pa
 import {ProfileSettingsPageComponent} from '@@app/profile/pages/settings/profile-settings-page.component';
 import {AppProfileModule} from '@@app/profile/profile.module';
 import {AuthGuard} from '@@auth/guards/auth.guard';
-import {FindBooksPageComponent} from '@@app/search-page/pages/find-books/find-books-page.component';
+import {FindBooksPageComponent} from '@@app/books-finder/pages/find-books/find-books-page.component';
 import {UserBooksPageComponent} from '@@user/pages/user-books/user-books-page.component';
 import {NewBookPageComponent} from '@@user/pages/new/new-book-page.component';
 import {BookDetailsPageComponent} from '@@user/pages/details/book-details-page.component';
@@ -40,7 +40,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     AppMainPageModule,
-    AppSearchPageModule,
+    AppBooksFinderModule,
     AppProfileModule,
     AppUserModule,
     RouterModule.forRoot(routes)

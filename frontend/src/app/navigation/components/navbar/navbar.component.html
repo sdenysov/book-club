@@ -4,12 +4,13 @@
       <span class="logo">Book Club</span>
     </a>
     <ul class="nav navbar-nav">
-      <li routerLink="/find-books" routerLinkActive="active"><a class="navbar-button" (click)="$event.preventDefault()" href="">Find books</a></li>
+      <li routerLink="/find-books"><a class="navbar-button" (click)="$event.preventDefault()" href="">Find books</a></li>
     </ul>
     <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
       <div class="form-group">
         <input #searchInput type="text" class="form-control search" placeholder="Search"
                (input)="inputChange$.next(searchInput.value)">
+        {{booksSuggestion$ | async}}
         <app-icon class="search-ico" name="search"></app-icon>
       </div>
     </form>

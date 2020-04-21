@@ -2,6 +2,7 @@ import {Action} from '@ngrx/store';
 
 import {IBook} from '@@books/models/book';
 
+// TODO rename action scope [Books] [UserBooks]
 export enum BooksActionTypes {
   FetchBooks = '[Books] Fetch books',
   FetchBooksSucceed = '[Books] Fetch books succeed',
@@ -11,8 +12,13 @@ export enum BooksActionTypes {
   FetchBookDetailFailed = '[Books] Fetch book detail failed'
 }
 
+export namespace UserBooksActions {
+  // TODO export actions here...
+}
+
 export class FetchBooks implements Action {
   readonly type = BooksActionTypes.FetchBooks;
+  constructor(public username: string) {}
 }
 
 export class FetchBooksSucceed implements Action {
@@ -54,7 +60,7 @@ export const UserBooksActions = {
   FetchBookDetailFailed
 };
 
-export type BooksAction =
+export type UserBooksAction =
   | FetchBooks
   | FetchBooksSucceed
   | FetchBooksFailed
