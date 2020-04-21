@@ -1,0 +1,64 @@
+@import "utils/colors";
+
+.find-book-container {
+  height: 14rem;
+  margin-bottom: 0;
+
+  .thumbnail {
+    width: 100%;
+    padding: 1rem;
+
+    &:hover {
+      transform: scale(1.03);
+      -webkit-box-shadow: 0 0 1.9rem 0.2rem $color-shadow;
+      -moz-box-shadow: 0 0 1.9rem 0.2rem $color-shadow;
+      box-shadow: 0 0 1.9rem 0.2rem $color-shadow;
+    }
+  }
+}
+
+.find-book-description {
+  position: relative;
+
+  a {
+    color: $color-text;
+  }
+
+  app-icon {
+    color: $color-text-dark;
+  }
+
+  .find-book-img {
+    display: inline-block;
+    text-align: center;
+    width: 20%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .find-book-detail {
+    position: absolute;
+    bottom: 1rem;
+    top: 1rem;
+    right: 1rem;
+    left: 25%;
+
+    .find-book-title {
+      width: 100%;
+      font-size: 1.7rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+
+    .book-info {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}

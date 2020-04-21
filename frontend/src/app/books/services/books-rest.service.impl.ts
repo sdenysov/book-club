@@ -20,7 +20,6 @@ export class BooksRestServiceImpl implements BooksRestService {
   }
 
   addBook$(book: IBook): Observable<HttpResponse<any>> {
-    console.log(JSON.stringify(book));
     return this.http.post<HttpResponse<any>>(this.baseUrl, book, {headers: {'Content-Type': 'application/json'}});
   }
 
@@ -34,5 +33,9 @@ export class BooksRestServiceImpl implements BooksRestService {
 
   editBook$(book: IBook): Observable<HttpResponse<any>> {
     return of(new HttpResponse());
+  }
+
+  getByUserName$(username: string): Observable<IBook[]> {
+    return undefined;
   }
 }

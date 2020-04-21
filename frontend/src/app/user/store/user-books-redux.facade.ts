@@ -14,8 +14,8 @@ export class UserBooksReduxFacade {
   books$: Observable<IBook[]> = this.store.pipe(select(UserBooksSelectors.getBooks));
   bookDetail$: Observable<IBook> = this.store.pipe(select(UserBooksSelectors.getBookDetail));
 
-  fetchBooks() {
-    this.store.dispatch(new FetchBooks());
+  fetchBooks(userName: string) {
+    this.store.dispatch(new FetchBooks(userName));
   }
 
   fetchBookById(id: string) {
