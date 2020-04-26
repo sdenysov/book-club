@@ -15,6 +15,7 @@ import {INavbar} from '@@navigation/models/nav-bar.model';
 import {BooksRestService} from '@@books/services/books-rest.service';
 import {RouterService} from '@@router/services/router.service';
 import {IDropdownItem} from '@@shared/models/dropdown-item';
+import {IBookSearchItem} from '@@navigation/models/book-search-item';
 
 interface ViewModel {
   user: IUser;
@@ -32,7 +33,7 @@ export class AppNavbarComponent implements OnInit {
   public vm$: Observable<ViewModel>;
   public inputChange$: Subject<string>;
   public userMenuItem: IDropdownItem[];
-  public booksSuggestion$: Observable<string[]>;
+  public booksSuggestion$: Observable<IDropdownItem[]>;
 
   constructor(private booksRestService: BooksRestService,
               private authReduxFacade: AuthReduxFacade,
@@ -54,14 +55,12 @@ export class AppNavbarComponent implements OnInit {
     ]).pipe(map(([user, navbar]) => ({user, navbar})));
 
     this.booksSuggestion$ = this.inputChange$.pipe(
-      tap(() => console.log('1')),
-      // filter(query => query.length > 2),
       debounceTime(1000),
-      tap(() => console.log('3')),
       distinctUntilChanged(),
-      tap(() => console.log('4')),
       exhaustMap(query => this.booksRestService.suggest$(query)),
-      tap(suggestions => console.log(suggestions))
+      map(searchBookItems => searchBookItems.map(item => {
+        return {value: item.id, label: item.title};
+      }))
     );
   }
 

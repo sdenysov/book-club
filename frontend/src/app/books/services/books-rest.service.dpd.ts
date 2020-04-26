@@ -26,6 +26,7 @@ export class BooksRestServiceDpd implements BooksRestService {
   }
 
   suggest$(query: string): Observable<any> {
+    console.log(query);
     switch (query) {
       case 'a':
         return of(SuggestionsMock.suggestion1).pipe(delay(1000));

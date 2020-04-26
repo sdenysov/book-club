@@ -8,9 +8,10 @@
     </ul>
     <form *ngIf="vm.navbar.searchFieldVisible" class="navbar-form navbar-left">
       <div class="form-group">
-        <input #searchInput type="text" class="form-control search" placeholder="Search"
-               (input)="inputChange$.next(searchInput.value)">
-        {{booksSuggestion$ | async}}
+        <app-dropdown [items]="booksSuggestion$ | async" [typeaheadMode]="true" (select)="onActionSelect($event)" class="search-books-dropdown">
+          <input #searchInput type="text" class="form-control search" placeholder="Search"
+                 (input)="inputChange$.next(searchInput.value)">
+        </app-dropdown>
         <app-icon class="search-ico" name="search"></app-icon>
       </div>
     </form>
