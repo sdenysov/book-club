@@ -16,6 +16,24 @@
       "revId": "358e2f69891131c8501312b12ca2ad88991aba79",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55db0422_9507d64a",
+        "filename": "frontend/src/app/books/services/books-rest.service.dpd.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1017367
+      },
+      "writtenOn": "2020-05-06T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0fdcb0a_e15c4863",
+      "revId": "358e2f69891131c8501312b12ca2ad88991aba79",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
