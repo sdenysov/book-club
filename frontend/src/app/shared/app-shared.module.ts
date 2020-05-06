@@ -11,7 +11,7 @@ import {RouterModule} from '@angular/router';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {AbilityModule} from '@casl/angular';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {RatingModule} from 'ngx-bootstrap';
+import {RatingModule, TypeaheadModule} from 'ngx-bootstrap';
 import {AppIconComponent} from '@@shared/components/icon/icon.component';
 import {HttpClient} from '@angular/common/http';
 import {httpLoaderFactory} from '@@app/app-translation.module';
@@ -41,6 +41,7 @@ const SHARE_IMPORTS = [
   ReactiveFormsModule,
   FormsModule,
   BsDropdownModule,
+  TypeaheadModule,
   AbilityModule,
   RatingModule
 ];

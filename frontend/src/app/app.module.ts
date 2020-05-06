@@ -17,7 +17,7 @@ import {Ability} from '@casl/ability';
 import {AbilityService} from '@@auth/services/ability.service';
 import {AppSharedModule} from '@@shared/app-shared.module';
 import {AppTranslationModule} from '@@app/app-translation.module';
-import {BsDropdownModule, RatingModule} from 'ngx-bootstrap';
+import {BsDropdownModule, RatingModule, TypeaheadModule} from 'ngx-bootstrap';
 import {AppBooksModule} from '@@books/books.module';
 
 export const HTTP_INTERCEPTOR_PROVIDERS = [
@@ -41,7 +41,8 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     AppTranslationModule,
     RatingModule.forRoot(),
     AppBooksModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   declarations: [
     AppComponent

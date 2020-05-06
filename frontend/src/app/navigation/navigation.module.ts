@@ -6,6 +6,7 @@ import {AppSharedModule} from '@@shared/app-shared.module';
 import {NgModule} from '@angular/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 const SHARED_DECLARATIONS = [
   AppNavbarComponent
@@ -14,6 +15,7 @@ const SHARED_DECLARATIONS = [
 @NgModule({
   imports: [
     AppSharedModule,
+    NoopAnimationsModule,
     StoreModule.forFeature(NAVIGATION_STORE_KEY, navigationReducer),
     EffectsModule.forFeature([NavigationEffects])
   ],

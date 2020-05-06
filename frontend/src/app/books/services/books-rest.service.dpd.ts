@@ -10,6 +10,7 @@ import {delay, switchMap} from 'rxjs/operators';
 import {HttpUtils} from '@@shared/utils/http.utils';
 import {UserRestService} from '@@user/services/user-rest.service';
 import {IUser} from '@@shared/models/user';
+import {IBookSearchItem} from '@@navigation/models/book-search-item';
 
 @Injectable({providedIn: 'root'})
 export class BooksRestServiceDpd implements BooksRestService {
@@ -26,18 +27,11 @@ export class BooksRestServiceDpd implements BooksRestService {
   }
 
   suggest$(query: string): Observable<any> {
-    console.log(query);
-    switch (query) {
-      case 'a':
-        return of(SuggestionsMock.suggestion1).pipe(delay(1000));
-      case 'ab':
-        return of(SuggestionsMock.suggestion2).pipe(delay(2000));
-      case 'abc':
-        return of(SuggestionsMock.suggestion3).pipe(delay(3000));
-      default:
-        return EMPTY;
-    }
-    // return this.http.get<any>(`${this.baseUrl}/?suggest=${query}`);
+   const params = {
+     $fields: {id: 1, title: 1},
+     title: {$regex: query}
+   };
+   return this.http.get<IBookSearchItem>(`${this.baseUrl}?${JSON.stringify(params)}`);
   }
 
   addBook$(book: IBook): Observable<HttpResponse<any>> {

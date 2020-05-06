@@ -1,12 +1,12 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {combineLatest, concat, Observable, Subject} from 'rxjs';
+import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
+import {combineLatest, concat, Observable, Observer, of, Subject} from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
   exhaustMap,
   filter,
-  map,
+  map, switchMap,
   tap
 } from 'rxjs/internal/operators';
 import {IUser} from '@@shared/models/user';
@@ -16,6 +16,7 @@ import {BooksRestService} from '@@books/services/books-rest.service';
 import {RouterService} from '@@router/services/router.service';
 import {IDropdownItem} from '@@shared/models/dropdown-item';
 import {IBookSearchItem} from '@@navigation/models/book-search-item';
+import {BsDropdownDirective, TypeaheadDirective, TypeaheadMatch} from 'ngx-bootstrap';
 
 interface ViewModel {
   user: IUser;
@@ -30,10 +31,11 @@ interface ViewModel {
 })
 export class AppNavbarComponent implements OnInit {
 
+  @ViewChild(TypeaheadDirective, {static: false}) bsTypeahead: TypeaheadDirective;
+  public search: string;
   public vm$: Observable<ViewModel>;
-  public inputChange$: Subject<string>;
   public userMenuItem: IDropdownItem[];
-  public booksSuggestion$: Observable<IDropdownItem[]>;
+  public booksSuggestion$: Observable<IBookSearchItem[]>;
 
   constructor(private booksRestService: BooksRestService,
               private authReduxFacade: AuthReduxFacade,
@@ -45,7 +47,6 @@ export class AppNavbarComponent implements OnInit {
       {value: 'newBook', label: 'New book'},
       {value: 'logout', label: 'Logout'},
     ];
-    this.inputChange$ = new Subject<string>();
   }
 
   ngOnInit() {
@@ -53,15 +54,20 @@ export class AppNavbarComponent implements OnInit {
       this.authReduxFacade.user$,
       this.navigationReduxFacade.navbar$
     ]).pipe(map(([user, navbar]) => ({user, navbar})));
+    this.booksSuggestion$ = new Observable((observer: Observer<string>) => {
+      observer.next(this.search);
+    }).pipe(switchMap((query: string) => query ? this.booksRestService.suggest$(query) : of([])));
+  }
 
-    this.booksSuggestion$ = this.inputChange$.pipe(
-      debounceTime(1000),
-      distinctUntilChanged(),
-      exhaustMap(query => this.booksRestService.suggest$(query)),
-      map(searchBookItems => searchBookItems.map(item => {
-        return {value: item.id, label: item.title};
-      }))
-    );
+  onSelect(event: TypeaheadMatch) {
+    console.log('query:', event.item.id);
+    this.search = '';
+  }
+
+  searchBooks() {
+    console.log('search: ', this.search);
+    this.search = '';
+    this.bsTypeahead.hide();
   }
 
   logout() {
