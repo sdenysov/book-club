@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aee9239_03f9293b",
+        "filename": "frontend/src/app/navigation/components/navbar/navbar.component.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-05-09T19:53:09Z",
+      "side": 1,
+      "message": "Выходные в конце.",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "1afa510253bf64d964e087408f6bdcc12bdd7aac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3531ee7_05d2227a",
+        "filename": "frontend/src/app/navigation/components/navbar/navbar.component.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-05-09T19:53:09Z",
+      "side": 1,
+      "message": "удалить",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 41
+      },
+      "revId": "1afa510253bf64d964e087408f6bdcc12bdd7aac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e5b2ec_48b0d79f",
+        "filename": "frontend/src/app/navigation/components/navbar/navbar.component.ts",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-05-09T19:53:09Z",
+      "side": 1,
+      "message": "и тут",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "1afa510253bf64d964e087408f6bdcc12bdd7aac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
