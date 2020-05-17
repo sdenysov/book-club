@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {BooksState} from '@@user/models/books-state.model';
 import {UserBooksSelectors} from '@@user/store/user-books.selectors';
 import {IBook} from '@@books/models/book';
-import {FetchBookDetail, FetchBooks} from '@@user/store/user-books.actions';
+import {UserBooksActions} from '@@user/store/user-books.actions';
 
 @Injectable({providedIn: 'root'})
 export class UserBooksReduxFacade {
@@ -12,14 +12,13 @@ export class UserBooksReduxFacade {
   constructor(private store: Store<{ books: BooksState }>) {}
 
   books$: Observable<IBook[]> = this.store.pipe(select(UserBooksSelectors.getBooks));
-  bookDetail$: Observable<IBook> = this.store.pipe(select(UserBooksSelectors.getBookDetail));
 
-  fetchBooks(userName: string) {
-    this.store.dispatch(new FetchBooks(userName));
+  fetchBooks(username: string) {
+    this.store.dispatch(UserBooksActions.fetchBooks({username}));
   }
 
   fetchBookById(id: string) {
-    this.store.dispatch(new FetchBookDetail(id));
+    this.store.pipe(select(UserBooksSelectors.getBookById, {id}));
   }
 
   getBooksByOwnerId$(id: string): Observable<IBook[]> {

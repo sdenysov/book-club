@@ -11,7 +11,7 @@ describe('PageServiceSpec', () => {
   const pageService: PageService = new PageService();
   const testCases: IPageDefineTestCase[] = [
     {page: Page.MAIN, urls: ['', '/']},
-    {page: Page.SEARCH_BOOK, urls: ['/find-books', '/find-books/']},
+    {page: Page.FIND_BOOKS, urls: ['/find-books', '/find-books/']},
     {page: Page.LOGIN, urls: ['/login', '/login']},
     {page: Page.REGISTER, urls: ['/register', '/register/']},
     {page: Page.BOOKS, urls: ['/anyusername/books', '/anyusername/books/']},

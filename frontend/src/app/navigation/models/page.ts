@@ -1,6 +1,6 @@
 export enum Page {
   MAIN = 'MAIN',
-  SEARCH_BOOK = 'SEARCH_BOOK',
+  FIND_BOOKS = 'FIND_BOOKS',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
   PROFILE = 'PROFILE',

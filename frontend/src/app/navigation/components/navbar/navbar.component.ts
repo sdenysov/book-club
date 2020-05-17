@@ -5,7 +5,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   exhaustMap,
-  filter,
+  filter, first,
   map, switchMap,
   tap
 } from 'rxjs/internal/operators';
@@ -17,6 +17,9 @@ import {RouterService} from '@@router/services/router.service';
 import {IDropdownItem} from '@@shared/models/dropdown-item';
 import {IBookSearchItem} from '@@navigation/models/book-search-item';
 import {BsDropdownDirective, TypeaheadDirective, TypeaheadMatch} from 'ngx-bootstrap';
+import {IBook} from '@@books/models/book';
+import {BooksFinderReduxFacade} from '@@app/books-finder/store/books-finder-redux.facade';
+import {Page} from '@@navigation/models/page';
 
 interface ViewModel {
   user: IUser;
@@ -36,11 +39,13 @@ export class AppNavbarComponent implements OnInit {
   public vm$: Observable<ViewModel>;
   public userMenuItem: IDropdownItem[];
   public booksSuggestion$: Observable<IBookSearchItem[]>;
+  public book$: Observable<IBook>;
 
   constructor(private booksRestService: BooksRestService,
               private authReduxFacade: AuthReduxFacade,
               private navigationReduxFacade: NavigationReduxFacade,
-              private routerService: RouterService) {
+              private routerService: RouterService,
+              private booksFinderReduxFacade: BooksFinderReduxFacade) {
     this.userMenuItem = [
       {value: 'profile', label: 'Profile'},
       {value: 'myBooks', label: 'My books'},
@@ -60,14 +65,17 @@ export class AppNavbarComponent implements OnInit {
   }
 
   onSelect(event: TypeaheadMatch) {
-    console.log('query:', event.item.id);
     this.search = '';
+    this.routerService.goToBookDetailPage(event.item.id);
   }
 
   searchBooks() {
-    console.log('search: ', this.search);
+    this.booksFinderReduxFacade.fetchBooksByQuery(this.search);
     this.search = '';
     this.bsTypeahead.hide();
+    if (this.navigationReduxFacade.getCurrentPage() !== Page.FIND_BOOKS) {
+      this.routerService.goToFindBooksPage({searchNavigation: true});
+    }
   }
 
   logout() {

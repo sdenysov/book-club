@@ -27,11 +27,11 @@ export class BooksRestServiceDpd implements BooksRestService {
   }
 
   suggest$(query: string): Observable<any> {
-   const params = {
-     $fields: {id: 1, title: 1},
-     title: {$regex: query}
-   };
-   return this.http.get<IBookSearchItem>(`${this.baseUrl}?${JSON.stringify(params)}`);
+    const params = {
+      $fields: {id: 1, title: 1},
+      title: {$regex: query, $options: 'ig'}
+    };
+    return this.http.get<IBookSearchItem>(`${this.baseUrl}?${JSON.stringify(params)}`);
   }
 
   addBook$(book: IBook): Observable<HttpResponse<any>> {
@@ -55,5 +55,10 @@ export class BooksRestServiceDpd implements BooksRestService {
 
   editBook$(book: IBook): Observable<HttpResponse<any>> {
     return this.http.put<HttpResponse<any>>(`${this.baseUrl}/${book.id}`, book);
+  }
+
+  search$(query: string): Observable<IBook[]> {
+    const params = {title: {$regex: query, $options: 'ig'}};
+    return this.http.get<IBook[]>(`${this.baseUrl}?${JSON.stringify(params)}`);
   }
 }

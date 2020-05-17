@@ -15,24 +15,23 @@ export class BooksFinderEffects {
               private booksRestService: BooksRestService) {
   }
 
-
-  loadAllBooks$ = createEffect(() => this.actions$.pipe(
+  fetchAllBooks$ = createEffect(() => this.actions$.pipe(
     ofType(BooksFinderActions.fetchBooks),
     mergeMap(() => this.booksRestService.get$()),
-    map(books => BooksFinderActions.fetchBooksSucceed({books})),
+    map(books => BooksFinderActions.setBooks({books})),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
       return of(BooksFinderActions.fetchBooksFailed({error}));
     })
   ));
 
-  fetchBookDetail$ = createEffect(() => this.actions$.pipe(
-    ofType(BooksFinderActions.fetchBookDetail),
-    mergeMap(({bookId}) => this.booksRestService.getBookById$(bookId)),
-    map(book => BooksFinderActions.fetchBookDetailSucceed({book})),
+  searchBooks$ = createEffect(() => this.actions$.pipe(
+    ofType(BooksFinderActions.searchBooks),
+    mergeMap(({query}) => this.booksRestService.search$(query)),
+    map(books => BooksFinderActions.setBooks({books})),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(BooksFinderActions.fetchBookDetailFailed({error}));
+      return of(BooksFinderActions.fetchBooksFailed({error}));
     })
   ));
 }

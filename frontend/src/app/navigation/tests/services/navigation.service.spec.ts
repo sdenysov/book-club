@@ -41,7 +41,7 @@ describe('NavigationServiceSpec', () => {
   const navigationService: NavigationService = new NavigationService();
   const testCases: INavDefineTestCase[] = [
     {page: Page.MAIN, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
-    {page: Page.SEARCH_BOOK, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
+    {page: Page.FIND_BOOKS, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
     {page: Page.BOOKS, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
     {page: Page.EDIT_BOOK, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
     {page: Page.NEW_BOOK, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
@@ -51,7 +51,7 @@ describe('NavigationServiceSpec', () => {
     {page: Page.PROFILE_SETTINGS, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
     {page: Page.NOT_FOUND, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
     {page: Page.MAIN, userLoggedIn: false, expectedState: defaultNavbarForNotLoggedInUser},
-    {page: Page.SEARCH_BOOK, userLoggedIn: false, expectedState: defaultNavbarForNotLoggedInUser},
+    {page: Page.FIND_BOOKS, userLoggedIn: false, expectedState: defaultNavbarForNotLoggedInUser},
     {page: Page.BOOKS, userLoggedIn: false, expectedState: defaultNavbarForNotLoggedInUser},
     {page: Page.EDIT_BOOK, userLoggedIn: false, expectedState: defaultNavbarForNotLoggedInUser},
     {page: Page.NEW_BOOK, userLoggedIn: false, expectedState: defaultNavbarForNotLoggedInUser},
