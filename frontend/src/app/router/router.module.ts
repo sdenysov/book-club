@@ -1,10 +1,11 @@
-import {ROUTER} from '@@router/store/router-store.properties';
+import {ROUTER_STORE_KEY} from '@@router/store';
 import {NgModule, Optional, Self} from '@angular/core';
 import {Router} from '@angular/router';
-import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {routerReducer, RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {ActionReducerMap, StoreModule} from '@ngrx/store';
-import {IRouterState} from '@@router/models/router-state.model';
+import {IRouterState} from '@@router/models/router-state';
 import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
+import {CustomRouterStateSerializer} from '@@router/misc/custom-router-state-serializer';
 
 const reducers: ActionReducerMap<IRouterState> = {
   state: routerReducer,
@@ -13,8 +14,15 @@ const reducers: ActionReducerMap<IRouterState> = {
 
 @NgModule({
   imports: [
-    StoreModule.forFeature(ROUTER, reducers),
+    StoreModule.forFeature(ROUTER_STORE_KEY, reducers),
     StoreRouterConnectingModule.forRoot()
+  ],
+  exports: [
+    StoreModule,
+    StoreRouterConnectingModule
+  ],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}
   ]
 })
 export class AppRouterStoreModule {

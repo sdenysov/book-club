@@ -6,7 +6,7 @@ import {first} from 'rxjs/operators';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {CoreReduxFacade} from '@@core/store/core-redux-facade';
 import {AuthService} from '@@auth/services/auth.service';
-import {RouterService} from '@@router/services/router.service';
+import {NavigationService} from '@@router/services/navigation.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
               private navigationReduxFacade: NavigationReduxFacade,
               private coreReduxFacade: CoreReduxFacade,
               private authService: AuthService,
-              private routerService: RouterService) {
+              private navigationService: NavigationService) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
         const pageAvailable = this.authService.isPageAvailable(currentPage, authState.loggedIn);
         if (!pageAvailable) {
           this.authService.redirectUrl = `/${route.url}`;
-          this.routerService.goToLoginPage();
+          this.navigationService.goToLoginPage();
         }
         resolve(pageAvailable);
       });

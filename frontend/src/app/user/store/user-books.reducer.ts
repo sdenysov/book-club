@@ -1,28 +1,28 @@
 import {BooksState} from '@@user/models/books-state.model';
-import {UserBooksAction, BooksActionTypes} from '@@user/store/user-books.actions';
+import {UserBooksActions} from '@@user/store/user-books.actions';
+import {Action, createReducer, on} from '@ngrx/store';
 
 const initialState: BooksState = {
   loading: false,
-  entries: [],
-  bookDetail: null
+  entries: []
 };
 
-export function userBooksReducer(state: BooksState = initialState, action: UserBooksAction): BooksState {
-  switch (action.type) {
-    case BooksActionTypes.FetchBooks: {
-      return {...state, loading: true};
-    }
-    case BooksActionTypes.FetchBooksSucceed: {
-      return {...state, loading: false, entries: action.books};
-    }
-    case BooksActionTypes.FetchBooksFailed: {
-      return {...state, loading: false};
-    }
-    case BooksActionTypes.FetchBookDetailSucceed: {
-      return {...state, bookDetail: action.book};
-    }
-    default: {
-      return state;
-    }
-  }
+const _userBooksReducer = createReducer(initialState,
+  on(
+    UserBooksActions.fetchBooks,
+    (state) => ({...state, loading: true})
+  ),
+  on(
+    UserBooksActions.fetchBooksSucceed,
+    (state, {books}) => ({...state, loading: false, entries: books})
+  ),
+  on(
+    UserBooksActions.fetchBooksFailed,
+    (state) => ({...state, loading: false})
+  )
+);
+
+export function userBooksReducer(state: BooksState = initialState, action: Action): BooksState {
+  return _userBooksReducer(state, action);
 }
+

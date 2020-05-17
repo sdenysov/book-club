@@ -1,0 +1,62 @@
+@import "utils/colors";
+
+.book-actions {
+  display: none;
+  right: 0;
+  padding-top: 0.5rem;
+}
+
+.book-container {
+  position: relative;
+  height: 33rem;
+  margin-bottom: 0;
+
+  .thumbnail {
+    width: 100%;
+
+    &:hover {
+      transform: scale(1.03);
+      -webkit-box-shadow: 0 0 1.9rem 0.2rem $color-shadow;
+      -moz-box-shadow: 0 0 1.9rem 0.2rem $color-shadow;
+      box-shadow: 0 0 1.9rem 0.2rem $color-shadow;
+    }
+  }
+}
+
+.book-description {
+  position: absolute;
+
+  &:hover {
+    .book-actions {
+      display: block;
+    }
+  }
+
+  .book-img {
+    text-align: center;
+  }
+
+  .book-title {
+    width: 100%;
+    font-size: 1.7rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .book-details {
+    margin-bottom: 0;
+    font-family: cursive;
+    font-size: 1.3rem;
+    color: $color-text;
+
+    a {
+      color: $color-text;
+    }
+
+    app-icon {
+      color: $color-text-dark;
+    }
+  }
+}

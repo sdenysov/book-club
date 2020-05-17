@@ -1,5 +1,5 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
-import {RouterService} from '@@router/services/router.service';
+import {NavigationService} from '@@router/services/navigation.service';
 import {Injectable} from '@angular/core';
 import {first} from 'rxjs/operators';
 import {Page} from '@@navigation/models/page';
@@ -16,7 +16,7 @@ export class AuthService {
     Page.PROFILE_SETTINGS
   ];
 
-  constructor(private routerService: RouterService,
+  constructor(private navigationService: NavigationService,
               private authReduxFacade: AuthReduxFacade,
               private navigationReduxFacade: NavigationReduxFacade) {
   }
@@ -27,16 +27,16 @@ export class AuthService {
 
   redirectOnSuccessLogin() {
     if (this.redirectUrl) {
-      this.routerService.goTo(this.redirectUrl);
+      this.navigationService.goTo(this.redirectUrl);
     } else {
-      this.routerService.goToMainPage();
+      this.navigationService.goToMainPage();
     }
   }
 
   redirectOnSuccessLogout() {
     this.navigationReduxFacade.currentPage$.pipe(first()).subscribe(currentPage => {
       if (this.restrictedForNonLoggedInUserPages.includes(currentPage)) {
-        this.routerService.goToMainPage();
+        this.navigationService.goToMainPage();
       }
     });
   }

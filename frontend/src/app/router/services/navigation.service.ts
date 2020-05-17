@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {IUrlState} from '@@navigation/models/url-state';
 
 @Injectable({providedIn: 'root'})
-export class RouterService {
+export class NavigationService {
 
   constructor(private router: Router) {}
 
@@ -32,5 +33,13 @@ export class RouterService {
 
   goToUserNewBook(userName) {
     this.router.navigate([`/${userName}/new-book`]);
+  }
+
+  goToBookDetailPage(id) {
+    this.router.navigate([`/books/${id}`]);
+  }
+
+  goToFindBooksPage(data: Partial<IUrlState>) {
+    this.router.navigate(['/find-books'], {state: {data}});
   }
 }

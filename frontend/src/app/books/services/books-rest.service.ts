@@ -21,4 +21,6 @@ export abstract class BooksRestService {
   abstract getBookById$(bookId: string): Observable<IBook>;
 
   abstract editBook$(book: IBook): Observable<HttpResponse<any>>;
+
+  abstract search$(query: string): Observable<IBook[]>;
 }

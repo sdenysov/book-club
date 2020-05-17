@@ -14,15 +14,16 @@ import {AuthGuard} from '@@auth/guards/auth.guard';
 import {FindBooksPageComponent} from '@@app/books-finder/pages/find-books/find-books-page.component';
 import {UserBooksPageComponent} from '@@user/pages/user-books/user-books-page.component';
 import {NewBookPageComponent} from '@@user/pages/new/new-book-page.component';
-import {BookDetailsPageComponent} from '@@user/pages/details/book-details-page.component';
 import {EditBookPageComponent} from '@@user/pages/edit/edit-book-page.component';
 import {AppUserModule} from '@@user/user-books.module';
+import {BookDetailsPageComponent} from '@@books/pages/book-detail/book-details-page.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LogInPageComponent, canActivate: [AuthGuard]},
   {path: 'register', component: RegisterPageComponent, canActivate: [AuthGuard]},
   {path: 'find-books', component: FindBooksPageComponent, canActivate: [AuthGuard]},
+  {path: 'books/:id', component: BookDetailsPageComponent, canActivate: [AuthGuard]},
   {path: '404', component: PageNotFoundComponent, canActivate: [AuthGuard]},
   {
     path: ':username', children: [
@@ -31,7 +32,6 @@ const routes: Routes = [
       {path: 'settings', component: ProfileSettingsPageComponent, canActivate: [AuthGuard]},
       {path: 'books', component: UserBooksPageComponent, canActivate: [AuthGuard]},
       {path: 'books/new', component: NewBookPageComponent, canActivate: [AuthGuard]},
-      {path: 'books/:id', component: BookDetailsPageComponent, canActivate: [AuthGuard]},
       {path: 'books/:id/edit', component: EditBookPageComponent, canActivate: [AuthGuard]}
     ]
   }

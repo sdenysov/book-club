@@ -4,27 +4,24 @@ import {Action, createReducer, on} from '@ngrx/store';
 
 const initialState: IBooksFinderState = {
   loading: false,
-  entries: [],
-  bookFinderDetail: null
+  entries: []
 };
 
 const _booksFinderReducer = createReducer(initialState,
   on(
     BooksFinderActions.fetchBooks,
+    BooksFinderActions.searchBooks,
     (state) => ({...state, loading: true})
   ),
   on(
-    BooksFinderActions.fetchBooksSucceed,
+    BooksFinderActions.setBooks,
     (state, {books}) => ({...state, loading: false, entries: books})
   ),
   on(
     BooksFinderActions.fetchBooksFailed,
+    BooksFinderActions.searchBooksFailed,
     (state) => ({...state, loading: false})
-  ),
-  on(
-    BooksFinderActions.fetchBookDetailSucceed,
-    (state, {book}) => ({...state, bookFinderDetail: book})
-  ),
+  )
 );
 
 export function booksFinderReducer(state: IBooksFinderState = initialState, action: Action): IBooksFinderState {
