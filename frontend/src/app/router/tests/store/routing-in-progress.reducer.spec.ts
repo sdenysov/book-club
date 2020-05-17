@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {ROUTER_NAVIGATED, ROUTER_REQUEST, routerReducer} from '@ngrx/router-store';
 import {ActionReducerMap, select, Store, StoreModule} from '@ngrx/store';
 import {cold} from 'jasmine-marbles';
-import {IRouterState} from '@@router/models/router-state.model';
+import {IRouterState} from '@@router/models/router-state';
 import {routerInProgressReducer} from '@@router/store/router-in-progress.reducer';
 import {StoreTestUtils} from '@@shared/tests/utils/store-test.utils';
 

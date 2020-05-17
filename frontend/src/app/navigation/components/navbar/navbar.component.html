@@ -20,9 +20,9 @@
                [typeaheadIsFirstItemActive]="false"
                [typeaheadMinLength]="1"
                [typeaheadOptionsLimit]="10"
-               (typeaheadOnSelect)="onSelect($event)"
                [typeahead]="booksSuggestion$"
                [typeaheadAsync]="true"
+               (typeaheadOnSelect)="onSelect($event)"
                (keydown.enter)="searchBooks()">
         <app-icon class="search-ico" name="search"></app-icon>
       </div>

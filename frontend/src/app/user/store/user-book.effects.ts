@@ -6,37 +6,25 @@ import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/internal/operators';
 import {map, mergeMap} from 'rxjs/operators';
 import {BooksRestService} from '@@books/services/books-rest.service';
-import {BooksActionTypes, FetchBookDetail, FetchBooks, UserBooksActions} from '@@user/store/user-books.actions';
-import {UserRestService} from '@@user/services/user-rest.service';
+import {UserBooksActions} from '@@user/store/user-books.actions';
 
 @Injectable()
 export class UserBookEffects {
 
   constructor(private actions$: Actions,
               private httpErrorHandlerService: HttpErrorHandlerService,
-              private booksRestService: BooksRestService,
-              private userRestService: UserRestService) {
+              private booksRestService: BooksRestService) {
   }
 
   @Effect()
   loadBooks$: Observable<Action> = this.actions$.pipe(
-    ofType(BooksActionTypes.FetchBooks),
+    ofType(UserBooksActions.fetchBooks),
     mergeMap(({username}) => this.booksRestService.getByUserName$(username)),
-    map(books => new UserBooksActions.FetchBooksSucceed(books)),
+    map(books => UserBooksActions.fetchBooksSucceed({books})),
     catchError(error => {
       this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.FetchBooksFailed(error));
+      return of(UserBooksActions.fetchBooksFailed(error));
     })
   );
 
-  @Effect()
-  fetchBookDetail$: Observable<Action> = this.actions$.pipe(
-    ofType(BooksActionTypes.FetchBookDetail),
-    mergeMap((action: FetchBookDetail) => this.booksRestService.getBookById$(action.bookId)),
-    map(book => new UserBooksActions.FetchBookDetailSucceed(book)),
-    catchError(error => {
-      this.httpErrorHandlerService.handleErrorResponse(error);
-      return of(new UserBooksActions.FetchBookDetailFailed(error));
-    })
-  );
 }
