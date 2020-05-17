@@ -12,14 +12,12 @@ export class BooksFinderReduxFacade {
   constructor(private store: Store<{ books: BooksState }>) {}
 
   books$: Observable<IBook[]> = this.store.pipe(select(BooksFinderSelectors.getAllBooks));
-  bookDetail$: Observable<IBook> = this.store.pipe(select(BooksFinderSelectors.getAllBookDetail));
 
   fetchAllBooks() {
     this.store.dispatch(BooksFinderActions.fetchBooks());
   }
 
-  fetchAllBookById(bookId: string) {
-    this.store.dispatch(BooksFinderActions.fetchBookDetail({bookId}));
+  fetchBooksByQuery(query: string) {
+    this.store.dispatch(BooksFinderActions.searchBooks({query}));
   }
-
 }

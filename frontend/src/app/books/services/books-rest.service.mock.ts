@@ -47,4 +47,8 @@ export class BooksRestServiceMock implements BooksRestService {
   getByUserName$(username: string): Observable<IBook[]> {
     return undefined;
   }
+
+  search$(query: string): Observable<IBook[]> {
+    return undefined;
+  }
 }

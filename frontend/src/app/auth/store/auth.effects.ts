@@ -2,7 +2,7 @@ import {AuthService} from '@@auth/services/auth.service';
 import {LoginFormService} from '@@auth/services/login-form.service';
 import {AuthRestService} from '@@auth/services/rest/auth-rest.service';
 import {AuthActions} from '@@auth/store/auth.actions';
-import {RouterService} from '@@router/services/router.service';
+import {NavigationService} from '@@router/services/navigation.service';
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType, OnInitEffects} from '@ngrx/effects';
 import {Action} from '@ngrx/store';
@@ -15,7 +15,7 @@ export class AuthEffects implements OnInitEffects {
   constructor(private actions$: Actions,
               private authService: AuthService,
               private loginFormService: LoginFormService,
-              private routerService: RouterService,
+              private navigationService: NavigationService,
               private authRestService: AuthRestService) {
   }
 
