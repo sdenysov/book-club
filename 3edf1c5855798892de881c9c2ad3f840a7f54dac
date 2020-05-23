@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62c8d53b_2aae941e",
+        "filename": "frontend/src/app/books/pages/book-detail/book-details-page.component.scss",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-05-23T15:00:14Z",
+      "side": 1,
+      "message": "а тут можно как-то без этого? Например вот так работает? @import \"utils/colors\";",
+      "range": {
+        "startLine": 1,
+        "startChar": 9,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "3edf1c5855798892de881c9c2ad3f840a7f54dac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8668d531_059855a1",
+        "filename": "frontend/src/app/books/pages/book-detail/book-details-page.component.ts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-05-23T15:00:14Z",
+      "side": 1,
+      "message": "Для этого есть настроки alias\u0027ов в файле tsconfi.js ?",
+      "range": {
+        "startLine": 2,
+        "startChar": 21,
+        "endLine": 2,
+        "endChar": 27
+      },
+      "revId": "3edf1c5855798892de881c9c2ad3f840a7f54dac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337703c2_7e383c45",
+        "filename": "frontend/src/app/router/services/router.service.ts",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1017363
+      },
+      "writtenOn": "2020-05-23T15:00:14Z",
+      "side": 1,
+      "message": "По моему тут больше подходит название NavigationService",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "3edf1c5855798892de881c9c2ad3f840a7f54dac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
