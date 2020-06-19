@@ -1,0 +1,10 @@
+<div class="collapsible-section">
+  <header (click)="isOpen = !isOpen">
+    <app-icon class="icon" name="chevron-down" [class.open]="isOpen" [class.closed]="!isOpen"></app-icon>
+    <span>{{caption}}</span>
+    <hr>
+  </header>
+  <div class="content" [@openClose]="isOpen ? 'open' : 'closed'">
+    <ng-content></ng-content>
+  </div>
+</div>

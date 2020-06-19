@@ -2,7 +2,7 @@
   <div class="row">
     <app-section>
       <div class="panel-heading" [caption]="caption" icon="book">
-          <button *ngIf="'User' | can: 'manage'" class="btn btn-primary btn-block btn-xs" translate>
+          <button *ngIf="'User' | can: 'manage'" class="btn btn-primary btn-block btn-xs" translate (click)="addBook()">
             <app-icon class="pR-0-2" name="plus"></app-icon>
             <span>Add new books</span>
           </button>

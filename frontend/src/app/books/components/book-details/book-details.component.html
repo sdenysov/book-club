@@ -1,0 +1,36 @@
+<div class="thumbnail container" *ngIf="vm.loaded">
+  <div class="row clearfix">
+    <div class="col-xs-4 col-sm-3 col-md-2 book-img">
+      <img appImageName="cover-page.jpg"/>
+    </div>
+    <div class="col-xs-8 col-sm-9 col-md-10 book-details">
+      <h4 class="book-title">{{vm.book.title}}</h4>
+      <div class="book-info">
+        <div class="author">
+          <app-icon class="pR-1" name="user"></app-icon>
+          <a href="">{{vm.book.author}}</a>
+        </div>
+        <div>
+          <app-icon class="pR-1" name="folder-open"></app-icon>
+          <span>horror|fantasy</span>
+        </div>
+        <rating [(ngModel)]="vm.book.rating" [max]="5" [readonly]="true"></rating>
+      </div>
+      <div class="book-actions" *ngIf="'Book' | can: 'manage'">
+        <a class="btn btn-xs btn-primary" role="button" (click)="editBook()">
+          {{'books.edit' | translate}}
+        </a>
+        <a class="btn btn-xs btn-primary" role="button" (click)="$event.preventDefault()">{{'books.download' | translate}}</a>
+        <a class="btn btn-xs btn-danger" role="button" (click)="deleteBook()">{{'books.delete' | translate}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col pT-1">
+      <app-collapsible-section caption="{{'books.description' | translate}}">
+        <span>{{vm.book.description}}</span>
+      </app-collapsible-section>
+    </div>
+  </div>
+</div>
+

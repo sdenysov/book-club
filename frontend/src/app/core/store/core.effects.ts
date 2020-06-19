@@ -5,7 +5,7 @@ import {CoreActions} from '@@core/store/core.actions';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {Page} from '@@navigation/models/page';
-import {NavigationService} from '@@navigation/services/navigation.service';
+import {NavigationUtils} from '@@navigation/utils/navigation.utils';
 import {NavigationActions} from '@@navigation/store/navigation.actions';
 import {AbilityService} from '@@auth/services/ability.service';
 import {INavbar} from '@@navigation/models/nav-bar.model';
@@ -17,7 +17,7 @@ export class CoreEffects {
   constructor(private actions$: Actions,
               private navigationReduxFacade: NavigationReduxFacade,
               private authReduxFacade: AuthReduxFacade,
-              private navigationService: NavigationService,
+              private navigationUtils: NavigationUtils,
               private abilityService: AbilityService) {
   }
 
@@ -26,8 +26,8 @@ export class CoreEffects {
     switchMap(() => {
       const page: Page = this.navigationReduxFacade.getCurrentPage();
       const loggedIn: boolean = this.authReduxFacade.isLoggedIn();
-      const navbar: INavbar = this.navigationService.getNavbarState(page, loggedIn);
-      const abilities = this.abilityService.defineAbilities();
+      const navbar: INavbar = this.navigationUtils.getNavbarState(page, loggedIn);
+      this.abilityService.defineAbilities();
       return [
         NavigationActions.navbarStateChanged({navbar})
       ];

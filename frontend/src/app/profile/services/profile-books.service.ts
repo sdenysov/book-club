@@ -13,8 +13,7 @@ export class ProfileBooksService {
 
   constructor(private userReduxFacade: AuthReduxFacade,
               private booksRestService: BooksRestService,
-              private profileBooksReduxService: ProfileBooksReduxService,
-              private httpErrorHandlerService: HttpErrorHandlerService) {
+              private profileBooksReduxService: ProfileBooksReduxService) {
   }
 
   fetchProfileBooks() {
@@ -22,21 +21,4 @@ export class ProfileBooksService {
     this.profileBooksReduxService.fetchProfileBooks(user);
   }
 
-  getBookById$(id: string): Observable<IBook> {
-    return this.booksRestService.getBookById$(id).pipe(
-      catchError(error => {
-        this.httpErrorHandlerService.handleErrorResponse(error);
-        return of(error);
-      })
-    );
-  }
-
-  editBook$(book): Observable<HttpResponse<any>> {
-    return this.booksRestService.editBook$(book).pipe(
-      catchError(error => {
-        this.httpErrorHandlerService.handleErrorResponse(error);
-        return of(error);
-      })
-    );
-  }
 }

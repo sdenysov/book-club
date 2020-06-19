@@ -4,6 +4,7 @@ import {HttpResponse} from '@angular/common/http';
 import {EnvUtils} from '@@shared/utils/env.utils';
 import {IBook} from '@@books/models/book';
 import {IBookSearchItem} from '@@navigation/models/book-search-item';
+import {INewBook} from '@@books/models/new-book';
 
 @Injectable({providedIn: 'root', useExisting: EnvUtils.getImpl('BooksRestService')})
 export abstract class BooksRestService {
@@ -12,7 +13,7 @@ export abstract class BooksRestService {
 
   abstract suggest$(query: string): Observable<IBookSearchItem[]>;
 
-  abstract addBook$(book: IBook): Observable<HttpResponse<any>>;
+  abstract addBook$(book: INewBook): Observable<HttpResponse<any>>;
 
   abstract getByUserId$(userId: string): Observable<IBook[]>;
 
@@ -21,6 +22,8 @@ export abstract class BooksRestService {
   abstract getBookById$(bookId: string): Observable<IBook>;
 
   abstract editBook$(book: IBook): Observable<HttpResponse<any>>;
+
+  abstract deleteBook$(bookId: string): Observable<HttpResponse<any>>;
 
   abstract search$(query: string): Observable<IBook[]>;
 }

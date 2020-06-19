@@ -1,8 +1,8 @@
-import {BooksState} from '@@user/models/books-state.model';
+import {UserBooksState} from '@@user/models/user-books-state.model';
 import {UserBooksActions} from '@@user/store/user-books.actions';
 import {Action, createReducer, on} from '@ngrx/store';
 
-const initialState: BooksState = {
+const initialState: UserBooksState = {
   loading: false,
   entries: []
 };
@@ -22,7 +22,7 @@ const _userBooksReducer = createReducer(initialState,
   )
 );
 
-export function userBooksReducer(state: BooksState = initialState, action: Action): BooksState {
+export function userBooksReducer(state: UserBooksState = initialState, action: Action): UserBooksState {
   return _userBooksReducer(state, action);
 }
 

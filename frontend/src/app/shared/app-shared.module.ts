@@ -16,6 +16,8 @@ import {AppIconComponent} from '@@shared/components/icon/icon.component';
 import {HttpClient} from '@angular/common/http';
 import {httpLoaderFactory} from '@@app/app-translation.module';
 import {DropdownComponent} from '@@shared/components/dropdown/dropdown.component';
+import {CollapsibleSectionComponent} from '@@shared/components/collapsible-section/collapsible-section.component';
+import {ControlErrorComponent} from '@@shared/forms/control-error/control-error.omponent';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -32,7 +34,9 @@ const SHARE_DECLARATIONS = [
   BigLoadSpinnerComponent,
   PageNotFoundComponent,
   AppIconComponent,
-  DropdownComponent
+  DropdownComponent,
+  CollapsibleSectionComponent,
+  ControlErrorComponent
 ];
 
 const SHARE_IMPORTS = [

@@ -7,6 +7,7 @@ import {booksListMock} from '@@shared/mocks/books-list.mock';
 import {SuggestionsMock} from '@@shared/mocks/books-suggestion.mock';
 import {profileBooksMock} from '@@shared/mocks/user-books-list.mock';
 import {IBook} from '@@books/models/book';
+import {INewBook} from '@@books/models/new-book';
 
 @Injectable({providedIn: 'root'})
 export class BooksRestServiceMock implements BooksRestService {
@@ -28,7 +29,7 @@ export class BooksRestServiceMock implements BooksRestService {
     }
   }
 
-  addBook$(book: IBook): Observable<HttpResponse<any>> {
+  addBook$(book: INewBook): Observable<HttpResponse<any>> {
     return of({} as HttpResponse<any>);
   }
 
@@ -41,6 +42,10 @@ export class BooksRestServiceMock implements BooksRestService {
   }
 
   editBook$(book: IBook) {
+    return of({} as HttpResponse<any>);
+  }
+
+  deleteBook$(bookId: string) {
     return of({} as HttpResponse<any>);
   }
 

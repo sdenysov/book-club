@@ -1,0 +1,41 @@
+@import "utils/colors";
+
+.collapsible-section {
+  header {
+    display: flex;
+    padding-bottom: 0.5rem;
+
+    span {
+      white-space: nowrap;
+    }
+
+    hr {
+      margin: 1.3rem 0 0 1rem;
+      border: 1px solid $color-gray-light;
+      width: 100%;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+
+    &.open {
+      transition: 200ms;
+      transform: rotate(0deg);
+    }
+
+    &.closed {
+      transition: 200ms;
+      transform: rotate(-90deg);
+    }
+  }
+
+  .content {
+    overflow: hidden;
+  }
+}

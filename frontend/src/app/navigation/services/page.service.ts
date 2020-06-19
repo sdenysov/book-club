@@ -17,7 +17,7 @@ export class PageService {
     {page: Page.BOOKS, regexp: /^\/[a-z]+\/books\/?$/},
     {page: Page.EDIT_BOOK, regexp: /^\/[a-z]+\/books\/[a-z0-9]+\/edit\/?$/},
     {page: Page.NEW_BOOK, regexp: /^\/[a-z]+\/books\/new\/?$/},
-    {page: Page.BOOK_DETAILS, regexp: /^\/[a-z]+\/books\/[a-z0-9]+\/?$/},
+    {page: Page.BOOK_DETAILS, regexp: /^\/books\/[a-z0-9]+\/?$/},
     {page: Page.EDIT_PROFILE, regexp: /^\/[a-z]+\/edit\/?$/},
     {page: Page.PROFILE_SETTINGS, regexp: /^\/[a-z]+\/settings\/?$/},
     {page: Page.NOT_FOUND, regexp: /^\/404\/?$/},

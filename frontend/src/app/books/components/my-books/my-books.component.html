@@ -1,7 +1,0 @@
-<div class="container">
-  <div class="row" *ngFor="let book of (books$ | async); trackBy: trackByBooks">
-    <div class="col-lg-12">
-      <app-my-book-component [book]="book"></app-my-book-component>
-    </div>
-  </div>
-</div>

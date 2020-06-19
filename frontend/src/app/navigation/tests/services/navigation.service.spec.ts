@@ -1,5 +1,5 @@
 import {Page} from '@@navigation/models/page';
-import {NavigationService} from '@@navigation/services/navigation.service';
+import {NavigationUtils} from '@@navigation/utils/navigation.utils';
 import {INavbar} from '@@navigation/models/nav-bar.model';
 
 interface INavDefineTestCase {
@@ -38,7 +38,6 @@ const registerNavbar = {
 
 describe('NavigationServiceSpec', () => {
 
-  const navigationService: NavigationService = new NavigationService();
   const testCases: INavDefineTestCase[] = [
     {page: Page.MAIN, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
     {page: Page.FIND_BOOKS, userLoggedIn: true, expectedState: defaultNavbarForLoggedInUser},
@@ -68,7 +67,8 @@ describe('NavigationServiceSpec', () => {
 
   it('should recognize navigation state depend on page and user login status', () => {
     testCases.forEach(testCase => {
-      const navigationState = navigationService.getNavbarState(testCase.page, testCase.userLoggedIn);
+      const navigationUtils = new NavigationUtils();
+      const navigationState: INavbar = navigationUtils.getNavbarState(testCase.page, testCase.userLoggedIn);
       expect(navigationState).toEqual(testCase.expectedState);
     });
   });

@@ -1,34 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-2">
-      <img src="assets/images/cover-page.jpg"/>
-    </div>
-    <form *ngIf="bookForm" [formGroup]="bookForm" (ngSubmit)="save()" class="form-horizontal col-md-10" novalidate>
-      <h2 class="col-md-offset-2">Edit Book</h2>
-      <div class="form-group">
-        <label for="title" class="col-sm-2 control-label">Title</label>
-        <div class="feedback-container col-sm-7">
-          <input name="title" type="text" class="form-control" id="title" formControlName="title" placeholder="Book title">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="author" class="col-sm-2 control-label">Book Author</label>
-        <div class="feedback-container col-sm-7">
-          <input name="author" type="email" class="form-control" id="author" formControlName="author" placeholder="Book author">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="description" class="col-sm-2 control-label">Description</label>
-        <div class="feedback-container col-sm-7">
-          <textarea name="description" class="form-control" rows="5" id="description" formControlName="description" placeholder="Book description"></textarea>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-7">
-          <button type="submit" class="btn btn-default submit-btn">Save Change</button>
-        </div>
-      </div>
-    </form>
+<div class="row">
+  <div class="col-md-2">
+    <img src="assets/images/cover-page.jpg"/>
+    <button class="btn btn-primary mT-1 edit-img-btn" translate>{{'books.editImg' | translate}}</button>
   </div>
+  <form *ngIf="bookForm" [formGroup]="bookForm" (ngSubmit)="save()" class="form-horizontal col-md-10" novalidate>
+    <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">{{'books.title' | translate}}</label>
+      <div class="feedback-container col-sm-7" [class.has-error]="title.invalid">
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Book title">
+        <app-control-error [control]="title"></app-control-error>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="author" class="col-sm-2 control-label">{{'books.author' | translate}}</label>
+      <div class="feedback-container col-sm-7" [class.has-error]="author.invalid">
+        <input type="text" class="form-control" id="author" formControlName="author" placeholder="Book author" autocomplete="off">
+        <app-control-error [control]="author"></app-control-error>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="col-sm-2 control-label">{{'books.description' | translate}}</label>
+      <div class="feedback-container col-sm-7" [class.has-error]="description.invalid">
+        <textarea class="form-control" rows="5" id="description" formControlName="description" placeholder="Book description"></textarea>
+        <app-control-error [control]="description"></app-control-error>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-7">
+        <button type="submit" class="btn btn-primary submit-btn">{{'books.booksEditBtn' | translate}}</button>
+      </div>
+    </div>
+  </form>
 </div>
 

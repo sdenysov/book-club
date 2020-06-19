@@ -32,7 +32,7 @@ export class NavigationService {
   }
 
   goToUserNewBook(userName) {
-    this.router.navigate([`/${userName}/new-book`]);
+    this.router.navigate([`/${userName}/books/new`]);
   }
 
   goToBookDetailPage(id) {
@@ -41,5 +41,9 @@ export class NavigationService {
 
   goToFindBooksPage(data: Partial<IUrlState>) {
     this.router.navigate(['/find-books'], {state: {data}});
+  }
+
+  goToEditBookPage(userName, id) {
+    this.router.navigate([`/${userName}/books/${id}/edit`]);
   }
 }

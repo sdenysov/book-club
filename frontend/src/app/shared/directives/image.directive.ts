@@ -1,10 +1,10 @@
 import {AppProperties} from '@@shared/properties/app.properties';
 import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 
-@Directive({selector: '[appImageSrc]'})
+@Directive({selector: '[appImageName]'})
 export class ImageDirective implements OnInit {
 
-  @Input('appImageSrc') image: string;
+  @Input('appImageName') image: string;
 
   constructor(private renderer: Renderer2, private hostElementRef: ElementRef<HTMLImageElement>) {}
 
