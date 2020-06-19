@@ -17,7 +17,7 @@ describe('PageServiceSpec', () => {
     {page: Page.BOOKS, urls: ['/anyusername/books', '/anyusername/books/']},
     {page: Page.EDIT_BOOK, urls: ['/anyusername/books/123/edit', '/anyusername/books/123/edit/']},
     {page: Page.NEW_BOOK, urls: ['/anyusername/books/new', '/anyusername/books/new/']},
-    {page: Page.BOOK_DETAILS, urls: ['/anyusername/books/123', '/anyusername/books/123/']},
+    {page: Page.BOOK_DETAILS, urls: ['/books/123', '/books/123/']},
     {page: Page.PROFILE, urls: ['/anyusername', '/anyusername/']},
     {page: Page.EDIT_PROFILE, urls: ['/anyusername/edit', '/anyusername/edit/']},
     {page: Page.PROFILE_SETTINGS, urls: ['/anyusername/settings', '/anyusername/settings/']},

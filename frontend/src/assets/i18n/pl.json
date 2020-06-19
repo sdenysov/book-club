@@ -5,8 +5,18 @@
   },
   "books": {
     "booksSectionTitle": "książki",
-    "delete": "Usunąć",
-    "download": "Pobrać",
-    "edit": "Redaktować"
+    "booksEditSectionTitle": "Edytuj książkę",
+    "booksEditBtn": "Zapisz zmiany",
+    "title": "Tytuł",
+    "author": "Autor",
+    "description": "Opis",
+    "delete": "Usuń",
+    "download": "Pobierz",
+    "editImg": "Zmień zdięcie",
+    "edit": "Edytuj"
+  },
+  "validation": {
+    "required": "Pole wymagane",
+    "minlength": "Minimalna długość to {{requiredLength}}, aktualna to {{actualLength}}"
   }
 }

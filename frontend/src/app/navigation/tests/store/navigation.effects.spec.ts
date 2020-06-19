@@ -1,7 +1,7 @@
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {AUTH_STORE_KEY} from '@@auth/store/auth-store.properties';
 import {Page} from '@@navigation/models/page';
-import {NavigationService} from '@@navigation/services/navigation.service';
+import {NavigationUtils} from '@@navigation/utils/navigation.utils';
 import {PageService} from '@@navigation/services/page.service';
 import {NavigationReduxFacade} from '@@navigation/store/navigation-redux.facade';
 import {NAVIGATION_STORE_KEY} from '@@navigation/store/navigation-store.properties';
@@ -23,7 +23,7 @@ describe('NavigationEffectsSpec', () => {
   let actions$: Observable<Action>;
   let pageService: PageService;
   let effects: NavigationEffects;
-  let navigationService: NavigationService;
+  let navigationService: NavigationUtils;
   let navigationReduxFacade: NavigationReduxFacade;
   let authReduxFacade: AuthReduxFacade;
   let store: MockStore<{
@@ -44,7 +44,7 @@ describe('NavigationEffectsSpec', () => {
       providers: [
         RouterTestingModule,
         NavigationEffects,
-        NavigationService,
+        NavigationUtils,
         NavigationReduxFacade,
         AuthReduxFacade,
         PageService,
@@ -55,7 +55,7 @@ describe('NavigationEffectsSpec', () => {
     store = TestBed.get(Store);
     effects = TestBed.get(NavigationEffects);
     pageService = TestBed.get(PageService);
-    navigationService = TestBed.get(NavigationService);
+    navigationService = TestBed.get(NavigationUtils);
     navigationReduxFacade = TestBed.get(NavigationReduxFacade);
     authReduxFacade = TestBed.get(AuthReduxFacade);
   });

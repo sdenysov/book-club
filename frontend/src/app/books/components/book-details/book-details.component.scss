@@ -1,0 +1,43 @@
+@import "utils/colors";
+
+.container {
+  padding: 2rem;
+
+  .row {
+    margin: 0;
+  }
+
+  .book-img {
+    padding-left: 0;
+
+    img {
+      width: 14rem;
+      height: 19rem;
+    }
+  }
+
+  .book-details {
+    margin-left: 0;
+
+    .book-title {
+      width: 100%;
+      font-size: 1.7rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+
+    .book-info {
+      bottom: 0;
+      width: 100%;
+    }
+
+    .book-actions {
+      a {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

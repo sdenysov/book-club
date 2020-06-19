@@ -6,7 +6,7 @@ import {BooksFinderActionTypes} from '@@app/books-finder/store/books-finder.acti
 
 export enum UserBooksActionTypes {
   FETCH_BOOKS = '[UserBooks] Fetch books',
-  FETCH_BOOKS_SUCCEED = '[UserBooks]] Fetch books succeed',
+  FETCH_BOOKS_SUCCEED = '[UserBooks] Fetch books succeed',
   FETCH_BOOKS_FAILED = '[UserBooks] Fetch books failed'
 }
 

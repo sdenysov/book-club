@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {INavbar} from '@@navigation/models/nav-bar.model';
 import {Page} from '@@navigation/models/page';
+import {INavbar} from '@@navigation/models/nav-bar.model';
+import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: 'root'})
-export class NavigationService {
+export class NavigationUtils {
 
-  getNavbarState(currentPage: Page, userLoggedIn: boolean): INavbar {
+   getNavbarState(currentPage: Page, userLoggedIn: boolean): INavbar {
     const navbar: INavbar = {
       loginBtnVisible: !userLoggedIn,
       registerBtnVisible: !userLoggedIn,

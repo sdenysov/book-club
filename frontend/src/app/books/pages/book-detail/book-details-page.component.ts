@@ -1,13 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {IBook} from '@@books/models/book';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-  selector: 'app-book-details-page-component',
   templateUrl: 'book-details-page.component.html',
-  styleUrls: ['book-details-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-
-export class BookDetailsPageComponent {
-  @Input() book: IBook;
-}
+export class BookDetailsPageComponent {}

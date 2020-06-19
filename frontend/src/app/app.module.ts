@@ -19,6 +19,7 @@ import {AppSharedModule} from '@@shared/app-shared.module';
 import {AppTranslationModule} from '@@app/app-translation.module';
 import {BsDropdownModule, RatingModule, TypeaheadModule} from 'ngx-bootstrap';
 import {AppBooksModule} from '@@books/books.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export const HTTP_INTERCEPTOR_PROVIDERS = [
   {provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerInterceptor, multi: true}
@@ -42,7 +43,8 @@ export const HTTP_INTERCEPTOR_PROVIDERS = [
     RatingModule.forRoot(),
     AppBooksModule,
     BsDropdownModule.forRoot(),
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent

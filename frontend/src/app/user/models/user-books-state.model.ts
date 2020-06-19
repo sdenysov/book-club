@@ -1,6 +1,6 @@
 import {IBook} from '@@books/models/book';
 
-export interface BooksState {
+export interface UserBooksState {
   loading: boolean;
   entries: IBook[];
 }

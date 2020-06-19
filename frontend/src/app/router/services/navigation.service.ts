@@ -42,4 +42,8 @@ export class NavigationService {
   goToFindBooksPage(data: Partial<IUrlState>) {
     this.router.navigate(['/find-books'], {state: {data}});
   }
+
+  goToEditBookPage(userName, id) {
+    this.router.navigate([`/${userName}/books/${id}/edit`]);
+  }
 }
