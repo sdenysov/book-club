@@ -1,0 +1,18 @@
+{
+  "datasources": {
+    "bookclubdb": {
+      "username": "root",
+      "password": "root",
+      "database": "bookclub",
+      "options": {
+        "host": "localhost",
+        "dialect": "mysql",
+        "pool": {
+          "max": 20,
+          "min": 0,
+          "idle": 10000
+        }
+      }
+    }
+  }
+}
