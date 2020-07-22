@@ -11,13 +11,14 @@ import {RouterModule} from '@angular/router';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {AbilityModule} from '@casl/angular';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {RatingModule, TypeaheadModule} from 'ngx-bootstrap';
+import {AlertModule, RatingModule, TypeaheadModule} from 'ngx-bootstrap';
 import {AppIconComponent} from '@@shared/components/icon/icon.component';
 import {HttpClient} from '@angular/common/http';
 import {httpLoaderFactory} from '@@app/app-translation.module';
 import {DropdownComponent} from '@@shared/components/dropdown/dropdown.component';
 import {CollapsibleSectionComponent} from '@@shared/components/collapsible-section/collapsible-section.component';
 import {ControlErrorComponent} from '@@shared/forms/control-error/control-error.omponent';
+import {FileUploadModule} from 'ng2-file-upload';
 
 /**
  * All the dumb components and pipes should be implemented here
@@ -46,8 +47,10 @@ const SHARE_IMPORTS = [
   FormsModule,
   BsDropdownModule,
   TypeaheadModule,
+  AlertModule,
   AbilityModule,
-  RatingModule
+  RatingModule,
+  FileUploadModule
 ];
 
 @NgModule({

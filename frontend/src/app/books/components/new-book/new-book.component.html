@@ -1,29 +1,51 @@
 <div class="row">
-  <form *ngIf="newBookForm" [formGroup]="newBookForm" (ngSubmit)="addBook()" class="form-horizontal col-md-12" novalidate>
+  <div class="col-md-2">
+    <img class="book-img" src="assets/images/default-cover-page-icon.png"/>
+    <label *ngIf="!uploadItem || uploadItem.isReady || uploader.getNotUploadedItems().length" for="file-upload"
+           class="add-file-btn btn btn-primary mT-1 col-sm-offset-2" translate>
+      {{'books.addFile' | translate}}
+    </label>
+    <input id="file-upload" class="input-file-btn" type="file" ng2FileSelect [uploader]="uploader" [formControl]="file"/>
+    <app-control-error *ngIf="file.touched" [control]="file"></app-control-error>
+    <div *ngIf="uploadItem as item">
+      <button type="button" class="add-file-btn btn btn-success mT-1 col-sm-offset-2"
+              *ngIf="item.isReady || !item.isUploading || !uploader.getNotUploadedItems().length || !item.isSuccess"
+              (click)="upload()">
+        <span class="glyphicon glyphicon-upload"></span>
+        <span translate>{{'books.loadFile' | translate}}</span>
+      </button>
+      <div class="progress" style="margin-bottom: 0;">
+        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+      </div>
+      <div class="mT-1">
+        <alert *ngIf="item.isError" type="danger">
+          <strong>Oh snap!</strong> Try upload file again.
+        </alert>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="newBookForm" (ngSubmit)="addBook()" class="form-horizontal col-md-10" novalidate>
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">{{'books.title' | translate}}</label>
       <div class="feedback-container col-sm-7" [class.has-error]="title.invalid && title.touched">
-        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Book title">
+        <input type="text" class="form-control" id="title" [formControl]="title" placeholder="Book title">
         <app-control-error *ngIf="title.touched" [control]="title"></app-control-error>
       </div>
     </div>
     <div class="form-group">
       <label for="author" class="col-sm-2 control-label">{{'books.author' | translate}}</label>
       <div class="feedback-container col-sm-7" [class.has-error]="author.invalid && author.touched">
-        <input type="text" class="form-control" id="author" formControlName="author" placeholder="Book author" autocomplete="off">
+        <input type="text" class="form-control" id="author" [formControl]="author" placeholder="Book author"
+               autocomplete="off">
         <app-control-error *ngIf="author.touched" [control]="author"></app-control-error>
       </div>
     </div>
     <div class="form-group">
       <label for="description" class="col-sm-2 control-label">{{'books.description' | translate}}</label>
       <div class="feedback-container col-sm-7" [class.has-error]="description.invalid && description.touched">
-        <textarea class="form-control" rows="5" id="description" formControlName="description" placeholder="Book description"></textarea>
+      <textarea class="form-control" rows="5" id="description" [formControl]="description"
+                placeholder="Book description"></textarea>
         <app-control-error *ngIf="description.touched" [control]="description"></app-control-error>
-      </div>
-    </div>
-    <div class="form-group">
-      <div  class="col-sm-offset-2 col-sm-7">
-        <button class="btn btn-primary mT-1" translate>{{'books.addImg' | translate}}</button>
       </div>
     </div>
     <div class="form-group">

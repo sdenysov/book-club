@@ -42,3 +42,14 @@
 ========================================
 
 git reset --hard origin/master
+
+
+POST api/books
+
+{
+  file: byte[],
+  filename: 'java.pdf',
+  title: '',
+  author: '',
+  description: ''
+}

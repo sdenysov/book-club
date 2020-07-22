@@ -13,6 +13,7 @@ import {booksReducer} from '@@books/store/books.reducer';
 import {BOOKS_STORE_KEY} from '@@books/store';
 import {EffectsModule} from '@ngrx/effects';
 import {BooksEffects} from '@@books/store/books.effects';
+import {CoreModule} from '@@core/core.module';
 
 const SHARED_DECLARATIONS = [
   BookComponent,
@@ -26,9 +27,12 @@ const SHARED_DECLARATIONS = [
 ];
 
 @NgModule({
-  imports: [AppSharedModule,
+  imports: [
+    CoreModule,
+    AppSharedModule,
     StoreModule.forFeature(BOOKS_STORE_KEY, booksReducer),
-    EffectsModule.forFeature([BooksEffects])],
+    EffectsModule.forFeature([BooksEffects])
+  ],
   declarations: SHARED_DECLARATIONS,
   exports: SHARED_DECLARATIONS
 })

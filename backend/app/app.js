@@ -1,47 +1,28 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
+const multer = require('multer');
+const pathProperties = require('./config/path.properties');
+
 const app = express();
-const staticDirUrl = './backend/static';
-
-app.use(cookieParser());
-app.use(express.static(staticDirUrl));
-
-app.get('/api/books/', function (req, res) {
-    const error = true;
-    if (error) {
-        res.status(500).send("Sorry! Server error");
-    } else {
-        res.json([
-            {
-                id: 1,
-                title: '[owner 3] Java. Kompendium programisty. Wydanie X',
-                description: 'Java. Kompendium programisty. Wydanie X. Cudowna książka.',
-                author: 'Herbert Schildt',
-                rating: 0,
-                owner: 3
-            },
-            {
-                id: 2,
-                title: '[owner 3] Java. Kompendium programisty. Wydanie X',
-                description: 'Java. Kompendium programisty. Wydanie X. Cudowna książka.',
-                author: 'Herbert Schildt',
-                rating: 0,
-                owner: 3
-            },
-            {
-                id: 3,
-                title: '[owner 3] Java. Kompendium programisty. Wydanie X',
-                description: 'Java. Kompendium programisty. Wydanie X. Cudowna książka.',
-                author: 'Herbert Schildt',
-                rating: 0,
-                owner: 3
-            }
-        ]);
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, pathProperties.UPLOAD);
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '_' + file.originalname);
     }
 });
 
+const upload = multer({storage: storage});
+
+app.use(express.static(pathProperties.STATIC));
+
+app.post('/api/books/upload', upload.single('file'), function (req, res) {
+    console.log(req.file);
+    res.end('OK');
+});
+
 app.get('/*', function (req, res) {
-    res.sendfile('index.html', {root: staticDirUrl});
+    res.sendfile('index.html', {root: pathProperties.STATIC});
 });
 
 module.exports = app;

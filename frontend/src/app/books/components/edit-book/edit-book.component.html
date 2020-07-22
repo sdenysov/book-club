@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-2">
     <img src="assets/images/cover-page.jpg"/>
-    <button class="btn btn-primary mT-1 edit-img-btn" translate>{{'books.editImg' | translate}}</button>
+    <button class="btn btn-primary mT-1 edit-file-btn" translate>{{'books.editFile' | translate}}</button>
   </div>
   <form *ngIf="bookForm" [formGroup]="bookForm" (ngSubmit)="save()" class="form-horizontal col-md-10" novalidate>
     <div class="form-group">

@@ -14,8 +14,9 @@
     "description": "Opis",
     "delete": "Usuń",
     "download": "Pobierz",
-    "editImg": "Zmień zdięcie",
-    "addImg": "Dodaj zdięcie",
+    "editFile": "Zmień plik",
+    "addFile": "Dodaj plik",
+    "loadFile": "Załaduj",
     "edit": "Edytuj"
   },
   "validation": {

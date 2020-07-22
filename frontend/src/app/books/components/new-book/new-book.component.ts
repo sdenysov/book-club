@@ -1,53 +1,76 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
-import {BooksService} from '@@books/services/books.service';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {NavigationService} from '@@router/services/navigation.service';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
+import {BooksRestService} from '@@books/services/books-rest.service';
+import {NewBookFormService} from '@@books/services/new-book-form.service';
 import {IUser} from '@@shared/models/user';
-import {INewBook} from '@@books/models/new-book';
+import {FileUploadingService} from '@@core/services/files-uploading.service';
+import {FileUploader} from 'ng2-file-upload';
+import {CollectionUtils} from '@@shared/utils/collection.utils';
 
 @Component({
   selector: 'app-new-book-component',
   templateUrl: './new-book.component.html',
+  styleUrls: ['new-book.component.scss'],
+  providers: [NewBookFormService, FileUploadingService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNewBookComponent implements OnInit {
 
-  newBookForm: FormGroup;
+  public newBookForm: FormGroup;
+  public uploader: FileUploader;
+  public response: string;
 
-  constructor(private booksService: BooksService,
+  constructor(private booksRestService: BooksRestService,
               private navigationService: NavigationService,
               private routerReduxFacade: RouterReduxFacade,
               private authReduxFacade: AuthReduxFacade,
-              private fb: FormBuilder) {
+              private newBookFormService: NewBookFormService,
+              private uploadingFileService: FileUploadingService,
+              private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.newBookForm = this.fb.group({
-      title: [null, [Validators.required, Validators.minLength(3)]],
-      description: [null, [Validators.required, Validators.minLength(3)]],
-      author: [null, [Validators.required, Validators.minLength(3)]]
-    });
+    this.newBookForm = this.newBookFormService.form;
+    this.uploader = this.uploadingFileService.uploader;
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      this.cdr.detectChanges();
+    };
+    this.uploader.onProgressItem = (progress: any) => {
+      this.cdr.detectChanges();
+    };
+  }
+
+  get file(): FormControl {
+    return this.newBookFormService.file;
   }
 
   get title(): FormControl {
-    return this.newBookForm.get('title') as FormControl;
+    return this.newBookFormService.title;
   }
 
   get description(): FormControl {
-    return this.newBookForm.get('description') as FormControl;
+    return this.newBookFormService.description;
   }
 
   get author(): FormControl {
-    return this.newBookForm.get('author') as FormControl;
+    return this.newBookFormService.author;
+  }
+
+  get uploadItem() {
+    return CollectionUtils.getFirstItem(this.uploader.queue);
   }
 
   addBook() {
-    const user: IUser = this.authReduxFacade.getUser();
-    const book: INewBook = this.newBookForm.value;
-    book.rating = 0;
-    book.owner = user.id;
-    this.booksService.addBook$(book).pipe(first()).subscribe(() => this.navigationService.goToUserBooks(user.username));
+    this.newBookFormService.submit$().subscribe(() => {
+      const user: IUser = this.authReduxFacade.getUser();
+      this.navigationService.goToUserBooks(user.username);
+    });
+  }
+
+  upload() {
+    this.uploader.uploadAll();
   }
 }

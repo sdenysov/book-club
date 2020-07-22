@@ -1,6 +1,6 @@
 import {IUser} from '@@shared/models/user';
 
-export interface IBook {
+export abstract class IBook {
   id: string;
   title: string;
   description: string;

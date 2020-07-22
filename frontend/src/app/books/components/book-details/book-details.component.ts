@@ -3,12 +3,12 @@ import {IBook} from '@@books/models/book';
 import {Subject} from 'rxjs';
 import {BooksReduxFacade} from '@@books/store/books-redux.facade';
 import {RouterReduxFacade} from '@@router/store/router-redux.facade';
-import {first, takeUntil} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {IBooksState} from '@@books/models/books-state';
 import {AuthReduxFacade} from '@@auth/store/auth-redux.facade';
 import {IUser} from '@@shared/models/user';
 import {NavigationService} from '@@router/services/navigation.service';
-import {BooksService} from '@@books/services/books.service';
+import {BooksRestService} from '@@books/services/books-rest.service';
 
 interface ViewModel {
   loaded: boolean;
@@ -29,7 +29,7 @@ export class AppBookDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private routerReduxFacade: RouterReduxFacade,
               private booksReduxFacade: BooksReduxFacade,
-              private booksService: BooksService,
+              private booksRestService: BooksRestService,
               private cdr: ChangeDetectorRef,
               private authReduxFacade: AuthReduxFacade,
               private navigationService: NavigationService) {
@@ -62,6 +62,6 @@ export class AppBookDetailsComponent implements OnInit, OnDestroy {
   }
 
   deleteBook() {
-    this.booksService.deleteBook$(this.vm.book.id).pipe(first()).subscribe(() => this.navigationService.goToFindBooksPage({}));
+    this.booksRestService.deleteBook$(this.vm.book.id).subscribe(() => this.navigationService.goToFindBooksPage({}));
   }
 }

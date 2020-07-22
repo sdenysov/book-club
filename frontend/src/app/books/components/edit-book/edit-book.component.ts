@@ -4,7 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {IBook} from '@@books/models/book';
 import {first} from 'rxjs/operators';
 import {NavigationService} from '@@router/services/navigation.service';
-import {BooksService} from '@@books/services/books.service';
+import {BooksRestService} from '@@books/services/books-rest.service';
 
 @Component({
   selector: 'app-edit-book-component',
@@ -17,7 +17,7 @@ export class AppEditBookComponent implements OnInit {
   private bookId: string;
   public bookForm: FormGroup;
 
-  constructor(private booksService: BooksService,
+  constructor(private booksRestService: BooksRestService,
               private routerReduxFacade: RouterReduxFacade,
               private navigationService: NavigationService,
               private fb: FormBuilder,
@@ -26,7 +26,7 @@ export class AppEditBookComponent implements OnInit {
 
   ngOnInit() {
     this.bookId = this.routerReduxFacade.getBookId();
-    this.booksService.getBookById$(this.bookId)
+    this.booksRestService.getBookById$(this.bookId)
       .subscribe((book: IBook) => {
         this.bookForm = this.fb.group({
           title: [book.title, [Validators.required, Validators.minLength(3)]],
@@ -52,6 +52,6 @@ export class AppEditBookComponent implements OnInit {
   save() {
     const book: IBook = this.bookForm.value;
     book.id = this.bookId;
-    this.booksService.editBook$(book).pipe(first()).subscribe(() => this.navigationService.goToBookDetailPage(book.id));
+    this.booksRestService.editBook$(book).pipe(first()).subscribe(() => this.navigationService.goToBookDetailPage(book.id));
   }
 }
